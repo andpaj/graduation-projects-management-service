@@ -2,6 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 public class ThesisDetailsRequestModel {
 
+    //teacher
     private String language;
     private String title;
     private String description;

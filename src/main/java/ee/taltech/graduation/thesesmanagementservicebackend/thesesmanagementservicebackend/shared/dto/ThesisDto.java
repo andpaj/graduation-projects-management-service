@@ -6,8 +6,7 @@ public class ThesisDto {
 
     private long id;
     private String thesisId;
-    private String teacherId;
-    private String applicationId;  //one student or group of students(applicationTeam class)
+    private String userId;
     private String status;  // change for enum
     private Date creatingTime;
     private Date acceptingTime;
@@ -34,20 +33,12 @@ public class ThesisDto {
         this.thesisId = thesisId;
     }
 
-    public String getTeacherId() {
-        return teacherId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(String applicationId) {
-        this.applicationId = applicationId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getStatus() {

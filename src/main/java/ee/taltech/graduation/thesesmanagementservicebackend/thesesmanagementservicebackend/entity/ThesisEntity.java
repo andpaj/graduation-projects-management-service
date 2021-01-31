@@ -16,10 +16,7 @@ public class ThesisEntity {
     private String thesisId;
 
     @Column(nullable = false)
-    private String teacherId;
-
-    @Column()
-    private String applicationId;  //one student or group of students(applicationTeam class)
+    private String userId;
 
     @Column(nullable = false)
     private String status;  // change for enum
@@ -67,20 +64,12 @@ public class ThesisEntity {
         this.thesisId = thesisId;
     }
 
-    public String getTeacherId() {
-        return teacherId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
-
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public void setApplicationId(String applicationId) {
-        this.applicationId = applicationId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getStatus() {
