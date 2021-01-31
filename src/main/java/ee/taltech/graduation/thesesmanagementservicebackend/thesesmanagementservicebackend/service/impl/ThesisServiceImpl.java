@@ -39,6 +39,7 @@ public class ThesisServiceImpl implements ThesisService {
         ModelMapper modelMapper = new ModelMapper();
         ThesisEntity thesisEntity = modelMapper.map(thesisDto, ThesisEntity.class);
 
+
         ThesisEntity storedThesis = thesisRepository.save(thesisEntity);
 
         ThesisDto returnValue = modelMapper.map(storedThesis, ThesisDto.class);

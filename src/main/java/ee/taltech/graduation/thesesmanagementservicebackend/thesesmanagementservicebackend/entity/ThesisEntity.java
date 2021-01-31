@@ -9,7 +9,7 @@ import java.util.List;
 public class ThesisEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(nullable = false)

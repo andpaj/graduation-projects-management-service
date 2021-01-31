@@ -5,7 +5,7 @@ import java.util.Date;
 public class ThesisRest {
 
     private String thesisId;
-    private String teacherId;
+    private String userId;
     private String status;
     private Date creatingTime;
     private String language;
@@ -23,12 +23,12 @@ public class ThesisRest {
         this.thesisId = thesisId;
     }
 
-    public String getTeacherId() {
-        return teacherId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getStatus() {
