@@ -19,6 +19,8 @@ public class ThesisController {
     @Autowired
     ThesisService thesisService;
 
+    //Get
+
 
     @GetMapping(path = "/{id}")
     public ThesisRest getThesis(@PathVariable String id){

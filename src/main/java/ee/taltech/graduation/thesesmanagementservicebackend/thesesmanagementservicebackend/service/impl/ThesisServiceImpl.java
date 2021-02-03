@@ -2,7 +2,9 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ThesisEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ThesisRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ThesisService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ThesisDto;
 import org.modelmapper.ModelMapper;
@@ -14,6 +16,9 @@ public class ThesisServiceImpl implements ThesisService {
 
     @Autowired
     ThesisRepository thesisRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
 
     @Override
@@ -38,11 +43,14 @@ public class ThesisServiceImpl implements ThesisService {
 
         ModelMapper modelMapper = new ModelMapper();
         ThesisEntity thesisEntity = modelMapper.map(thesisDto, ThesisEntity.class);
+        UserEntity userEntity = userRepository.findByUserId("teacherTest");
+        //check null
 
+        userEntity.getThesis().add(thesisEntity);
+        thesisEntity.setUser(userEntity);
+        userRepository.save(userEntity);
 
-        ThesisEntity storedThesis = thesisRepository.save(thesisEntity);
-
-        ThesisDto returnValue = modelMapper.map(storedThesis, ThesisDto.class);
+        ThesisDto returnValue = modelMapper.map(thesisEntity, ThesisDto.class);
         return returnValue;
 
     }

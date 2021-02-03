@@ -20,8 +20,7 @@ public class ThesisRequestToDto implements Converter<ThesisDetailsRequestModel, 
     public ThesisDto convert(ThesisDetailsRequestModel thesisDetailsRequestModel) {
 
         ThesisDto thesisDto = new ThesisDto();
-        thesisDto.setThesisId(utils.generateDepartmentId(30));
-        thesisDto.setUserId("teacherTest");
+        thesisDto.setThesisId(utils.generateThesisId(30));
         thesisDto.setStatus("free to take");
         thesisDto.setCreatingTime(new Date());
         thesisDto.setLanguage(thesisDetailsRequestModel.getLanguage());

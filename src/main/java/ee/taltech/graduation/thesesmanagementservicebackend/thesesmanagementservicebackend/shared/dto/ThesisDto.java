@@ -6,7 +6,6 @@ public class ThesisDto {
 
     private long id;
     private String thesisId;
-    private String userId;
     private String status;  // change for enum
     private Date creatingTime;
     private Date acceptingTime;
@@ -16,6 +15,7 @@ public class ThesisDto {
     private int studentAmount;
     private String degree; // change for enum
     private int difficultyRating;
+    private UserDto user;
 
     public long getId() {
         return id;
@@ -33,13 +33,6 @@ public class ThesisDto {
         this.thesisId = thesisId;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getStatus() {
         return status;
@@ -111,5 +104,13 @@ public class ThesisDto {
 
     public void setDifficultyRating(int difficultyRating) {
         this.difficultyRating = difficultyRating;
+    }
+
+    public UserDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserDto user) {
+        this.user = user;
     }
 }
