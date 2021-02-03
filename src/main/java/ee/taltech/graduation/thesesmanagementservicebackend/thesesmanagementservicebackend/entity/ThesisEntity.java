@@ -48,6 +48,19 @@ public class ThesisEntity {
     @JoinColumn(name="userId")
     private UserEntity user;
 
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "thesis_tags",
+            joinColumns = { @JoinColumn(name = "thesis_id") },
+            inverseJoinColumns = { @JoinColumn(name = "tag_id") })
+    private Set<TagEntity> tags = new HashSet<>();
+
+
+
     public ThesisEntity() {
     }
 
@@ -146,5 +159,13 @@ public class ThesisEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public Set<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<TagEntity> tags) {
+        this.tags = tags;
     }
 }

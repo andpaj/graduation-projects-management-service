@@ -33,13 +33,7 @@ public class UserEntity {
 //    @Column()
 //    private String departmentId;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE,
-                    CascadeType.REMOVE
-            }
-            )
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    @JoinTable(name = "users_thesis",
 //            joinColumns = { @JoinColumn(name = "user_id") },
 //            inverseJoinColumns = { @JoinColumn(name = "thesis_id") })

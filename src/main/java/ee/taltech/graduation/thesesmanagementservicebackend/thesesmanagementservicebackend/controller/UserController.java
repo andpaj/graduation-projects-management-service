@@ -5,13 +5,16 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
+import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -35,6 +38,24 @@ public class UserController {
         UserRest returnValue = modelMapper.map(userDto, UserRest.class);
 
         return  returnValue;
+
+    }
+
+
+    @GetMapping()
+    public List<UserRest> getUsers(){
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserRest> allUsers = new ArrayList<>();
+        List<UserDto> usersDto = userService.getUsers();
+
+        for (UserDto userDto: usersDto){
+
+            UserRest userRest = modelMapper.map(userDto, UserRest.class);
+            allUsers.add(userRest);
+
+        }
+
+        return allUsers;
 
     }
 
