@@ -22,6 +22,8 @@ public class ThesesManagementServiceBackEndApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/thesis/create").allowedOrigins("http://localhost:8080");
 				registry.addMapping("/thesis/{id}").allowedOrigins("http://localhost:8080");
+
+
 			}
 		};
 	}
