@@ -38,7 +38,8 @@ public class UserServiceImpl implements UserService {
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = modelMapper.map(user, UserEntity.class);
 
-        userEntity.setUserId(utils.generateUserId(30));
+        //userEntity.setUserId(utils.generateUserId(30));
+        userEntity.setUserId("teacherTest");
         userEntity.setEncryptedPassword("encryptedPassword");
 
         UserEntity storedUserDetails = userRepository.save(userEntity);

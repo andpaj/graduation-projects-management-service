@@ -1,6 +1,8 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -30,6 +32,20 @@ public class UserEntity {
 //
 //    @Column()
 //    private String departmentId;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE,
+                    CascadeType.REMOVE
+            }
+            )
+//    @JoinTable(name = "users_thesis",
+//            joinColumns = { @JoinColumn(name = "user_id") },
+//            inverseJoinColumns = { @JoinColumn(name = "thesis_id") })
+    private Set<ThesisEntity> thesis = new HashSet<>();
+
+
 
 
     public long getId() {
@@ -78,5 +94,13 @@ public class UserEntity {
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
+    }
+
+    public Set<ThesisEntity> getThesis() {
+        return thesis;
+    }
+
+    public void setThesis(Set<ThesisEntity> thesis) {
+        this.thesis = thesis;
     }
 }

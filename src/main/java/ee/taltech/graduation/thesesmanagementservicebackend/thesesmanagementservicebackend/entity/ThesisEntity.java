@@ -2,7 +2,9 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "thesis")
@@ -14,9 +16,6 @@ public class ThesisEntity {
 
     @Column(nullable = false)
     private String thesisId;
-
-    @Column(nullable = false)
-    private String userId;
 
     @Column(nullable = false)
     private String status;  // change for enum
@@ -45,6 +44,10 @@ public class ThesisEntity {
     @Column(nullable = false)
     private int difficultyRating; //change for enum
 
+    @ManyToOne()
+    @JoinColumn(name="userId")
+    private UserEntity user;
+
     public ThesisEntity() {
     }
 
@@ -64,13 +67,6 @@ public class ThesisEntity {
         this.thesisId = thesisId;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getStatus() {
         return status;
@@ -142,5 +138,13 @@ public class ThesisEntity {
 
     public void setAcceptingTime(Date acceptingTime) {
         this.acceptingTime = acceptingTime;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }

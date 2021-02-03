@@ -24,6 +24,9 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    //get all users with thesis
+
     @GetMapping(path = "/{id}")
     public UserRest getUser(@PathVariable String id){
 
