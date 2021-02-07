@@ -1,7 +1,6 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 public class ThesisDto {
@@ -17,7 +16,7 @@ public class ThesisDto {
     private int studentAmount;
     private String degree; // change for enum
     private int difficultyRating;
-    private UserDto user;
+    private UserWithThesesDto user;
     private Set<TagDto> tags;
 
     public long getId() {
@@ -109,11 +108,11 @@ public class ThesisDto {
         this.difficultyRating = difficultyRating;
     }
 
-    public UserDto getUser() {
+    public UserWithThesesDto getUser() {
         return user;
     }
 
-    public void setUser(UserDto user) {
+    public void setUser(UserWithThesesDto user) {
         this.user = user;
     }
 

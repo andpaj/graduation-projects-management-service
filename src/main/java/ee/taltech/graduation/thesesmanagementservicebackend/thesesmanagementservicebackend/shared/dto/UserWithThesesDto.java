@@ -1,13 +1,19 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto;
 
-public class UserDto {
+import java.util.List;
+
+public class UserWithThesesDto {
+
     private long id;
     private String userId;
     private String firstName;
     private String lastName;
     private String email;
+//    private String status;
+//    private String departmentId;
     private String password;
     private String encryptedPassword;
+    private List<ThesisDto> thesis;
 
     public long getId() {
         return id;
@@ -65,4 +71,11 @@ public class UserDto {
         this.encryptedPassword = encryptedPassword;
     }
 
+    public List<ThesisDto> getThesis() {
+        return thesis;
+    }
+
+    public void setThesis(List<ThesisDto> thesis) {
+        this.thesis = thesis;
+    }
 }

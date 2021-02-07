@@ -4,6 +4,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithThesesDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,22 +35,42 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getUsers() {
+    public List<UserWithThesesDto> getUsersWithThesesList() {
 
         ModelMapper modelMapper = new ModelMapper();
 
 
-        List<UserDto> usersDto = new ArrayList<>();
+        List<UserWithThesesDto> usersDto = new ArrayList<>();
+
+        List<UserEntity> usersEntity = userRepository.findAll();
+
+        for (UserEntity userEntity: usersEntity){
+
+            UserWithThesesDto userWithThesesDto = modelMapper.map(userEntity, UserWithThesesDto.class);
+            usersDto.add(userWithThesesDto);
+        }
+
+        return usersDto;
+
+
+    }
+
+    @Override
+    public List<UserDto> getUsers() {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<UserDto> usersTest = new ArrayList<>();
 
         List<UserEntity> usersEntity = userRepository.findAll();
 
         for (UserEntity userEntity: usersEntity){
 
             UserDto userDto = modelMapper.map(userEntity, UserDto.class);
-            usersDto.add(userDto);
+            usersTest.add(userDto);
         }
 
-        return usersDto;
+        return usersTest;
 
 
     }
@@ -62,8 +83,7 @@ public class UserServiceImpl implements UserService {
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = modelMapper.map(user, UserEntity.class);
 
-        //userEntity.setUserId(utils.generateUserId(30));
-        userEntity.setUserId("teacherTest");
+        userEntity.setUserId(utils.generateUserId(30));
         userEntity.setEncryptedPassword("encryptedPassword");
 
         UserEntity storedUserDetails = userRepository.save(userEntity);

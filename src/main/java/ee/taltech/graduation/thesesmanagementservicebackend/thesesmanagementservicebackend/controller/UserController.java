@@ -4,16 +4,12 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.UserDetailsRequestModel;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithThesesDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
-import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -27,9 +23,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
-    //get all users with thesis
-
     @GetMapping(path = "/{id}")
     public UserRest getUser(@PathVariable String id){
 
@@ -41,16 +34,23 @@ public class UserController {
 
     }
 
-
     @GetMapping()
-    public List<UserRest> getUsers(){
+    public List<UserDto> getUsers(){
+        List<UserDto> listOfUsers = userService.getUsers();
+        return listOfUsers;
+    }
+
+    //get all users with thesis
+
+    @GetMapping(path = "/withTheses")
+    public List<UserRest> getUsersWithTheses(){
         ModelMapper modelMapper = new ModelMapper();
         List<UserRest> allUsers = new ArrayList<>();
-        List<UserDto> usersDto = userService.getUsers();
+        List<UserWithThesesDto> usersDto = userService.getUsersWithThesesList();
 
-        for (UserDto userDto: usersDto){
+        for (UserWithThesesDto userWithThesesDto : usersDto){
 
-            UserRest userRest = modelMapper.map(userDto, UserRest.class);
+            UserRest userRest = modelMapper.map(userWithThesesDto, UserRest.class);
             allUsers.add(userRest);
 
         }
