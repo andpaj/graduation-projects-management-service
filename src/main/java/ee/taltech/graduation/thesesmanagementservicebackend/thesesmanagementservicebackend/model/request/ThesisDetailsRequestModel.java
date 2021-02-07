@@ -1,5 +1,8 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request;
 
+import java.util.List;
+import java.util.Set;
+
 public class ThesisDetailsRequestModel {
 
     //teacher
@@ -9,6 +12,7 @@ public class ThesisDetailsRequestModel {
     private int studentAmount;
     private String degree;
     private int difficultyRating;
+    private Set<TagRequestModel> tags;
 
     public String getLanguage() {
         return language;
@@ -56,5 +60,13 @@ public class ThesisDetailsRequestModel {
 
     public void setDifficultyRating(int difficultyRating) {
         this.difficultyRating = difficultyRating;
+    }
+
+    public Set<TagRequestModel> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<TagRequestModel> tags) {
+        this.tags = tags;
     }
 }

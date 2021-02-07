@@ -1,11 +1,15 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
 
+import java.util.List;
+import java.util.Set;
+
 public class UserRest {
 
     private String userId;
     private String firstName;
     private String lastName;
     private String email;
+    private List<ThesisRest> thesis;
 
 
     public String getUserId() {
@@ -38,5 +42,13 @@ public class UserRest {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<ThesisRest> getThesis() {
+        return thesis;
+    }
+
+    public void setThesis(List<ThesisRest> thesis) {
+        this.thesis = thesis;
     }
 }

@@ -1,15 +1,20 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TagEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ThesisEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ThesisRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ThesisService;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TagDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ThesisDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 @Service
 public class ThesisServiceImpl implements ThesisService {
@@ -19,6 +24,9 @@ public class ThesisServiceImpl implements ThesisService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    Utils utils;
 
 
     @Override
@@ -41,10 +49,17 @@ public class ThesisServiceImpl implements ThesisService {
     @Override
     public ThesisDto createThesis(ThesisDto thesisDto) {
 
+        thesisDto.setThesisId(utils.generateThesisId(30));
+        thesisDto.setStatus("free to take");
+        thesisDto.setCreatingTime(new Date());
+        for (TagDto tagDto: thesisDto.getTags()){
+            tagDto.setTagId(utils.generateDepartmentId(30));
+        }
         ModelMapper modelMapper = new ModelMapper();
         ThesisEntity thesisEntity = modelMapper.map(thesisDto, ThesisEntity.class);
         UserEntity userEntity = userRepository.findByUserId("teacherTest");
         //check null
+
 
         userEntity.getThesis().add(thesisEntity);
         thesisEntity.setUser(userEntity);

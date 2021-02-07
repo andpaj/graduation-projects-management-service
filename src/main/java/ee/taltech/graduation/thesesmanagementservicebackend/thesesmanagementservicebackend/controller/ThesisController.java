@@ -40,7 +40,8 @@ public class ThesisController {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        ThesisDto thesisDto = thesisRequestToDto.convert(thesisDetails);
+        //ThesisDto thesisDto = thesisRequestToDto.convert(thesisDetails);
+        ThesisDto thesisDto = modelMapper.map(thesisDetails, ThesisDto.class);
 
         ThesisDto createdThesis = thesisService.createThesis(thesisDto);
 
