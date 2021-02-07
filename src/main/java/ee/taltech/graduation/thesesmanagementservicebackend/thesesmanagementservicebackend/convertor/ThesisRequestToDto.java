@@ -35,11 +35,11 @@ public class ThesisRequestToDto implements Converter<ThesisDetailsRequestModel, 
         thesisDto.setDegree(thesisDetailsRequestModel.getDegree());
         thesisDto.setDifficultyRating(thesisDetailsRequestModel.getDifficultyRating());
 
-        for (TagRequestModel tagRequestModel: thesisDetailsRequestModel.getTags()){
-           TagDto tagDto = modelMapper.map(tagRequestModel, TagDto.class);
-           tagDto.setTagId(utils.generateDepartmentId(30));
-
-        }
+//        for (TagRequestModel tagRequestModel: thesisDetailsRequestModel.getTags()){
+//           TagDto tagDto = modelMapper.map(tagRequestModel, TagDto.class);
+//           tagDto.setTagId(utils.generateDepartmentId(30));
+//
+//        }
 
 
 
