@@ -20,10 +20,9 @@ public class ThesesManagementServiceBackEndApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/thesis/create").allowedOrigins("http://localhost:8080");
-				registry.addMapping("/thesis/{id}").allowedOrigins("http://localhost:8080");
-
-
+				registry.addMapping("/department/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
+				registry.addMapping("/thesis/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
+				registry.addMapping("/users/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
 			}
 		};
 	}

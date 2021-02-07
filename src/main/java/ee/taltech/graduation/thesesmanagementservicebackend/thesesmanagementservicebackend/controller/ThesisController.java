@@ -5,9 +5,12 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ThesisRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ThesisService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ThesisDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/thesis")
@@ -35,15 +38,15 @@ public class ThesisController {
 
     }
 
-    @PostMapping(path = "/create")
-    public ThesisRest createThesis(@RequestBody ThesisDetailsRequestModel thesisDetails) {
+    @PostMapping(path = "/create/{id}")
+    public ThesisRest createThesis(@PathVariable String id, @RequestBody ThesisDetailsRequestModel thesisDetails) {
 
         ModelMapper modelMapper = new ModelMapper();
 
         //ThesisDto thesisDto = thesisRequestToDto.convert(thesisDetails);
         ThesisDto thesisDto = modelMapper.map(thesisDetails, ThesisDto.class);
 
-        ThesisDto createdThesis = thesisService.createThesis(thesisDto);
+        ThesisDto createdThesis = thesisService.createThesis(id, thesisDto);
 
         ThesisRest thesisRest = modelMapper.map(createdThesis, ThesisRest.class);
 
