@@ -52,14 +52,14 @@ public class ThesisServiceImpl implements ThesisService {
         thesisDto.setThesisId(utils.generateThesisId(30));
         thesisDto.setStatus("free to take");
         thesisDto.setCreatingTime(new Date());
-        for (TagDto tagDto: thesisDto.getTags()){
-            tagDto.setTagId(utils.generateDepartmentId(30));
-        }
+//        for (TagDto tagDto: thesisDto.getTags()){
+//            tagDto.setTagId(utils.generateDepartmentId(30));
+//        }
+
         ModelMapper modelMapper = new ModelMapper();
         ThesisEntity thesisEntity = modelMapper.map(thesisDto, ThesisEntity.class);
         UserEntity userEntity = userRepository.findByUserId("teacherTest");
         //check null
-
 
         userEntity.getThesis().add(thesisEntity);
         thesisEntity.setUser(userEntity);
