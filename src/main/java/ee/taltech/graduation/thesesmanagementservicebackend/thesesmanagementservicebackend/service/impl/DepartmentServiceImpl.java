@@ -1,13 +1,18 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.DepartmentEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.DepartmentRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.DepartmentService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
@@ -45,6 +50,31 @@ public class DepartmentServiceImpl implements DepartmentService {
         DepartmentDto returnValue = modelMapper.map(createdDepartment, DepartmentDto.class);
 
         return returnValue;
+
+    }
+
+    @Override
+    public List<DepartmentDto> getDepartments() {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<DepartmentDto> departmentsDto = new ArrayList<>();
+
+        List<DepartmentEntity> departmentsEntity = departmentRepository.findAll();
+
+        for (DepartmentEntity departmentEntity: departmentsEntity){
+
+            DepartmentDto departmentDto = modelMapper.map(departmentEntity, DepartmentDto.class);
+            departmentsDto.add(departmentDto);
+        }
+
+        return departmentsDto;
+    }
+
+    @Override
+    public void deleteDepartment(String departmentId) {
+        DepartmentEntity departmentEntity = departmentRepository.findByDepartmentId(departmentId);
+        departmentRepository.delete(departmentEntity);
 
     }
 }

@@ -7,6 +7,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 
 @RestController
@@ -32,6 +33,12 @@ public class DepartmentController {
 
     }
 
+    @GetMapping()
+    public List<DepartmentDto> getDepartments(){
+        List<DepartmentDto> departmentDto = departmentService.getDepartments();
+        return departmentDto;
+    }
+
     @PostMapping(path = "/create")
     public DepartmentRest createDepartment(@RequestBody DepartmentDetailsRequestModel departmentDetails) {
 
@@ -51,10 +58,12 @@ public class DepartmentController {
         return "update Department was called";
     }
 
-    @DeleteMapping()
-    public String deleteDepartment(){
+    @DeleteMapping(path = "/delete/{id}")
+    public String deleteDepartment(@PathVariable String id){
 
-        return "delete Department was called";
+        departmentService.deleteDepartment(id);
+
+        return "Department was deleted";
     }
 
 
