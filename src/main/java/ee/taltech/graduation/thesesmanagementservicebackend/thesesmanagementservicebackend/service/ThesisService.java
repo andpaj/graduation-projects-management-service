@@ -6,6 +6,6 @@ public interface ThesisService {
 
 
     ThesisDto getThesisByThesisId(String thesisId);
-    ThesisDto createThesis(ThesisDto thesisDto);
+    ThesisDto createThesis(String userId, ThesisDto thesisDto);
 
 }
