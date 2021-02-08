@@ -4,6 +4,8 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TagEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ThesisEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ThesisRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ThesisService;
@@ -62,7 +64,8 @@ public class ThesisServiceImpl implements ThesisService {
         ModelMapper modelMapper = new ModelMapper();
         ThesisEntity thesisEntity = modelMapper.map(thesisDto, ThesisEntity.class);
         UserEntity userEntity = userRepository.findByUserId(userId);
-        //check null
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
 
         userEntity.getThesis().add(thesisEntity);
         thesisEntity.setUser(userEntity);
@@ -71,5 +74,37 @@ public class ThesisServiceImpl implements ThesisService {
         ThesisDto returnValue = modelMapper.map(thesisEntity, ThesisDto.class);
         return returnValue;
 
+    }
+
+    @Override
+    public ThesisDto updateThesis(String thesisId, ThesisDto thesisDto) {
+
+        ThesisEntity thesisEntity = thesisRepository.findByThesisId(thesisId);
+        if (thesisEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        thesisEntity.setLanguage(thesisDto.getLanguage());
+        thesisEntity.setTitle(thesisDto.getTitle());
+        thesisEntity.setDescription(thesisDto.getDescription());
+        thesisEntity.setStudentAmount(thesisDto.getStudentAmount());
+        thesisEntity.setDegree(thesisDto.getDegree());
+        thesisEntity.setDifficultyRating(thesisDto.getDifficultyRating());
+
+        ThesisEntity updatedThesis = thesisRepository.save(thesisEntity);
+
+        ModelMapper modelMapper = new ModelMapper();
+        ThesisDto returnValue = modelMapper.map(updatedThesis, ThesisDto.class);
+
+        return  returnValue;
+
+    }
+
+    @Override
+    public void deleteThesis(String thesisId) {
+        ThesisEntity thesisEntity = thesisRepository.findByThesisId(thesisId);
+        if (thesisEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        thesisRepository.delete(thesisEntity);
     }
 }

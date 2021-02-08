@@ -13,6 +13,7 @@ public interface UserService {
     UserDto createUser(UserDto user);
     UserDto updateUser(String userId, UserDto user);
     void deleteUser(String userId);
+    UserDto getUser(String email);
 
 
 

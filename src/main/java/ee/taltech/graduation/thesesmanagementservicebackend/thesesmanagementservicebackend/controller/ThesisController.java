@@ -5,7 +5,6 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ThesisRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ThesisService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ThesisDto;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -55,15 +54,27 @@ public class ThesisController {
 
     }
 
-    @PutMapping()
-    public String updateThesis(){
-        return "update Thesis was called";
+    @PutMapping(path = "/update/{id}")
+    public ThesisRest updateThesis(@PathVariable String id, @RequestBody ThesisDetailsRequestModel thesisDetails){
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        ThesisDto thesisDto = modelMapper.map(thesisDetails, ThesisDto.class);
+
+        ThesisDto updatedThesis = thesisService.updateThesis(id, thesisDto);
+
+        ThesisRest returnValue = modelMapper.map(updatedThesis, ThesisRest.class);
+
+        return returnValue;
+
     }
 
-    @DeleteMapping()
-    public String deleteThesis(){
 
-        return "delete Thesis was called";
+    @DeleteMapping(path = "/{id}")
+    public String deleteThesis(@PathVariable String id){
+
+        thesisService.deleteThesis(id);
+        return "The thesis was deleted";
     }
 
 
