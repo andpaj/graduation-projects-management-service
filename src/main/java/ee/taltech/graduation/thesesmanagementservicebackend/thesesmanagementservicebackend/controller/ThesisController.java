@@ -70,7 +70,7 @@ public class ThesisController {
     }
 
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public String deleteThesis(@PathVariable String id){
 
         thesisService.deleteThesis(id);
