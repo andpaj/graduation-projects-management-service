@@ -49,6 +49,8 @@ public class ThesisEntity {
     private UserEntity user;
 
 
+    
+
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
