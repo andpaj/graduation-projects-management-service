@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,26 @@ public class ThesisController {
         ThesisRest thesisRest = modelMapper.map(thesisDto, ThesisRest.class);
 
         return thesisRest;
+
+    }
+
+    @GetMapping(path = "/allThesis")
+    public List<ThesisRest> getAllThesis() {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<ThesisRest> returnValue = new ArrayList<>();
+
+        List<ThesisDto> thesisDtoList = thesisService.getAllThesis();
+
+        for (ThesisDto thesisDto : thesisDtoList) {
+
+            ThesisRest thesisRest = modelMapper.map(thesisDto, ThesisRest.class);
+            returnValue.add(thesisRest);
+
+        }
+
+        return returnValue;
 
     }
 

@@ -1,7 +1,10 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity;
 
 
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "department")
@@ -16,6 +19,11 @@ public class DepartmentEntity {
 
     @Column(nullable = false)
     private String departmentName;
+
+//    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private Set<UserEntity> users = new HashSet<>();
+
+
 
     public long getId() {
         return id;

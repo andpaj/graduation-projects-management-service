@@ -52,6 +52,30 @@ public class ThesisServiceImpl implements ThesisService {
     }
 
     @Override
+    public List<ThesisDto> getAllThesis() {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<ThesisDto> thesisDtoList = new ArrayList<>();
+
+        List<ThesisEntity> thesisEntities = thesisRepository.findAll();
+
+        for (ThesisEntity thesisEntity: thesisEntities){
+
+            ThesisDto thesisDto = modelMapper.map(thesisEntity, ThesisDto.class);
+            thesisDtoList.add(thesisDto);
+        }
+
+        return thesisDtoList;
+
+
+
+
+
+
+    }
+
+    @Override
     public ThesisDto createThesis(String userId, ThesisDto thesisDto) {
 
         thesisDto.setThesisId(utils.generateThesisId(30));

@@ -29,15 +29,16 @@ public class UserEntity {
 
 //    @Column(nullable = false)
 //    private String status;
-//
-//    @Column()
-//    private String departmentId;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    @JoinTable(name = "users_thesis",
 //            joinColumns = { @JoinColumn(name = "user_id") },
 //            inverseJoinColumns = { @JoinColumn(name = "thesis_id") })
     private Set<ThesisEntity> thesis = new HashSet<>();
+
+//    @ManyToOne()
+//    @JoinColumn(name = "department")
+//    private DepartmentEntity department;
 
 
 

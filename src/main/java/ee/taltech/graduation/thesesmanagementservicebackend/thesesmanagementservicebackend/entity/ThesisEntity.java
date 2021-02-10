@@ -48,9 +48,6 @@ public class ThesisEntity {
     @JoinColumn(name="userId")
     private UserEntity user;
 
-
-    
-
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
