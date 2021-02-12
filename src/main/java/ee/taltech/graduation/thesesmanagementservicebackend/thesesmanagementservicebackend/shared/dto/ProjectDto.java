@@ -1,34 +1,38 @@
-package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto;
 
 import java.util.Date;
+import java.util.Set;
 
-public class ThesisRest {
+public class ProjectDto {
 
-    private String thesisId;
-    private String userId;
-    private String status;
+    private long id;
+    private String projectId;
+    private String status;  // change for enum
     private Date creatingTime;
-    private String language;
+    private Date acceptingTime;
+    private String language; // change String for Enum
     private String title;
     private String description;
-    private String degree;
     private int studentAmount;
+    private String degree; // change for enum
     private int difficultyRating;
+    private UserWithProjectsDto user;
+    private Set<TagDto> tags;
 
-    public String getThesisId() {
-        return thesisId;
+    public long getId() {
+        return id;
     }
 
-    public void setThesisId(String thesisId) {
-        this.thesisId = thesisId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getStatus() {
@@ -45,6 +49,14 @@ public class ThesisRest {
 
     public void setCreatingTime(Date creatingTime) {
         this.creatingTime = creatingTime;
+    }
+
+    public Date getAcceptingTime() {
+        return acceptingTime;
+    }
+
+    public void setAcceptingTime(Date acceptingTime) {
+        this.acceptingTime = acceptingTime;
     }
 
     public String getLanguage() {
@@ -71,6 +83,14 @@ public class ThesisRest {
         this.description = description;
     }
 
+    public int getStudentAmount() {
+        return studentAmount;
+    }
+
+    public void setStudentAmount(int studentAmount) {
+        this.studentAmount = studentAmount;
+    }
+
     public String getDegree() {
         return degree;
     }
@@ -87,11 +107,19 @@ public class ThesisRest {
         this.difficultyRating = difficultyRating;
     }
 
-    public int getStudentAmount() {
-        return studentAmount;
+    public UserWithProjectsDto getUser() {
+        return user;
     }
 
-    public void setStudentAmount(int studentAmount) {
-        this.studentAmount = studentAmount;
+    public void setUser(UserWithProjectsDto user) {
+        this.user = user;
+    }
+
+    public Set<TagDto> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<TagDto> tags) {
+        this.tags = tags;
     }
 }

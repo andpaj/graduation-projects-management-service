@@ -2,7 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import java.util.List;
 
-public class UserWithThesesDto {
+public class UserWithProjectsDto {
 
     private long id;
     private String userId;
@@ -13,7 +13,7 @@ public class UserWithThesesDto {
 //    private String departmentId;
     private String password;
     private String encryptedPassword;
-    private List<ThesisDto> thesis;
+    private List<ProjectDto> projects;
 
     public long getId() {
         return id;
@@ -71,11 +71,11 @@ public class UserWithThesesDto {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public List<ThesisDto> getThesis() {
-        return thesis;
+    public List<ProjectDto> getProjects() {
+        return projects;
     }
 
-    public void setThesis(List<ThesisDto> thesis) {
-        this.thesis = thesis;
+    public void setProjects(List<ProjectDto> projects) {
+        this.projects = projects;
     }
 }

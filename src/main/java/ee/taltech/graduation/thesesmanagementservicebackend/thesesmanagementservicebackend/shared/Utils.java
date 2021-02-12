@@ -17,14 +17,13 @@ public class Utils {
         return generateRandomString(length);
     }
 
-    public String generateThesisId(int length) {
+    public String generateProjectId(int length) {
         return generateRandomString(length);
     }
 
     public String generateDepartmentId(int length) {
         return generateRandomString(length);
     }
-
 
     private String generateRandomString(int length) {
         StringBuilder returnValue = new StringBuilder(length);
@@ -35,6 +34,4 @@ public class Utils {
 
         return new String(returnValue);
     }
-
-
 }

@@ -1,6 +1,5 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request;
 
-import java.util.List;
 
 public class UserDetailsRequestModel {
 

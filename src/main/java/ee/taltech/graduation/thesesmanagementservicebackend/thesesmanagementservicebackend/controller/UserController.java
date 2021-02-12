@@ -4,7 +4,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.UserDetailsRequestModel;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithThesesDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithProjectsDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -42,15 +42,15 @@ public class UserController {
 
     //get all users with thesis
 
-    @GetMapping(path = "/withTheses")
-    public List<UserRest> getUsersWithTheses(){
+    @GetMapping(path = "/withProjects")
+    public List<UserRest> getUsersWithProjects(){
         ModelMapper modelMapper = new ModelMapper();
         List<UserRest> allUsers = new ArrayList<>();
-        List<UserWithThesesDto> usersDto = userService.getUsersWithThesesList();
+        List<UserWithProjectsDto> usersDto = userService.getUsersWithProjectList();
 
-        for (UserWithThesesDto userWithThesesDto : usersDto){
+        for (UserWithProjectsDto userWithProjectsDto : usersDto){
 
-            UserRest userRest = modelMapper.map(userWithThesesDto, UserRest.class);
+            UserRest userRest = modelMapper.map(userWithProjectsDto, UserRest.class);
             allUsers.add(userRest);
 
         }
