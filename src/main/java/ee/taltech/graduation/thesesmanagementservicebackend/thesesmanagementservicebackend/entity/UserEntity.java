@@ -36,9 +36,9 @@ public class UserEntity {
 //            inverseJoinColumns = { @JoinColumn(name = "thesis_id") })
     private Set<ThesisEntity> thesis = new HashSet<>();
 
-//    @ManyToOne()
-//    @JoinColumn(name = "department")
-//    private DepartmentEntity department;
+    @ManyToOne()
+    @JoinColumn(name = "department")
+    private DepartmentEntity department;
 
 
 
@@ -97,5 +97,13 @@ public class UserEntity {
 
     public void setThesis(Set<ThesisEntity> thesis) {
         this.thesis = thesis;
+    }
+
+    public DepartmentEntity getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(DepartmentEntity department) {
+        this.department = department;
     }
 }

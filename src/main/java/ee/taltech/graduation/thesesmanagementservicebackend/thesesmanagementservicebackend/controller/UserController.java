@@ -63,8 +63,9 @@ public class UserController {
     public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
         ModelMapper modelMapper = new ModelMapper();
         UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+        String department = userDetails.getDepartmentName();
 
-        UserDto createdUser = userService.createUser(userDto);
+        UserDto createdUser = userService.createUser(userDto, department);
         UserRest returnValue = modelMapper.map(createdUser, UserRest.class);
 
         return returnValue;

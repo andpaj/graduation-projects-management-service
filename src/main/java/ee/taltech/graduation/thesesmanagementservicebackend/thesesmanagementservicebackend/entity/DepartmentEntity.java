@@ -20,8 +20,8 @@ public class DepartmentEntity {
     @Column(nullable = false)
     private String departmentName;
 
-//    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private Set<UserEntity> users = new HashSet<>();
+    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<UserEntity> users = new HashSet<>();
 
 
 
@@ -47,5 +47,13 @@ public class DepartmentEntity {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public Set<UserEntity> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
     }
 }
