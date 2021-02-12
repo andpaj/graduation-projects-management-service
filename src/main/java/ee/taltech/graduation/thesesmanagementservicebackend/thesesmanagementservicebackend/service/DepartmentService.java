@@ -2,12 +2,14 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentWithUsersDto;
 import java.util.List;
 
 public interface DepartmentService {
 
-    DepartmentDto createDepartment(DepartmentDto departmentDto);
-    DepartmentDto getDepartmentByDepartmentId(String departmentId);
+    DepartmentWithUsersDto createDepartment(DepartmentWithUsersDto departmentWithUsersDto);
+    DepartmentWithUsersDto getDepartmentByDepartmentId(String departmentId);
     List<DepartmentDto> getDepartments();
+    List<DepartmentWithUsersDto> getDepartmentsWithUsers();
     void deleteDepartment(String departmentId);
 }

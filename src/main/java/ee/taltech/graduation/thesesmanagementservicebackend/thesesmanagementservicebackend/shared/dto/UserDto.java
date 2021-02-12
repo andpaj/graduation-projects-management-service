@@ -8,7 +8,7 @@ public class UserDto {
     private String email;
     private String password;
     private String encryptedPassword;
-    private DepartmentDto department;
+    private DepartmentWithUsersDto department;
 
     public long getId() {
         return id;
@@ -66,11 +66,11 @@ public class UserDto {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public DepartmentDto getDepartment() {
+    public DepartmentWithUsersDto getDepartment() {
         return department;
     }
 
-    public void setDepartment(DepartmentDto department) {
+    public void setDepartment(DepartmentWithUsersDto department) {
         this.department = department;
     }
 }
