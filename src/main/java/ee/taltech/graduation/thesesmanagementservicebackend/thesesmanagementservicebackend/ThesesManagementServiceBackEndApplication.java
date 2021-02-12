@@ -21,7 +21,7 @@ public class ThesesManagementServiceBackEndApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/department/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
-				registry.addMapping("/thesis/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
+				registry.addMapping("/project/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
 				registry.addMapping("/users/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
 			}
 		};
