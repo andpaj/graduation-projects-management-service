@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class ProjectDetailsRequestModel {
 
-    //teacher
     private String language;
     private String title;
     private String description;
