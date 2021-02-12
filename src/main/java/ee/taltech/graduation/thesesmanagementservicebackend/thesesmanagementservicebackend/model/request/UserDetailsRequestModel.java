@@ -1,6 +1,5 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request;
 
-import java.util.List;
 
 public class UserDetailsRequestModel {
 
@@ -8,6 +7,8 @@ public class UserDetailsRequestModel {
     private String lastName;
     private String email;
     private String password;
+    private String departmentName;
+
 
     public UserDetailsRequestModel() {
     }
@@ -44,5 +45,11 @@ public class UserDetailsRequestModel {
         this.password = password;
     }
 
+    public String getDepartmentName() {
+        return departmentName;
+    }
 
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
 }

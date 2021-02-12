@@ -3,7 +3,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import java.util.List;
 import java.util.Set;
 
-public class ThesisDetailsRequestModel {
+public class ProjectDetailsRequestModel {
 
     //teacher
     private String language;

@@ -1,6 +1,5 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto;
 
-import java.util.List;
 import java.util.Set;
 
 public class TagDto {
@@ -8,7 +7,7 @@ public class TagDto {
     private long id;
     private String tagId;
     private String tagName;
-    private Set<ThesisDto> thesis;
+    private Set<ProjectDto> projects;
 
     public long getId() {
         return id;
@@ -34,11 +33,11 @@ public class TagDto {
         this.tagName = tagName;
     }
 
-    public Set<ThesisDto> getThesis() {
-        return thesis;
+    public Set<ProjectDto> getProjects() {
+        return projects;
     }
 
-    public void setThesis(Set<ThesisDto> thesis) {
-        this.thesis = thesis;
+    public void setProjects(Set<ProjectDto> projects) {
+        this.projects = projects;
     }
 }

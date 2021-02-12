@@ -22,7 +22,7 @@ public class TagEntity {
                     CascadeType.MERGE
             },
             mappedBy = "tags")
-    private Set<ThesisEntity> thesis = new HashSet<>();
+    private Set<ProjectEntity> projects = new HashSet<>();
 
     public long getId() {
         return id;
@@ -48,11 +48,11 @@ public class TagEntity {
         this.tagName = tagName;
     }
 
-    public Set<ThesisEntity> getThesis() {
-        return thesis;
+    public Set<ProjectEntity> getProjects() {
+        return projects;
     }
 
-    public void setThesis(Set<ThesisEntity> thesis) {
-        this.thesis = thesis;
+    public void setProjects(Set<ProjectEntity> projects) {
+        this.projects = projects;
     }
 }

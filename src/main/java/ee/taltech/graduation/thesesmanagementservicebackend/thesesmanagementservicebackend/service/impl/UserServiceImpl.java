@@ -1,12 +1,14 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.DepartmentEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.DepartmentRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithThesesDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithProjectsDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    DepartmentRepository departmentRepository;
 
     @Autowired
     Utils utils;
@@ -49,19 +54,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserWithThesesDto> getUsersWithThesesList() {
+    public List<UserWithProjectsDto> getUsersWithProjectList() {
 
         ModelMapper modelMapper = new ModelMapper();
 
 
-        List<UserWithThesesDto> usersDto = new ArrayList<>();
+        List<UserWithProjectsDto> usersDto = new ArrayList<>();
 
         List<UserEntity> usersEntity = userRepository.findAll();
 
         for (UserEntity userEntity: usersEntity){
 
-            UserWithThesesDto userWithThesesDto = modelMapper.map(userEntity, UserWithThesesDto.class);
-            usersDto.add(userWithThesesDto);
+            UserWithProjectsDto userWithProjectsDto = modelMapper.map(userEntity, UserWithProjectsDto.class);
+            usersDto.add(userWithProjectsDto);
         }
 
         return usersDto;
@@ -90,17 +95,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto createUser(UserDto user) {
+    public UserDto createUser(UserDto user, String department) {
         if (userRepository.findByEmail(user.getEmail()) != null)
             throw new ServiceException("Record already exists");
+
+        DepartmentEntity departmentEntity = departmentRepository.findByDepartmentName(department);
+        if (departmentEntity == null) throw new ServiceException("Department with that name does not exist");
 
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = modelMapper.map(user, UserEntity.class);
 
         userEntity.setUserId(utils.generateUserId(30));
         userEntity.setEncryptedPassword("encryptedPassword");
+        userEntity.setDepartment(departmentEntity);
+        departmentEntity.getUsers().add(userEntity);
 
         UserEntity storedUserDetails = userRepository.save(userEntity);
+        departmentRepository.save(departmentEntity);
 
         UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);
 

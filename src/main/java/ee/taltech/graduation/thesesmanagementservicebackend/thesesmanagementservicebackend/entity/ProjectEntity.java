@@ -1,23 +1,67 @@
-package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto;
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class ThesisDto {
+@Entity
+@Table(name = "project")
+public class ProjectEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String thesisId;
+
+    @Column(nullable = false)
+    private String projectId;
+
+    @Column(nullable = false)
     private String status;  // change for enum
+
+    @Column(nullable = false)
     private Date creatingTime;
+
+    @Column
     private Date acceptingTime;
+
+    @Column(nullable = false)
     private String language; // change String for Enum
+
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
     private String description;
+
+    @Column(nullable = false)
     private int studentAmount;
+
+    @Column(nullable = false)
     private String degree; // change for enum
-    private int difficultyRating;
-    private UserWithThesesDto user;
-    private Set<TagDto> tags;
+
+    @Column(nullable = false)
+    private int difficultyRating; //change for enum
+
+    @ManyToOne()
+    @JoinColumn(name="userId")
+    private UserEntity user;
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "projects_tags",
+            joinColumns = { @JoinColumn(name = "project_id") },
+            inverseJoinColumns = { @JoinColumn(name = "tag_id") })
+    private Set<TagEntity> tags = new HashSet<>();
+
+
+
+    public ProjectEntity() {
+    }
 
     public long getId() {
         return id;
@@ -27,14 +71,13 @@ public class ThesisDto {
         this.id = id;
     }
 
-    public String getThesisId() {
-        return thesisId;
+    public String getProjectId() {
+        return projectId;
     }
 
-    public void setThesisId(String thesisId) {
-        this.thesisId = thesisId;
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
-
 
     public String getStatus() {
         return status;
@@ -50,14 +93,6 @@ public class ThesisDto {
 
     public void setCreatingTime(Date creatingTime) {
         this.creatingTime = creatingTime;
-    }
-
-    public Date getAcceptingTime() {
-        return acceptingTime;
-    }
-
-    public void setAcceptingTime(Date acceptingTime) {
-        this.acceptingTime = acceptingTime;
     }
 
     public String getLanguage() {
@@ -108,19 +143,27 @@ public class ThesisDto {
         this.difficultyRating = difficultyRating;
     }
 
-    public UserWithThesesDto getUser() {
+    public Date getAcceptingTime() {
+        return acceptingTime;
+    }
+
+    public void setAcceptingTime(Date acceptingTime) {
+        this.acceptingTime = acceptingTime;
+    }
+
+    public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UserWithThesesDto user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 
-    public Set<TagDto> getTags() {
+    public Set<TagEntity> getTags() {
         return tags;
     }
 
-    public void setTags(Set<TagDto> tags) {
+    public void setTags(Set<TagEntity> tags) {
         this.tags = tags;
     }
 }

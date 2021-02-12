@@ -29,17 +29,16 @@ public class UserEntity {
 
 //    @Column(nullable = false)
 //    private String status;
-//
-//    @Column()
-//    private String departmentId;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    @JoinTable(name = "users_thesis",
 //            joinColumns = { @JoinColumn(name = "user_id") },
 //            inverseJoinColumns = { @JoinColumn(name = "thesis_id") })
-    private Set<ThesisEntity> thesis = new HashSet<>();
+    private Set<ProjectEntity> projects = new HashSet<>();
 
-
+    @ManyToOne()
+    @JoinColumn(name = "department")
+    private DepartmentEntity department;
 
 
     public long getId() {
@@ -90,11 +89,19 @@ public class UserEntity {
         this.encryptedPassword = encryptedPassword;
     }
 
-    public Set<ThesisEntity> getThesis() {
-        return thesis;
+    public Set<ProjectEntity> getProjects() {
+        return projects;
     }
 
-    public void setThesis(Set<ThesisEntity> thesis) {
-        this.thesis = thesis;
+    public void setProjects(Set<ProjectEntity> projects) {
+        this.projects = projects;
+    }
+
+    public DepartmentEntity getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(DepartmentEntity department) {
+        this.department = department;
     }
 }
