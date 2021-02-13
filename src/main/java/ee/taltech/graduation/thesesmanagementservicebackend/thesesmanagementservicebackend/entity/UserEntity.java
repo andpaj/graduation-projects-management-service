@@ -30,7 +30,7 @@ public class UserEntity {
 //    @Column(nullable = false)
 //    private String status;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable(name = "users_thesis",
 //            joinColumns = { @JoinColumn(name = "user_id") },
 //            inverseJoinColumns = { @JoinColumn(name = "thesis_id") })

@@ -12,6 +12,10 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,6 +33,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     Utils utils;
 
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     public UserDto getUser(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
@@ -45,7 +52,17 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserByUserId(String userId)  {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-       // if (userEntity == null) throw new UsernameNotFoundException(email);
+        if (userEntity == null) throw new UsernameNotFoundException(userId);
+        ModelMapper modelMapper = new ModelMapper();
+        UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
+
+        return returnValue;
+    }
+
+    @Override
+    public UserDto getUserByEmail(String email) {
+        UserEntity userEntity = userRepository.findByEmail(email);
+        if (userEntity == null) throw new UsernameNotFoundException(email);
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 
@@ -100,7 +117,7 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = modelMapper.map(user, UserEntity.class);
 
         userEntity.setUserId(utils.generateUserId(30));
-        userEntity.setEncryptedPassword("encryptedPassword");
+        userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userEntity.setDepartment(departmentEntity);
         departmentEntity.getUsers().add(userEntity);
 
@@ -138,5 +155,15 @@ public class UserServiceImpl implements UserService {
 
         userRepository.delete(userEntity);
 
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+        UserEntity userEntity = userRepository.findByEmail(email);
+
+        if (userEntity == null) throw new UsernameNotFoundException(email);
+
+        return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), new ArrayList<>());
     }
 }
