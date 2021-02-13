@@ -4,6 +4,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.DepartmentRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AppProperties;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -43,6 +44,11 @@ public class ThesesManagementServiceBackEndApplication {
 	@Bean
 	public SpringApplicationContext springApplicationContext(){
 		return new SpringApplicationContext();
+	}
+
+	@Bean(name = "AppProperties")
+	public AppProperties getAppProperties(){
+		return new AppProperties();
 	}
 
 	@Bean
