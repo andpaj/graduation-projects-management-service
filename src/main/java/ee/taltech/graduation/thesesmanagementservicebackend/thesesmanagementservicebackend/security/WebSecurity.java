@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -30,7 +31,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers(SecurityConstants.H2_CONSOLE)//remove in production
                 .permitAll()
                 .anyRequest().authenticated().and()
-                .addFilter(new AuthenticationFilter(authenticationManager()));
+                .addFilter(new AuthenticationFilter(authenticationManager()))
+                .addFilter(new AuthorizationFilter(authenticationManager()))
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);;
 
         http.headers().frameOptions().disable(); //for h2 console
     }
