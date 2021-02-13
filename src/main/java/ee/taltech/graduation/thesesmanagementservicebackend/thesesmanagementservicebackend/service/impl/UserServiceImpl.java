@@ -45,7 +45,6 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserByUserId(String userId)  {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-
        // if (userEntity == null) throw new UsernameNotFoundException(email);
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
@@ -58,9 +57,7 @@ public class UserServiceImpl implements UserService {
 
         ModelMapper modelMapper = new ModelMapper();
 
-
         List<UserWithProjectsDto> usersDto = new ArrayList<>();
-
         List<UserEntity> usersEntity = userRepository.findAll();
 
         for (UserEntity userEntity: usersEntity){
@@ -71,16 +68,13 @@ public class UserServiceImpl implements UserService {
 
         return usersDto;
 
-
     }
 
     @Override
     public List<UserDto> getUsers() {
 
         ModelMapper modelMapper = new ModelMapper();
-
         List<UserDto> usersTest = new ArrayList<>();
-
         List<UserEntity> usersEntity = userRepository.findAll();
 
         for (UserEntity userEntity: usersEntity){

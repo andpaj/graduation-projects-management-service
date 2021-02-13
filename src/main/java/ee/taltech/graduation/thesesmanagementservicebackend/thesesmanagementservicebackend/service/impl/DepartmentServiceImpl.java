@@ -57,9 +57,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public List<DepartmentDto> getDepartments() {
 
         ModelMapper modelMapper = new ModelMapper();
-
         List<DepartmentDto> departmentsDto = new ArrayList<>();
-
         List<DepartmentEntity> departmentsEntity = departmentRepository.findAll();
 
         for (DepartmentEntity departmentEntity: departmentsEntity){
