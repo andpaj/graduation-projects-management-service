@@ -20,9 +20,8 @@ public class DepartmentEntity {
     @Column(nullable = false)
     private String departmentName;
 
-    @OneToMany(mappedBy = "department", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department",fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
     private Set<UserEntity> users = new HashSet<>();
-
 
 
     public long getId() {

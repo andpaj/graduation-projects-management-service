@@ -41,10 +41,8 @@ public class UserController {
         List<UserDto> usersDto = userService.getUsers();
 
         for (UserDto userDto : usersDto){
-
             UserRest userRest = modelMapper.map(userDto, UserRest.class);
             allUsers.add(userRest);
-
         }
 
         return allUsers;

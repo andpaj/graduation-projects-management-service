@@ -25,11 +25,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable().authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/users")
+                .antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL)
                 .permitAll()
-                .antMatchers("/h2-console/**")//remove in production
+                .antMatchers(SecurityConstants.H2_CONSOLE)//remove in production
                 .permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated().and()
+                .addFilter(new AuthenticationFilter(authenticationManager()));
 
         http.headers().frameOptions().disable(); //for h2 console
     }

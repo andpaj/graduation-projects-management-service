@@ -1,7 +1,9 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend;
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.DepartmentEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.DepartmentRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -39,12 +41,29 @@ public class ThesesManagementServiceBackEndApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initDepartment(DepartmentRepository departmentRepository) {
+	public SpringApplicationContext springApplicationContext(){
+		return new SpringApplicationContext();
+	}
+
+	@Bean
+	public CommandLineRunner initStarterPack(DepartmentRepository departmentRepository, UserRepository userRepository) {
 		return (args) -> {
+
 			DepartmentEntity departmentEntity = new DepartmentEntity();
 			departmentEntity.setDepartmentId("testId");
 			departmentEntity.setDepartmentName("computer");
 			departmentRepository.save(departmentEntity);
+
+			UserEntity userEntity = new UserEntity();
+			userEntity.setUserId("testId");
+			userEntity.setFirstName("testFirstName");
+			userEntity.setLastName("testLastName");
+			userEntity.setEmail("test@test.com");
+			userEntity.setEncryptedPassword("$2a$10$8ufbSYN8I/mwsVk6HffOiuJiQykbTjiuG7cwEDxxdY9K7NDS0Y2km");
+			userEntity.setDepartment(departmentEntity);
+			userRepository.save(userEntity);
+
+
 		};
 	}
 }

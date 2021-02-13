@@ -9,6 +9,7 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
 
     UserDto getUserByUserId(String userId);
+    UserDto getUserByEmail(String email);
     List<UserWithProjectsDto> getUsersWithProjectList();
     List<UserDto> getUsers();
     UserDto createUser(UserDto user, String depatment);
