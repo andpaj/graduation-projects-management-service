@@ -44,6 +44,8 @@ public class ProjectEntity {
     @Column(nullable = false)
     private int difficultyRating; //change for enum
 
+    //add department
+
     @ManyToOne()
     @JoinColumn(name="userId")
     private UserEntity user;

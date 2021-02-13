@@ -41,8 +41,6 @@ public class ProjectServiceImpl implements ProjectService {
 
         return projectDto;
 
-
-
     }
 
     @Override
@@ -51,7 +49,6 @@ public class ProjectServiceImpl implements ProjectService {
         ModelMapper modelMapper = new ModelMapper();
 
         List<ProjectDto> projectDtoList = new ArrayList<>();
-
         List<ProjectEntity> projectEntities = projectRepository.findAll();
 
         for (ProjectEntity projectEntity : projectEntities){

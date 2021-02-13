@@ -2,13 +2,15 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.DepartmentDetailsRequestModel;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.DepartmentRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.DepartmentWithUsersRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.DepartmentService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentWithUsersDto;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,15 +38,37 @@ public class DepartmentController {
     }
 
     @GetMapping()
-    public List<DepartmentDto> getDepartments(){
+    public List<DepartmentRest> getDepartments(){
+        ModelMapper modelMapper = new ModelMapper();
+        List<DepartmentRest> departmentRestList = new ArrayList<>();
         List<DepartmentDto> listOfDepartments = departmentService.getDepartments();
-        return listOfDepartments;
+
+
+        for (DepartmentDto departmentDto: listOfDepartments) {
+
+            DepartmentRest departmentRest = modelMapper.map(departmentDto, DepartmentRest.class);
+            departmentRestList.add(departmentRest);
+        }
+
+        return departmentRestList;
     }
 
     @GetMapping(path = "/withUsers")
-    public List<DepartmentWithUsersDto> getDepartmentsWithUsers(){
+    public List<DepartmentWithUsersRest> getDepartmentsWithUsers(){
+        ModelMapper modelMapper = new ModelMapper();
+        List<DepartmentWithUsersRest> departmentWithUsersRestList = new ArrayList<>();
+
         List<DepartmentWithUsersDto> departmentWithUsersDto = departmentService.getDepartmentsWithUsers();
-        return departmentWithUsersDto;
+
+        for (DepartmentWithUsersDto departmentWithUsersDtoIter: departmentWithUsersDto){
+
+            DepartmentWithUsersRest departmentWithUsersRest  = modelMapper.map(departmentWithUsersDtoIter, DepartmentWithUsersRest.class);
+            departmentWithUsersRestList.add(departmentWithUsersRest);
+
+        }
+
+        return departmentWithUsersRestList;
+
     }
 
     @PostMapping(path = "/create")
