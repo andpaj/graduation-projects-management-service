@@ -1,5 +1,8 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend;
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.DepartmentEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.DepartmentRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -7,6 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.List;
 
 @SpringBootApplication
 @EnableSwagger2
@@ -31,5 +36,15 @@ public class ThesesManagementServiceBackEndApplication {
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder(){
 		return  new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public CommandLineRunner initDepartment(DepartmentRepository departmentRepository) {
+		return (args) -> {
+			DepartmentEntity departmentEntity = new DepartmentEntity();
+			departmentEntity.setDepartmentId("testId");
+			departmentEntity.setDepartmentName("computer");
+			departmentRepository.save(departmentEntity);
+		};
 	}
 }
