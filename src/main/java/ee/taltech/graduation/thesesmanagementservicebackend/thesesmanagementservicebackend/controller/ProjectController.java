@@ -95,7 +95,7 @@ public class ProjectController {
     public String deleteProject(@PathVariable String id){
 
         projectService.deleteProjects(id);
-        return "The thesis was deleted";
+        return id;
     }
 
 

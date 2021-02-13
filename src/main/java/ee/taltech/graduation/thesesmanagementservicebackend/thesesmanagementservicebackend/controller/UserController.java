@@ -35,9 +35,19 @@ public class UserController {
     }
 
     @GetMapping()
-    public List<UserDto> getUsers(){
-        List<UserDto> listOfUsers = userService.getUsers();
-        return listOfUsers;
+    public List<UserRest> getUsers(){
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserRest> allUsers = new ArrayList<>();
+        List<UserDto> usersDto = userService.getUsers();
+
+        for (UserDto userDto : usersDto){
+
+            UserRest userRest = modelMapper.map(userDto, UserRest.class);
+            allUsers.add(userRest);
+
+        }
+
+        return allUsers;
     }
 
     //get all users with thesis
@@ -92,7 +102,7 @@ public class UserController {
 
         userService.deleteUser(id);
 
-        return "the user was deleted";
+        return id;
     }
 
 
