@@ -1,0 +1,20 @@
+stages:
+  - build
+  - deploy
+
+maven-build:
+  image: maven:maven:3.6.3-jdk-11
+  stage: build
+  script: "mvn install -B"
+  artifacts:
+    paths:
+      - target/*.jar
+
+
+deploy :
+  stage: deploy
+  script:
+    - mvn $MAVEN_CLI_OPTS deploy
+  only:
+    - master
+
