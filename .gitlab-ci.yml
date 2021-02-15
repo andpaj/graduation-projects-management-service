@@ -2,7 +2,7 @@ stages:
   - build
   - deploy
 
-maven-build:
+build project:
   image: maven:maven:3.6.3-jdk-11
   stage: build
   script: "mvn install -B"
@@ -11,10 +11,17 @@ maven-build:
       - target/*.jar
 
 
-deploy :
+deploy project:
   stage: deploy
-  script:
-    - mvn $MAVEN_CLI_OPTS deploy
   only:
-    - master
+    refs:
+      - master
+  tags:
+    - heroes
+  script:
+    - mkdir -p ~/api-deployment
+    - rm -rf ~/api-deployment/*
+    - cp -r target/*.jar ~/api-deployment
+    - sudo service project restart
+
 
