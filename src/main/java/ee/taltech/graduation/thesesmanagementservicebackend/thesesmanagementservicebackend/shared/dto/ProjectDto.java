@@ -16,7 +16,7 @@ public class ProjectDto {
     private int studentAmount;
     private String degree; // change for enum
     private int difficultyRating;
-    private UserWithProjectsDto user;
+    private UserDto user;
 //    private Set<TagDto> tags;
 
     public long getId() {
@@ -107,15 +107,15 @@ public class ProjectDto {
         this.difficultyRating = difficultyRating;
     }
 
-    public UserWithProjectsDto getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public void setUser(UserWithProjectsDto user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 
-//    public Set<TagDto> getTags() {
+    //    public Set<TagDto> getTags() {
 //        return tags;
 //    }
 //

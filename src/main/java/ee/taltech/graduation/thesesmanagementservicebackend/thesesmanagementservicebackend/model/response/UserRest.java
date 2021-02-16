@@ -8,7 +8,6 @@ public class UserRest {
     private String firstName;
     private String lastName;
     private String email;
-    private List<ProjectRest> projects;
 
 
     public String getUserId() {
@@ -43,11 +42,5 @@ public class UserRest {
         this.email = email;
     }
 
-    public List<ProjectRest> getProjects() {
-        return projects;
-    }
 
-    public void setProjects(List<ProjectRest> projects) {
-        this.projects = projects;
-    }
 }

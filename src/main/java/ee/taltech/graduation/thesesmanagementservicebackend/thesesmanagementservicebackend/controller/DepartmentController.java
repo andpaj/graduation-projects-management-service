@@ -5,7 +5,6 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.DepartmentWithUsersRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.DepartmentService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentDto;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentWithUsersDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +22,13 @@ public class DepartmentController {
 
 
     @GetMapping(path = "/{id}")
-    public DepartmentRest getDepartment(@PathVariable String id){
+    public DepartmentWithUsersRest getDepartment(@PathVariable String id){
 
         ModelMapper modelMapper = new ModelMapper();
 
-        DepartmentWithUsersDto departmentWithUsersDto = departmentService.getDepartmentByDepartmentId(id);
+        DepartmentDto departmentDto = departmentService.getDepartmentByDepartmentId(id);
 
-        DepartmentRest departmentRest = modelMapper.map(departmentWithUsersDto, DepartmentRest.class);
+        DepartmentWithUsersRest departmentRest = modelMapper.map(departmentDto, DepartmentWithUsersRest.class);
 
         return departmentRest;
 
@@ -38,7 +37,7 @@ public class DepartmentController {
     }
 
     @GetMapping()
-    public List<DepartmentRest> getDepartments(){
+    public List<DepartmentRest> getAllDepartments(){
         ModelMapper modelMapper = new ModelMapper();
         List<DepartmentRest> departmentRestList = new ArrayList<>();
         List<DepartmentDto> listOfDepartments = departmentService.getDepartments();
@@ -54,15 +53,15 @@ public class DepartmentController {
     }
 
     @GetMapping(path = "/withUsers")
-    public List<DepartmentWithUsersRest> getDepartmentsWithUsers(){
+    public List<DepartmentWithUsersRest> getAllDepartmentsWithUsers(){
         ModelMapper modelMapper = new ModelMapper();
         List<DepartmentWithUsersRest> departmentWithUsersRestList = new ArrayList<>();
 
-        List<DepartmentWithUsersDto> departmentWithUsersDto = departmentService.getDepartmentsWithUsers();
+        List<DepartmentDto> departmentWithUsersDto = departmentService.getDepartmentsWithUsers();
 
-        for (DepartmentWithUsersDto departmentWithUsersDtoIter: departmentWithUsersDto){
+        for (DepartmentDto departmentDto: departmentWithUsersDto){
 
-            DepartmentWithUsersRest departmentWithUsersRest  = modelMapper.map(departmentWithUsersDtoIter, DepartmentWithUsersRest.class);
+            DepartmentWithUsersRest departmentWithUsersRest  = modelMapper.map(departmentDto, DepartmentWithUsersRest.class);
             departmentWithUsersRestList.add(departmentWithUsersRest);
 
         }
@@ -75,9 +74,9 @@ public class DepartmentController {
     public DepartmentRest createDepartment(@RequestBody DepartmentDetailsRequestModel departmentDetails) {
 
         ModelMapper modelMapper = new ModelMapper();
-        DepartmentWithUsersDto departmentWithUsersDto = modelMapper.map(departmentDetails, DepartmentWithUsersDto.class);
+        DepartmentDto departmentWithUsersDto = modelMapper.map(departmentDetails, DepartmentDto.class);
 
-        DepartmentWithUsersDto createdDepartment = departmentService.createDepartment(departmentWithUsersDto);
+        DepartmentDto createdDepartment = departmentService.createDepartment(departmentWithUsersDto);
         DepartmentRest returnValue = modelMapper.map(createdDepartment, DepartmentRest.class);
 
         return returnValue;
