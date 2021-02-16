@@ -3,8 +3,8 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.UserDetailsRequestModel;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserWithProjectsRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithProjectsDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
@@ -24,24 +24,24 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}")
-    public UserRest getUser(@PathVariable String id){
+    public UserWithProjectsRest getUser(@PathVariable String id){
 
         UserDto userDto = userService.getUserByUserId(id);
         ModelMapper modelMapper = new ModelMapper();
-        UserRest returnValue = modelMapper.map(userDto, UserRest.class);
+        UserWithProjectsRest returnValue = modelMapper.map(userDto, UserWithProjectsRest.class);
 
         return  returnValue;
 
     }
 
     @GetMapping()
-    public List<UserRest> getUsers(){
+    public List<UserWithProjectsRest> getUsers(){
         ModelMapper modelMapper = new ModelMapper();
-        List<UserRest> allUsers = new ArrayList<>();
+        List<UserWithProjectsRest> allUsers = new ArrayList<>();
         List<UserDto> usersDto = userService.getUsers();
 
         for (UserDto userDto : usersDto){
-            UserRest userRest = modelMapper.map(userDto, UserRest.class);
+            UserWithProjectsRest userRest = modelMapper.map(userDto, UserWithProjectsRest.class);
             allUsers.add(userRest);
         }
 
@@ -51,14 +51,14 @@ public class UserController {
     //get all users with thesis
 
     @GetMapping(path = "/withProjects")
-    public List<UserRest> getUsersWithProjects(){
+    public List<UserWithProjectsRest> getUsersWithProjects(){
         ModelMapper modelMapper = new ModelMapper();
-        List<UserRest> allUsers = new ArrayList<>();
-        List<UserWithProjectsDto> usersDto = userService.getUsersWithProjectList();
+        List<UserWithProjectsRest> allUsers = new ArrayList<>();
+        List<UserDto> usersDto = userService.getUsersWithProjectList();
 
-        for (UserWithProjectsDto userWithProjectsDto : usersDto){
+        for (UserDto userDto : usersDto){
 
-            UserRest userRest = modelMapper.map(userWithProjectsDto, UserRest.class);
+            UserWithProjectsRest userRest = modelMapper.map(userDto, UserWithProjectsRest.class);
             allUsers.add(userRest);
 
         }

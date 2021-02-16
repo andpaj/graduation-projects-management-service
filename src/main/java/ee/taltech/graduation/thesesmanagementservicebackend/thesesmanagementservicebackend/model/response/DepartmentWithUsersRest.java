@@ -6,7 +6,7 @@ public class DepartmentWithUsersRest {
 
     private String departmentId;
     private String departmentName;
-    private List<UserRest> users;
+    private List<UserWithProjectsRest> users;
 
     public String getDepartmentId() {
         return departmentId;
@@ -25,11 +25,11 @@ public class DepartmentWithUsersRest {
     }
 
 
-    public List<UserRest> getUsers() {
+    public List<UserWithProjectsRest> getUsers() {
         return users;
     }
 
-    public void setUsers(List<UserRest> users) {
+    public void setUsers(List<UserWithProjectsRest> users) {
         this.users = users;
     }
 }

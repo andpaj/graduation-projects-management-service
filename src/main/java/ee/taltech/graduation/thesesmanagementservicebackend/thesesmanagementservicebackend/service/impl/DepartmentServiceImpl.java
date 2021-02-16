@@ -8,7 +8,6 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.DepartmentService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentDto;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.DepartmentWithUsersDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +26,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     Utils utils;
 
     @Override
-    public DepartmentWithUsersDto getDepartmentByDepartmentId(String departmentId) {
+    public DepartmentDto getDepartmentByDepartmentId(String departmentId) {
         ModelMapper modelMapper = new ModelMapper();
 
         DepartmentEntity departmentEntity = departmentRepository.findByDepartmentId(departmentId);
         //check null
 
-        DepartmentWithUsersDto departmentWithUsersDto = modelMapper.map(departmentEntity, DepartmentWithUsersDto.class);
+        DepartmentDto departmentWithUsersDto = modelMapper.map(departmentEntity, DepartmentDto.class);
 
         return departmentWithUsersDto;
 
@@ -41,7 +40,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public DepartmentWithUsersDto createDepartment(DepartmentWithUsersDto departmentWithUsersDto) {
+    public DepartmentDto createDepartment(DepartmentDto departmentWithUsersDto) {
 
         ModelMapper modelMapper = new ModelMapper();
         DepartmentEntity departmentEntity = modelMapper.map(departmentWithUsersDto, DepartmentEntity.class);
@@ -50,7 +49,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         DepartmentEntity createdDepartment = departmentRepository.save(departmentEntity);
 
-        DepartmentWithUsersDto returnValue = modelMapper.map(createdDepartment, DepartmentWithUsersDto.class);
+        DepartmentDto returnValue = modelMapper.map(createdDepartment, DepartmentDto.class);
 
         return returnValue;
 
@@ -75,17 +74,17 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public List<DepartmentWithUsersDto> getDepartmentsWithUsers() {
+    public List<DepartmentDto> getDepartmentsWithUsers() {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        List<DepartmentWithUsersDto> departmentsDto = new ArrayList<>();
+        List<DepartmentDto> departmentsDto = new ArrayList<>();
 
         List<DepartmentEntity> departmentsEntity = departmentRepository.findAll();
 
         for (DepartmentEntity departmentEntity: departmentsEntity){
 
-            DepartmentWithUsersDto departmentWithUsersDto = modelMapper.map(departmentEntity, DepartmentWithUsersDto.class);
+            DepartmentDto departmentWithUsersDto = modelMapper.map(departmentEntity, DepartmentDto.class);
             departmentsDto.add(departmentWithUsersDto);
         }
 

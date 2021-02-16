@@ -8,7 +8,6 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserWithProjectsDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,16 +69,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserWithProjectsDto> getUsersWithProjectList() {
+    public List<UserDto> getUsersWithProjectList() {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        List<UserWithProjectsDto> usersDto = new ArrayList<>();
+        List<UserDto> usersDto = new ArrayList<>();
         List<UserEntity> usersEntity = userRepository.findAll();
 
         for (UserEntity userEntity: usersEntity){
 
-            UserWithProjectsDto userWithProjectsDto = modelMapper.map(userEntity, UserWithProjectsDto.class);
+            UserDto userWithProjectsDto = modelMapper.map(userEntity, UserDto.class);
             usersDto.add(userWithProjectsDto);
         }
 

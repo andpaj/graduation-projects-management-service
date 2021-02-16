@@ -1,10 +1,13 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto;
 
+import java.util.List;
+
 public class DepartmentDto {
 
     private long id;
     private String departmentId;
     private String departmentName;
+    private List<UserDto> users;
 
     public long getId() {
         return id;
@@ -30,4 +33,11 @@ public class DepartmentDto {
         this.departmentName = departmentName;
     }
 
+    public List<UserDto> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<UserDto> users) {
+        this.users = users;
+    }
 }
