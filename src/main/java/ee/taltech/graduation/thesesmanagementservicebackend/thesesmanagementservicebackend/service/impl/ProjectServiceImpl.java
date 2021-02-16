@@ -62,6 +62,32 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public List<ProjectDto> getProjectsByUserId(String userId) {
+        ModelMapper modelMapper = new ModelMapper();
+
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        List<ProjectDto> projectDtoList = new ArrayList<>();
+        List<ProjectEntity> projectEntities = projectRepository.findByUser(userEntity);
+
+        for (ProjectEntity projectEntity : projectEntities){
+
+            ProjectDto projectDto = modelMapper.map(projectEntity, ProjectDto.class);
+            projectDtoList.add(projectDto);
+        }
+
+        return projectDtoList;
+
+
+
+
+
+
+    }
+
+    @Override
     public ProjectDto createProject(String userId, ProjectDto projectDto) {
 
         projectDto.setProjectId(utils.generateProjectId(30));

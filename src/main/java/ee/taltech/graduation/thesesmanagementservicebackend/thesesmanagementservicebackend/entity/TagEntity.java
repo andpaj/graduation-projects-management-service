@@ -16,13 +16,13 @@ public class TagEntity {
     @Column()
     private String tagName;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "tags")
-    private Set<ProjectEntity> projects = new HashSet<>();
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            },
+//            mappedBy = "tags")
+//    private Set<ProjectEntity> projects = new HashSet<>();
 
     public long getId() {
         return id;
@@ -48,11 +48,11 @@ public class TagEntity {
         this.tagName = tagName;
     }
 
-    public Set<ProjectEntity> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(Set<ProjectEntity> projects) {
-        this.projects = projects;
-    }
+//    public Set<ProjectEntity> getProjects() {
+//        return projects;
+//    }
+//
+//    public void setProjects(Set<ProjectEntity> projects) {
+//        this.projects = projects;
+//    }
 }
