@@ -58,6 +58,25 @@ public class ProjectController {
 
     }
 
+
+    @GetMapping(path = "/projectsByUserId/{id}")
+    public List<ProjectRest> getProjectsByUserId(@PathVariable String id){
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<ProjectRest> returnValue = new ArrayList<>();
+
+        List<ProjectDto> projectDtoList = projectService.getProjectsByUserId(id);
+
+        for (ProjectDto projectDto : projectDtoList) {
+
+            ProjectRest projectRest = modelMapper.map(projectDto, ProjectRest.class);
+            returnValue.add(projectRest);
+
+        }
+
+        return returnValue;
+    }
+
     @PostMapping(path = "/create/{id}")
     public ProjectRest createProject(@PathVariable String id, @RequestBody ProjectDetailsRequestModel projectDetails) {
 

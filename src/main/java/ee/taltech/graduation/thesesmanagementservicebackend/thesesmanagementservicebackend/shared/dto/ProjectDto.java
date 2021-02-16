@@ -17,7 +17,7 @@ public class ProjectDto {
     private String degree; // change for enum
     private int difficultyRating;
     private UserWithProjectsDto user;
-    private Set<TagDto> tags;
+//    private Set<TagDto> tags;
 
     public long getId() {
         return id;
@@ -115,11 +115,11 @@ public class ProjectDto {
         this.user = user;
     }
 
-    public Set<TagDto> getTags() {
-        return tags;
-    }
-
-    public void setTags(Set<TagDto> tags) {
-        this.tags = tags;
-    }
+//    public Set<TagDto> getTags() {
+//        return tags;
+//    }
+//
+//    public void setTags(Set<TagDto> tags) {
+//        this.tags = tags;
+//    }
 }
