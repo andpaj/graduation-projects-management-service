@@ -2,7 +2,7 @@ stages:
   - build
   - deploy
 
-build project:
+build ProjectManagementServiceBackEnd:
   image: maven:maven:3.6.3-jdk-11
   stage: build
   script: "mvn install -B"
@@ -10,18 +10,15 @@ build project:
     paths:
       - target/*.jar
 
-
-deploy project:
+deploy ProjectManagementServiceBackEnd:
   stage: deploy
   only:
     refs:
       - master
-  tags:
-    - heroes
   script:
     - mkdir -p ~/api-deployment
     - rm -rf ~/api-deployment/*
     - cp -r target/*.jar ~/api-deployment
-    - sudo service project restart
+
 
 
