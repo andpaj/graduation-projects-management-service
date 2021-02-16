@@ -50,8 +50,8 @@ public class ThesesManagementServiceBackEndApplication {
 
 			UserEntity userEntity = new UserEntity();
 			userEntity.setUserId("testId");
-			userEntity.setFirstName("testFirstName");
-			userEntity.setLastName("testLastName");
+			userEntity.setFirstName("testCI/CD");
+			userEntity.setLastName("testCI/CD");
 			userEntity.setEmail("test@test.com");
 			userEntity.setEncryptedPassword("$2a$10$8ufbSYN8I/mwsVk6HffOiuJiQykbTjiuG7cwEDxxdY9K7NDS0Y2km");
 			userEntity.setDepartment(departmentEntity);
