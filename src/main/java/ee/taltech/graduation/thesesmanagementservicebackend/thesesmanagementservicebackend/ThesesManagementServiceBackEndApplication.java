@@ -58,9 +58,6 @@ public class ThesesManagementServiceBackEndApplication {
 			userRepository.save(userEntity);
 
 
-			
-
-
 		};
 	}
 }
