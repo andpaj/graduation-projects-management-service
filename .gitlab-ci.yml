@@ -19,6 +19,6 @@ deploy ProjectManagementServiceBackEnd:
     - mkdir -p ~/api-deployment
     - rm -rf ~/api-deployment/*
     - cp -r target/*.jar ~/api-deployment
-
+    - sudo service project_management restart
 
 
