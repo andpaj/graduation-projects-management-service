@@ -30,10 +30,8 @@ public class UserEntity {
 //    @Column(nullable = false)
 //    private String status;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "users_thesis",
-//            joinColumns = { @JoinColumn(name = "user_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "thesis_id") })
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private Set<ProjectEntity> projects = new HashSet<>();
 
     @ManyToOne()
