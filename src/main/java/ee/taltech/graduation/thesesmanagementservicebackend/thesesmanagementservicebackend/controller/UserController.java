@@ -23,6 +23,9 @@ public class UserController {
         this.userService = userService;
     }
 
+    //create get User without role parameter
+
+
     @GetMapping(path = "/{id}")
     public UserWithProjectsRest getUser(@PathVariable String id){
 
