@@ -40,6 +40,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(SecurityConstants.H2_CONSOLE)//remove in production
                 .permitAll()
+                .antMatchers(HttpMethod.GET, "/group/**" )
+                .permitAll()
                 .anyRequest().authenticated().and()
                 .addFilter(new AuthenticationFilter(authenticationManager()))
                 .addFilter(new AuthorizationFilter(authenticationManager()))
