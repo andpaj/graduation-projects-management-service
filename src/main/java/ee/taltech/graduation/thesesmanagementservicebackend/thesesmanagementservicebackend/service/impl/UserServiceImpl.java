@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserService {
 
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 
+
         return returnValue;
     }
 
@@ -59,6 +60,7 @@ public class UserServiceImpl implements UserService {
         if (userEntity == null) throw new UsernameNotFoundException(userId);
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
+        returnValue.setRole(userEntity.getRole().getName());
 
         return returnValue;
     }

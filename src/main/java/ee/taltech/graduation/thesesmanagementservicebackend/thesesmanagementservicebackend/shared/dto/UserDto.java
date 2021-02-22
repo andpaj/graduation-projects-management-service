@@ -13,6 +13,7 @@ public class UserDto {
     private DepartmentDto department;
     private List<ProjectDto> projects;
     private GroupDto groupEntity;
+    private String role;
 
     public long getId() {
         return id;
@@ -92,5 +93,13 @@ public class UserDto {
 
     public void setGroupEntity(GroupDto groupEntity) {
         this.groupEntity = groupEntity;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
