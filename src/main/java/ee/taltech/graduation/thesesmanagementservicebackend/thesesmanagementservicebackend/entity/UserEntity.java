@@ -38,6 +38,10 @@ public class UserEntity {
     @JoinColumn(name = "department")
     private DepartmentEntity department;
 
+    @ManyToOne()
+    @JoinColumn(name = "groupId")
+    private GroupEntity groupEntity;
+
 
     public long getId() {
         return id;
@@ -101,5 +105,13 @@ public class UserEntity {
 
     public void setDepartment(DepartmentEntity department) {
         this.department = department;
+    }
+
+    public GroupEntity getGroupEntity() {
+        return groupEntity;
+    }
+
+    public void setGroupEntity(GroupEntity groupEntity) {
+        this.groupEntity = groupEntity;
     }
 }

@@ -8,6 +8,7 @@ public class UserDetailsRequestModel {
     private String email;
     private String password;
     private String departmentName;
+    private String group;
 
 
     public UserDetailsRequestModel() {
@@ -51,5 +52,13 @@ public class UserDetailsRequestModel {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 }

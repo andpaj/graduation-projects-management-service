@@ -33,7 +33,6 @@ public class DepartmentController {
         return departmentRest;
 
 
-
     }
 
     @GetMapping()
