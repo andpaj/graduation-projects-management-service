@@ -8,7 +8,7 @@ public class GroupRestWithSubGroups {
     private String groupClass;
     private String groupName;
     private List<GroupRestWithSubGroups> subGroups;
-    private List<UserRest> users;
+    private List<UserWithProjectsRest> users;
 
     public String getGroupId() {
         return groupId;
@@ -42,11 +42,11 @@ public class GroupRestWithSubGroups {
         this.subGroups = subGroups;
     }
 
-    public List<UserRest> getUsers() {
+    public List<UserWithProjectsRest> getUsers() {
         return users;
     }
 
-    public void setUsers(List<UserRest> users) {
+    public void setUsers(List<UserWithProjectsRest> users) {
         this.users = users;
     }
 }
