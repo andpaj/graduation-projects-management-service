@@ -1,0 +1,80 @@
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller;
+
+
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.GroupDetailsRequest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRestWithSubGroups;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.GroupService;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.GroupDto;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping("/group")
+public class GroupController {
+
+    @Autowired
+    GroupService groupService;
+
+
+    @GetMapping(path = "/{id}")
+    public GroupRestWithSubGroups getGroupById(@PathVariable String id){
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        GroupDto groupDto = groupService.getGroupById(id);
+
+        GroupRestWithSubGroups returnValue = modelMapper.map(groupDto, GroupRestWithSubGroups.class);
+
+        return returnValue;
+
+    }
+
+    @GetMapping(path = "/getAllGroups")
+    public List<GroupRestWithSubGroups> getAllGroups(){
+
+        ModelMapper modelMapper = new ModelMapper();
+        List<GroupRestWithSubGroups> groupsList = new ArrayList<>();
+
+        List<GroupDto> groupDtoList = groupService.getAllGroups();
+
+        for (GroupDto groupDto: groupDtoList){
+
+            GroupRestWithSubGroups group = modelMapper.map(groupDto, GroupRestWithSubGroups.class);
+            groupsList.add(group);
+        }
+
+        return groupsList;
+
+    }
+
+
+    @PostMapping(path = "/create")
+    public GroupRest createGroup(@RequestBody GroupDetailsRequest groupDetailsRequest){
+
+        ModelMapper modelMapper = new ModelMapper();
+        String parentGroupId = groupDetailsRequest.getParentTest();
+
+        GroupDto groupDto = modelMapper.map(groupDetailsRequest, GroupDto.class);
+        GroupDto savedGroup = groupService.createGroup(groupDto, parentGroupId);
+
+        GroupRest returnGroup = modelMapper.map(savedGroup, GroupRest.class);
+
+        return returnGroup;
+
+    }
+
+
+
+
+
+
+
+
+
+
+}

@@ -20,7 +20,7 @@ public class DepartmentEntity {
     @Column(nullable = false)
     private String departmentName;
 
-    @OneToMany(mappedBy = "department",fetch = FetchType.EAGER,  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "department",fetch = FetchType.EAGER,   cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private Set<UserEntity> users = new HashSet<>();
 
 
