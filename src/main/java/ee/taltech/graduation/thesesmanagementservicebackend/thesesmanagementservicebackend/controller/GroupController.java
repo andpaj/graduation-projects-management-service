@@ -4,6 +4,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.GroupDetailsRequest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRestWithSubGroups;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRestWithoutUsers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.GroupService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.GroupDto;
 import org.modelmapper.ModelMapper;
@@ -35,16 +36,16 @@ public class GroupController {
     }
 
     @GetMapping(path = "/getAllGroups")
-    public List<GroupRestWithSubGroups> getAllGroups(){
+    public List<GroupRestWithoutUsers> getAllGroups(){
 
         ModelMapper modelMapper = new ModelMapper();
-        List<GroupRestWithSubGroups> groupsList = new ArrayList<>();
+        List<GroupRestWithoutUsers> groupsList = new ArrayList<>();
 
         List<GroupDto> groupDtoList = groupService.getAllGroups();
 
         for (GroupDto groupDto: groupDtoList){
 
-            GroupRestWithSubGroups group = modelMapper.map(groupDto, GroupRestWithSubGroups.class);
+            GroupRestWithoutUsers group = modelMapper.map(groupDto, GroupRestWithoutUsers.class);
             groupsList.add(group);
         }
 
