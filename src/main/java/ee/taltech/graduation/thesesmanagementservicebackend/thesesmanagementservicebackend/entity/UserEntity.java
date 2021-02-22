@@ -42,6 +42,10 @@ public class UserEntity {
     @JoinColumn(name = "groupId")
     private GroupEntity groupEntity;
 
+    @ManyToOne
+    @JoinColumn(name = "role")
+    private RoleEntity role;
+
 
     public long getId() {
         return id;
@@ -113,5 +117,13 @@ public class UserEntity {
 
     public void setGroupEntity(GroupEntity groupEntity) {
         this.groupEntity = groupEntity;
+    }
+
+    public RoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEntity role) {
+        this.role = role;
     }
 }
