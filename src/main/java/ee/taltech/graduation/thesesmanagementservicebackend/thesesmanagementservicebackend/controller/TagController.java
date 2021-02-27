@@ -19,9 +19,9 @@ public class TagController {
     TagService tagService;
 
     @GetMapping(path = "/{id}")
-    public TagRest getTagById(@PathVariable String id){
+    public TagRest getTagByTagId(@PathVariable String id){
         ModelMapper modelMapper = new ModelMapper();
-        TagDto tagDto = tagService.getTagById(id);
+        TagDto tagDto = tagService.getTagByTagId(id);
         TagRest tagRest = modelMapper.map(tagDto, TagRest.class);
 
         return tagRest;

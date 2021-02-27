@@ -36,24 +36,24 @@ public class UserServiceImpl implements UserService {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Override
-    public UserDto getUser(String email) {
-        UserEntity userEntity = userRepository.findByEmail(email);
-
-        //if (userEntity == null) throw new UsernameNotFoundException(email);
-        ModelMapper modelMapper = new ModelMapper();
-
-        UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
-
-
-        return returnValue;
-    }
+//    @Override
+//    public UserDto getUser(String email) {
+//        UserEntity userEntity = userRepository.findByEmail(email);
+//
+//        //if (userEntity == null) throw new UsernameNotFoundException(email);
+//        ModelMapper modelMapper = new ModelMapper();
+//
+//        UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
+//
+//
+//        return returnValue;
+//    }
 
     @Override
     public UserDto getUserByUserId(String userId)  {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new UsernameNotFoundException(userId);
+        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
         returnValue.setRole(userEntity.getRole().getName());
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserByEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
-        if (userEntity == null) throw new UsernameNotFoundException(email);
+        if (userEntity == null) throw new ServiceException("User with email " + email + " not found");
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 
