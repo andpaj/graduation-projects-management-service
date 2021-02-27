@@ -21,11 +21,11 @@ public class Utils {
         return generateRandomString(length);
     }
 
-    public String generateDepartmentId(int length) {
+    public String generateGroupId(int length) {
         return generateRandomString(length);
     }
 
-    public String generateGroupId(int length) {
+    public String generateTagId(int length) {
         return generateRandomString(length);
     }
 

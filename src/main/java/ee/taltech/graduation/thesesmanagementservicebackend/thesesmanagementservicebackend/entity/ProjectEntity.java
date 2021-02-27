@@ -50,15 +50,15 @@ public class ProjectEntity {
     @JoinColumn(name="userId")
     private UserEntity user;
 
-//    @ManyToMany(fetch = FetchType.LAZY,
-//            cascade = {
-//                    CascadeType.PERSIST,
-//                    CascadeType.MERGE
-//            })
-//    @JoinTable(name = "projects_tags",
-//            joinColumns = { @JoinColumn(name = "project_id") },
-//            inverseJoinColumns = { @JoinColumn(name = "tag_id") })
-//    private Set<TagEntity> tags = new HashSet<>();
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "projects_tags",
+            joinColumns = { @JoinColumn(name = "project_id") },
+            inverseJoinColumns = { @JoinColumn(name = "tag_id") })
+    private Set<TagEntity> tags = new HashSet<>();
 
 
 
@@ -161,11 +161,11 @@ public class ProjectEntity {
         this.user = user;
     }
 
-//    public Set<TagEntity> getTags() {
-//        return tags;
-//    }
-//
-//    public void setTags(Set<TagEntity> tags) {
-//        this.tags = tags;
-//    }
+    public Set<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<TagEntity> tags) {
+        this.tags = tags;
+    }
 }

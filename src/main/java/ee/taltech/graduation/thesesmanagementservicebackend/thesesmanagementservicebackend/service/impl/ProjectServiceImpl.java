@@ -6,10 +6,12 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ProjectRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TagRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ProjectService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ProjectDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TagDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    TagRepository tagRepository;
 
     @Autowired
     Utils utils;
@@ -88,10 +93,9 @@ public class ProjectServiceImpl implements ProjectService {
         projectDto.setProjectId(utils.generateProjectId(30));
         projectDto.setStatus("free to take");
         projectDto.setCreatingTime(new Date());
-//        for (TagDto tagDto: thesisDto.getTags()){
-//            tagDto.setTagId(utils.generateDepartmentId(30));
-//        }
-
+        for (TagDto tagDto: projectDto.getTags()){
+            tagDto.setTagId(utils.generateTagId(30));
+        }
         ModelMapper modelMapper = new ModelMapper();
         ProjectEntity projectEntity = modelMapper.map(projectDto, ProjectEntity.class);
         UserEntity userEntity = userRepository.findByUserId(userId);
