@@ -40,7 +40,8 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectDto getProjectByProjectId(String thesisId) {
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(thesisId);
-        //check null
+        if (projectEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();
         ProjectDto projectDto = modelMapper.map(projectEntity, ProjectDto.class);
 

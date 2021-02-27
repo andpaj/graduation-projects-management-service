@@ -24,7 +24,7 @@ public class TagServiceImpl implements TagService {
     Utils utils;
 
     @Override
-    public TagDto getTagById(String id) {
+    public TagDto getTagByTagId(String id) {
         ModelMapper modelMapper = new ModelMapper();
         TagEntity tagEntity = tagRepository.findByTagId(id);
         if (tagEntity == null) throw
