@@ -1,11 +1,9 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.DepartmentEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.DepartmentRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
@@ -28,8 +26,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-    @Autowired
-    DepartmentRepository departmentRepository;
 
     @Autowired
     GroupRepository groupRepository;
@@ -112,12 +108,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto createUser(UserDto user, String department, String groupId) {
+    public UserDto createUser(UserDto user,  String groupId) {
         if (userRepository.findByEmail(user.getEmail()) != null)
             throw new ServiceException("Record already exists");
-
-        DepartmentEntity departmentEntity = departmentRepository.findByDepartmentName(department);
-        if (departmentEntity == null) throw new ServiceException("Department with that name does not exist");
 
         GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
         if (groupEntity == null) throw new ServiceException("Group with that name does not exist");
@@ -130,8 +123,6 @@ public class UserServiceImpl implements UserService {
 
         //-------------------------------- department set
 
-        userEntity.setDepartment(departmentEntity);
-        departmentEntity.getUsers().add(userEntity);
 
         //------------------------------------ group set
 
@@ -141,7 +132,6 @@ public class UserServiceImpl implements UserService {
         UserEntity storedUserDetails = userRepository.save(userEntity);
         groupRepository.save(groupEntity);
 
-        departmentRepository.save(departmentEntity);
 
         UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);
 

@@ -7,7 +7,7 @@ public class TagDto {
     private long id;
     private String tagId;
     private String tagName;
-//    private Set<ProjectDto> projects;
+    private Set<ProjectDto> projects;
 
     public long getId() {
         return id;
@@ -32,12 +32,12 @@ public class TagDto {
     public void setTagName(String tagName) {
         this.tagName = tagName;
     }
-//
-//    public Set<ProjectDto> getProjects() {
-//        return projects;
-//    }
-//
-//    public void setProjects(Set<ProjectDto> projects) {
-//        this.projects = projects;
-//    }
+
+    public Set<ProjectDto> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<ProjectDto> projects) {
+        this.projects = projects;
+    }
 }

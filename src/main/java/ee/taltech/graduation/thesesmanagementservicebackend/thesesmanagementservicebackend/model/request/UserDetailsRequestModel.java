@@ -7,7 +7,6 @@ public class UserDetailsRequestModel {
     private String lastName;
     private String email;
     private String password;
-    private String departmentName;
     private String group;
 
 
@@ -44,14 +43,6 @@ public class UserDetailsRequestModel {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
     }
 
     public String getGroup() {

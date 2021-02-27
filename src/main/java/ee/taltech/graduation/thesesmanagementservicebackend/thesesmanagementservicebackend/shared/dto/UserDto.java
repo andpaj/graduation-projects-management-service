@@ -10,7 +10,6 @@ public class UserDto {
     private String email;
     private String password;
     private String encryptedPassword;
-    private DepartmentDto department;
     private List<ProjectDto> projects;
     private GroupDto groupEntity;
     private String role;
@@ -69,14 +68,6 @@ public class UserDto {
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
-    }
-
-    public DepartmentDto getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(DepartmentDto department) {
-        this.department = department;
     }
 
     public List<ProjectDto> getProjects() {

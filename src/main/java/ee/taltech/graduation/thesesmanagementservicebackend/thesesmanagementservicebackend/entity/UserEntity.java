@@ -34,9 +34,6 @@ public class UserEntity {
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private Set<ProjectEntity> projects = new HashSet<>();
 
-    @ManyToOne()
-    @JoinColumn(name = "department")
-    private DepartmentEntity department;
 
     @ManyToOne()
     @JoinColumn(name = "groupId")
@@ -101,14 +98,6 @@ public class UserEntity {
 
     public void setProjects(Set<ProjectEntity> projects) {
         this.projects = projects;
-    }
-
-    public DepartmentEntity getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(DepartmentEntity department) {
-        this.department = department;
     }
 
     public GroupEntity getGroupEntity() {
