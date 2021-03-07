@@ -94,8 +94,10 @@ public class ProjectServiceImpl implements ProjectService {
         projectDto.setProjectId(utils.generateProjectId(30));
         projectDto.setStatus("free to take");
         projectDto.setCreatingTime(new Date());
-        for (TagDto tagDto: projectDto.getTags()){
-            tagDto.setTagId(utils.generateTagId(30));
+        if (projectDto.getTags() != null && !projectDto.getTags().isEmpty()) {
+            for (TagDto tagDto: projectDto.getTags()){
+                tagDto.setTagId(utils.generateTagId(30));
+            }
         }
         ModelMapper modelMapper = new ModelMapper();
         ProjectEntity projectEntity = modelMapper.map(projectDto, ProjectEntity.class);
