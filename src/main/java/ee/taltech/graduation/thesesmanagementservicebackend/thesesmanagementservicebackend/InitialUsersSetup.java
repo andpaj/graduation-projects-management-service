@@ -1,11 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend;
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.AuthorityEntity;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.RoleEntity;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.AuthorityRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.RoleRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Roles;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 
 //Class which called after application started
 @Component
@@ -24,6 +21,12 @@ public class InitialUsersSetup {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    GroupRepository groupRepository;
+
+    @Autowired
+    ProjectRepository projectRepository;
 
     @Autowired
     AuthorityRepository authorityRepository;
@@ -54,7 +57,7 @@ public class InitialUsersSetup {
         UserEntity adminUser = new UserEntity();
         adminUser.setFirstName("Andres");
         adminUser.setLastName("Pajuste");
-        adminUser.setEmail("testAdmin@test.com");
+        adminUser.setEmail("admin@test.com");
         adminUser.setUserId("testAdmin");
         adminUser.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         adminUser.setRole(roleAdmin);
@@ -62,9 +65,9 @@ public class InitialUsersSetup {
         userRepository.save(adminUser);
 
         UserEntity studentUser = new UserEntity();
-        studentUser.setFirstName("Student");
-        studentUser.setLastName("Test");
-        studentUser.setEmail("testStudent@test.com");
+        studentUser.setFirstName("Oleg");
+        studentUser.setLastName("Kartašov");
+        studentUser.setEmail("student@test.com");
         studentUser.setUserId("testStudent");
         studentUser.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         studentUser.setRole(roleStudent);
@@ -74,12 +77,91 @@ public class InitialUsersSetup {
         UserEntity teacherUser = new UserEntity();
         teacherUser.setFirstName("Teacher");
         teacherUser.setLastName("Test");
-        teacherUser.setEmail("testTeacher@test.com");
+        teacherUser.setEmail("teacher@test.com");
         teacherUser.setUserId("testTeacher");
         teacherUser.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         teacherUser.setRole(roleTeacher);
 
+        UserEntity userEntity = new UserEntity();
+        userEntity.setUserId("testAgo");
+        userEntity.setFirstName("Ago");
+        userEntity.setLastName("Luberg");
+        userEntity.setEmail("testAgo@test.com");
+        userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        userEntity.setRole(roleTeacher);
+
+        UserEntity userEntity1 = new UserEntity();
+        userEntity1.setUserId("testMarko");
+        userEntity1.setFirstName("Marko");
+        userEntity1.setLastName("Kääramees");
+        userEntity1.setEmail("testMarko@test.com");
+        userEntity1.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        userEntity1.setRole(roleTeacher);
+
+        UserEntity userEntity2 = new UserEntity();
+        userEntity2.setUserId("testTanel");
+        userEntity2.setFirstName("Tanel");
+        userEntity2.setLastName("Tammet");
+        userEntity2.setEmail("testTanel@test.com");
+        userEntity2.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        userEntity2.setRole(roleTeacher);
+
+        GroupEntity userGroup = groupRepository.findByGroupId("IAIB");
+        teacherUser.setGroupEntity(userGroup);
+        userEntity.setGroupEntity(userGroup);
+        userEntity1.setGroupEntity(userGroup);
+        userEntity2.setGroupEntity(userGroup);
+        userGroup.getUsers().add(teacherUser);
+        userGroup.getUsers().add(userEntity);
+        userGroup.getUsers().add(userEntity1);
+        userGroup.getUsers().add(userEntity2);
+
         userRepository.save(teacherUser);
+        userRepository.save(userEntity);
+        userRepository.save(userEntity1);
+        userRepository.save(userEntity2);
+
+        ProjectEntity project = new ProjectEntity();
+        project.setAcceptingTime(new Date());
+        project.setCreatingTime(new Date());
+        project.setDegree("Bachelor");
+        project.setDescription("some description to describe current project");
+        project.setDifficultyRating(2);
+        project.setLanguage("Estonian");
+        project.setProjectId("project1");
+        project.setStatus("Available");
+        project.setStudentAmount(2);
+        project.setTitle("Graduation projects management service");
+        project.setUser(userRepository.findByUserId("testTeacher"));
+        projectRepository.save(project);
+
+        ProjectEntity project2 = new ProjectEntity();
+        project2.setAcceptingTime(new Date());
+        project2.setCreatingTime(new Date());
+        project2.setDegree("Master");
+        project2.setDescription("some description to describe current project");
+        project2.setDifficultyRating(2);
+        project2.setLanguage("English");
+        project2.setProjectId("project2");
+        project2.setStatus("Available");
+        project2.setStudentAmount(2);
+        project2.setTitle("ToDo list on React");
+        project2.setUser(userRepository.findByUserId("testTeacher"));
+        projectRepository.save(project2);
+
+        ProjectEntity project3 = new ProjectEntity();
+        project3.setAcceptingTime(new Date());
+        project3.setCreatingTime(new Date());
+        project3.setDegree("Bachelor");
+        project3.setDescription("some description to describe current project");
+        project3.setDifficultyRating(2);
+        project3.setLanguage("English");
+        project3.setProjectId("project3");
+        project3.setStatus("Available");
+        project3.setStudentAmount(2);
+        project3.setTitle("TalTech Bot for Students");
+        project3.setUser(userRepository.findByUserId("testTeacher"));
+        projectRepository.save(project3);
 
     }
 
