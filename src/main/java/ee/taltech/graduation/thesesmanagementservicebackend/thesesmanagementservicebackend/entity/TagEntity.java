@@ -1,5 +1,8 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,7 +19,8 @@ public class TagEntity {
     @Column()
     private String tagName;
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE

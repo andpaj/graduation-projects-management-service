@@ -1,5 +1,8 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -32,7 +35,7 @@ public class ProjectEntity {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private String description;
 
     @Column(nullable = false)
@@ -50,7 +53,8 @@ public class ProjectEntity {
     @JoinColumn(name="userId")
     private UserEntity user;
 
-    @ManyToMany(fetch = FetchType.LAZY,
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE

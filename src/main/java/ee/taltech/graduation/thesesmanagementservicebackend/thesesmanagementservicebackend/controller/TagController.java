@@ -62,9 +62,6 @@ public class TagController {
         tagService.deleteTag(id);
 
         return "Tag with id " + id + " was deleted";
-
-
-
     }
 
 
