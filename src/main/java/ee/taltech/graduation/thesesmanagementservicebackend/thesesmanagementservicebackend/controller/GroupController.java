@@ -8,6 +8,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.GroupService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.GroupDto;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/group")
 public class GroupController {
+
+    private Logger logger = LoggerFactory.getLogger(GroupController.class);
 
     @Autowired
     GroupService groupService;
@@ -48,6 +52,9 @@ public class GroupController {
             GroupRestWithoutUsers group = modelMapper.map(groupDto, GroupRestWithoutUsers.class);
             groupsList.add(group);
         }
+
+        logger.info("An INFO Message");
+
 
         return groupsList;
 

@@ -1,6 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
 
 import java.util.Date;
+import java.util.List;
 
 public class ProjectRest {
 
@@ -14,6 +15,7 @@ public class ProjectRest {
     private String degree;
     private int studentAmount;
     private int difficultyRating;
+    private List<TagRest> tags;
 
     public String getProjectId() {
         return projectId;
@@ -93,5 +95,13 @@ public class ProjectRest {
 
     public void setStudentAmount(int studentAmount) {
         this.studentAmount = studentAmount;
+    }
+
+    public List<TagRest> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagRest> tags) {
+        this.tags = tags;
     }
 }

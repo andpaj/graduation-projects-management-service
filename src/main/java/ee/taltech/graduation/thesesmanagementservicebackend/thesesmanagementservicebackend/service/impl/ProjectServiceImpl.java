@@ -96,6 +96,7 @@ public class ProjectServiceImpl implements ProjectService {
         projectDto.setCreatingTime(new Date());
         if (projectDto.getTags() != null && !projectDto.getTags().isEmpty()) {
             for (TagDto tagDto: projectDto.getTags()){
+
                 tagDto.setTagId(utils.generateTagId(30));
             }
         }
