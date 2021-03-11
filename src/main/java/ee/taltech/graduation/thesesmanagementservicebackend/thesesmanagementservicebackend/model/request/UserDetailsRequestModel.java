@@ -1,13 +1,15 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request;
 
 
+import java.util.List;
+
 public class UserDetailsRequestModel {
 
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private String group;
+    private List<String> groups;
 
 
     public UserDetailsRequestModel() {
@@ -45,11 +47,11 @@ public class UserDetailsRequestModel {
         this.password = password;
     }
 
-    public String getGroup() {
-        return group;
+    public List<String> getGroups() {
+        return groups;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setGroups(List<String> groups) {
+        this.groups = groups;
     }
 }

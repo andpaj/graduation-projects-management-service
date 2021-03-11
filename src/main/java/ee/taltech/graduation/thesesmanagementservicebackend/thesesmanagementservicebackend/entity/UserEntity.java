@@ -39,17 +39,17 @@ public class UserEntity {
     private Set<ProjectEntity> projects = new HashSet<>();
 
 
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @ManyToMany(
-//            cascade = {
-//                    CascadeType.PERSIST,
-//            })
-////    @JoinTable(name = "user_group",
-////            joinColumns = { @JoinColumn(name = "user_id") },
-////            inverseJoinColumns = { @JoinColumn(name = "group_id") })
-    @ManyToOne()
-    @JoinColumn(name = "groupId")
-    private GroupEntity groupEntity;
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+            })
+    @JoinTable(name = "user_group",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "group_id") })
+//    @ManyToOne()
+//    @JoinColumn(name = "groupId")
+    private List<GroupEntity> groupEntities;
 
     @ManyToOne
     @JoinColumn(name = "role")
@@ -112,12 +112,12 @@ public class UserEntity {
         this.projects = projects;
     }
 
-    public GroupEntity getGroupEntity() {
-        return groupEntity;
+    public List<GroupEntity> getGroupEntities() {
+        return groupEntities;
     }
 
-    public void setGroupEntity(GroupEntity groupEntity) {
-        this.groupEntity = groupEntity;
+    public void setGroupEntities(List<GroupEntity> groupEntities) {
+        this.groupEntities = groupEntities;
     }
 
     public RoleEntity getRole() {

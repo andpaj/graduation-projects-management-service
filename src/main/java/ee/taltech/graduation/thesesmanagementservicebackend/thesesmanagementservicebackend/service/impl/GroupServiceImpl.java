@@ -73,7 +73,6 @@ public class GroupServiceImpl implements GroupService {
             parentGroupEntity.getSubGroups().add(groupEntity);
         }
 
-
         GroupEntity savedGroup = groupRepository.save(groupEntity);
         GroupDto returnValue = modelMapper.map(savedGroup, GroupDto.class);
 
