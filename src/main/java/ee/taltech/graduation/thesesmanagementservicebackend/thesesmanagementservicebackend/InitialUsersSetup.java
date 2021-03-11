@@ -11,9 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
+import java.util.*;
 
 //Class which called after application started
 @Component
@@ -106,15 +104,18 @@ public class InitialUsersSetup {
         userEntity2.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         userEntity2.setRole(roleTeacher);
 
-        GroupEntity userGroup = groupRepository.findByGroupId("IAIB");
-        teacherUser.setGroupEntity(userGroup);
-        userEntity.setGroupEntity(userGroup);
-        userEntity1.setGroupEntity(userGroup);
-        userEntity2.setGroupEntity(userGroup);
-        userGroup.getUsers().add(teacherUser);
-        userGroup.getUsers().add(userEntity);
-        userGroup.getUsers().add(userEntity1);
-        userGroup.getUsers().add(userEntity2);
+            GroupEntity userGroup = groupRepository.findByGroupId("IAIB");
+            GroupEntity userGroup2 = groupRepository.findByGroupId("school_information_technologies");
+            List<GroupEntity> groups = new ArrayList<>(List.of(userGroup, userGroup2));
+            teacherUser.setGroupEntities(groups);
+            userEntity.setGroupEntities(groups);
+//        userEntity1.setGroupEntity(userGroup);
+//        userEntity2.setGroupEntity(userGroup);
+//        userGroup.getUsers().add(teacherUser);
+//        userGroup.getUsers().add(userEntity);
+//        userGroup.getUsers().add(userEntity1);
+//        userGroup.getUsers().add(userEntity2);
+
 
         userRepository.save(teacherUser);
         userRepository.save(userEntity);

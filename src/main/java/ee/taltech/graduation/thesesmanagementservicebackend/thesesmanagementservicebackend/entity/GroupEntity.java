@@ -30,7 +30,14 @@ public class GroupEntity {
     @JoinColumn(name="parent_group")
     GroupEntity parentGroup;
 
-    @OneToMany(mappedBy = "groupEntity",fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "groupEntities")
+    //@OneToMany(mappedBy = "groupEntity",fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<UserEntity> users = new ArrayList<>();
 
 

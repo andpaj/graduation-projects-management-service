@@ -108,12 +108,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto createUser(UserDto user,  String groupId) {
+    public UserDto createUser(UserDto user,  List<String> groups) {
         if (userRepository.findByEmail(user.getEmail()) != null)
             throw new ServiceException("Record already exists");
 
-        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
-        if (groupEntity == null) throw new ServiceException("Group with that name does not exist");
+        List<GroupEntity> groupEntityList = new ArrayList<>();
+
 
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = modelMapper.map(user, UserEntity.class);
@@ -121,16 +121,18 @@ public class UserServiceImpl implements UserService {
         userEntity.setUserId(utils.generateUserId(30));
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        //-------------------------------- department set
+        for (String groupId : groups) {
+            GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+            if (groupEntity == null) throw new ServiceException("Group with that name does not exist");
+            groupEntityList.add(groupEntity);
+            groupEntity.getUsers().add(userEntity);
+            groupRepository.save(groupEntity);
 
+        }
 
-        //------------------------------------ group set
-
-        userEntity.setGroupEntity(groupEntity);
-        groupEntity.getUsers().add(userEntity);
+        userEntity.setGroupEntities(groupEntityList);
 
         UserEntity storedUserDetails = userRepository.save(userEntity);
-        groupRepository.save(groupEntity);
 
 
         UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);

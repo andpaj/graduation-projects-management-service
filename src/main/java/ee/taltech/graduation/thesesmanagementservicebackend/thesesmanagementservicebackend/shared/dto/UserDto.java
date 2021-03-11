@@ -11,7 +11,7 @@ public class UserDto {
     private String password;
     private String encryptedPassword;
     private List<ProjectDto> projects;
-    private GroupDto groupEntity;
+    private List<GroupDto> groupEntities;
     private String role;
 
     public long getId() {
@@ -78,12 +78,12 @@ public class UserDto {
         this.projects = projects;
     }
 
-    public GroupDto getGroupEntity() {
-        return groupEntity;
+    public List<GroupDto> getGroupEntities() {
+        return groupEntities;
     }
 
-    public void setGroupEntity(GroupDto groupEntity) {
-        this.groupEntity = groupEntity;
+    public void setGroupEntities(List<GroupDto> groupEntities) {
+        this.groupEntities = groupEntities;
     }
 
     public String getRole() {
