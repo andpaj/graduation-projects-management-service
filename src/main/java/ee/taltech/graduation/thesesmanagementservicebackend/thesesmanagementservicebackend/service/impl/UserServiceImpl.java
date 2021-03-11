@@ -6,6 +6,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.UserPrincipal;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
@@ -56,7 +57,7 @@ public class UserServiceImpl implements UserService {
         if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
-        returnValue.setRole(userEntity.getRole().getName());
+        returnValue.setRoles(List.of(userEntity.getRoles().get(0).getName()));
 
         return returnValue;
     }
@@ -121,6 +122,8 @@ public class UserServiceImpl implements UserService {
         userEntity.setUserId(utils.generateUserId(30));
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
+        //change for loop
+
         for (String groupId : groups) {
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
             if (groupEntity == null) throw new ServiceException("Group with that name does not exist");
@@ -175,6 +178,11 @@ public class UserServiceImpl implements UserService {
 
         if (userEntity == null) throw new UsernameNotFoundException(email);
 
-        return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), new ArrayList<>());
+        return new UserPrincipal(userEntity);
+
+//        return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(),
+//                true, true,
+//                true, true,
+//                new ArrayList<>());
     }
 }
