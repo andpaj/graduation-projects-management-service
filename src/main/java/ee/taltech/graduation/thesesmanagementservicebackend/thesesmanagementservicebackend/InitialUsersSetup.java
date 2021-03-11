@@ -116,6 +116,7 @@ public class InitialUsersSetup {
         userGroup.getUsers().add(userEntity1);
         userGroup.getUsers().add(userEntity2);
 
+
         userRepository.save(teacherUser);
         userRepository.save(userEntity);
         userRepository.save(userEntity1);

@@ -65,10 +65,14 @@ public class GroupServiceImpl implements GroupService {
         GroupEntity groupEntity = modelMapper.map(groupDto, GroupEntity.class);
         GroupEntity parentGroupEntity = groupRepository.findByGroupId(parentGroupId);
 
+        if (parentGroupEntity == null && groupEntity.getParentGroup() != null)
+            throw new ServiceException("The parent group with this name does not exists");
+
         if (parentGroupEntity != null) {
             groupEntity.setParentGroup(parentGroupEntity);
             parentGroupEntity.getSubGroups().add(groupEntity);
         }
+
 
         GroupEntity savedGroup = groupRepository.save(groupEntity);
         GroupDto returnValue = modelMapper.map(savedGroup, GroupDto.class);

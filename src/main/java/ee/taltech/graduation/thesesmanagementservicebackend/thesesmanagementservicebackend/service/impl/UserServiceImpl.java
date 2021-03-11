@@ -121,11 +121,6 @@ public class UserServiceImpl implements UserService {
         userEntity.setUserId(utils.generateUserId(30));
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-        //-------------------------------- department set
-
-
-        //------------------------------------ group set
-
         userEntity.setGroupEntity(groupEntity);
         groupEntity.getUsers().add(userEntity);
 
