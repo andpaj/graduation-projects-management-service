@@ -2,6 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ProjectEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TagEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
@@ -94,14 +95,10 @@ public class ProjectServiceImpl implements ProjectService {
         projectDto.setProjectId(utils.generateProjectId(30));
         projectDto.setStatus("free to take");
         projectDto.setCreatingTime(new Date());
-        if (projectDto.getTags() != null && !projectDto.getTags().isEmpty()) {
-            for (TagDto tagDto: projectDto.getTags()){
-
-                tagDto.setTagId(utils.generateTagId(30));
-            }
-        }
         ModelMapper modelMapper = new ModelMapper();
-        ProjectEntity projectEntity = modelMapper.map(projectDto, ProjectEntity.class);
+
+        ProjectEntity projectEntity = projectDtoToEntity(projectDto);
+
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
@@ -147,5 +144,38 @@ public class ProjectServiceImpl implements ProjectService {
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
 
         projectRepository.delete(projectEntity);
+    }
+
+    public ProjectEntity projectDtoToEntity(ProjectDto projectDto) {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        ProjectEntity projectEntity = new ProjectEntity();
+        projectEntity.setProjectId(projectDto.getProjectId());
+        projectEntity.setStatus(projectDto.getStatus());
+        projectEntity.setCreatingTime(projectDto.getCreatingTime());
+        projectEntity.setLanguage(projectDto.getLanguage());
+        projectEntity.setTitle(projectDto.getTitle());
+        projectEntity.setDescription(projectDto.getDescription());
+        projectEntity.setStudentAmount(projectDto.getStudentAmount());
+        projectEntity.setDegree(projectDto.getDegree());
+        projectEntity.setDifficultyRating(projectDto.getDifficultyRating());
+        if (projectDto.getTags() != null && !projectDto.getTags().isEmpty()) {
+            for (TagDto tagDto: projectDto.getTags()){
+                if (tagRepository.findByTagName(tagDto.getTagName()) == null) {
+                    tagDto.setTagId(utils.generateTagId(30));
+                    TagEntity tagEntity = modelMapper.map(tagDto, TagEntity.class);
+                    projectEntity.getTags().add(tagEntity);
+                } else {
+
+                    TagEntity tagEntity = tagRepository.findByTagName(tagDto.getTagName());
+                    projectEntity.getTags().add(tagEntity);
+                }
+            }
+        }
+
+        return projectEntity;
+
+
     }
 }
