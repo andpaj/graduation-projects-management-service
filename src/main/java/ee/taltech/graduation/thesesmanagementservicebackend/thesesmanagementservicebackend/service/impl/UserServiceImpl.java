@@ -1,6 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.RoleEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
@@ -57,8 +58,12 @@ public class UserServiceImpl implements UserService {
         if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
-        //for loop roles and set list of names
-        returnValue.setRoles(List.of(userEntity.getRoles().get(0).getName()));
+
+        List<String> roles = new ArrayList<>();
+        for (RoleEntity roleEntity: userEntity.getRoles()){
+            roles.add(roleEntity.getName());
+        }
+        returnValue.setRoles(roles);
 
         return returnValue;
     }
