@@ -64,6 +64,19 @@ public class UserEntity {
     private List<RoleEntity> roles;
 
 
+    @PreRemove
+    public void removeUser() {
+       for (GroupEntity groupEntity: groupEntities) {
+            groupEntity.getUsers().remove(this);
+       }
+
+       for (RoleEntity roleEntity: roles){
+           roleEntity.getUsers().remove(this);
+       }
+
+    }
+
+
     public long getId() {
         return id;
     }
