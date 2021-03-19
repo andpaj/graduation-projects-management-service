@@ -28,6 +28,14 @@ public class TagEntity {
             mappedBy = "tags")
     private Set<ProjectEntity> projects = new HashSet<>();
 
+    @PreRemove
+    public void removeTag() {
+        for (ProjectEntity project: projects){
+            project.getTags().remove(this);
+
+        }
+    }
+
     public long getId() {
         return id;
     }
