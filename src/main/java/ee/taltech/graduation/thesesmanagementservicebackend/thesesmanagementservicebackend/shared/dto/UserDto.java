@@ -12,7 +12,7 @@ public class UserDto {
     private String encryptedPassword;
     private List<ProjectDto> projects;
     private List<GroupDto> groupEntities;
-    private String role;
+    private List<String> roles;
 
     public long getId() {
         return id;
@@ -86,11 +86,11 @@ public class UserDto {
         this.groupEntities = groupEntities;
     }
 
-    public String getRole() {
-        return role;
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 }

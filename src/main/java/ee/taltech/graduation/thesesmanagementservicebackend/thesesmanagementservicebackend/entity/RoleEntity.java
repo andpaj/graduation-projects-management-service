@@ -6,6 +6,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "role")
@@ -19,16 +20,16 @@ public class RoleEntity {
     private String name;
 
     @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "role",
-            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
-    private Collection<UserEntity> users;
+    @ManyToMany(mappedBy = "roles")
+    private List<UserEntity> users;
+
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "roles_authorities",
             joinColumns =@JoinColumn(name = "roles_id", referencedColumnName = "id"),
             inverseJoinColumns =@JoinColumn(name = "authorities_id", referencedColumnName = "id"))
-    private Collection<AuthorityEntity> authorities;
+    private List<AuthorityEntity> authorities;
 
     public RoleEntity() {
     }
@@ -54,19 +55,19 @@ public class RoleEntity {
         this.name = name;
     }
 
-    public Collection<UserEntity> getUsers() {
+    public List<UserEntity> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<UserEntity> users) {
+    public void setUsers(List<UserEntity> users) {
         this.users = users;
     }
 
-    public Collection<AuthorityEntity> getAuthorities() {
+    public List<AuthorityEntity> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Collection<AuthorityEntity> authorities) {
+    public void setAuthorities(List<AuthorityEntity> authorities) {
         this.authorities = authorities;
     }
 }

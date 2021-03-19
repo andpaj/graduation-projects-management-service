@@ -27,11 +27,11 @@ public class UserController {
 
 
     @GetMapping(path = "/{id}")
-    public UserWithProjectsRest getUser(@PathVariable String id){
+    public UserRest getUser(@PathVariable String id){
 
         UserDto userDto = userService.getUserByUserId(id);
         ModelMapper modelMapper = new ModelMapper();
-        UserWithProjectsRest returnValue = modelMapper.map(userDto, UserWithProjectsRest.class);
+        UserRest returnValue = modelMapper.map(userDto, UserRest.class);
 
         return  returnValue;
 

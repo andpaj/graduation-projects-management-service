@@ -56,6 +56,15 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
+    @Override
+    public void deleteGroup(String groupId) {
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+        if (groupEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        groupRepository.delete(groupEntity);
+    }
+
 
     @Override
     public GroupDto createGroup(GroupDto groupDto, String parentGroupId) {

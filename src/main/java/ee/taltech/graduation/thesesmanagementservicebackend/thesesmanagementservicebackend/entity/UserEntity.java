@@ -4,6 +4,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -51,9 +52,29 @@ public class UserEntity {
 //    @JoinColumn(name = "groupId")
     private List<GroupEntity> groupEntities;
 
-    @ManyToOne
-    @JoinColumn(name = "role")
-    private RoleEntity role;
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST
+            })
+    @JoinTable(name = "users_roles",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id") })
+    private List<RoleEntity> roles;
+
+
+    @PreRemove
+    public void removeUser() {
+       for (GroupEntity groupEntity: groupEntities) {
+            groupEntity.getUsers().remove(this);
+       }
+
+       for (RoleEntity roleEntity: roles){
+           roleEntity.getUsers().remove(this);
+       }
+
+    }
 
 
     public long getId() {
@@ -120,11 +141,11 @@ public class UserEntity {
         this.groupEntities = groupEntities;
     }
 
-    public RoleEntity getRole() {
-        return role;
+    public List<RoleEntity> getRoles() {
+        return roles;
     }
 
-    public void setRole(RoleEntity role) {
-        this.role = role;
+    public void setRoles(List<RoleEntity> roles) {
+        this.roles = roles;
     }
 }

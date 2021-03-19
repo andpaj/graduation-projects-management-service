@@ -2,6 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "authority")
@@ -15,7 +16,7 @@ public class AuthorityEntity {
     private String name;
 
     @ManyToMany(mappedBy = "authorities")
-    private Collection<RoleEntity> roles;
+    private List<RoleEntity> roles;
 
     public AuthorityEntity() {
     }
@@ -41,11 +42,11 @@ public class AuthorityEntity {
         this.name = name;
     }
 
-    public Collection<RoleEntity> getRoles() {
+    public List<RoleEntity> getRoles() {
         return roles;
     }
 
-    public void setRoles(Collection<RoleEntity> roles) {
+    public void setRoles(List<RoleEntity> roles) {
         this.roles = roles;
     }
 }

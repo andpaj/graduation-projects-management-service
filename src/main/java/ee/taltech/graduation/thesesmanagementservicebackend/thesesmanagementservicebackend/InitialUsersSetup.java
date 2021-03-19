@@ -58,7 +58,7 @@ public class InitialUsersSetup {
         adminUser.setEmail("admin@test.com");
         adminUser.setUserId("testAdmin");
         adminUser.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        adminUser.setRole(roleAdmin);
+        adminUser.setRoles(List.of(roleAdmin));
 
         userRepository.save(adminUser);
 
@@ -68,7 +68,7 @@ public class InitialUsersSetup {
         studentUser.setEmail("student@test.com");
         studentUser.setUserId("testStudent");
         studentUser.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        studentUser.setRole(roleStudent);
+        studentUser.setRoles(List.of(roleStudent));
 
         userRepository.save(studentUser);
 
@@ -78,7 +78,7 @@ public class InitialUsersSetup {
         teacherUser.setEmail("teacher@test.com");
         teacherUser.setUserId("testTeacher");
         teacherUser.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        teacherUser.setRole(roleTeacher);
+        teacherUser.setRoles(List.of(roleTeacher));
 
         UserEntity userEntity = new UserEntity();
         userEntity.setUserId("testAgo");
@@ -86,7 +86,7 @@ public class InitialUsersSetup {
         userEntity.setLastName("Luberg");
         userEntity.setEmail("testAgo@test.com");
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        userEntity.setRole(roleTeacher);
+        userEntity.setRoles(List.of(roleTeacher));
 
         UserEntity userEntity1 = new UserEntity();
         userEntity1.setUserId("testMarko");
@@ -94,7 +94,7 @@ public class InitialUsersSetup {
         userEntity1.setLastName("Kääramees");
         userEntity1.setEmail("testMarko@test.com");
         userEntity1.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        userEntity1.setRole(roleTeacher);
+        userEntity1.setRoles(List.of(roleTeacher));
 
         UserEntity userEntity2 = new UserEntity();
         userEntity2.setUserId("testTanel");
@@ -102,7 +102,7 @@ public class InitialUsersSetup {
         userEntity2.setLastName("Tammet");
         userEntity2.setEmail("testTanel@test.com");
         userEntity2.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        userEntity2.setRole(roleTeacher);
+        userEntity2.setRoles(List.of(roleTeacher));
 
             GroupEntity userGroup = groupRepository.findByGroupId("IAIB");
             GroupEntity userGroup2 = groupRepository.findByGroupId("school_information_technologies");
@@ -180,7 +180,7 @@ public class InitialUsersSetup {
     }
 
     @Transactional
-    private RoleEntity createRole(String name, Collection<AuthorityEntity> authorities){
+    private RoleEntity createRole(String name, List<AuthorityEntity> authorities){
 
         RoleEntity role = roleRepository.findByName(name);
         if (role == null){

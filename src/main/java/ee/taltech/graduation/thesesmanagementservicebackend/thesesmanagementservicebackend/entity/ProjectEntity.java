@@ -57,7 +57,8 @@ public class ProjectEntity {
     @ManyToMany(
             cascade = {
                     CascadeType.PERSIST,
-                    CascadeType.MERGE
+                    CascadeType.MERGE,
+
             })
     @JoinTable(name = "projects_tags",
             joinColumns = { @JoinColumn(name = "project_id") },
@@ -67,6 +68,13 @@ public class ProjectEntity {
 
 
     public ProjectEntity() {
+    }
+
+    @PreRemove
+    public void removeProjectWithoutTags() {
+        for (TagEntity tag: tags){
+            tag.getProjects().remove(this);
+        }
     }
 
     public long getId() {
