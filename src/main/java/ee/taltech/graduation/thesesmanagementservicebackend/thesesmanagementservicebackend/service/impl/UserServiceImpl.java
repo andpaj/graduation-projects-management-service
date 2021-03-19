@@ -57,6 +57,7 @@ public class UserServiceImpl implements UserService {
         if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
+        //for loop roles and set list of names
         returnValue.setRoles(List.of(userEntity.getRoles().get(0).getName()));
 
         return returnValue;

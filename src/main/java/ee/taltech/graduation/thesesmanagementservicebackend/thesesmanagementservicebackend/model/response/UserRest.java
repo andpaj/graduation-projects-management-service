@@ -8,6 +8,8 @@ public class UserRest {
     private String firstName;
     private String lastName;
     private String email;
+    private List<GroupRest> groupEntities;
+    private List<String> roles;
 
 
 
@@ -43,5 +45,19 @@ public class UserRest {
         this.email = email;
     }
 
+    public List<GroupRest> getGroupEntities() {
+        return groupEntities;
+    }
 
+    public void setGroupEntities(List<GroupRest> groupEntities) {
+        this.groupEntities = groupEntities;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 }

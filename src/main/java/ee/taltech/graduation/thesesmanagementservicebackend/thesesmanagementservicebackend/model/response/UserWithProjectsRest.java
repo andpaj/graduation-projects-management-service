@@ -9,7 +9,7 @@ public class UserWithProjectsRest {
         private String lastName;
         private String email;
         private List<ProjectRest> projects;
-        private List<String> roles;
+
 
 
         public String getUserId() {
@@ -52,13 +52,7 @@ public class UserWithProjectsRest {
             this.projects = projects;
         }
 
-        public List<String> getRoles() {
-            return roles;
-        }
-
-        public void setRoles(List<String> roles) {
-            this.roles = roles;
-        }
+       
 }
 
 

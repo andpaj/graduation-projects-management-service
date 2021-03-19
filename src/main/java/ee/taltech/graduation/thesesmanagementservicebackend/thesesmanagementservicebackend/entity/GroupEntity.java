@@ -44,6 +44,17 @@ public class GroupEntity {
     public GroupEntity() {
     }
 
+    @PreRemove
+    public void removeGroup() {
+        for (UserEntity user: users){
+            user.getGroupEntities().remove(this);
+        }
+
+        if (parentGroup != null) {
+            parentGroup.getSubGroups().remove(this);
+        }
+    }
+
     public long getId() {
         return id;
     }

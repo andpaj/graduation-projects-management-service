@@ -76,6 +76,14 @@ public class GroupController {
 
     }
 
+    @DeleteMapping(path = "/delete/{id}")
+    public String deleteGroup(@PathVariable String id){
+
+        groupService.deleteGroup(id);
+
+        return "The group with id " + id + " was deleted";
+    }
+
 
 
 

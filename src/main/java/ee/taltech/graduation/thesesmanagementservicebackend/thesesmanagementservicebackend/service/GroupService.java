@@ -9,6 +9,7 @@ public interface GroupService {
     GroupDto createGroup(GroupDto groupDto, String parentGroupId);
     GroupDto getGroupById(String id);
     List<GroupDto> getAllGroups();
+    void deleteGroup(String groupId);
 
 
 }
