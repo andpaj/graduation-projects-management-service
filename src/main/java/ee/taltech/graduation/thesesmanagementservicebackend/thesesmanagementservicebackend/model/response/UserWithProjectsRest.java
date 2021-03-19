@@ -52,7 +52,7 @@ public class UserWithProjectsRest {
             this.projects = projects;
         }
 
-       
+
 }
 
 
