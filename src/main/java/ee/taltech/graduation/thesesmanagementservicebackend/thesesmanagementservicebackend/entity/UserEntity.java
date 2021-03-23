@@ -4,10 +4,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -53,6 +50,11 @@ public class UserEntity {
     private List<GroupEntity> groupEntities;
 
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
+    private List<TeamMemberEntity> teamMembers = new ArrayList<>();
+
+
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(
             cascade = {
@@ -62,6 +64,7 @@ public class UserEntity {
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "role_id") })
     private List<RoleEntity> roles;
+
 
 
     @PreRemove

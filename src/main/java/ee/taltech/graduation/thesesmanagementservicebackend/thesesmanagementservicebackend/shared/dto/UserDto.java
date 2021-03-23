@@ -13,6 +13,7 @@ public class UserDto {
     private List<ProjectDto> projects;
     private List<GroupDto> groupEntities;
     private List<String> roles;
+    private List<TeamMemberDto> teamMembers;
 
     public long getId() {
         return id;
@@ -92,5 +93,13 @@ public class UserDto {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public List<TeamMemberDto> getTeamMembers() {
+        return teamMembers;
+    }
+
+    public void setTeamMembers(List<TeamMemberDto> teamMembers) {
+        this.teamMembers = teamMembers;
     }
 }
