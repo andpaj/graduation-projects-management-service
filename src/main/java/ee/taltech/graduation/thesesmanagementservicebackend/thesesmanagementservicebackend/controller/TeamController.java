@@ -21,6 +21,19 @@ public class TeamController {
     @Autowired
     TeamService teamService;
 
+    @GetMapping(path = "/{id}")
+    private TeamRest getTeamById(@PathVariable String id){
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        TeamDto team = teamService.getTeamById(id);
+        TeamRest teamRest = modelMapper.map(team, TeamRest.class);
+
+        return teamRest;
+
+
+    }
+
 
     @PostMapping(path = "/create/{id}")
     private TeamRest createTeam(@PathVariable String id, @RequestBody TeamDetailsRequestModel teamDetails){

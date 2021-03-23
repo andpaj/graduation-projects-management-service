@@ -5,5 +5,5 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 public interface TeamService {
 
     TeamDto createTeam(String userId, TeamDto teamDto);
-
+    TeamDto getTeamById(String id);
 }

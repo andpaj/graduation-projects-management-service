@@ -4,6 +4,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamMemberEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamMemberRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
@@ -67,5 +68,16 @@ public class TeamServiceImpl implements TeamService {
 
 
 
+    }
+
+    @Override
+    public TeamDto getTeamById(String id) {
+        TeamEntity teamEntity = teamRepository.findByTeamId(id);
+        if (teamEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+        ModelMapper modelMapper  = new ModelMapper();
+        TeamDto teamDto = modelMapper.map(teamEntity, TeamDto.class);
+
+        return teamDto;
     }
 }
