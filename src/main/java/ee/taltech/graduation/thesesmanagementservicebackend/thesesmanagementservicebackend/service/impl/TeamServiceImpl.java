@@ -46,7 +46,6 @@ public class TeamServiceImpl implements TeamService {
 
         TeamEntity teamEntity = modelMapper.map(teamDto, TeamEntity.class);
 
-
         TeamMemberEntity teamCreator = new TeamMemberEntity();
         teamCreator.setTeamMemberId(utils.generateTeamMemberId(30));
         teamCreator.setRole("Team Creator");
@@ -65,9 +64,6 @@ public class TeamServiceImpl implements TeamService {
 
         return returnTeam;
 
-
-
-
     }
 
     @Override
@@ -80,4 +76,6 @@ public class TeamServiceImpl implements TeamService {
 
         return teamDto;
     }
+
+
 }

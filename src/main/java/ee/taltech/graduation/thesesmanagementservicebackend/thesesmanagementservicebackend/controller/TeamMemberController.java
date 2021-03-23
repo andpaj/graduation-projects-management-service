@@ -27,6 +27,21 @@ public class TeamMemberController {
 
     }
 
+    @PostMapping(path = "/accept")
+    private String acceptTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
+
+        TeamMemberDto teamMemberDto = teamMemberService.acceptMembership(userId, teamMemberId);
+
+        return teamMemberDto.getUser().getFirstName() + " are now part of the team " + teamMemberDto.getTeam().getTeamName();
+
+    }
+
+    @PostMapping(path = "/decline")
+    private void declineTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
+
+        teamMemberService.declineMembership(userId, teamMemberId);
+    }
+
 
 
 

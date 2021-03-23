@@ -9,6 +9,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamMemberService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,37 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         TeamMemberDto teamMemberDto = modelMapper.map(savedMember, TeamMemberDto.class);
 
         return teamMemberDto;
+
+    }
+
+    @Override
+    public TeamMemberDto acceptMembership(String userId, String teamMemberId) {
+
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+
+        TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(teamMemberId);
+        if (teamMemberEntity == null) throw new ServiceException("Team member with Id " + teamMemberId + " not found");
+
+        teamMemberEntity.setStatus("accepted");
+        TeamMemberEntity savedStatus = teamMemberRepository.save(teamMemberEntity);
+
+        ModelMapper modelMapper = new ModelMapper();
+        TeamMemberDto teamMemberDto = modelMapper.map(savedStatus, TeamMemberDto.class);
+
+        return teamMemberDto;
+
+    }
+
+    @Override
+    public void declineMembership(String userId, String teamMemberId) {
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+
+        TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(teamMemberId);
+        if (teamMemberEntity == null) throw new ServiceException("Team member with Id " + teamMemberId + " not found");
+
+        teamMemberRepository.delete(teamMemberEntity);
 
     }
 }
