@@ -65,6 +65,9 @@ public class ProjectEntity {
             inverseJoinColumns = { @JoinColumn(name = "tag_id") })
     private Set<TagEntity> tags = new HashSet<>();
 
+    @OneToOne(mappedBy = "project")
+    private TeamEntity team;
+
 
 
     public ProjectEntity() {
