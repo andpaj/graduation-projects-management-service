@@ -1,6 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 public class ProjectDto {
@@ -18,6 +19,8 @@ public class ProjectDto {
     private int difficultyRating;
     private UserDto user;
     private Set<TagDto> tags;
+    private TeamDto team;
+    private List<ApplicationDto> applications;
 
     public long getId() {
         return id;
@@ -121,5 +124,21 @@ public class ProjectDto {
 
     public void setTags(Set<TagDto> tags) {
         this.tags = tags;
+    }
+
+    public TeamDto getTeam() {
+        return team;
+    }
+
+    public void setTeam(TeamDto team) {
+        this.team = team;
+    }
+
+    public List<ApplicationDto> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<ApplicationDto> applications) {
+        this.applications = applications;
     }
 }

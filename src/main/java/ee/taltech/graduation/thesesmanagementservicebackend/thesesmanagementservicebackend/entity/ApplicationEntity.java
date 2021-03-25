@@ -1,0 +1,134 @@
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "application")
+public class ApplicationEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column
+    private String applicationId;
+
+    @Column
+    private String status;
+
+    @Column
+    private String workType;
+
+    @Column
+    private int studentAmount;
+
+    @Column
+    private Date creatingTime;
+
+    @Column
+    private String title;
+
+    @Column(length = 500)
+    private String message;
+
+    @Column
+    private String priorityLevel;
+
+    @ManyToOne()
+    @JoinColumn(name="teamId")
+    private TeamEntity team;
+
+    @ManyToOne()
+    @JoinColumn(name="projectId")
+    private ProjectEntity project;
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
+    }
+
+    public int getStudentAmount() {
+        return studentAmount;
+    }
+
+    public void setStudentAmount(int studentAmount) {
+        this.studentAmount = studentAmount;
+    }
+
+    public Date getCreatingTime() {
+        return creatingTime;
+    }
+
+    public void setCreatingTime(Date creatingTime) {
+        this.creatingTime = creatingTime;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getPriorityLevel() {
+        return priorityLevel;
+    }
+
+    public void setPriorityLevel(String priorityLevel) {
+        this.priorityLevel = priorityLevel;
+    }
+
+    public TeamEntity getTeam() {
+        return team;
+    }
+
+    public void setTeam(TeamEntity team) {
+        this.team = team;
+    }
+
+    public ProjectEntity getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectEntity project) {
+        this.project = project;
+    }
+}

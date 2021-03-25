@@ -30,12 +30,27 @@ public class TeamMemberServiceImpl implements TeamMemberService {
     @Autowired
     Utils utils;
 
+
+    @Override
+    public TeamMemberDto getTeamMemberById(String id) {
+        ModelMapper modelMapper = new ModelMapper();
+
+        TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(id);
+        if (teamMemberEntity == null) throw new ServiceException("Team member with Id " + id + " is not found");
+
+        TeamMemberDto teamMemberDto = modelMapper.map(teamMemberEntity, TeamMemberDto.class);
+
+        return teamMemberDto;
+
+
+    }
+
     @Override
     public TeamMemberDto addMemberToTeam(String userId, String teamId) {
         ModelMapper modelMapper = new ModelMapper();
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw new ServiceException("User with Id " + userId + " is not found");
 
         TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
         if (teamEntity == null) throw new ServiceException("Team with Id " + teamId + " not found");

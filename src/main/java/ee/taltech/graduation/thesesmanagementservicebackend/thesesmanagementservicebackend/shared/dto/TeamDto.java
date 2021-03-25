@@ -10,6 +10,7 @@ public class TeamDto {
     private String status;
     private ProjectDto project;
     private List<TeamMemberDto> teamMembers;
+    private List<ApplicationDto> applications;
 
     public long getId() {
         return id;
@@ -57,5 +58,13 @@ public class TeamDto {
 
     public void setTeamMembers(List<TeamMemberDto> teamMembers) {
         this.teamMembers = teamMembers;
+    }
+
+    public List<ApplicationDto> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<ApplicationDto> applications) {
+        this.applications = applications;
     }
 }

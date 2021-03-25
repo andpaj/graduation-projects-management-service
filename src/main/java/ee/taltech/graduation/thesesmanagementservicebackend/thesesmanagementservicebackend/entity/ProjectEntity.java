@@ -4,10 +4,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "project")
@@ -67,6 +64,10 @@ public class ProjectEntity {
 
     @OneToOne(mappedBy = "project")
     private TeamEntity team;
+
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER,
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
+    private List<ApplicationEntity> applications = new ArrayList<>();
 
 
 
@@ -182,5 +183,21 @@ public class ProjectEntity {
 
     public void setTags(Set<TagEntity> tags) {
         this.tags = tags;
+    }
+
+    public TeamEntity getTeam() {
+        return team;
+    }
+
+    public void setTeam(TeamEntity team) {
+        this.team = team;
+    }
+
+    public List<ApplicationEntity> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<ApplicationEntity> applications) {
+        this.applications = applications;
     }
 }
