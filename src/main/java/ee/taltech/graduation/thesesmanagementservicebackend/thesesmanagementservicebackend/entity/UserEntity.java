@@ -49,8 +49,8 @@ public class UserEntity {
 //    @JoinColumn(name = "groupId")
     private List<GroupEntity> groupEntities;
 
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "user",
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<TeamMemberEntity> teamMembers = new ArrayList<>();
 
@@ -150,5 +150,13 @@ public class UserEntity {
 
     public void setRoles(List<RoleEntity> roles) {
         this.roles = roles;
+    }
+
+    public List<TeamMemberEntity> getTeamMembers() {
+        return teamMembers;
+    }
+
+    public void setTeamMembers(List<TeamMemberEntity> teamMembers) {
+        this.teamMembers = teamMembers;
     }
 }

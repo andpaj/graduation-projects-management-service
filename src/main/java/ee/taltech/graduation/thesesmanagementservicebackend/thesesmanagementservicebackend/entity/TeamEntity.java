@@ -30,9 +30,16 @@ public class TeamEntity {
     @JoinColumn(name = "project")
     private ProjectEntity project;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER,
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "team",
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<TeamMemberEntity> teamMembers = new ArrayList<>();
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "team",
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
+    private List<ApplicationEntity> applications = new ArrayList<>();
+
 
 
     public long getId() {
@@ -81,5 +88,13 @@ public class TeamEntity {
 
     public void setProject(ProjectEntity project) {
         this.project = project;
+    }
+
+    public List<ApplicationEntity> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<ApplicationEntity> applications) {
+        this.applications = applications;
     }
 }

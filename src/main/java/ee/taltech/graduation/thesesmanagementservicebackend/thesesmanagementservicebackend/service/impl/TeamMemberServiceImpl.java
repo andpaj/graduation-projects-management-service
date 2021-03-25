@@ -41,7 +41,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         TeamMemberDto teamMemberDto = modelMapper.map(teamMemberEntity, TeamMemberDto.class);
 
         return teamMemberDto;
-        
+
 
     }
 
