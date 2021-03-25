@@ -16,6 +16,19 @@ public class TeamMemberController {
     TeamMemberService teamMemberService;
 
 
+    @GetMapping(path = "/{id}")
+    private TeamMemberRest getTeamMemberById(@PathVariable String id){
+
+        ModelMapper modelMapper = new ModelMapper();
+        TeamMemberDto teamMemberDto = teamMemberService.getTeamMemberById(id);
+
+        TeamMemberRest teamMemberRest = modelMapper.map(teamMemberDto, TeamMemberRest.class);
+
+        return teamMemberRest;
+
+    }
+
+
     @PostMapping(path = "/addTeamMember")
     private TeamMemberRest addMemberToTeam(@RequestParam String userId, @RequestParam String teamId){
 
@@ -41,9 +54,5 @@ public class TeamMemberController {
 
         teamMemberService.declineMembership(userId, teamMemberId);
     }
-
-
-
-
 
 }
