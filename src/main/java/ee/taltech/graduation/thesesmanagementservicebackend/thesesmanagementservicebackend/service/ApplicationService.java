@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service;
 
 public interface ApplicationService {
     ApplicationDto createApplication(String projectId, String teamId, ApplicationDto applicationDto);
+
+    ApplicationDto getApplicationByApplicationId(String id);
 }

@@ -15,7 +15,20 @@ public class ApplicationController {
     @Autowired
     ApplicationService applicationService;
 
-    @PostMapping("/create")
+
+    @GetMapping(path = "/{id}")
+    private ApplicationRest getApplicationById(@PathVariable String id){
+
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationDto applicationDto = applicationService.getApplicationByApplicationId(id);
+
+        ApplicationRest applicationRest = modelMapper.map(applicationDto, ApplicationRest.class);
+
+        return applicationRest;
+
+    }
+
+    @PostMapping(path = "/create")
     private ApplicationRest createApplication(@RequestParam String projectId,
                                               @RequestParam String teamId,
                                               @RequestBody ApplicationDetailsRequestModel applicationDetails){
