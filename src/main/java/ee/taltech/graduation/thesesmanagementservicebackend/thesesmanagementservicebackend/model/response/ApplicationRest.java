@@ -44,7 +44,7 @@ public class ApplicationRest {
     public void setMessage(String message) {
         this.message = message;
     }
-    
+
 
     public TeamRest getTeam() {
         return team;

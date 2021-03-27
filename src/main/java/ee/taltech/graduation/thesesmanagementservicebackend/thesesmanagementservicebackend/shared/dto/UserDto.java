@@ -10,6 +10,7 @@ public class UserDto {
     private String email;
     private String password;
     private String encryptedPassword;
+    private String teamId;
     private List<ProjectDto> projects;
     private List<GroupDto> groupEntities;
     private List<String> roles;
@@ -101,5 +102,13 @@ public class UserDto {
 
     public void setTeamMembers(List<TeamMemberDto> teamMembers) {
         this.teamMembers = teamMembers;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 }
