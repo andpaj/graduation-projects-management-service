@@ -10,8 +10,6 @@ public class UserWithProjectsRest {
         private String email;
         private List<ProjectRest> projects;
 
-
-
         public String getUserId() {
             return userId;
         }

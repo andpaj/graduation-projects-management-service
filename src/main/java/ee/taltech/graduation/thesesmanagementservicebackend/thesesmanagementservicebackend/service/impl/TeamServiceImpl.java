@@ -34,12 +34,23 @@ public class TeamServiceImpl implements TeamService {
     Utils utils;
 
     @Override
-    public TeamDto createTeam(String userId, TeamDto teamDto) {
+    public TeamDto createTeam(String userId, TeamDto teamDto, List<String> teamMembers) {
 
         ModelMapper modelMapper = new ModelMapper();
 
+        List<UserEntity> additionalMembers = new ArrayList<>();
+
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+
+
+        if (teamMembers != null ) {
+            for (String user : teamMembers) {
+                UserEntity foundUser = userRepository.findByUserId(user);
+                if (foundUser == null) throw new ServiceException("User with Id " + userId + " not found");
+                additionalMembers.add(foundUser);
+            }
+        }
 
         teamDto.setTeamId(utils.generateTeamId(30));
         teamDto.setStatus("created");
@@ -55,10 +66,23 @@ public class TeamServiceImpl implements TeamService {
         List<TeamMemberEntity> members = new ArrayList<>();
         members.add(teamCreator);
 
+        for (UserEntity additionalMember: additionalMembers){
+            TeamMemberEntity memberEntity = new TeamMemberEntity();
+            memberEntity.setTeamMemberId(utils.generateTeamMemberId(30));
+            memberEntity.setRole("Guest member");
+            memberEntity.setStatus("Waiting for acceptation");
+            memberEntity.setUser(additionalMember);
+            memberEntity.setTeam(teamEntity);
+            members.add(memberEntity);
+        }
+
+
         teamEntity.setTeamMembers(members);
 
         teamRepository.save(teamEntity);
-        teamMemberRepository.save(teamCreator);
+        teamMemberRepository.saveAll(members);
+
+
 
         TeamDto returnTeam = modelMapper.map(teamEntity, TeamDto.class);
 
