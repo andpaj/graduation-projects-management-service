@@ -4,6 +4,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.TeamDetailsRequestModel;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamMemberRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamRestWithoutMembers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
@@ -44,6 +45,25 @@ public class TeamController {
 
         TeamRest teamRest = modelMapper.map(savedTeamDto, TeamRest.class);
         return teamRest;
+    }
+
+
+    @GetMapping(path = "/teamsByUserId/{id}")
+    private List<TeamRestWithoutMembers> getTeamsByUserId(@PathVariable String id){
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<TeamDto> teams = teamService.getTeamsByUserId(id);
+
+        List<TeamRestWithoutMembers> teamsRest = new ArrayList<>();
+
+        for (TeamDto team: teams){
+            TeamRestWithoutMembers teamWithoutMember = modelMapper.map(team, TeamRestWithoutMembers.class);
+            teamsRest.add(teamWithoutMember);
+
+        }
+
+        return teamsRest;
+
     }
 
 
