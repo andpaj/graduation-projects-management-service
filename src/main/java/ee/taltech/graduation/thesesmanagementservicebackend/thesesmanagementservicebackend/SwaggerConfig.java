@@ -45,7 +45,7 @@ public class SwaggerConfig {
     public Docket apiDocket() {
 
         return new Docket(DocumentationType.SWAGGER_2)
-                .protocols(new HashSet<>(Arrays.asList("HTTP")))
+                .protocols(new HashSet<>(Arrays.asList("HTTP", "HTTPs")))
                 .apiInfo(apiInfo)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend"))
