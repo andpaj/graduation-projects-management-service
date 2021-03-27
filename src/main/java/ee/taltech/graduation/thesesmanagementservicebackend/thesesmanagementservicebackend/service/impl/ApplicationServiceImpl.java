@@ -33,6 +33,19 @@ public class ApplicationServiceImpl implements ApplicationService {
     Utils utils;
 
     @Override
+    public ApplicationDto getApplicationByApplicationId(String id) {
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(id);
+        if (applicationEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        ApplicationDto applicationDto = modelMapper.map(applicationEntity, ApplicationDto.class);
+
+        return applicationDto;
+
+    }
+
+    @Override
     public ApplicationDto createApplication(String projectId, String teamId, ApplicationDto applicationDto) {
 
         ModelMapper modelMapper = new ModelMapper();

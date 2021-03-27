@@ -86,7 +86,7 @@ public class InitialUsersSetup {
         userEntity.setLastName("Luberg");
         userEntity.setEmail("testAgo@test.com");
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        userEntity.setRoles(List.of(roleTeacher));
+        userEntity.setRoles(List.of(roleTeacher, roleStudent));
 
         UserEntity userEntity1 = new UserEntity();
         userEntity1.setUserId("testMarko");

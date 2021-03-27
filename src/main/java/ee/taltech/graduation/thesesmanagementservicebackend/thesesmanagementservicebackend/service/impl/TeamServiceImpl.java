@@ -77,5 +77,29 @@ public class TeamServiceImpl implements TeamService {
         return teamDto;
     }
 
+    @Override
+    public List<TeamDto> getTeamsByUserId(String id) {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        UserEntity userEntity = userRepository.findByUserId(id);
+        if (userEntity == null) throw new ServiceException("User with Id " + id + " not found");
+
+        List<TeamEntity> teamsEntities = new ArrayList<>();
+
+        for (TeamMemberEntity teamMemberEntity : userEntity.getTeamMembers()){
+            teamsEntities.add(teamMemberEntity.getTeam());
+        }
+
+        List<TeamDto> teamDtos = new ArrayList<>();
+
+        for (TeamEntity teamEntity : teamsEntities){
+            TeamDto teamDto = modelMapper.map(teamEntity, TeamDto.class);
+            teamDtos.add(teamDto);
+        }
+
+        return teamDtos;
+    }
+
 
 }
