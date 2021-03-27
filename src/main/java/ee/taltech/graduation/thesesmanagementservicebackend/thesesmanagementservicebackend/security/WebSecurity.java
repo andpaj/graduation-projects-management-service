@@ -43,6 +43,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(SecurityConstants.H2_CONSOLE)//remove in production
                 .permitAll()
+                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
+                .permitAll()
                 .antMatchers(HttpMethod.GET, "/group/**" )
                 .permitAll()
                 .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")

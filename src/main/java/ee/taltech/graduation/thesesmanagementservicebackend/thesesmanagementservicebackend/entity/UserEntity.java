@@ -30,7 +30,7 @@ public class UserEntity {
     private String encryptedPassword;
 
     @Column()
-    private String teamId;
+    private String starterTeam;
 
 //    @Column(nullable = false)
 //    private String status;
@@ -163,11 +163,11 @@ public class UserEntity {
         this.teamMembers = teamMembers;
     }
 
-    public String getTeamId() {
-        return teamId;
+    public String getStarterTeam() {
+        return starterTeam;
     }
 
-    public void setTeamId(String teamId) {
-        this.teamId = teamId;
+    public void setStarterTeam(String starterTeam) {
+        this.starterTeam = starterTeam;
     }
 }

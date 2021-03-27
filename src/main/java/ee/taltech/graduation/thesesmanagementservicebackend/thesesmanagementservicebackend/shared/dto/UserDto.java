@@ -10,7 +10,7 @@ public class UserDto {
     private String email;
     private String password;
     private String encryptedPassword;
-    private String teamId;
+    private String starterTeam;
     private List<ProjectDto> projects;
     private List<GroupDto> groupEntities;
     private List<String> roles;
@@ -104,11 +104,11 @@ public class UserDto {
         this.teamMembers = teamMembers;
     }
 
-    public String getTeamId() {
-        return teamId;
+    public String getStarterTeam() {
+        return starterTeam;
     }
 
-    public void setTeamId(String teamId) {
-        this.teamId = teamId;
+    public void setStarterTeam(String starterTeam) {
+        this.starterTeam = starterTeam;
     }
 }

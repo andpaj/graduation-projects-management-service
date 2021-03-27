@@ -5,6 +5,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ProjectRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ProjectService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ProjectDto;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +26,9 @@ public class ProjectController {
 
     //Get
 
-
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/{id}")
     public ProjectRest getProject(@PathVariable String id){
 
@@ -38,6 +42,11 @@ public class ProjectController {
 
     }
 
+
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/allProjects")
     public List<ProjectRest> getAllProjects() {
 
@@ -59,6 +68,9 @@ public class ProjectController {
     }
 
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/projectsByUserId/{id}")
     public List<ProjectRest> getProjectsByUserId(@PathVariable String id){
         ModelMapper modelMapper = new ModelMapper();
@@ -78,6 +90,11 @@ public class ProjectController {
 
     }
 
+
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @PostMapping(path = "/create/{id}")
     public ProjectRest createProject(@PathVariable String id, @RequestBody ProjectDetailsRequestModel projectDetails) {
 
@@ -95,6 +112,12 @@ public class ProjectController {
 
     }
 
+
+
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @PutMapping(path = "/update/{id}")
     public ProjectRest updateProject(@PathVariable String id, @RequestBody ProjectDetailsRequestModel projectDetails){
 
@@ -110,22 +133,14 @@ public class ProjectController {
 
     }
 
-
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @DeleteMapping(path = "/delete/{id}")
     public String deleteProject(@PathVariable String id){
 
         projectService.deleteProjects(id);
         return id;
     }
-
-
-    @PostMapping(path = "/apply")
-    public String applyForProject(){
-
-        return "accept thesis was called";
-    }
-
-
-
 
 }
