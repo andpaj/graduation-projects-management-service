@@ -1,7 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller;
 
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamMemberRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamMemberWithTeam;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamMemberService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
 import org.modelmapper.ModelMapper;
@@ -17,12 +17,12 @@ public class TeamMemberController {
 
 
     @GetMapping(path = "/{id}")
-    private TeamMemberRest getTeamMemberById(@PathVariable String id){
+    private TeamMemberWithTeam getTeamMemberById(@PathVariable String id){
 
         ModelMapper modelMapper = new ModelMapper();
         TeamMemberDto teamMemberDto = teamMemberService.getTeamMemberById(id);
 
-        TeamMemberRest teamMemberRest = modelMapper.map(teamMemberDto, TeamMemberRest.class);
+        TeamMemberWithTeam teamMemberRest = modelMapper.map(teamMemberDto, TeamMemberWithTeam.class);
 
         return teamMemberRest;
 
@@ -30,11 +30,11 @@ public class TeamMemberController {
 
 
     @PostMapping(path = "/addTeamMember")
-    private TeamMemberRest addMemberToTeam(@RequestParam String userId, @RequestParam String teamId){
+    private TeamMemberWithTeam addMemberToTeam(@RequestParam String userId, @RequestParam String teamId){
 
         TeamMemberDto savedTeamMember = teamMemberService.addMemberToTeam(userId, teamId);
         ModelMapper modelMapper = new ModelMapper();
-        TeamMemberRest teamMemberRest = modelMapper.map(savedTeamMember, TeamMemberRest.class);
+        TeamMemberWithTeam teamMemberRest = modelMapper.map(savedTeamMember, TeamMemberWithTeam.class);
 
         return teamMemberRest;
 

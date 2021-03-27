@@ -1,11 +1,11 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.RoleEntity;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamMemberRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.UserPrincipal;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
@@ -37,6 +37,12 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    TeamMemberRepository teamMemberRepository;
+
+    @Autowired
+    TeamRepository teamRepository;
 
 //    @Override
 //    public UserDto getUser(String email) {
@@ -141,7 +147,25 @@ public class UserServiceImpl implements UserService {
 
         userEntity.setGroupEntities(groupEntityList);
 
+        TeamEntity teamEntity = new TeamEntity();
+        teamEntity.setTeamId(utils.generateTeamId(30));
+        teamEntity.setTeamName("shadow team");
+
+        TeamMemberEntity teamMemberEntity = new TeamMemberEntity();
+        teamMemberEntity.setTeamMemberId(utils.generateTeamMemberId(30));
+        teamMemberEntity.setUser(userEntity);
+        teamMemberEntity.setTeam(teamEntity);
+
+        List<TeamMemberEntity> members = new ArrayList<>();
+        members.add(teamMemberEntity);
+
+        teamEntity.setTeamMembers(members);
+
+        userEntity.setTeamId(teamEntity.getTeamId());
+
         UserEntity storedUserDetails = userRepository.save(userEntity);
+        teamRepository.save(teamEntity);
+        teamMemberRepository.save(teamMemberEntity);
 
 
         UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);

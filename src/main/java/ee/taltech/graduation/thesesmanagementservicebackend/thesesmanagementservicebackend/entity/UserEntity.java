@@ -29,6 +29,9 @@ public class UserEntity {
     @Column(nullable = false)
     private String encryptedPassword;
 
+    @Column()
+    private String teamId;
+
 //    @Column(nullable = false)
 //    private String status;
 
@@ -158,5 +161,13 @@ public class UserEntity {
 
     public void setTeamMembers(List<TeamMemberEntity> teamMembers) {
         this.teamMembers = teamMembers;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 }

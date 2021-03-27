@@ -18,22 +18,10 @@ public class ApplicationEntity {
     private String status;
 
     @Column
-    private String workType;
-
-    @Column
-    private int studentAmount;
-
-    @Column
     private Date creatingTime;
-
-    @Column
-    private String title;
 
     @Column(length = 500)
     private String message;
-
-    @Column
-    private String priorityLevel;
 
     @ManyToOne()
     @JoinColumn(name="teamId")
@@ -68,21 +56,6 @@ public class ApplicationEntity {
         this.status = status;
     }
 
-    public String getWorkType() {
-        return workType;
-    }
-
-    public void setWorkType(String workType) {
-        this.workType = workType;
-    }
-
-    public int getStudentAmount() {
-        return studentAmount;
-    }
-
-    public void setStudentAmount(int studentAmount) {
-        this.studentAmount = studentAmount;
-    }
 
     public Date getCreatingTime() {
         return creatingTime;
@@ -92,13 +65,6 @@ public class ApplicationEntity {
         this.creatingTime = creatingTime;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getMessage() {
         return message;
@@ -106,14 +72,6 @@ public class ApplicationEntity {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getPriorityLevel() {
-        return priorityLevel;
-    }
-
-    public void setPriorityLevel(String priorityLevel) {
-        this.priorityLevel = priorityLevel;
     }
 
     public TeamEntity getTeam() {
