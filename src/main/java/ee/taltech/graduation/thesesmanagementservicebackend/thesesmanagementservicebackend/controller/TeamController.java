@@ -40,8 +40,11 @@ public class TeamController {
     private TeamRest createTeam(@PathVariable String id, @RequestBody TeamDetailsRequestModel teamDetails){
         ModelMapper modelMapper = new ModelMapper();
 
+        List<String> members = teamDetails.getUsers();
+
         TeamDto teamDto = modelMapper.map(teamDetails, TeamDto.class);
-        TeamDto savedTeamDto = teamService.createTeam(id, teamDto);
+
+        TeamDto savedTeamDto = teamService.createTeam(id, teamDto, members);
 
         TeamRest teamRest = modelMapper.map(savedTeamDto, TeamRest.class);
         return teamRest;
