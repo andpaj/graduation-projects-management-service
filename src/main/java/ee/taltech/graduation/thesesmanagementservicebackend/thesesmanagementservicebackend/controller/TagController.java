@@ -4,6 +4,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TagRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TagService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TagDto;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +20,9 @@ public class TagController {
     @Autowired
     TagService tagService;
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/{id}")
     public TagRest getTagByTagId(@PathVariable String id){
         ModelMapper modelMapper = new ModelMapper();
@@ -28,6 +33,9 @@ public class TagController {
 
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/allTags")
     public List<TagRest> getAllTags(){
         ModelMapper modelMapper = new ModelMapper();
@@ -44,6 +52,9 @@ public class TagController {
 
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @PostMapping(path = "/create")
     public TagRest createTag(@RequestBody TagRequestModel tagRequestModel){
         ModelMapper modelMapper = new ModelMapper();
@@ -56,6 +67,9 @@ public class TagController {
     }
 
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @DeleteMapping(path = "/delete/{id}")
     public String deleteTag(@PathVariable String id){
 

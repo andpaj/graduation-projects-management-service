@@ -8,6 +8,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +24,9 @@ public class TeamController {
     @Autowired
     TeamService teamService;
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/{id}")
     private TeamRest getTeamById(@PathVariable String id){
 
@@ -36,6 +41,9 @@ public class TeamController {
     }
 
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @PostMapping(path = "/create/{id}")
     private TeamRest createTeam(@PathVariable String id, @RequestBody TeamDetailsRequestModel teamDetails){
         ModelMapper modelMapper = new ModelMapper();
@@ -50,7 +58,9 @@ public class TeamController {
         return teamRest;
     }
 
-
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/teamsByUserId/{id}")
     private List<TeamRestWithoutMembers> getTeamsByUserId(@PathVariable String id){
         ModelMapper modelMapper = new ModelMapper();

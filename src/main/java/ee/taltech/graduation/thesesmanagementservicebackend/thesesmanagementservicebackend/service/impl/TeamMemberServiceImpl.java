@@ -58,6 +58,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         TeamMemberEntity newMember = new TeamMemberEntity();
         newMember.setTeamMemberId(utils.generateTeamMemberId(30));
         newMember.setStatus("Waiting for acceptation");
+        newMember.setRole("Guest user");
         newMember.setTeam(teamEntity);
         newMember.setUser(userEntity);
 

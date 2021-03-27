@@ -7,6 +7,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRestWithoutUsers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.GroupService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.GroupDto;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +41,9 @@ public class GroupController {
 
     }
 
+
+
+
     @GetMapping(path = "/getAllGroups")
     public List<GroupRestWithoutUsers> getAllGroups(){
 
@@ -61,6 +66,9 @@ public class GroupController {
     }
 
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @PostMapping(path = "/create")
     public GroupRest createGroup(@RequestBody GroupDetailsRequest groupDetailsRequest){
 
@@ -76,6 +84,11 @@ public class GroupController {
 
     }
 
+
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @DeleteMapping(path = "/delete/{id}")
     public String deleteGroup(@PathVariable String id){
 

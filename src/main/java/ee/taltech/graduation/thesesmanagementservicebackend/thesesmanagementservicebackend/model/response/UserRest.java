@@ -8,7 +8,7 @@ public class UserRest {
     private String firstName;
     private String lastName;
     private String email;
-    private String teamId;
+    private String starterTeam;
     private List<GroupRest> groupEntities;
     private List<String> roles;
 
@@ -62,11 +62,11 @@ public class UserRest {
         this.roles = roles;
     }
 
-    public String getTeamId() {
-        return teamId;
+    public String getStarterTeam() {
+        return starterTeam;
     }
 
-    public void setTeamId(String teamId) {
-        this.teamId = teamId;
+    public void setStarterTeam(String starterTeam) {
+        this.starterTeam = starterTeam;
     }
 }

@@ -6,6 +6,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserWithProjectsRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,9 @@ public class UserController {
     //create get User without role parameter
 
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/{id}")
     public UserRest getUser(@PathVariable String id){
 
@@ -37,6 +42,10 @@ public class UserController {
 
     }
 
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping()
     public List<UserWithProjectsRest> getUsers(){
         ModelMapper modelMapper = new ModelMapper();
@@ -53,6 +62,9 @@ public class UserController {
 
     //get all users with thesis
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "/withProjects")
     public List<UserWithProjectsRest> getUsersWithProjects(){
         ModelMapper modelMapper = new ModelMapper();
@@ -70,6 +82,7 @@ public class UserController {
 
     }
 
+
     @PostMapping()
     public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
         ModelMapper modelMapper = new ModelMapper();
@@ -82,6 +95,10 @@ public class UserController {
         return returnValue;
     }
 
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @PutMapping(path = "/{id}")
     public UserRest updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails){
 
@@ -98,6 +115,10 @@ public class UserController {
 
     }
 
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @DeleteMapping(path = "/{id}")
     public String deleteUser(@PathVariable String id){
 

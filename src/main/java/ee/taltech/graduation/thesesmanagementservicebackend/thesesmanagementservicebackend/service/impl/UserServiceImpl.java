@@ -161,7 +161,7 @@ public class UserServiceImpl implements UserService {
 
         teamEntity.setTeamMembers(members);
 
-        userEntity.setTeamId(teamEntity.getTeamId());
+        userEntity.setStarterTeam(teamEntity.getTeamId());
 
         UserEntity storedUserDetails = userRepository.save(userEntity);
         teamRepository.save(teamEntity);
