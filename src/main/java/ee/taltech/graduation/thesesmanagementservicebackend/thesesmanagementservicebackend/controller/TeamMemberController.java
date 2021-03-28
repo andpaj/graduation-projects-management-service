@@ -50,21 +50,25 @@ public class TeamMemberController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @PostMapping(path = "/accept")
-    private String acceptTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
+    private TeamMemberWithTeam acceptTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
 
         TeamMemberDto teamMemberDto = teamMemberService.acceptMembership(userId, teamMemberId);
 
-        return teamMemberDto.getUser().getFirstName() + " are now part of the team " + teamMemberDto.getTeam().getTeamName();
+        ModelMapper modelMapper = new ModelMapper();
+        TeamMemberWithTeam teamMemberRest = modelMapper.map(teamMemberDto, TeamMemberWithTeam.class);
 
+        return teamMemberRest;
     }
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @PostMapping(path = "/decline")
-    private void declineTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
+    private String declineTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
 
         teamMemberService.declineMembership(userId, teamMemberId);
+
+        return teamMemberId;
     }
 
 }
