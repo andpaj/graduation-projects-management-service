@@ -69,8 +69,6 @@ public class ProjectEntity {
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<ApplicationEntity> applications = new ArrayList<>();
 
-
-
     public ProjectEntity() {
     }
 

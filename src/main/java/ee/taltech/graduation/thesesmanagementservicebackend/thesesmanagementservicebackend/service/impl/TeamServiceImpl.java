@@ -62,6 +62,7 @@ public class TeamServiceImpl implements TeamService {
         teamCreator.setRole("Team Creator");
         teamCreator.setUser(userEntity);
         teamCreator.setTeam(teamEntity);
+        teamCreator.setStatus("Owner");
 
         List<TeamMemberEntity> members = new ArrayList<>();
         members.add(teamCreator);

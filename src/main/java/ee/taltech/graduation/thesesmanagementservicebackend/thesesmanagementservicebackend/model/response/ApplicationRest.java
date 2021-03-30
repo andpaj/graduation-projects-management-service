@@ -9,7 +9,7 @@ public class ApplicationRest {
     private String status;
     private Date creatingTime;
     private String message;
-    private TeamRest team;
+    private TeamRestWithoutMembers team;
     private ProjectRest project;
 
     public String getApplicationId() {
@@ -45,12 +45,11 @@ public class ApplicationRest {
         this.message = message;
     }
 
-
-    public TeamRest getTeam() {
+    public TeamRestWithoutMembers getTeam() {
         return team;
     }
 
-    public void setTeam(TeamRest team) {
+    public void setTeam(TeamRestWithoutMembers team) {
         this.team = team;
     }
 
