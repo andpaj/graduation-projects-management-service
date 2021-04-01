@@ -1,7 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller;
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.ApplicationDetailsRequestModel;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ApplicationRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.applicationRest.ApplicationRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ApplicationService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ApplicationDto;
 import io.swagger.annotations.ApiImplicitParam;

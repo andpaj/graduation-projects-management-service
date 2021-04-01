@@ -2,9 +2,9 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.GroupDetailsRequest;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRest;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRestWithSubGroups;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.GroupRestWithoutUsers;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.groupRest.GroupRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.groupRest.GroupRestWithSubGroups;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.groupRest.GroupRestWithoutUsers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.GroupService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.GroupDto;
 import io.swagger.annotations.ApiImplicitParam;

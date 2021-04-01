@@ -1,4 +1,6 @@
-package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest;
+
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest.ProjectRest;
 
 import java.util.List;
 

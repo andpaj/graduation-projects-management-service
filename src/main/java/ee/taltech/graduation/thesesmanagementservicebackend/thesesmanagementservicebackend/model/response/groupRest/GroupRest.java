@@ -1,13 +1,13 @@
-package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.groupRest;
 
 import java.util.List;
 
-public class GroupRestWithoutUsers {
+public class GroupRest {
 
     private String groupId;
     private String groupClass;
     private String groupName;
-    private List<GroupRestWithoutUsers> subGroups;
+
 
     public String getGroupId() {
         return groupId;
@@ -33,11 +33,5 @@ public class GroupRestWithoutUsers {
         this.groupName = groupName;
     }
 
-    public List<GroupRestWithoutUsers> getSubGroups() {
-        return subGroups;
-    }
 
-    public void setSubGroups(List<GroupRestWithoutUsers> subGroups) {
-        this.subGroups = subGroups;
-    }
 }

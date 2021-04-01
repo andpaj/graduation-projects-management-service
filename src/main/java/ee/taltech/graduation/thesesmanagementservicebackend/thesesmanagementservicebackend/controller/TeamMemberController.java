@@ -1,7 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller;
 
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamMemberWithTeam;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamMemberRest.TeamMemberWithTeam;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamMemberService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
 import io.swagger.annotations.ApiImplicitParam;

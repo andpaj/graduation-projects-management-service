@@ -2,7 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.convertor.ProjectRequestToDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.ProjectDetailsRequestModel;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ProjectRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest.ProjectRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ProjectService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ProjectDto;
 import io.swagger.annotations.ApiImplicitParam;

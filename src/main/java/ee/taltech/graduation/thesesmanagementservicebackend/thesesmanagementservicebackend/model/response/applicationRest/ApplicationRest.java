@@ -1,5 +1,8 @@
-package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.applicationRest;
 
+
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest.ProjectRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest.TeamForApplicationsRest;
 
 import java.util.Date;
 
@@ -9,7 +12,7 @@ public class ApplicationRest {
     private String status;
     private Date creatingTime;
     private String message;
-    private TeamRestWithoutMembers team;
+    private TeamForApplicationsRest team;
     private ProjectRest project;
 
     public String getApplicationId() {
@@ -45,11 +48,11 @@ public class ApplicationRest {
         this.message = message;
     }
 
-    public TeamRestWithoutMembers getTeam() {
+    public TeamForApplicationsRest getTeam() {
         return team;
     }
 
-    public void setTeam(TeamRestWithoutMembers team) {
+    public void setTeam(TeamForApplicationsRest team) {
         this.team = team;
     }
 

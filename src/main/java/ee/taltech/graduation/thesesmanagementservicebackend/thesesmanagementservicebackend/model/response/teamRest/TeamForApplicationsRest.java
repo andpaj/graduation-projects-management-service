@@ -1,6 +1,6 @@
-package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest;
 
-public class TeamRestWithoutMembers {
+public class TeamForApplicationsRest {
 
     private String teamId;
     private String teamName;
