@@ -54,6 +54,7 @@ public class TeamServiceImpl implements TeamService {
 
         teamDto.setTeamId(utils.generateTeamId(30));
         teamDto.setStatus("created");
+        teamDto.setAuthorId(userEntity.getUserId());
 
         TeamEntity teamEntity = modelMapper.map(teamDto, TeamEntity.class);
 
@@ -82,6 +83,7 @@ public class TeamServiceImpl implements TeamService {
 
         teamRepository.save(teamEntity);
         teamMemberRepository.saveAll(members);
+
 
 
 

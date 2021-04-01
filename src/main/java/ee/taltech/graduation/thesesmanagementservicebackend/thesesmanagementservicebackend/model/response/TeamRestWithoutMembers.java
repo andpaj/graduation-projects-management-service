@@ -5,6 +5,7 @@ public class TeamRestWithoutMembers {
     private String teamId;
     private String teamName;
     private String status;
+    private String authorId;
 
     public String getTeamId() {
         return teamId;
@@ -28,5 +29,13 @@ public class TeamRestWithoutMembers {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
     }
 }

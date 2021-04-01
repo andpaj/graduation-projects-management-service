@@ -26,6 +26,9 @@ public class TeamEntity {
     @Column()
     private String status;
 
+    @Column
+    private String authorId;
+
     @OneToOne
     @JoinColumn(name = "project")
     private ProjectEntity project;
@@ -96,5 +99,13 @@ public class TeamEntity {
 
     public void setApplications(List<ApplicationEntity> applications) {
         this.applications = applications;
+    }
+
+    public String getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
     }
 }

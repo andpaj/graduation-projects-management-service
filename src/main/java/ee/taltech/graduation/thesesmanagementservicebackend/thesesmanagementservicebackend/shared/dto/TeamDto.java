@@ -8,6 +8,7 @@ public class TeamDto {
     private String teamId;
     private String teamName;
     private String status;
+    private String authorId;
     private ProjectDto project;
     private List<TeamMemberDto> teamMembers;
     private List<ApplicationDto> applications;
@@ -66,5 +67,13 @@ public class TeamDto {
 
     public void setApplications(List<ApplicationDto> applications) {
         this.applications = applications;
+    }
+
+    public String getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
     }
 }
