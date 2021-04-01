@@ -1,4 +1,6 @@
-package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
+package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamMemberRest;
+
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserTeamMemberRest;
 
 public class TeamMemberRest {
 

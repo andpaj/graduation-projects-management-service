@@ -31,7 +31,7 @@ public class SwaggerConfig {
 
 
     ApiInfo apiInfo = new ApiInfo(
-            "Photo app RESTful Web Service documentation",
+            "Graduation management service RESTful Web Service documentation",
             "This pages documents Photo app RESTful Web Service endpoints",
             "1.0",
             "http://www.appsdeveloperblog.com/service.html",

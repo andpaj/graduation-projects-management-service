@@ -1,10 +1,12 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ApplicationEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamMemberEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ApplicationRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamMemberRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
@@ -31,6 +33,9 @@ public class TeamServiceImpl implements TeamService {
     UserRepository userRepository;
 
     @Autowired
+    ApplicationRepository applicationRepository;
+
+    @Autowired
     Utils utils;
 
     @Override
@@ -54,6 +59,7 @@ public class TeamServiceImpl implements TeamService {
 
         teamDto.setTeamId(utils.generateTeamId(30));
         teamDto.setStatus("created");
+        teamDto.setAuthorId(userEntity.getUserId());
 
         TeamEntity teamEntity = modelMapper.map(teamDto, TeamEntity.class);
 
@@ -62,6 +68,7 @@ public class TeamServiceImpl implements TeamService {
         teamCreator.setRole("Team Creator");
         teamCreator.setUser(userEntity);
         teamCreator.setTeam(teamEntity);
+        teamCreator.setStatus("Owner");
 
         List<TeamMemberEntity> members = new ArrayList<>();
         members.add(teamCreator);
@@ -81,7 +88,6 @@ public class TeamServiceImpl implements TeamService {
 
         teamRepository.save(teamEntity);
         teamMemberRepository.saveAll(members);
-
 
 
         TeamDto returnTeam = modelMapper.map(teamEntity, TeamDto.class);
@@ -123,6 +129,18 @@ public class TeamServiceImpl implements TeamService {
         }
 
         return teamDtos;
+    }
+
+    @Override
+    public void deleteTeam(String teamId) {
+
+        TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
+        if (teamEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        teamRepository.delete(teamEntity);
+
+
     }
 
 

@@ -1,13 +1,12 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ApplicationEntity;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ProjectEntity;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ApplicationRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ProjectRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ApplicationService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ApplicationDto;
@@ -15,7 +14,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationService {
@@ -30,6 +31,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     ProjectRepository projectRepository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
     Utils utils;
 
     @Override
@@ -42,6 +46,55 @@ public class ApplicationServiceImpl implements ApplicationService {
         ApplicationDto applicationDto = modelMapper.map(applicationEntity, ApplicationDto.class);
 
         return applicationDto;
+
+    }
+
+    @Override
+    public List<ApplicationDto> getAllApplicationsByUserId(String userId) {
+        ModelMapper modelMapper = new ModelMapper();
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+
+        List<ApplicationEntity> applicationEntityList = new ArrayList<>();
+
+        for (TeamMemberEntity teamMemberEntity: userEntity.getTeamMembers()){
+            applicationEntityList.addAll(teamMemberEntity.getTeam().getApplications());
+        }
+
+        List<ApplicationDto> applicationDtoList = new ArrayList<>();
+
+        for (ApplicationEntity applicationEntity: applicationEntityList){
+            ApplicationDto applicationDto = modelMapper.map(applicationEntity, ApplicationDto.class);
+            applicationDtoList.add(applicationDto);
+        }
+
+        return applicationDtoList;
+
+
+    }
+
+    @Override
+    public List<ApplicationDto> getAllApplicationsBySupervisorId(String supervisorId) {
+        ModelMapper modelMapper = new ModelMapper();
+        UserEntity userEntity = userRepository.findByUserId(supervisorId);
+        if (userEntity == null) throw new ServiceException("User with Id " + supervisorId + " not found");
+
+        List<ApplicationEntity> applicationEntityList = new ArrayList<>();
+
+        for (ProjectEntity projectEntity: userEntity.getProjects()){
+            applicationEntityList.addAll(projectEntity.getApplications());
+        }
+
+        List<ApplicationDto> applicationDtoList = new ArrayList<>();
+
+        for (ApplicationEntity applicationEntity: applicationEntityList){
+            ApplicationDto applicationDto = modelMapper.map(applicationEntity, ApplicationDto.class);
+            applicationDtoList.add(applicationDto);
+        }
+
+        return applicationDtoList;
+
+
 
     }
 
@@ -67,7 +120,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         applicationEntity.setProject(projectEntity);
         applicationEntity.setTeam(teamEntity);
 
+        List<ApplicationEntity> applicationEntityList = new ArrayList<>();
+        applicationEntityList.add(applicationEntity);
+
+        projectEntity.setApplications(applicationEntityList);
+
+
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
+
 
         ApplicationDto returnApplication  = modelMapper.map(savedApplication, ApplicationDto.class);
 

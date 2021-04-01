@@ -2,8 +2,8 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.UserDetailsRequestModel;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserRest;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.UserWithProjectsRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserWithProjectsRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import io.swagger.annotations.ApiImplicitParam;

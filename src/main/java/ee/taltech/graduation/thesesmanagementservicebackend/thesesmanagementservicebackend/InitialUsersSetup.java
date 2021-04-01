@@ -27,6 +27,12 @@ public class InitialUsersSetup {
     ProjectRepository projectRepository;
 
     @Autowired
+    TeamRepository teamRepository;
+
+    @Autowired
+    TeamMemberRepository teamMemberRepository;
+
+    @Autowired
     AuthorityRepository authorityRepository;
 
     @Autowired
@@ -51,6 +57,7 @@ public class InitialUsersSetup {
         RoleEntity roleAdmin = createRole(Roles.ROLE_ADMIN.name(), Arrays.asList(readAuthority, writeAuthority, deleteAuthority));
 
         if (roleAdmin == null) return;
+
 
         UserEntity adminUser = new UserEntity();
         adminUser.setFirstName("Andres");
@@ -115,6 +122,40 @@ public class InitialUsersSetup {
 //        userGroup.getUsers().add(userEntity);
 //        userGroup.getUsers().add(userEntity1);
 //        userGroup.getUsers().add(userEntity2);
+
+
+        TeamEntity testTeam1 = new TeamEntity();
+        testTeam1.setTeamName("TestTeam1");
+        testTeam1.setTeamId("testTeam1");
+        testTeam1.setAuthorId(studentUser.getUserId());
+
+        TeamMemberEntity testTeamMember1 = new TeamMemberEntity();
+        testTeamMember1.setTeamMemberId("testTeamMember1");
+        testTeamMember1.setUser(studentUser);
+        testTeamMember1.setTeam(testTeam1);
+
+        studentUser.setStarterTeam(testTeam1.getTeamId());
+
+        teamRepository.save(testTeam1);
+        teamMemberRepository.save(testTeamMember1);
+
+
+
+        TeamEntity testTeam2 = new TeamEntity();
+        testTeam2.setTeamName("TestTeam2");
+        testTeam2.setTeamId("testTeam2");
+        testTeam2.setAuthorId(userEntity.getUserId());
+
+        TeamMemberEntity testTeamMember2 = new TeamMemberEntity();
+        testTeamMember2.setTeamMemberId("testTeamMember2");
+        testTeamMember2.setUser(userEntity);
+        testTeamMember2.setTeam(testTeam2);
+
+        userEntity.setStarterTeam(testTeam2.getTeamId());
+
+        teamRepository.save(testTeam2);
+        teamMemberRepository.save(testTeamMember2);
+
 
 
         userRepository.save(teacherUser);

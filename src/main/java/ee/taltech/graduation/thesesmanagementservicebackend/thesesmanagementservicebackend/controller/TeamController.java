@@ -2,12 +2,10 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.TeamDetailsRequestModel;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamMemberRest;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamRest;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.TeamRestWithoutMembers;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest.TeamRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest.TeamRestWithoutMembers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
@@ -28,15 +26,14 @@ public class TeamController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/{id}")
-    private TeamRest getTeamById(@PathVariable String id){
+    private TeamRestWithoutMembers getTeamById(@PathVariable String id){
 
         ModelMapper modelMapper = new ModelMapper();
 
         TeamDto team = teamService.getTeamById(id);
-        TeamRest teamRest = modelMapper.map(team, TeamRest.class);
+        TeamRestWithoutMembers teamRest = modelMapper.map(team, TeamRestWithoutMembers.class);
 
         return teamRest;
-
 
     }
 
@@ -76,6 +73,18 @@ public class TeamController {
         }
 
         return teamsRest;
+
+    }
+
+
+    @DeleteMapping(path = "/delete/{teamId}")
+    private String deleteTeam(@PathVariable String teamId){
+
+        teamService.deleteTeam(teamId);
+
+        return teamId;
+
+
 
     }
 
