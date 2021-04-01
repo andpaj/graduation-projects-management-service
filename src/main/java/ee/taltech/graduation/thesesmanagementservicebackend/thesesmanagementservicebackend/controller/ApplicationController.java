@@ -54,7 +54,9 @@ public class ApplicationController {
 
     }
 
-
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
     @GetMapping(path = "getAllByUserId/{userId}")
     private List<ApplicationRest> getAllApplicationsByUserId(@PathVariable String userId){
         ModelMapper modelMapper = new ModelMapper();

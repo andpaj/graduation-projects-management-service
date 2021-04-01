@@ -77,5 +77,17 @@ public class TeamController {
     }
 
 
+    @DeleteMapping(path = "/delete/{teamId}")
+    private String deleteTeam(@PathVariable String teamId){
+
+        teamService.deleteTeam(teamId);
+
+        return teamId;
+
+
+
+    }
+
+
 
 }
