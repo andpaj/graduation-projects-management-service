@@ -10,6 +10,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/application")
 public class ApplicationController {
@@ -48,6 +51,22 @@ public class ApplicationController {
         ApplicationRest applicationRest = modelMapper.map(savedApplication, ApplicationRest.class);
 
         return applicationRest;
+
+    }
+
+
+    @GetMapping(path = "getAllByUserId/{userId}")
+    private List<ApplicationRest> getAllApplicationsByUserId(@PathVariable String userId){
+        ModelMapper modelMapper = new ModelMapper();
+        List<ApplicationRest> applicationRestList = new ArrayList<>();
+        List<ApplicationDto> applicationDtoList = applicationService.getAllApplicationsByUserId(userId);
+
+        for (ApplicationDto applicationDto: applicationDtoList){
+            ApplicationRest applicationRest = modelMapper.map(applicationDto, ApplicationRest.class);
+            applicationRestList.add(applicationRest);
+        }
+
+        return applicationRestList;
 
     }
 
