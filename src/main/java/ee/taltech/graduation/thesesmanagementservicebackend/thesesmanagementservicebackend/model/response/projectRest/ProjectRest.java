@@ -1,5 +1,6 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest;
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.applicationRest.ApplicationRestWithoutProject;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.tagRest.TagRest;
 
 import java.util.Date;
@@ -18,6 +19,7 @@ public class ProjectRest {
     private int studentAmount;
     private int difficultyRating;
     private List<TagRest> tags;
+    private List<ApplicationRestWithoutProject> applications;
 
     public String getProjectId() {
         return projectId;
@@ -105,5 +107,13 @@ public class ProjectRest {
 
     public void setTags(List<TagRest> tags) {
         this.tags = tags;
+    }
+
+    public List<ApplicationRestWithoutProject> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<ApplicationRestWithoutProject> applications) {
+        this.applications = applications;
     }
 }

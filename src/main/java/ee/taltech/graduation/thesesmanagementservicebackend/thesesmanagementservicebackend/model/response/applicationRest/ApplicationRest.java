@@ -2,6 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest.ProjectRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest.ProjectRestShort;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest.TeamForApplicationsRest;
 
 import java.util.Date;
@@ -13,7 +14,7 @@ public class ApplicationRest {
     private Date creatingTime;
     private String message;
     private TeamForApplicationsRest team;
-    private ProjectRest project;
+    private ProjectRestShort project;
 
     public String getApplicationId() {
         return applicationId;
@@ -56,11 +57,11 @@ public class ApplicationRest {
         this.team = team;
     }
 
-    public ProjectRest getProject() {
+    public ProjectRestShort getProject() {
         return project;
     }
 
-    public void setProject(ProjectRest project) {
+    public void setProject(ProjectRestShort project) {
         this.project = project;
     }
 }

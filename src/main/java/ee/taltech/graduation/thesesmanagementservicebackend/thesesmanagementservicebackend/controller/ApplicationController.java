@@ -57,7 +57,7 @@ public class ApplicationController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @GetMapping(path = "getAllByUserId/{userId}")
+    @GetMapping(path = "/getAllByUserId/{userId}")
     private List<ApplicationRest> getAllApplicationsByUserId(@PathVariable String userId){
         ModelMapper modelMapper = new ModelMapper();
         List<ApplicationRest> applicationRestList = new ArrayList<>();
@@ -69,6 +69,26 @@ public class ApplicationController {
         }
 
         return applicationRestList;
+
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @GetMapping(path = "/getAllBySupervisorId/{supervisorId}")
+    private List<ApplicationRest> getAllApplicationsBySupervisorId(@PathVariable String supervisorId){
+
+        ModelMapper modelMapper = new ModelMapper();
+        List<ApplicationRest> applicationRestList = new ArrayList<>();
+        List<ApplicationDto> applicationDtoList = applicationService.getAllApplicationsBySupervisorId(supervisorId);
+
+        for (ApplicationDto applicationDto: applicationDtoList){
+            ApplicationRest applicationRest = modelMapper.map(applicationDto, ApplicationRest.class);
+            applicationRestList.add(applicationRest);
+        }
+
+        return applicationRestList;
+
 
     }
 

@@ -74,6 +74,31 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<ApplicationDto> getAllApplicationsBySupervisorId(String supervisorId) {
+        ModelMapper modelMapper = new ModelMapper();
+        UserEntity userEntity = userRepository.findByUserId(supervisorId);
+        if (userEntity == null) throw new ServiceException("User with Id " + supervisorId + " not found");
+
+        List<ApplicationEntity> applicationEntityList = new ArrayList<>();
+
+        for (ProjectEntity projectEntity: userEntity.getProjects()){
+            applicationEntityList.addAll(projectEntity.getApplications());
+        }
+
+        List<ApplicationDto> applicationDtoList = new ArrayList<>();
+
+        for (ApplicationEntity applicationEntity: applicationEntityList){
+            ApplicationDto applicationDto = modelMapper.map(applicationEntity, ApplicationDto.class);
+            applicationDtoList.add(applicationDto);
+        }
+
+        return applicationDtoList;
+
+
+
+    }
+
+    @Override
     public ApplicationDto createApplication(String projectId, String teamId, ApplicationDto applicationDto) {
 
         ModelMapper modelMapper = new ModelMapper();
@@ -95,7 +120,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         applicationEntity.setProject(projectEntity);
         applicationEntity.setTeam(teamEntity);
 
+        List<ApplicationEntity> applicationEntityList = new ArrayList<>();
+        applicationEntityList.add(applicationEntity);
+
+        projectEntity.setApplications(applicationEntityList);
+
+
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
+
 
         ApplicationDto returnApplication  = modelMapper.map(savedApplication, ApplicationDto.class);
 

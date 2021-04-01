@@ -65,7 +65,7 @@ public class ProjectEntity {
     @OneToOne(mappedBy = "project")
     private TeamEntity team;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER,
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER,
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<ApplicationEntity> applications = new ArrayList<>();
 
