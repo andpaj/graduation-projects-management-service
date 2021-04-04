@@ -88,9 +88,45 @@ public class ApplicationController {
         }
 
         return applicationRestList;
+    }
+
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @PostMapping(path = "/acceptBySupervisor")
+    private ApplicationRest acceptApplicationFromSupervisorSide(@RequestParam String supervisorId,
+                                                                @RequestParam String applicationId){
+
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationDto acceptedApplication = applicationService
+                .acceptApplicationFromSupervisorSide(supervisorId, applicationId);
+
+        ApplicationRest applicationRest = modelMapper.map(acceptedApplication, ApplicationRest.class);
+
+        return applicationRest;
 
 
     }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @PostMapping(path = "/declineBySupervisor")
+    private ApplicationRest declineApplicationFromSupervisorSide(@RequestParam String supervisorId,
+                                                                @RequestParam String applicationId){
+
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationDto acceptedApplication = applicationService
+                .declineApplicationFromSupervisorSide(supervisorId, applicationId);
+
+        ApplicationRest applicationRest = modelMapper.map(acceptedApplication, ApplicationRest.class);
+
+        return applicationRest;
+
+
+    }
+
 
 
 

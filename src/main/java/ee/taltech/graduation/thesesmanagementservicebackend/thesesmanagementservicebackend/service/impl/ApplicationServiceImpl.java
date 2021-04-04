@@ -99,6 +99,67 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public ApplicationDto acceptApplicationFromSupervisorSide(String supervisorId, String applicationId) {
+
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
+        if (applicationEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        UserEntity userEntity = userRepository.findByUserId(supervisorId);
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+
+        if (!applicationEntity.getStatus().equals("sent")){
+            throw new ServiceException("This application is already accepted or declined by supervisor");
+        }
+
+        if (!applicationEntity.getProject().getUser().getUserId().equals(supervisorId)){
+            throw new ServiceException("You have no rights to run this method");
+        }
+
+        applicationEntity.setStatus("accepted");
+
+        ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
+
+        ApplicationDto applicationDto = modelMapper.map(savedApplication, ApplicationDto.class);
+
+        return applicationDto;
+
+
+    }
+
+    @Override
+    public ApplicationDto declineApplicationFromSupervisorSide(String supervisorId, String applicationId) {
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
+        if (applicationEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        UserEntity userEntity = userRepository.findByUserId(supervisorId);
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+
+        if (!applicationEntity.getStatus().equals("sent")){
+            throw new ServiceException("This application is already accepted or declined by supervisor");
+        }
+
+        if (!applicationEntity.getProject().getUser().getUserId().equals(supervisorId)){
+            throw new ServiceException("You have no rights to run this method");
+        }
+
+        applicationEntity.setStatus("declined");
+
+        ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
+
+        ApplicationDto applicationDto = modelMapper.map(savedApplication, ApplicationDto.class);
+
+        return applicationDto;
+    }
+
+    @Override
     public ApplicationDto createApplication(String projectId, String teamId, ApplicationDto applicationDto) {
 
         ModelMapper modelMapper = new ModelMapper();
@@ -112,7 +173,7 @@ public class ApplicationServiceImpl implements ApplicationService {
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
 
         applicationDto.setApplicationId(utils.generateApplicationId(30));
-        applicationDto.setStatus("Waiting for acceptation");
+        applicationDto.setStatus("sent");
         applicationDto.setCreatingTime(new Date());
 
         ApplicationEntity applicationEntity = modelMapper.map(applicationDto, ApplicationEntity.class);

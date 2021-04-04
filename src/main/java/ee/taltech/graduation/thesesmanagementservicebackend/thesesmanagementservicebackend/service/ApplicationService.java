@@ -11,4 +11,6 @@ public interface ApplicationService {
     ApplicationDto getApplicationByApplicationId(String id);
     List<ApplicationDto> getAllApplicationsByUserId(String userId);
     List<ApplicationDto> getAllApplicationsBySupervisorId(String supervisorId);
+    ApplicationDto acceptApplicationFromSupervisorSide(String supervisorId, String applicationId);
+    ApplicationDto declineApplicationFromSupervisorSide(String supervisorId, String applicationId);
 }
