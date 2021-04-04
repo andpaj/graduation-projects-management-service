@@ -3,10 +3,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ApplicationRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ProjectRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ApplicationService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ApplicationDto;
@@ -32,6 +29,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    TeamMemberRepository teamMemberRepository;
 
     @Autowired
     Utils utils;
@@ -157,6 +157,78 @@ public class ApplicationServiceImpl implements ApplicationService {
         ApplicationDto applicationDto = modelMapper.map(savedApplication, ApplicationDto.class);
 
         return applicationDto;
+    }
+
+    @Override
+    public ApplicationDto acceptApplicationFromStudentSide(String studentId, String applicationId) {
+
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
+        if (applicationEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        UserEntity userEntity = userRepository.findByUserId(studentId);
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        if (!applicationEntity.getStatus().equals("accepted")){
+            throw new ServiceException("This application cant be confirmed by student");
+        }
+
+        applicationEntity.setStatus("project in progress");
+
+        TeamEntity teamEntity = applicationEntity.getTeam();
+        teamEntity.setProject(applicationEntity.getProject());
+        teamEntity.setStatus("project_in_progress");
+
+        ProjectEntity projectEntity = applicationEntity.getProject();
+        projectEntity.setTeam(teamEntity);
+        projectEntity.setStatus("project already taken");
+
+        TeamMemberEntity supervisorTeamMember = new TeamMemberEntity();
+        supervisorTeamMember.setTeamMemberId(utils.generateTeamMemberId(30));
+        supervisorTeamMember.setTeam(teamEntity);
+        supervisorTeamMember.setRole("Supervisor");
+        supervisorTeamMember.setUser(projectEntity.getUser());
+        supervisorTeamMember.setStatus("accepted");
+
+
+        ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
+        teamRepository.save(teamEntity);
+        projectRepository.save(projectEntity);
+        teamMemberRepository.save(supervisorTeamMember);
+
+
+        ApplicationDto applicationDto = modelMapper.map(savedApplication, ApplicationDto.class);
+
+        return applicationDto;
+
+    }
+
+    @Override
+    public ApplicationDto declineApplicationFromStudentSide(String studentId, String applicationId) {
+        ModelMapper modelMapper = new ModelMapper();
+        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
+        if (applicationEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        UserEntity userEntity = userRepository.findByUserId(studentId);
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        if (!applicationEntity.getStatus().equals("accepted")){
+            throw new ServiceException("This application cant be decline by student");
+        }
+
+        applicationEntity.setStatus("application declined by student");
+
+        ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
+
+        ApplicationDto applicationDto = modelMapper.map(savedApplication, ApplicationDto.class);
+
+        return applicationDto;
+
+
     }
 
     @Override
