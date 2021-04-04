@@ -141,7 +141,6 @@ public class UserServiceImpl implements UserService {
             if (groupEntity == null) throw new ServiceException("Group with that name does not exist");
             groupEntityList.add(groupEntity);
             groupEntity.getUsers().add(userEntity);
-            groupRepository.save(groupEntity);
 
         }
 

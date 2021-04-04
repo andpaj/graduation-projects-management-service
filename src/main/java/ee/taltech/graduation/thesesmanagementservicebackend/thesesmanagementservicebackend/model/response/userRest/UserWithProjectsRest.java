@@ -10,6 +10,7 @@ public class UserWithProjectsRest {
         private String firstName;
         private String lastName;
         private String email;
+        private String graduationLevel;
         private List<ProjectRest> projects;
 
         public String getUserId() {
@@ -52,7 +53,13 @@ public class UserWithProjectsRest {
             this.projects = projects;
         }
 
+        public String getGraduationLevel() {
+            return graduationLevel;
+        }
 
+        public void setGraduationLevel(String graduationLevel) {
+            this.graduationLevel = graduationLevel;
+        }
 }
 
 
