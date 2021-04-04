@@ -13,6 +13,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ProjectDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TagDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.ProjectEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(thesisId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();
         ProjectDto projectDto = modelMapper.map(projectEntity, ProjectDto.class);
 
@@ -74,7 +75,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<ProjectDto> projectDtoList = new ArrayList<>();
         List<ProjectEntity> projectEntities = projectRepository.findByUser(userEntity);
@@ -93,7 +94,7 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectDto createProject(String userId, ProjectDto projectDto) {
 
         projectDto.setProjectId(utils.generateProjectId(30));
-        projectDto.setStatus("free to take");
+        projectDto.setStatus(ProjectEnum.STATUS_AVAILABLE.getProjectEnum());
         projectDto.setCreatingTime(new Date());
         ModelMapper modelMapper = new ModelMapper();
 
@@ -101,7 +102,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         userEntity.getProjects().add(projectEntity);
         projectEntity.setUser(userEntity);
@@ -119,7 +120,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
 
         projectEntity.setLanguage(projectDto.getLanguage());
         projectEntity.setTitle(projectDto.getTitle());
@@ -141,7 +142,7 @@ public class ProjectServiceImpl implements ProjectService {
     public void deleteProjects(String projectId) {
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
 
         projectRepository.delete(projectEntity);
     }

@@ -11,6 +11,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -61,7 +62,8 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserByUserId(String userId)  {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 
@@ -77,7 +79,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserByEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
-        if (userEntity == null) throw new ServiceException("User with email " + email + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER_EMAIL.getErrorMessage());
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 
@@ -123,7 +126,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto createUser(UserDto user,  List<String> groups) {
         if (userRepository.findByEmail(user.getEmail()) != null)
-            throw new ServiceException("Record already exists");
+            throw new ServiceException(ErrorMessages.RECORD_ALREADY_EXISTS.getErrorMessage());
 
         List<GroupEntity> groupEntityList = new ArrayList<>();
 
@@ -138,7 +141,8 @@ public class UserServiceImpl implements UserService {
 
         for (String groupId : groups) {
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
-            if (groupEntity == null) throw new ServiceException("Group with that name does not exist");
+            if (groupEntity == null) throw
+                    new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
             groupEntityList.add(groupEntity);
             groupEntity.getUsers().add(userEntity);
 
@@ -148,7 +152,7 @@ public class UserServiceImpl implements UserService {
 
         TeamEntity teamEntity = new TeamEntity();
         teamEntity.setTeamId(utils.generateTeamId(30));
-        teamEntity.setTeamName("shadow team");
+        teamEntity.setTeamName(TeamEnum.STARTER_TEAM_NAME.getTeamEnum());
 
         TeamMemberEntity teamMemberEntity = new TeamMemberEntity();
         teamMemberEntity.setTeamMemberId(utils.generateTeamMemberId(30));
@@ -177,7 +181,7 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userRepository.findByUserId(userId);
 
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         userEntity.setFirstName(user.getFirstName());
         userEntity.setLastName(user.getLastName());
@@ -194,7 +198,7 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(String userId) {
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         userRepository.delete(userEntity);
 

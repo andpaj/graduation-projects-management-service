@@ -13,6 +13,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamMemberEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,29 +48,31 @@ public class TeamServiceImpl implements TeamService {
         List<UserEntity> additionalMembers = new ArrayList<>();
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
 
         if (teamMembers != null ) {
             for (String user : teamMembers) {
                 UserEntity foundUser = userRepository.findByUserId(user);
-                if (foundUser == null) throw new ServiceException("User with Id " + userId + " not found");
+                if (foundUser == null) throw
+                        new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
                 additionalMembers.add(foundUser);
             }
         }
 
         teamDto.setTeamId(utils.generateTeamId(30));
-        teamDto.setStatus("created");
+        teamDto.setStatus(TeamEnum.STATUS_LOOKING_FOR_PROJECT.getTeamEnum());
         teamDto.setAuthorId(userEntity.getUserId());
 
         TeamEntity teamEntity = modelMapper.map(teamDto, TeamEntity.class);
 
         TeamMemberEntity teamCreator = new TeamMemberEntity();
         teamCreator.setTeamMemberId(utils.generateTeamMemberId(30));
-        teamCreator.setRole("Team Creator");
+        teamCreator.setRole(TeamMemberEnum.ROLE_TEAM_CREATOR.getTeamMemberEnum());
         teamCreator.setUser(userEntity);
         teamCreator.setTeam(teamEntity);
-        teamCreator.setStatus("Owner");
+        teamCreator.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
         List<TeamMemberEntity> members = new ArrayList<>();
         members.add(teamCreator);
@@ -76,8 +80,8 @@ public class TeamServiceImpl implements TeamService {
         for (UserEntity additionalMember: additionalMembers){
             TeamMemberEntity memberEntity = new TeamMemberEntity();
             memberEntity.setTeamMemberId(utils.generateTeamMemberId(30));
-            memberEntity.setRole("Guest member");
-            memberEntity.setStatus("Waiting for acceptation");
+            memberEntity.setRole(TeamMemberEnum.ROLE_TEAM_MEMBER.getTeamMemberEnum());
+            memberEntity.setStatus(TeamMemberEnum.STATUS_WAITING.getTeamMemberEnum());
             memberEntity.setUser(additionalMember);
             memberEntity.setTeam(teamEntity);
             members.add(memberEntity);
@@ -100,7 +104,7 @@ public class TeamServiceImpl implements TeamService {
     public TeamDto getTeamById(String id) {
         TeamEntity teamEntity = teamRepository.findByTeamId(id);
         if (teamEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();
         TeamDto teamDto = modelMapper.map(teamEntity, TeamDto.class);
 
@@ -113,7 +117,8 @@ public class TeamServiceImpl implements TeamService {
         ModelMapper modelMapper = new ModelMapper();
 
         UserEntity userEntity = userRepository.findByUserId(id);
-        if (userEntity == null) throw new ServiceException("User with Id " + id + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<TeamEntity> teamsEntities = new ArrayList<>();
 
@@ -136,7 +141,7 @@ public class TeamServiceImpl implements TeamService {
 
         TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
         if (teamEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
 
         teamRepository.delete(teamEntity);
 

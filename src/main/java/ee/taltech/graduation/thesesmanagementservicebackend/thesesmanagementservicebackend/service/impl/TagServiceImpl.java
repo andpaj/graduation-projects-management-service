@@ -28,7 +28,7 @@ public class TagServiceImpl implements TagService {
         ModelMapper modelMapper = new ModelMapper();
         TagEntity tagEntity = tagRepository.findByTagId(id);
         if (tagEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TAG.getErrorMessage());
 
         TagDto tagDto = modelMapper.map(tagEntity, TagDto.class);
 
@@ -67,7 +67,7 @@ public class TagServiceImpl implements TagService {
 
         TagEntity tagEntity = tagRepository.findByTagId(id);
         if (tagEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TAG.getErrorMessage());
 
         tagRepository.delete(tagEntity);
 

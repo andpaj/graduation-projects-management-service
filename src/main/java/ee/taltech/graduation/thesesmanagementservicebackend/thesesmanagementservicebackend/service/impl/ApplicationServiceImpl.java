@@ -7,6 +7,10 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.ApplicationService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ApplicationDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.ApplicationEnum;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.ProjectEnum;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamMemberEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +45,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(id);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         ApplicationDto applicationDto = modelMapper.map(applicationEntity, ApplicationDto.class);
 
@@ -53,7 +57,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<ApplicationDto> getAllApplicationsByUserId(String userId) {
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<ApplicationEntity> applicationEntityList = new ArrayList<>();
 
@@ -77,7 +81,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<ApplicationDto> getAllApplicationsBySupervisorId(String supervisorId) {
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = userRepository.findByUserId(supervisorId);
-        if (userEntity == null) throw new ServiceException("User with Id " + supervisorId + " not found");
+        if (userEntity == null) throw new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<ApplicationEntity> applicationEntityList = new ArrayList<>();
 
@@ -104,22 +108,22 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(supervisorId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
 
-        if (!applicationEntity.getStatus().equals("sent")){
-            throw new ServiceException("This application is already accepted or declined by supervisor");
+        if (!applicationEntity.getStatus().equals(ApplicationEnum.SENT.getApplicationEnum())){
+            throw new ServiceException(ErrorMessages.APPLICATION_ACCEPTED_DECLINED_BY_SUPERVISOR.getErrorMessage());
         }
 
         if (!applicationEntity.getProject().getUser().getUserId().equals(supervisorId)){
-            throw new ServiceException("You have no rights to run this method");
+            throw new ServiceException(ErrorMessages.APPLICATION_NO_RIGHTS.getErrorMessage());
         }
 
-        applicationEntity.setStatus("accepted");
+        applicationEntity.setStatus(ApplicationEnum.ACCEPTED.getApplicationEnum());
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
 
@@ -135,22 +139,22 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(supervisorId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
 
-        if (!applicationEntity.getStatus().equals("sent")){
-            throw new ServiceException("This application is already accepted or declined by supervisor");
+        if (!applicationEntity.getStatus().equals(ApplicationEnum.SENT.getApplicationEnum())){
+            throw new ServiceException(ErrorMessages.APPLICATION_ACCEPTED_DECLINED_BY_SUPERVISOR.getErrorMessage());
         }
 
         if (!applicationEntity.getProject().getUser().getUserId().equals(supervisorId)){
-            throw new ServiceException("You have no rights to run this method");
+            throw new ServiceException(ErrorMessages.APPLICATION_NO_RIGHTS.getErrorMessage());
         }
 
-        applicationEntity.setStatus("declined");
+        applicationEntity.setStatus(ApplicationEnum.DECLINED.getApplicationEnum());
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
 
@@ -165,32 +169,32 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(studentId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
-        if (!applicationEntity.getStatus().equals("accepted")){
-            throw new ServiceException("This application cant be confirmed by student");
+        if (!applicationEntity.getStatus().equals(ApplicationEnum.ACCEPTED.getApplicationEnum())){
+            throw new ServiceException(ErrorMessages.APPLICATION_CANT_CONFIRMED_BY_STUDENT.getErrorMessage());
         }
 
-        applicationEntity.setStatus("project in progress");
+        applicationEntity.setStatus(ApplicationEnum.PROJECT_IN_PROGRESS.getApplicationEnum());
 
         TeamEntity teamEntity = applicationEntity.getTeam();
         teamEntity.setProject(applicationEntity.getProject());
-        teamEntity.setStatus("project_in_progress");
+        teamEntity.setStatus(TeamEnum.STATUS_PROJECT_IN_PROGRESS.getTeamEnum());
 
         ProjectEntity projectEntity = applicationEntity.getProject();
         projectEntity.setTeam(teamEntity);
-        projectEntity.setStatus("project already taken");
+        projectEntity.setStatus(ProjectEnum.STATUS_NOT_AVAILABLE.getProjectEnum());
 
         TeamMemberEntity supervisorTeamMember = new TeamMemberEntity();
         supervisorTeamMember.setTeamMemberId(utils.generateTeamMemberId(30));
         supervisorTeamMember.setTeam(teamEntity);
-        supervisorTeamMember.setRole("Supervisor");
+        supervisorTeamMember.setRole(TeamMemberEnum.ROLE_SUPERVISOR.getTeamMemberEnum());
         supervisorTeamMember.setUser(projectEntity.getUser());
-        supervisorTeamMember.setStatus("accepted");
+        supervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
@@ -210,17 +214,17 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(studentId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
-        if (!applicationEntity.getStatus().equals("accepted")){
-            throw new ServiceException("This application cant be decline by student");
+        if (!applicationEntity.getStatus().equals(ApplicationEnum.ACCEPTED.getApplicationEnum())){
+            throw new ServiceException(ErrorMessages.APPLICATION_CANT_DECLINED_BY_STUDENT.getErrorMessage());
         }
 
-        applicationEntity.setStatus("application declined by student");
+        applicationEntity.setStatus(ApplicationEnum.DECLINED_BY_STUDENT.getApplicationEnum());
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
 
@@ -238,14 +242,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
         if (teamEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
 
         applicationDto.setApplicationId(utils.generateApplicationId(30));
-        applicationDto.setStatus("sent");
+        applicationDto.setStatus(ApplicationEnum.SENT.getApplicationEnum());
         applicationDto.setCreatingTime(new Date());
 
         ApplicationEntity applicationEntity = modelMapper.map(applicationDto, ApplicationEntity.class);
