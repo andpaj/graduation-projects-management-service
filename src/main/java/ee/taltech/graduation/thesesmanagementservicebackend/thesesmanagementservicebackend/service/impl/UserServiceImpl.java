@@ -61,7 +61,8 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserByUserId(String userId)  {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 
@@ -77,7 +78,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUserByEmail(String email) {
         UserEntity userEntity = userRepository.findByEmail(email);
-        if (userEntity == null) throw new ServiceException("User with email " + email + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER_EMAIL.getErrorMessage());
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 
@@ -123,7 +125,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto createUser(UserDto user,  List<String> groups) {
         if (userRepository.findByEmail(user.getEmail()) != null)
-            throw new ServiceException("Record already exists");
+            throw new ServiceException(ErrorMessages.RECORD_ALREADY_EXISTS.getErrorMessage());
 
         List<GroupEntity> groupEntityList = new ArrayList<>();
 
@@ -138,7 +140,8 @@ public class UserServiceImpl implements UserService {
 
         for (String groupId : groups) {
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
-            if (groupEntity == null) throw new ServiceException("Group with that name does not exist");
+            if (groupEntity == null) throw
+                    new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
             groupEntityList.add(groupEntity);
             groupEntity.getUsers().add(userEntity);
 
@@ -177,7 +180,7 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userRepository.findByUserId(userId);
 
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         userEntity.setFirstName(user.getFirstName());
         userEntity.setLastName(user.getLastName());
@@ -194,7 +197,7 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(String userId) {
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         userRepository.delete(userEntity);
 

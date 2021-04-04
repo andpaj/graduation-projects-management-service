@@ -42,7 +42,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(thesisId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();
         ProjectDto projectDto = modelMapper.map(projectEntity, ProjectDto.class);
 
@@ -74,7 +74,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<ProjectDto> projectDtoList = new ArrayList<>();
         List<ProjectEntity> projectEntities = projectRepository.findByUser(userEntity);
@@ -101,7 +101,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         userEntity.getProjects().add(projectEntity);
         projectEntity.setUser(userEntity);
@@ -119,7 +119,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
 
         projectEntity.setLanguage(projectDto.getLanguage());
         projectEntity.setTitle(projectDto.getTitle());
@@ -141,7 +141,7 @@ public class ProjectServiceImpl implements ProjectService {
     public void deleteProjects(String projectId) {
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
 
         projectRepository.delete(projectEntity);
     }

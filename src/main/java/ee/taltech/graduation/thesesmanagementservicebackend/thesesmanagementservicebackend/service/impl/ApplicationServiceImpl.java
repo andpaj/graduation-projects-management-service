@@ -41,7 +41,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(id);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         ApplicationDto applicationDto = modelMapper.map(applicationEntity, ApplicationDto.class);
 
@@ -53,7 +53,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<ApplicationDto> getAllApplicationsByUserId(String userId) {
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<ApplicationEntity> applicationEntityList = new ArrayList<>();
 
@@ -77,7 +77,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<ApplicationDto> getAllApplicationsBySupervisorId(String supervisorId) {
         ModelMapper modelMapper = new ModelMapper();
         UserEntity userEntity = userRepository.findByUserId(supervisorId);
-        if (userEntity == null) throw new ServiceException("User with Id " + supervisorId + " not found");
+        if (userEntity == null) throw new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<ApplicationEntity> applicationEntityList = new ArrayList<>();
 
@@ -104,11 +104,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(supervisorId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
 
         if (!applicationEntity.getStatus().equals("sent")){
@@ -135,11 +135,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(supervisorId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
 
         if (!applicationEntity.getStatus().equals("sent")){
@@ -165,11 +165,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(studentId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         if (!applicationEntity.getStatus().equals("accepted")){
             throw new ServiceException("This application cant be confirmed by student");
@@ -210,11 +210,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         ModelMapper modelMapper = new ModelMapper();
         ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 
         UserEntity userEntity = userRepository.findByUserId(studentId);
         if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         if (!applicationEntity.getStatus().equals("accepted")){
             throw new ServiceException("This application cant be decline by student");
@@ -238,11 +238,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
         if (teamEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
 
         applicationDto.setApplicationId(utils.generateApplicationId(30));
         applicationDto.setStatus("sent");

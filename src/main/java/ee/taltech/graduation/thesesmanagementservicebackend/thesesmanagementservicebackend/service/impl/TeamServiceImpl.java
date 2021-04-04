@@ -46,13 +46,15 @@ public class TeamServiceImpl implements TeamService {
         List<UserEntity> additionalMembers = new ArrayList<>();
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
 
         if (teamMembers != null ) {
             for (String user : teamMembers) {
                 UserEntity foundUser = userRepository.findByUserId(user);
-                if (foundUser == null) throw new ServiceException("User with Id " + userId + " not found");
+                if (foundUser == null) throw
+                        new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
                 additionalMembers.add(foundUser);
             }
         }
@@ -100,7 +102,7 @@ public class TeamServiceImpl implements TeamService {
     public TeamDto getTeamById(String id) {
         TeamEntity teamEntity = teamRepository.findByTeamId(id);
         if (teamEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();
         TeamDto teamDto = modelMapper.map(teamEntity, TeamDto.class);
 
@@ -113,7 +115,8 @@ public class TeamServiceImpl implements TeamService {
         ModelMapper modelMapper = new ModelMapper();
 
         UserEntity userEntity = userRepository.findByUserId(id);
-        if (userEntity == null) throw new ServiceException("User with Id " + id + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         List<TeamEntity> teamsEntities = new ArrayList<>();
 
@@ -136,7 +139,7 @@ public class TeamServiceImpl implements TeamService {
 
         TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
         if (teamEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
 
         teamRepository.delete(teamEntity);
 

@@ -4,6 +4,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamMemberEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamMemberRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
@@ -36,7 +37,8 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         ModelMapper modelMapper = new ModelMapper();
 
         TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(id);
-        if (teamMemberEntity == null) throw new ServiceException("Team member with Id " + id + " is not found");
+        if (teamMemberEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
         TeamMemberDto teamMemberDto = modelMapper.map(teamMemberEntity, TeamMemberDto.class);
 
@@ -50,10 +52,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         ModelMapper modelMapper = new ModelMapper();
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " is not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
-        if (teamEntity == null) throw new ServiceException("Team with Id " + teamId + " not found");
+        if (teamEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
 
         TeamMemberEntity newMember = new TeamMemberEntity();
         newMember.setTeamMemberId(utils.generateTeamMemberId(30));
@@ -74,10 +78,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
     public TeamMemberDto acceptMembership(String userId, String teamMemberId) {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(teamMemberId);
-        if (teamMemberEntity == null) throw new ServiceException("Team member with Id " + teamMemberId + " not found");
+        if (teamMemberEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
         teamMemberEntity.setStatus("accepted");
         TeamMemberEntity savedStatus = teamMemberRepository.save(teamMemberEntity);
@@ -92,10 +98,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
     @Override
     public void declineMembership(String userId, String teamMemberId) {
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw new ServiceException("User with Id " + userId + " not found");
+        if (userEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
         TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(teamMemberId);
-        if (teamMemberEntity == null) throw new ServiceException("Team member with Id " + teamMemberId + " not found");
+        if (teamMemberEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
         teamMemberRepository.delete(teamMemberEntity);
 

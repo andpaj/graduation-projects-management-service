@@ -30,7 +30,7 @@ public class GroupServiceImpl implements GroupService {
 
         GroupEntity groupEntity = groupRepository.findByGroupId(id);
         if (groupEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
 
         GroupDto groupDto = modelMapper.map(groupEntity, GroupDto.class);
 
@@ -60,7 +60,7 @@ public class GroupServiceImpl implements GroupService {
     public void deleteGroup(String groupId) {
         GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
         if (groupEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
 
         groupRepository.delete(groupEntity);
     }
@@ -75,7 +75,7 @@ public class GroupServiceImpl implements GroupService {
         GroupEntity parentGroupEntity = groupRepository.findByGroupId(parentGroupId);
 
         if (parentGroupEntity == null && groupEntity.getParentGroup() != null)
-            throw new ServiceException("The parent group with this name does not exists");
+            throw new ServiceException(ErrorMessages.NO_RECORD_FOUND_PARENT_GROUP.getErrorMessage());
 
         if (parentGroupEntity != null) {
             groupEntity.setParentGroup(parentGroupEntity);
