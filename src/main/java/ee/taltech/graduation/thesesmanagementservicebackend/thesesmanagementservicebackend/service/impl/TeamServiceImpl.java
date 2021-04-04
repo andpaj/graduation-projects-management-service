@@ -13,6 +13,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.TeamService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamMemberEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,17 +62,17 @@ public class TeamServiceImpl implements TeamService {
         }
 
         teamDto.setTeamId(utils.generateTeamId(30));
-        teamDto.setStatus("created");
+        teamDto.setStatus(TeamEnum.STATUS_LOOKING_FOR_PROJECT.getTeamEnum());
         teamDto.setAuthorId(userEntity.getUserId());
 
         TeamEntity teamEntity = modelMapper.map(teamDto, TeamEntity.class);
 
         TeamMemberEntity teamCreator = new TeamMemberEntity();
         teamCreator.setTeamMemberId(utils.generateTeamMemberId(30));
-        teamCreator.setRole("Team Creator");
+        teamCreator.setRole(TeamMemberEnum.ROLE_TEAM_CREATOR.getTeamMemberEnum());
         teamCreator.setUser(userEntity);
         teamCreator.setTeam(teamEntity);
-        teamCreator.setStatus("Owner");
+        teamCreator.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
         List<TeamMemberEntity> members = new ArrayList<>();
         members.add(teamCreator);
@@ -78,8 +80,8 @@ public class TeamServiceImpl implements TeamService {
         for (UserEntity additionalMember: additionalMembers){
             TeamMemberEntity memberEntity = new TeamMemberEntity();
             memberEntity.setTeamMemberId(utils.generateTeamMemberId(30));
-            memberEntity.setRole("Guest member");
-            memberEntity.setStatus("Waiting for acceptation");
+            memberEntity.setRole(TeamMemberEnum.ROLE_TEAM_MEMBER.getTeamMemberEnum());
+            memberEntity.setStatus(TeamMemberEnum.STATUS_WAITING.getTeamMemberEnum());
             memberEntity.setUser(additionalMember);
             memberEntity.setTeam(teamEntity);
             members.add(memberEntity);

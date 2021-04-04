@@ -12,6 +12,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamMemberEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,8 +62,8 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
         TeamMemberEntity newMember = new TeamMemberEntity();
         newMember.setTeamMemberId(utils.generateTeamMemberId(30));
-        newMember.setStatus("Waiting for acceptation");
-        newMember.setRole("Guest user");
+        newMember.setStatus(TeamMemberEnum.STATUS_WAITING.getTeamMemberEnum());
+        newMember.setRole(TeamMemberEnum.ROLE_TEAM_MEMBER.getTeamMemberEnum());
         newMember.setTeam(teamEntity);
         newMember.setUser(userEntity);
 
@@ -85,7 +86,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         if (teamMemberEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
-        teamMemberEntity.setStatus("accepted");
+        teamMemberEntity.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
         TeamMemberEntity savedStatus = teamMemberRepository.save(teamMemberEntity);
 
         ModelMapper modelMapper = new ModelMapper();

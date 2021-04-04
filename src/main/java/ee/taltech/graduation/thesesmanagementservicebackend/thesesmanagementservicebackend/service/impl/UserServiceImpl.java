@@ -11,6 +11,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -151,7 +152,7 @@ public class UserServiceImpl implements UserService {
 
         TeamEntity teamEntity = new TeamEntity();
         teamEntity.setTeamId(utils.generateTeamId(30));
-        teamEntity.setTeamName("shadow team");
+        teamEntity.setTeamName(TeamEnum.STARTER_TEAM_NAME.getTeamEnum());
 
         TeamMemberEntity teamMemberEntity = new TeamMemberEntity();
         teamMemberEntity.setTeamMemberId(utils.generateTeamMemberId(30));

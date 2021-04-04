@@ -17,7 +17,11 @@ public enum ErrorMessages {
     NO_RECORD_FOUND_TEAM_MEMBER("Team member with provided id is not found"),
     AUTHENTICATION_FAILED("Authentication failed"),
     COULD_NOT_UPDATE_RECORD("Could not update record"),
-    COULD_NOT_DELETE_RECORD("Could not delete record");
+    COULD_NOT_DELETE_RECORD("Could not delete record"),
+    APPLICATION_ACCEPTED_DECLINED_BY_SUPERVISOR("This application is already accepted or declined by supervisor"),
+    APPLICATION_CANT_DECLINED_BY_STUDENT("This application cant be decline by student"),
+    APPLICATION_CANT_CONFIRMED_BY_STUDENT("This application cant be confirmed by student"),
+    APPLICATION_NO_RIGHTS("No authorities for user with this id");
 
 
     private String errorMessage;

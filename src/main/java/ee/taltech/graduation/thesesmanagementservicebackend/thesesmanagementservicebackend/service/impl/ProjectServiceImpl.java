@@ -13,6 +13,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.ProjectDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TagDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.ProjectEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,7 +94,7 @@ public class ProjectServiceImpl implements ProjectService {
     public ProjectDto createProject(String userId, ProjectDto projectDto) {
 
         projectDto.setProjectId(utils.generateProjectId(30));
-        projectDto.setStatus("free to take");
+        projectDto.setStatus(ProjectEnum.STATUS_AVAILABLE.getProjectEnum());
         projectDto.setCreatingTime(new Date());
         ModelMapper modelMapper = new ModelMapper();
 

@@ -2,7 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.*;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Roles;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
