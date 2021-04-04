@@ -11,6 +11,7 @@ public class UserRest {
     private String lastName;
     private String email;
     private String starterTeam;
+    private String graduationLevel;
     private List<GroupRest> groupEntities;
     private List<String> roles;
 
@@ -70,5 +71,13 @@ public class UserRest {
 
     public void setStarterTeam(String starterTeam) {
         this.starterTeam = starterTeam;
+    }
+
+    public String getGraduationLevel() {
+        return graduationLevel;
+    }
+
+    public void setGraduationLevel(String graduationLevel) {
+        this.graduationLevel = graduationLevel;
     }
 }

@@ -30,6 +30,9 @@ public class UserEntity {
     private String encryptedPassword;
 
     @Column()
+    private String graduationLevel;
+
+    @Column()
     private String starterTeam;
 
 //    @Column(nullable = false)
@@ -137,6 +140,14 @@ public class UserEntity {
 
     public void setProjects(Set<ProjectEntity> projects) {
         this.projects = projects;
+    }
+
+    public String getGraduationLevel() {
+        return graduationLevel;
+    }
+
+    public void setGraduationLevel(String graduationLevel) {
+        this.graduationLevel = graduationLevel;
     }
 
     public List<GroupEntity> getGroupEntities() {

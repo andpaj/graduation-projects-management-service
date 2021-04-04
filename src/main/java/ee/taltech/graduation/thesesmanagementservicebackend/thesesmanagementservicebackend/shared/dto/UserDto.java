@@ -11,6 +11,7 @@ public class UserDto {
     private String password;
     private String encryptedPassword;
     private String starterTeam;
+    private String graduationLevel;
     private List<ProjectDto> projects;
     private List<GroupDto> groupEntities;
     private List<String> roles;
@@ -70,6 +71,14 @@ public class UserDto {
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
+    }
+
+    public String getGraduationLevel() {
+        return graduationLevel;
+    }
+
+    public void setGraduationLevel(String graduationLevel) {
+        this.graduationLevel = graduationLevel;
     }
 
     public List<ProjectDto> getProjects() {

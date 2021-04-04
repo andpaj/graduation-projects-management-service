@@ -9,6 +9,7 @@ public class UserDetailsRequestModel {
     private String lastName;
     private String email;
     private String password;
+    private String graduationLevel;
     private List<String> groups;
 
 
@@ -53,5 +54,13 @@ public class UserDetailsRequestModel {
 
     public void setGroups(List<String> groups) {
         this.groups = groups;
+    }
+
+    public String getGraduationLevel() {
+        return graduationLevel;
+    }
+
+    public void setGraduationLevel(String graduationLevel) {
+        this.graduationLevel = graduationLevel;
     }
 }
