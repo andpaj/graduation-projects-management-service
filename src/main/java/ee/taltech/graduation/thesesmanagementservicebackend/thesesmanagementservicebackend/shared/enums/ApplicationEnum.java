@@ -2,11 +2,11 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 public enum ApplicationEnum {
 
-    SENT("Application is sent"),
-    ACCEPTED("Application is accepted by the supervisor"),
-    DECLINED("Application is declined by the supervisor"),
-    DECLINED_BY_STUDENT("Application is declined by the student"),
-    PROJECT_IN_PROGRESS("Project in progress");
+    SENT("application_sent"),
+    ACCEPTED("accept_supervisor"),
+    DECLINED("decline_supervisor"),
+    DECLINED_BY_STUDENT("decline_student"),
+    PROJECT_IN_PROGRESS("application_confirmed");
 
     private String applicationEnum;
 

@@ -2,10 +2,12 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 public enum TeamEnum {
 
-    STATUS_LOOKING_FOR_PROJECT("Looking for project"),
-    STATUS_PROJECT_IN_PROGRESS("Project in progress"),
-    STATUS_PROJECT_IS_FINISHED("Project is finished"),
-    STARTER_TEAM_NAME("Build-in team");
+    //Команда есть но все участинкии не потвердили свое участие
+    STATUS_NOT_ACTIVE("not_active"),
+    STATUS_LOOKING_FOR_PROJECT("active"),
+    STATUS_PROJECT_IN_PROGRESS("in_progress"),
+    STATUS_PROJECT_IS_FINISHED("is_finished"),
+    STARTER_TEAM_NAME("personal_team");
 
     private String teamEnum;
 

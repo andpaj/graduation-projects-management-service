@@ -2,10 +2,10 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 public enum UserEnum {
 
-    STATUS_ACTIVE("Active"),
-    STATUS_NOT_ACTIVE("Not active"),
-    GRADUATION_LEVEL_BACHELOR("Bachelor"),
-    GRADUATION_LEVEL_MASTER("Master");
+    STATUS_ACTIVE("active"),
+    STATUS_NOT_ACTIVE("not_active"),
+    GRADUATION_LEVEL_BACHELOR("bachelor"),
+    GRADUATION_LEVEL_MASTER("master");
 
     private String userEnum;
 
