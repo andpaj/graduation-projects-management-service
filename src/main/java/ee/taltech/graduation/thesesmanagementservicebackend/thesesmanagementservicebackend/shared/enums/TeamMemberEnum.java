@@ -2,11 +2,11 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 public enum TeamMemberEnum {
 
-    ROLE_TEAM_CREATOR("Team Creator"),
-    ROLE_TEAM_MEMBER("Team Member"),
-    ROLE_SUPERVISOR("Supervisor"),
-    STATUS_ACCEPTED("Accepted"),
-    STATUS_WAITING("Waiting for acceptation");
+    ROLE_TEAM_CREATOR("team_owner"),
+    ROLE_TEAM_MEMBER("team_member"),
+    ROLE_SUPERVISOR("supervisor"),
+    STATUS_ACCEPTED("accepted"),
+    STATUS_WAITING("waiting");
 
     private String teamMemberEnum;
 

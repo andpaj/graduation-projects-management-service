@@ -2,15 +2,12 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 public enum ProjectEnum {
 
-    STATUS_AVAILABLE("Project is available"),
-    STATUS_NOT_AVAILABLE("Project is not available"),
-    LANGUAGE_ENGLISH("English"),
-    LANGUAGE_ESTONIAN("Estonian"),
-    DEGREE_BACHELOR("Bachelor"),
-    DEGREE_MASTER("Master"),
-    DIFFICULTY_EASY("Easy"),
-    DIFFICULTY_MEDIUM("Medium"),
-    DIFFICULTY_HARD("Hard");
+    STATUS_AVAILABLE("project_available"),
+    STATUS_NOT_AVAILABLE("project_not_available"),
+    LANGUAGE_ENGLISH("english"),
+    LANGUAGE_ESTONIAN("estonian"),
+    DEGREE_BACHELOR("bachelor"),
+    DEGREE_MASTER("master");
 
     private String projectEnum;
 
