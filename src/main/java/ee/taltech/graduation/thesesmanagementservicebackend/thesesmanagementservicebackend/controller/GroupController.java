@@ -41,9 +41,6 @@ public class GroupController {
 
     }
 
-
-
-
     @GetMapping(path = "/getAllGroups")
     public List<GroupRestWithoutUsers> getAllGroups(){
 

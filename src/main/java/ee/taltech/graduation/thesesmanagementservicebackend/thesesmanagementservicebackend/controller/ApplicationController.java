@@ -163,6 +163,20 @@ public class ApplicationController {
 
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @DeleteMapping(path = "/delete/{applicationId}")
+    private String deleteApplication(@PathVariable String applicationId){
+
+        applicationService.deleteApplication(applicationId);
+
+        return applicationId;
+
+
+
+    }
+
 
 
 

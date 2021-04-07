@@ -272,4 +272,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 
     }
+
+    @Override
+    public void deleteApplication(String applicationId) {
+        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
+        if (applicationEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
+
+        applicationRepository.delete(applicationEntity);
+
+
+    }
 }

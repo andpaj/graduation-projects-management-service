@@ -5,6 +5,7 @@ public class ProjectRestShort {
     private String projectId;
     private String userId;
     private String status;
+    private String title;
 
     public String getProjectId() {
         return projectId;
@@ -28,5 +29,13 @@ public class ProjectRestShort {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
