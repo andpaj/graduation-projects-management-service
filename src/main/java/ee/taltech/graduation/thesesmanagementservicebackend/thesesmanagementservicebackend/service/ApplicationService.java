@@ -15,4 +15,5 @@ public interface ApplicationService {
     ApplicationDto declineApplicationFromSupervisorSide(String supervisorId, String applicationId);
     ApplicationDto acceptApplicationFromStudentSide(String studentId, String applicationId);
     ApplicationDto declineApplicationFromStudentSide(String studentId, String applicationId);
+    void deleteApplication(String applicationId);
 }
