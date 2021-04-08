@@ -4,6 +4,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -127,6 +128,7 @@ public class InitialUsersSetup {
         TeamEntity testTeam1 = new TeamEntity();
         testTeam1.setTeamName("TestTeam1");
         testTeam1.setTeamId("testTeam1");
+        testTeam1.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
         testTeam1.setAuthorId(studentUser.getUserId());
 
         TeamMemberEntity testTeamMember1 = new TeamMemberEntity();

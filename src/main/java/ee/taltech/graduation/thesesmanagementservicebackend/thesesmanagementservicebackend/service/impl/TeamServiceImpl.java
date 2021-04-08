@@ -1,6 +1,5 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ApplicationEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamMemberEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
@@ -62,7 +61,7 @@ public class TeamServiceImpl implements TeamService {
         }
 
         teamDto.setTeamId(utils.generateTeamId(30));
-        teamDto.setStatus(TeamEnum.STATUS_LOOKING_FOR_PROJECT.getTeamEnum());
+        teamDto.setStatus(TeamEnum.STATUS_NOT_ACTIVE.getTeamEnum());
         teamDto.setAuthorId(userEntity.getUserId());
 
         TeamEntity teamEntity = modelMapper.map(teamDto, TeamEntity.class);

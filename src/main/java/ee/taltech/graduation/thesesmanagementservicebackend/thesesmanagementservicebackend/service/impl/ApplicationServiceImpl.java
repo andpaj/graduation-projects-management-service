@@ -179,22 +179,31 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new ServiceException(ErrorMessages.APPLICATION_CANT_CONFIRMED_BY_STUDENT.getErrorMessage());
         }
 
+        //Set application status
         applicationEntity.setStatus(ApplicationEnum.PROJECT_IN_PROGRESS.getApplicationEnum());
 
+        //Set project to the team
         TeamEntity teamEntity = applicationEntity.getTeam();
         teamEntity.setProject(applicationEntity.getProject());
         teamEntity.setStatus(TeamEnum.STATUS_PROJECT_IN_PROGRESS.getTeamEnum());
 
+        //Set team to the project
         ProjectEntity projectEntity = applicationEntity.getProject();
         projectEntity.setTeam(teamEntity);
         projectEntity.setStatus(ProjectEnum.STATUS_NOT_AVAILABLE.getProjectEnum());
 
+        //Add supervisor as a team member to the team
         TeamMemberEntity supervisorTeamMember = new TeamMemberEntity();
         supervisorTeamMember.setTeamMemberId(utils.generateTeamMemberId(30));
         supervisorTeamMember.setTeam(teamEntity);
         supervisorTeamMember.setRole(TeamMemberEnum.ROLE_SUPERVISOR.getTeamMemberEnum());
         supervisorTeamMember.setUser(projectEntity.getUser());
         supervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
+
+        //Set team id to all team members
+
+
+
 
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
@@ -247,6 +256,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
+
+        if (!teamEntity.getStatus().equals(TeamEnum.STATUS_ACTIVE.getTeamEnum())){
+            throw new ServiceException(ErrorMessages.APPLICATION_CANT_BE_SEND.getErrorMessage());
+        }
 
         applicationDto.setApplicationId(utils.generateApplicationId(30));
         applicationDto.setStatus(ApplicationEnum.SENT.getApplicationEnum());

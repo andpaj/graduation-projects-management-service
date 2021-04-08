@@ -21,7 +21,8 @@ public enum ErrorMessages {
     APPLICATION_ACCEPTED_DECLINED_BY_SUPERVISOR("This application is already accepted or declined by supervisor"),
     APPLICATION_CANT_DECLINED_BY_STUDENT("This application cant be decline by student"),
     APPLICATION_CANT_CONFIRMED_BY_STUDENT("This application cant be confirmed by student"),
-    APPLICATION_NO_RIGHTS("No authorities for user with this id");
+    APPLICATION_NO_RIGHTS("No authorities for user with this id"),
+    APPLICATION_CANT_BE_SEND("Application cant be send because all team members must accept team membership");
 
 
     private String errorMessage;

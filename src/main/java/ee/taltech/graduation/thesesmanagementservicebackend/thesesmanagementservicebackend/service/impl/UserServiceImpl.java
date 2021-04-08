@@ -153,6 +153,7 @@ public class UserServiceImpl implements UserService {
         TeamEntity teamEntity = new TeamEntity();
         teamEntity.setTeamId(utils.generateTeamId(30));
         teamEntity.setTeamName(TeamEnum.STARTER_TEAM_NAME.getTeamEnum());
+        teamEntity.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
 
         TeamMemberEntity teamMemberEntity = new TeamMemberEntity();
         teamMemberEntity.setTeamMemberId(utils.generateTeamMemberId(30));
