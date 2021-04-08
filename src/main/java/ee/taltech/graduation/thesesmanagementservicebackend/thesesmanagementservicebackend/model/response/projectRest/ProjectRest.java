@@ -17,7 +17,6 @@ public class ProjectRest {
     private String description;
     private String degree;
     private int studentAmount;
-    private int difficultyRating;
     private List<TagRest> tags;
     private List<ApplicationRestWithoutProject> applications;
 
@@ -83,14 +82,6 @@ public class ProjectRest {
 
     public void setDegree(String degree) {
         this.degree = degree;
-    }
-
-    public int getDifficultyRating() {
-        return difficultyRating;
-    }
-
-    public void setDifficultyRating(int difficultyRating) {
-        this.difficultyRating = difficultyRating;
     }
 
     public int getStudentAmount() {

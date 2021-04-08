@@ -10,6 +10,5 @@ public interface GroupService {
     GroupDto getGroupById(String groupId);
     List<GroupDto> getAllGroups();
     void deleteGroup(String groupId);
-
-
+    //GroupDto getGroupOnlyWithSupervisors(String groupId);
 }

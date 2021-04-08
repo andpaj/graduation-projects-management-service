@@ -31,7 +31,6 @@ public class ProjectRequestToDto implements Converter<ProjectDetailsRequestModel
         projectDto.setDescription(projectDetailsRequestModel.getDescription());
         projectDto.setStudentAmount(projectDetailsRequestModel.getStudentAmount());
         projectDto.setDegree(projectDetailsRequestModel.getDegree());
-        projectDto.setDifficultyRating(projectDetailsRequestModel.getDifficultyRating());
 
 //        for (TagRequestModel tagRequestModel: thesisDetailsRequestModel.getTags()){
 //           TagDto tagDto = modelMapper.map(tagRequestModel, TagDto.class);

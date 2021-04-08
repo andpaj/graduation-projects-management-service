@@ -171,7 +171,6 @@ public class InitialUsersSetup {
         project.setCreatingTime(new Date());
         project.setDegree("Bachelor");
         project.setDescription("some description to describe current project");
-        project.setDifficultyRating(2);
         project.setLanguage("Estonian");
         project.setProjectId("project1");
         project.setStatus("Available");
@@ -185,7 +184,6 @@ public class InitialUsersSetup {
         project2.setCreatingTime(new Date());
         project2.setDegree("Master");
         project2.setDescription("some description to describe current project");
-        project2.setDifficultyRating(2);
         project2.setLanguage("English");
         project2.setProjectId("project2");
         project2.setStatus("Available");
@@ -199,7 +197,6 @@ public class InitialUsersSetup {
         project3.setCreatingTime(new Date());
         project3.setDegree("Bachelor");
         project3.setDescription("some description to describe current project");
-        project3.setDifficultyRating(2);
         project3.setLanguage("English");
         project3.setProjectId("project3");
         project3.setStatus("Available");

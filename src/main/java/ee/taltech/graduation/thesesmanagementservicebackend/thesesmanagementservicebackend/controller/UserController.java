@@ -25,8 +25,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    //create get User without role parameter
-
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
@@ -60,7 +58,6 @@ public class UserController {
         return allUsers;
     }
 
-    //get all users with thesis
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")

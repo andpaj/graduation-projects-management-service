@@ -41,9 +41,6 @@ public class ProjectEntity {
     @Column(nullable = false)
     private String degree; // change for enum
 
-    @Column(nullable = false)
-    private int difficultyRating; //change for enum
-
     //add department
 
     @ManyToOne()
@@ -149,14 +146,6 @@ public class ProjectEntity {
 
     public void setDegree(String degree) {
         this.degree = degree;
-    }
-
-    public int getDifficultyRating() {
-        return difficultyRating;
-    }
-
-    public void setDifficultyRating(int difficultyRating) {
-        this.difficultyRating = difficultyRating;
     }
 
     public Date getAcceptingTime() {

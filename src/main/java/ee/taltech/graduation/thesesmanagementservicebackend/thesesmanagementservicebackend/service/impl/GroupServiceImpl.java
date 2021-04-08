@@ -1,12 +1,15 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.GroupService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.GroupDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +41,28 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
+//    @Override
+//    public GroupDto getGroupOnlyWithSupervisors(String groupId) {
+//        ModelMapper modelMapper = new ModelMapper();
+//        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+//        if (groupEntity == null) throw
+//                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+//
+//        GroupDto groupDto = modelMapper.map(groupEntity, GroupDto.class);
+//        List<UserDto> supervisorsList = new ArrayList<>();
+//
+//        for (UserDto userDto: groupDto.getUsers()){
+//            if (userDto.getRoles().contains(Roles.ROLE_TEACHER)){
+//                supervisorsList.add(userDto);
+//            }
+//        }
+//
+//
+//
+//
+//
+//    }
+
     @Override
     public List<GroupDto> getAllGroups() {
 
@@ -54,15 +79,6 @@ public class GroupServiceImpl implements GroupService {
 
         return groupDtoList;
 
-    }
-
-    @Override
-    public void deleteGroup(String groupId) {
-        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
-        if (groupEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
-
-        groupRepository.delete(groupEntity);
     }
 
 
@@ -89,5 +105,14 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
+
+    @Override
+    public void deleteGroup(String groupId) {
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+        if (groupEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+
+        groupRepository.delete(groupEntity);
+    }
 
 }
