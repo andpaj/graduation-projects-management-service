@@ -7,6 +7,7 @@ public class ApplicationRestWithoutProject {
     private String applicationId;
     private String status;
     private Date creatingTime;
+    private String workType;
     private String message;
 
     public String getApplicationId() {
@@ -39,5 +40,13 @@ public class ApplicationRestWithoutProject {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
     }
 }

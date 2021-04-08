@@ -9,8 +9,10 @@ public class ApplicationRestWithoutTeam {
     private String applicationId;
     private String status;
     private Date creatingTime;
+    private String workType;
     private String message;
     private ProjectRest project;
+
 
     public String getApplicationId() {
         return applicationId;
@@ -50,5 +52,13 @@ public class ApplicationRestWithoutTeam {
 
     public void setProject(ProjectRest project) {
         this.project = project;
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
     }
 }

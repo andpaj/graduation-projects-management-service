@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class ApplicationDetailsRequestModel {
 
+    private String workType;
     private String message;
 
 
@@ -16,5 +17,11 @@ public class ApplicationDetailsRequestModel {
         this.message = message;
     }
 
-   
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
+    }
 }
