@@ -200,9 +200,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         supervisorTeamMember.setUser(projectEntity.getUser());
         supervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
-        //Set team id to all team members
-
-
+        //Remove all remaining teams for all members of the accepted team
 
 
 
@@ -256,6 +254,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
+
+        for (ApplicationEntity applicationEntity: teamEntity.getApplications()){
+            if (applicationEntity.getProject().getProjectId().equals(projectId)) throw
+                    new ServiceException(ErrorMessages.APPLICATION_IS_ALREADY_SENT.getErrorMessage());
+        }
 
         if (!teamEntity.getStatus().equals(TeamEnum.STATUS_ACTIVE.getTeamEnum())){
             throw new ServiceException(ErrorMessages.APPLICATION_CANT_BE_SEND.getErrorMessage());

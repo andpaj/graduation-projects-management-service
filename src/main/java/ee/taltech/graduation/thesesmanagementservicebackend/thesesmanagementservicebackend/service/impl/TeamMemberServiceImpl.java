@@ -89,6 +89,11 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         if (teamMemberEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
+        if (teamMemberEntity.getStatus() == TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum()){
+            throw new ServiceException(ErrorMessages.MEMBER_ALREADY_ACCEPTED.getErrorMessage());
+        }
+
+
         teamMemberEntity.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
         TeamEntity teamEntity = teamMemberEntity.getTeam();
