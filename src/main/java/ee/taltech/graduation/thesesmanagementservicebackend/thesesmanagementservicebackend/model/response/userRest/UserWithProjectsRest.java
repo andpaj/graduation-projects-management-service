@@ -11,6 +11,8 @@ public class UserWithProjectsRest {
         private String lastName;
         private String email;
         private String graduationLevel;
+        private String starterTeam;
+        private String confirmedProject;
         private List<ProjectRest> projects;
 
         public String getUserId() {
@@ -59,6 +61,22 @@ public class UserWithProjectsRest {
 
         public void setGraduationLevel(String graduationLevel) {
             this.graduationLevel = graduationLevel;
+        }
+
+        public String getStarterTeam() {
+            return starterTeam;
+        }
+
+        public void setStarterTeam(String starterTeam) {
+            this.starterTeam = starterTeam;
+        }
+
+        public String getConfirmedProject() {
+            return confirmedProject;
+        }
+
+        public void setConfirmedProject(String confirmedProject) {
+            this.confirmedProject = confirmedProject;
         }
 }
 
