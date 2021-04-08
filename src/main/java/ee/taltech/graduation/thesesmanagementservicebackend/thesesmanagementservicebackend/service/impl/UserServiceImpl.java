@@ -124,18 +124,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto createUser(UserDto user,  List<String> groups) {
-        if (userRepository.findByEmail(user.getEmail()) != null)
+    public UserDto createUser(UserDto userDto,  List<String> groups) {
+        if (userRepository.findByEmail(userDto.getEmail()) != null)
             throw new ServiceException(ErrorMessages.RECORD_ALREADY_EXISTS.getErrorMessage());
 
         List<GroupEntity> groupEntityList = new ArrayList<>();
 
 
         ModelMapper modelMapper = new ModelMapper();
-        UserEntity userEntity = modelMapper.map(user, UserEntity.class);
+        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
 
         userEntity.setUserId(utils.generateUserId(30));
-        userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
 
         //change for loop
 
@@ -178,14 +178,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(String userId, UserDto user) {
+    public UserDto updateUser(String userId, UserDto userDto) {
         UserEntity userEntity = userRepository.findByUserId(userId);
 
         if (userEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
-        userEntity.setFirstName(user.getFirstName());
-        userEntity.setLastName(user.getLastName());
+        userEntity.setFirstName(userDto.getFirstName());
+        userEntity.setLastName(userDto.getLastName());
 
         UserEntity updatedUserDetails = userRepository.save(userEntity);
         ModelMapper modelMapper = new ModelMapper();

@@ -41,9 +41,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     Utils utils;
 
     @Override
-    public ApplicationDto getApplicationByApplicationId(String id) {
+    public ApplicationDto getApplicationByApplicationId(String applicationId) {
         ModelMapper modelMapper = new ModelMapper();
-        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(id);
+        ApplicationEntity applicationEntity = applicationRepository.findByApplicationId(applicationId);
         if (applicationEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_APPLICATION.getErrorMessage());
 

@@ -5,7 +5,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 public interface TeamMemberService {
 
     TeamMemberDto addMemberToTeam(String userId, String teamId);
-    TeamMemberDto acceptMembership(String id, String teamMemberId);
+    TeamMemberDto acceptMembership(String userId, String teamMemberId);
     void declineMembership(String userId, String teamMemberId);
-    TeamMemberDto getTeamMemberById(String id);
+    TeamMemberDto getTeamMemberById(String teamMemberId);
 }

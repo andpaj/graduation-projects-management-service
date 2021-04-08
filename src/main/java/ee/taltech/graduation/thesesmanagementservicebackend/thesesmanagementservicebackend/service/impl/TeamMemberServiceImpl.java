@@ -35,10 +35,10 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
 
     @Override
-    public TeamMemberDto getTeamMemberById(String id) {
+    public TeamMemberDto getTeamMemberById(String teamMemberId) {
         ModelMapper modelMapper = new ModelMapper();
 
-        TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(id);
+        TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(teamMemberId);
         if (teamMemberEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 

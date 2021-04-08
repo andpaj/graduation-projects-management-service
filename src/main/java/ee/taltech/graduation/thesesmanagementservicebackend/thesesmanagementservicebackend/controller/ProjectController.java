@@ -29,12 +29,12 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @GetMapping(path = "/{id}")
-    public ProjectRest getProject(@PathVariable String id){
+    @GetMapping(path = "/{projectId}")
+    public ProjectRest getProject(@PathVariable String projectId){
 
         ModelMapper modelMapper = new ModelMapper();
 
-        ProjectDto projectDto = projectService.getProjectByProjectId(id);
+        ProjectDto projectDto = projectService.getProjectByProjectId(projectId);
 
         ProjectRest projectRest = modelMapper.map(projectDto, ProjectRest.class);
 
@@ -71,13 +71,13 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @GetMapping(path = "/projectsByUserId/{id}")
-    public List<ProjectRest> getProjectsByUserId(@PathVariable String id){
+    @GetMapping(path = "/projectsByUserId/{userId}")
+    public List<ProjectRest> getProjectsByUserId(@PathVariable String userId){
         ModelMapper modelMapper = new ModelMapper();
 
         List<ProjectRest> returnValue = new ArrayList<>();
 
-        List<ProjectDto> projectDtoList = projectService.getProjectsByUserId(id);
+        List<ProjectDto> projectDtoList = projectService.getProjectsByUserId(userId);
 
         for (ProjectDto projectDto : projectDtoList) {
 
@@ -95,15 +95,15 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PostMapping(path = "/create/{id}")
-    public ProjectRest createProject(@PathVariable String id, @RequestBody ProjectDetailsRequestModel projectDetails) {
+    @PostMapping(path = "/create/{userId}")
+    public ProjectRest createProject(@PathVariable String userId, @RequestBody ProjectDetailsRequestModel projectDetails) {
 
         ModelMapper modelMapper = new ModelMapper();
 
         //ThesisDto thesisDto = thesisRequestToDto.convert(thesisDetails);
         ProjectDto projectDto = modelMapper.map(projectDetails, ProjectDto.class);
 
-        ProjectDto createdThesis = projectService.createProject(id, projectDto);
+        ProjectDto createdThesis = projectService.createProject(userId, projectDto);
 
         ProjectRest projectRest = modelMapper.map(createdThesis, ProjectRest.class);
 
@@ -118,14 +118,14 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PutMapping(path = "/update/{id}")
-    public ProjectRest updateProject(@PathVariable String id, @RequestBody ProjectDetailsRequestModel projectDetails){
+    @PutMapping(path = "/update/{projectId}")
+    public ProjectRest updateProject(@PathVariable String projectId, @RequestBody ProjectDetailsRequestModel projectDetails){
 
         ModelMapper modelMapper = new ModelMapper();
 
         ProjectDto projectDto = modelMapper.map(projectDetails, ProjectDto.class);
 
-        ProjectDto updatedProject = projectService.updateProject(id, projectDto);
+        ProjectDto updatedProject = projectService.updateProject(projectId, projectDto);
 
         ProjectRest returnValue = modelMapper.map(updatedProject, ProjectRest.class);
 
@@ -136,11 +136,11 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @DeleteMapping(path = "/delete/{id}")
-    public String deleteProject(@PathVariable String id){
+    @DeleteMapping(path = "/delete/{projectId}")
+    public String deleteProject(@PathVariable String projectId){
 
-        projectService.deleteProjects(id);
-        return id;
+        projectService.deleteProjects(projectId);
+        return projectId;
     }
 
 }

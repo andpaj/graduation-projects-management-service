@@ -25,12 +25,12 @@ public class TeamController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @GetMapping(path = "/{id}")
-    private TeamRest getTeamById(@PathVariable String id){
+    @GetMapping(path = "/{teamId}")
+    private TeamRest getTeamById(@PathVariable String teamId){
 
         ModelMapper modelMapper = new ModelMapper();
 
-        TeamDto team = teamService.getTeamById(id);
+        TeamDto team = teamService.getTeamById(teamId);
         TeamRest teamRest = modelMapper.map(team, TeamRest.class);
 
         return teamRest;
@@ -41,15 +41,15 @@ public class TeamController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PostMapping(path = "/create/{id}")
-    private TeamRest createTeam(@PathVariable String id, @RequestBody TeamDetailsRequestModel teamDetails){
+    @PostMapping(path = "/create/{userId}")
+    private TeamRest createTeam(@PathVariable String userId, @RequestBody TeamDetailsRequestModel teamDetails){
         ModelMapper modelMapper = new ModelMapper();
 
         List<String> members = teamDetails.getUsers();
 
         TeamDto teamDto = modelMapper.map(teamDetails, TeamDto.class);
 
-        TeamDto savedTeamDto = teamService.createTeam(id, teamDto, members);
+        TeamDto savedTeamDto = teamService.createTeam(userId, teamDto, members);
 
         TeamRest teamRest = modelMapper.map(savedTeamDto, TeamRest.class);
         return teamRest;
@@ -58,11 +58,11 @@ public class TeamController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @GetMapping(path = "/teamsByUserId/{id}")
-    private List<TeamRestWithoutMembers> getTeamsByUserId(@PathVariable String id){
+    @GetMapping(path = "/teamsByUserId/{userId}")
+    private List<TeamRestWithoutMembers> getTeamsByUserId(@PathVariable String userId){
         ModelMapper modelMapper = new ModelMapper();
 
-        List<TeamDto> teams = teamService.getTeamsByUserId(id);
+        List<TeamDto> teams = teamService.getTeamsByUserId(userId);
 
         List<TeamRestWithoutMembers> teamsRest = new ArrayList<>();
 

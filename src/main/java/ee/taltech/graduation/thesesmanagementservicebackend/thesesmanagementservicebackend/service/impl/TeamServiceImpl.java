@@ -100,8 +100,8 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public TeamDto getTeamById(String id) {
-        TeamEntity teamEntity = teamRepository.findByTeamId(id);
+    public TeamDto getTeamById(String teamId) {
+        TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
         if (teamEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();
@@ -111,11 +111,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public List<TeamDto> getTeamsByUserId(String id) {
+    public List<TeamDto> getTeamsByUserId(String userId) {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        UserEntity userEntity = userRepository.findByUserId(id);
+        UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
