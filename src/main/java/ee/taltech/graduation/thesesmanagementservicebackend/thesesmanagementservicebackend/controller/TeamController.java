@@ -76,6 +76,21 @@ public class TeamController {
 
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @PostMapping(path = "/finishTeamProject/{teamId}")
+    private TeamRest finishTeamProject(@PathVariable String teamId){
+        ModelMapper modelMapper = new ModelMapper();
+
+        TeamDto teamDto = teamService.finishTeamProject(teamId);
+
+        TeamRest teamRest = modelMapper.map(teamDto, TeamRest.class);
+
+        return teamRest;
+
+    }
+
 
     @DeleteMapping(path = "/delete/{teamId}")
     private String deleteTeam(@PathVariable String teamId){

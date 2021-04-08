@@ -10,4 +10,5 @@ public interface TeamService {
     TeamDto getTeamById(String teamId);
     List<TeamDto> getTeamsByUserId(String userId);
     void deleteTeam(String teamId);
+    TeamDto finishTeamProject(String teamId);
 }

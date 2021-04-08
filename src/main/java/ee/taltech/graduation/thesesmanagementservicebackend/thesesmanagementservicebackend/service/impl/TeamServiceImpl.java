@@ -136,6 +136,23 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
+    public TeamDto finishTeamProject(String teamId) {
+
+        ModelMapper modelMapper = new ModelMapper();
+        TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
+        if (teamEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
+
+        teamEntity.setStatus(TeamEnum.STATUS_PROJECT_IS_FINISHED.getTeamEnum());
+        TeamEntity savedTeam = teamRepository.save(teamEntity);
+
+        TeamDto teamDto = modelMapper.map(savedTeam, TeamDto.class);
+
+        return teamDto;
+
+    }
+
+    @Override
     public void deleteTeam(String teamId) {
 
         TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
