@@ -1,11 +1,17 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest;
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamMemberRest.TeamMemberRest;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class TeamForApplicationsRest {
 
     private String teamId;
     private String teamName;
     private String status;
     private String authorId;
+    private List<TeamMemberRest> teamMembers = new ArrayList<>();
 
     public String getTeamId() {
         return teamId;
@@ -37,5 +43,13 @@ public class TeamForApplicationsRest {
 
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
+    }
+
+    public List<TeamMemberRest> getTeamMembers() {
+        return teamMembers;
+    }
+
+    public void setTeamMembers(List<TeamMemberRest> teamMembers) {
+        this.teamMembers = teamMembers;
     }
 }

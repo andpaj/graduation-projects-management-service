@@ -75,7 +75,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         return teamMemberDto;
 
     }
-    
+
     @Override
     public TeamMemberDto acceptMembership(String userId, String teamMemberId) {
 

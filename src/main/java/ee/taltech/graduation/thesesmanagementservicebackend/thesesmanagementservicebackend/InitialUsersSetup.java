@@ -146,6 +146,7 @@ public class InitialUsersSetup {
         TeamEntity testTeam2 = new TeamEntity();
         testTeam2.setTeamName("TestTeam2");
         testTeam2.setTeamId("testTeam2");
+        testTeam2.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
         testTeam2.setAuthorId(userEntity.getUserId());
 
         TeamMemberEntity testTeamMember2 = new TeamMemberEntity();

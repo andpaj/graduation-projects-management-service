@@ -26,12 +26,12 @@ public class TeamController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/{id}")
-    private TeamRestWithoutMembers getTeamById(@PathVariable String id){
+    private TeamRest getTeamById(@PathVariable String id){
 
         ModelMapper modelMapper = new ModelMapper();
 
         TeamDto team = teamService.getTeamById(id);
-        TeamRestWithoutMembers teamRest = modelMapper.map(team, TeamRestWithoutMembers.class);
+        TeamRest teamRest = modelMapper.map(team, TeamRest.class);
 
         return teamRest;
 
