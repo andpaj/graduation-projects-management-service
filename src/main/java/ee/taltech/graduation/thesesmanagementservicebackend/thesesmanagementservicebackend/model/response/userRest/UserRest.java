@@ -12,6 +12,7 @@ public class UserRest {
     private String email;
     private String starterTeam;
     private String graduationLevel;
+    private String confirmedProject;
     private List<GroupRest> groupEntities;
     private List<String> roles;
 
@@ -79,5 +80,13 @@ public class UserRest {
 
     public void setGraduationLevel(String graduationLevel) {
         this.graduationLevel = graduationLevel;
+    }
+
+    public String getConfirmedProject() {
+        return confirmedProject;
+    }
+
+    public void setConfirmedProject(String confirmedProject) {
+        this.confirmedProject = confirmedProject;
     }
 }

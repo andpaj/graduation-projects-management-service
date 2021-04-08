@@ -35,6 +35,9 @@ public class UserEntity {
     @Column()
     private String starterTeam;
 
+    @Column
+    private String confirmedProject;
+
 //    @Column(nullable = false)
 //    private String status;
 
@@ -180,5 +183,13 @@ public class UserEntity {
 
     public void setStarterTeam(String starterTeam) {
         this.starterTeam = starterTeam;
+    }
+
+    public String getConfirmedProject() {
+        return confirmedProject;
+    }
+
+    public void setConfirmedProject(String confirmedProject) {
+        this.confirmedProject = confirmedProject;
     }
 }

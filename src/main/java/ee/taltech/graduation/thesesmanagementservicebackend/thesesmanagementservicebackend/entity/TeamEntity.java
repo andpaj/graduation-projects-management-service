@@ -29,7 +29,7 @@ public class TeamEntity {
     @Column
     private String authorId;
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "project")
     private ProjectEntity project;
 

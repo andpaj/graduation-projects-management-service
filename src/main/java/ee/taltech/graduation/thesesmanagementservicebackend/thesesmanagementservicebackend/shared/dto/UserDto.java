@@ -12,6 +12,7 @@ public class UserDto {
     private String encryptedPassword;
     private String starterTeam;
     private String graduationLevel;
+    private String confirmedProject;
     private List<ProjectDto> projects;
     private List<GroupDto> groupEntities;
     private List<String> roles;
@@ -119,5 +120,13 @@ public class UserDto {
 
     public void setStarterTeam(String starterTeam) {
         this.starterTeam = starterTeam;
+    }
+
+    public String getConfirmedProject() {
+        return confirmedProject;
+    }
+
+    public void setConfirmedProject(String confirmedProject) {
+        this.confirmedProject = confirmedProject;
     }
 }
