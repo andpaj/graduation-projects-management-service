@@ -127,7 +127,6 @@ public class ProjectServiceImpl implements ProjectService {
         projectEntity.setDescription(projectDto.getDescription());
         projectEntity.setStudentAmount(projectDto.getStudentAmount());
         projectEntity.setDegree(projectDto.getDegree());
-        projectEntity.setDifficultyRating(projectDto.getDifficultyRating());
 
         ProjectEntity updatedProject = projectRepository.save(projectEntity);
 
@@ -160,7 +159,6 @@ public class ProjectServiceImpl implements ProjectService {
         projectEntity.setDescription(projectDto.getDescription());
         projectEntity.setStudentAmount(projectDto.getStudentAmount());
         projectEntity.setDegree(projectDto.getDegree());
-        projectEntity.setDifficultyRating(projectDto.getDifficultyRating());
         if (projectDto.getTags() != null && !projectDto.getTags().isEmpty()) {
             for (TagDto tagDto: projectDto.getTags()){
                 if (tagRepository.findByTagName(tagDto.getTagName()) == null) {

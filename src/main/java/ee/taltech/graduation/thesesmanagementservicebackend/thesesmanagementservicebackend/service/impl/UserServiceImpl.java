@@ -45,18 +45,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     TeamRepository teamRepository;
 
-//    @Override
-//    public UserDto getUser(String email) {
-//        UserEntity userEntity = userRepository.findByEmail(email);
-//
-//        //if (userEntity == null) throw new UsernameNotFoundException(email);
-//        ModelMapper modelMapper = new ModelMapper();
-//
-//        UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
-//
-//
-//        return returnValue;
-//    }
 
     @Override
     public UserDto getUserByUserId(String userId)  {

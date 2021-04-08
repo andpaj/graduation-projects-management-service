@@ -10,7 +10,6 @@ public class ProjectDetailsRequestModel {
     private String description;
     private int studentAmount;
     private String degree;
-    private int difficultyRating;
     private Set<TagRequestModel> tags;
 
     public String getLanguage() {
@@ -51,14 +50,6 @@ public class ProjectDetailsRequestModel {
 
     public void setDegree(String degree) {
         this.degree = degree;
-    }
-
-    public int getDifficultyRating() {
-        return difficultyRating;
-    }
-
-    public void setDifficultyRating(int difficultyRating) {
-        this.difficultyRating = difficultyRating;
     }
 
     public Set<TagRequestModel> getTags() {
