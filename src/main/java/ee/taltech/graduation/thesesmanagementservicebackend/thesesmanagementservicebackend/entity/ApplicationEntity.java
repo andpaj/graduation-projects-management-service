@@ -20,6 +20,9 @@ public class ApplicationEntity {
     @Column
     private Date creatingTime;
 
+    @Column
+    private String workType;
+
     @Column(length = 500)
     private String message;
 
@@ -72,6 +75,14 @@ public class ApplicationEntity {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
     }
 
     public TeamEntity getTeam() {

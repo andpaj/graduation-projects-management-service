@@ -23,10 +23,10 @@ public class TagController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @GetMapping(path = "/{id}")
-    public TagRest getTagByTagId(@PathVariable String id){
+    @GetMapping(path = "/{tagId}")
+    public TagRest getTagByTagId(@PathVariable String tagId){
         ModelMapper modelMapper = new ModelMapper();
-        TagDto tagDto = tagService.getTagByTagId(id);
+        TagDto tagDto = tagService.getTagByTagId(tagId);
         TagRest tagRest = modelMapper.map(tagDto, TagRest.class);
 
         return tagRest;
@@ -70,12 +70,12 @@ public class TagController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @DeleteMapping(path = "/delete/{id}")
-    public String deleteTag(@PathVariable String id){
+    @DeleteMapping(path = "/delete/{tagId}")
+    public String deleteTag(@PathVariable String tagId){
 
-        tagService.deleteTag(id);
+        tagService.deleteTag(tagId);
 
-        return "Tag with id " + id + " was deleted";
+        return tagId;
     }
 
 

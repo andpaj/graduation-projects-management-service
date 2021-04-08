@@ -1,6 +1,5 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ApplicationEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TeamMemberEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
@@ -62,7 +61,7 @@ public class TeamServiceImpl implements TeamService {
         }
 
         teamDto.setTeamId(utils.generateTeamId(30));
-        teamDto.setStatus(TeamEnum.STATUS_LOOKING_FOR_PROJECT.getTeamEnum());
+        teamDto.setStatus(TeamEnum.STATUS_NOT_ACTIVE.getTeamEnum());
         teamDto.setAuthorId(userEntity.getUserId());
 
         TeamEntity teamEntity = modelMapper.map(teamDto, TeamEntity.class);
@@ -101,8 +100,8 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public TeamDto getTeamById(String id) {
-        TeamEntity teamEntity = teamRepository.findByTeamId(id);
+    public TeamDto getTeamById(String teamId) {
+        TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
         if (teamEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();
@@ -112,11 +111,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public List<TeamDto> getTeamsByUserId(String id) {
+    public List<TeamDto> getTeamsByUserId(String userId) {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        UserEntity userEntity = userRepository.findByUserId(id);
+        UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
 
@@ -134,6 +133,23 @@ public class TeamServiceImpl implements TeamService {
         }
 
         return teamDtos;
+    }
+
+    @Override
+    public TeamDto finishTeamProject(String teamId) {
+
+        ModelMapper modelMapper = new ModelMapper();
+        TeamEntity teamEntity = teamRepository.findByTeamId(teamId);
+        if (teamEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
+
+        teamEntity.setStatus(TeamEnum.STATUS_PROJECT_IS_FINISHED.getTeamEnum());
+        TeamEntity savedTeam = teamRepository.save(teamEntity);
+
+        TeamDto teamDto = modelMapper.map(savedTeam, TeamDto.class);
+
+        return teamDto;
+
     }
 
     @Override

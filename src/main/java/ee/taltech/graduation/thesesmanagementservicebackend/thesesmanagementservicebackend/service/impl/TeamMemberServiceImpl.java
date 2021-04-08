@@ -12,6 +12,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamMemberDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamMemberEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,10 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
 
     @Override
-    public TeamMemberDto getTeamMemberById(String id) {
+    public TeamMemberDto getTeamMemberById(String teamMemberId) {
         ModelMapper modelMapper = new ModelMapper();
 
-        TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(id);
+        TeamMemberEntity teamMemberEntity = teamMemberRepository.findByTeamMemberId(teamMemberId);
         if (teamMemberEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
@@ -78,6 +79,8 @@ public class TeamMemberServiceImpl implements TeamMemberService {
     @Override
     public TeamMemberDto acceptMembership(String userId, String teamMemberId) {
 
+        boolean active = true;
+
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
@@ -87,6 +90,22 @@ public class TeamMemberServiceImpl implements TeamMemberService {
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
         teamMemberEntity.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
+
+        TeamEntity teamEntity = teamMemberEntity.getTeam();
+
+        for (TeamMemberEntity teamMember: teamEntity.getTeamMembers()){
+            if (teamMember.getStatus() == TeamMemberEnum.STATUS_WAITING.getTeamMemberEnum()){
+                active = false;
+            }
+        }
+
+        if (active){
+            teamEntity.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        }
+
+        teamRepository.save(teamEntity);
+
+
         TeamMemberEntity savedStatus = teamMemberRepository.save(teamMemberEntity);
 
         ModelMapper modelMapper = new ModelMapper();
@@ -96,8 +115,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
     }
 
+
     @Override
     public void declineMembership(String userId, String teamMemberId) {
+
+        boolean active = true;
+
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
@@ -106,7 +129,20 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         if (teamMemberEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM_MEMBER.getErrorMessage());
 
+        TeamEntity teamEntity = teamMemberEntity.getTeam();
+
         teamMemberRepository.delete(teamMemberEntity);
+
+        for (TeamMemberEntity teamMember: teamEntity.getTeamMembers()){
+            if (teamMember.getStatus() == TeamMemberEnum.STATUS_WAITING.getTeamMemberEnum()){
+                active = false;
+            }
+        }
+
+        if (active){
+            teamEntity.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        }
+        teamRepository.save(teamEntity);
 
     }
 }

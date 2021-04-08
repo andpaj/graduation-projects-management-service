@@ -9,6 +9,7 @@ public class ApplicationDto {
     private String applicationId;
     private String status;
     private Date creatingTime;
+    private String workType;
     private String message;
     private TeamDto team;
     private ProjectDto project;
@@ -52,6 +53,14 @@ public class ApplicationDto {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
     }
 
     public TeamDto getTeam() {

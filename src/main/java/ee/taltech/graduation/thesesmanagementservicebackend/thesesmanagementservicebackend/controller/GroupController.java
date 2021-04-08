@@ -28,12 +28,12 @@ public class GroupController {
     GroupService groupService;
 
 
-    @GetMapping(path = "/{id}")
-    public GroupRestWithSubGroups getGroupById(@PathVariable String id){
+    @GetMapping(path = "/{groupId}")
+    public GroupRestWithSubGroups getGroupById(@PathVariable String groupId){
 
         ModelMapper modelMapper = new ModelMapper();
 
-        GroupDto groupDto = groupService.getGroupById(id);
+        GroupDto groupDto = groupService.getGroupById(groupId);
 
         GroupRestWithSubGroups returnValue = modelMapper.map(groupDto, GroupRestWithSubGroups.class);
 
@@ -86,12 +86,12 @@ public class GroupController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @DeleteMapping(path = "/delete/{id}")
-    public String deleteGroup(@PathVariable String id){
+    @DeleteMapping(path = "/delete/{groupId}")
+    public String deleteGroup(@PathVariable String groupId){
 
-        groupService.deleteGroup(id);
+        groupService.deleteGroup(groupId);
 
-        return "The group with id " + id + " was deleted";
+        return groupId;
     }
 
 

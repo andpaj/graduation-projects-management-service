@@ -12,6 +12,7 @@ public class ApplicationRest {
     private String applicationId;
     private String status;
     private Date creatingTime;
+    private String workType;
     private String message;
     private TeamForApplicationsRest team;
     private ProjectRestShort project;
@@ -63,5 +64,13 @@ public class ApplicationRest {
 
     public void setProject(ProjectRestShort project) {
         this.project = project;
+    }
+
+    public String getWorkType() {
+        return workType;
+    }
+
+    public void setWorkType(String workType) {
+        this.workType = workType;
     }
 }

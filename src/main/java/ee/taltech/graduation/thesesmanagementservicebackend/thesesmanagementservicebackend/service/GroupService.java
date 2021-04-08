@@ -7,7 +7,7 @@ import java.util.List;
 public interface GroupService {
 
     GroupDto createGroup(GroupDto groupDto, String parentGroupId);
-    GroupDto getGroupById(String id);
+    GroupDto getGroupById(String groupId);
     List<GroupDto> getAllGroups();
     void deleteGroup(String groupId);
 

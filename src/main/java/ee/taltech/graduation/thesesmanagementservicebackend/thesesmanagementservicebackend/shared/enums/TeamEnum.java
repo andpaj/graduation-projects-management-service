@@ -4,7 +4,7 @@ public enum TeamEnum {
 
     //Команда есть но все участинкии не потвердили свое участие
     STATUS_NOT_ACTIVE("not_active"),
-    STATUS_LOOKING_FOR_PROJECT("active"),
+    STATUS_ACTIVE("active"),
     STATUS_PROJECT_IN_PROGRESS("in_progress"),
     STATUS_PROJECT_IS_FINISHED("is_finished"),
     STARTER_TEAM_NAME("personal_team");

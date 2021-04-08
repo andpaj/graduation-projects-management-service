@@ -39,9 +39,9 @@ public class ProjectServiceImpl implements ProjectService {
 
 
     @Override
-    public ProjectDto getProjectByProjectId(String thesisId) {
+    public ProjectDto getProjectByProjectId(String projectId) {
 
-        ProjectEntity projectEntity = projectRepository.findByProjectId(thesisId);
+        ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
         ModelMapper modelMapper  = new ModelMapper();

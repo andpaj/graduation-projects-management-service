@@ -7,7 +7,8 @@ import java.util.List;
 public interface TeamService {
 
     TeamDto createTeam(String userId, TeamDto teamDto, List<String> members);
-    TeamDto getTeamById(String id);
-    List<TeamDto> getTeamsByUserId(String id);
+    TeamDto getTeamById(String teamId);
+    List<TeamDto> getTeamsByUserId(String userId);
     void deleteTeam(String teamId);
+    TeamDto finishTeamProject(String teamId);
 }

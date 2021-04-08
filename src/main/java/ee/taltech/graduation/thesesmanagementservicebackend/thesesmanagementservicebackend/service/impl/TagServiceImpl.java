@@ -24,9 +24,9 @@ public class TagServiceImpl implements TagService {
     Utils utils;
 
     @Override
-    public TagDto getTagByTagId(String id) {
+    public TagDto getTagByTagId(String tagId) {
         ModelMapper modelMapper = new ModelMapper();
-        TagEntity tagEntity = tagRepository.findByTagId(id);
+        TagEntity tagEntity = tagRepository.findByTagId(tagId);
         if (tagEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TAG.getErrorMessage());
 
@@ -63,9 +63,9 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void deleteTag(String id) {
+    public void deleteTag(String tagId) {
 
-        TagEntity tagEntity = tagRepository.findByTagId(id);
+        TagEntity tagEntity = tagRepository.findByTagId(tagId);
         if (tagEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TAG.getErrorMessage());
 

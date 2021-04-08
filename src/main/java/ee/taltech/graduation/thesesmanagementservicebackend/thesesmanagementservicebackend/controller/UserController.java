@@ -31,10 +31,10 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @GetMapping(path = "/{id}")
-    public UserRest getUser(@PathVariable String id){
+    @GetMapping(path = "/{userId}")
+    public UserRest getUser(@PathVariable String userId){
 
-        UserDto userDto = userService.getUserByUserId(id);
+        UserDto userDto = userService.getUserByUserId(userId);
         ModelMapper modelMapper = new ModelMapper();
         UserRest returnValue = modelMapper.map(userDto, UserRest.class);
 
@@ -99,15 +99,15 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PutMapping(path = "/{id}")
-    public UserRest updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails){
+    @PutMapping(path = "/{userId}")
+    public UserRest updateUser(@PathVariable String userId, @RequestBody UserDetailsRequestModel userDetails){
 
 
         ModelMapper modelMapper = new ModelMapper();
 
         UserDto userDto = modelMapper.map(userDetails, UserDto.class);
 
-        UserDto updatedUser = userService.updateUser(id, userDto);
+        UserDto updatedUser = userService.updateUser(userId, userDto);
 
         UserRest returnValue = modelMapper.map(updatedUser, UserRest.class);
 
@@ -119,12 +119,12 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @DeleteMapping(path = "/{id}")
-    public String deleteUser(@PathVariable String id){
+    @DeleteMapping(path = "/{userId}")
+    public String deleteUser(@PathVariable String userId){
 
-        userService.deleteUser(id);
+        userService.deleteUser(userId);
 
-        return id;
+        return userId;
     }
 
 

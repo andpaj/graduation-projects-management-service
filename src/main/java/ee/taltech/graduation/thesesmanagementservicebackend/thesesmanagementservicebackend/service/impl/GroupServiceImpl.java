@@ -24,11 +24,11 @@ public class GroupServiceImpl implements GroupService {
     Utils utils;
 
     @Override
-    public GroupDto getGroupById(String id) {
+    public GroupDto getGroupById(String groupId) {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        GroupEntity groupEntity = groupRepository.findByGroupId(id);
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
         if (groupEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
 
