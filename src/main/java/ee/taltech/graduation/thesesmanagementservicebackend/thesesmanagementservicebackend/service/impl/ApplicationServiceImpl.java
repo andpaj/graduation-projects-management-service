@@ -192,7 +192,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         projectEntity.setTeam(teamEntity);
         projectEntity.setStatus(ProjectEnum.STATUS_NOT_AVAILABLE.getProjectEnum());
 
-        //Set project id to all team members
+        //Set confirmed project id to all team members
         for (TeamMemberEntity teamMember: teamEntity.getTeamMembers()){
             teamMember.getUser().setConfirmedProject(projectEntity.getProjectId());
         }
