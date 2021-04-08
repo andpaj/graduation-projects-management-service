@@ -261,6 +261,9 @@ public class ApplicationServiceImpl implements ApplicationService {
             throw new ServiceException(ErrorMessages.APPLICATION_CANT_BE_SEND.getErrorMessage());
         }
 
+        if (projectEntity.getStatus().equals(ProjectEnum.STATUS_NOT_AVAILABLE.getProjectEnum())){
+            throw new ServiceException(ErrorMessages.PROJECT_IS_NOT_AVAILABLE.getErrorMessage());
+        }
         applicationDto.setApplicationId(utils.generateApplicationId(30));
         applicationDto.setStatus(ApplicationEnum.SENT.getApplicationEnum());
         applicationDto.setCreatingTime(new Date());

@@ -22,7 +22,8 @@ public enum ErrorMessages {
     APPLICATION_CANT_DECLINED_BY_STUDENT("This application cant be decline by student"),
     APPLICATION_CANT_CONFIRMED_BY_STUDENT("This application cant be confirmed by student"),
     APPLICATION_NO_RIGHTS("No authorities for user with this id"),
-    APPLICATION_CANT_BE_SEND("Application cant be send because all team members must accept team membership");
+    APPLICATION_CANT_BE_SEND("Application cant be send because all team members must accept team membership"),
+    PROJECT_IS_NOT_AVAILABLE("This project is not available");
 
 
     private String errorMessage;
