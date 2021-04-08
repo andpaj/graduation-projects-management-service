@@ -192,6 +192,11 @@ public class ApplicationServiceImpl implements ApplicationService {
         projectEntity.setTeam(teamEntity);
         projectEntity.setStatus(ProjectEnum.STATUS_NOT_AVAILABLE.getProjectEnum());
 
+        //Set project id to all team members
+        for (TeamMemberEntity teamMember: teamEntity.getTeamMembers()){
+            teamMember.getUser().setConfirmedProject(projectEntity.getProjectId());
+        }
+
         //Add supervisor as a team member to the team
         TeamMemberEntity supervisorTeamMember = new TeamMemberEntity();
         supervisorTeamMember.setTeamMemberId(utils.generateTeamMemberId(30));
@@ -200,10 +205,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         supervisorTeamMember.setUser(projectEntity.getUser());
         supervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
-        //Set project id to all team members
-        for (TeamMemberEntity teamMember: teamEntity.getTeamMembers()){
-            teamMember.getUser().setConfirmedProject(projectEntity.getProjectId());
-        }
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
         teamRepository.save(teamEntity);
