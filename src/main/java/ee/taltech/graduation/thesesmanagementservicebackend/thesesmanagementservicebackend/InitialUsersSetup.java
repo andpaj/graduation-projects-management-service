@@ -160,6 +160,57 @@ public class InitialUsersSetup {
         teamMemberRepository.save(testTeamMember2);
 
 
+        TeamEntity testTeam3 = new TeamEntity();
+        testTeam3.setTeamName("TestTeam3");
+        testTeam3.setTeamId("testTeam3");
+        testTeam3.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        testTeam3.setAuthorId(teacherUser.getUserId());
+
+        TeamMemberEntity testTeamMember3 = new TeamMemberEntity();
+        testTeamMember3.setTeamMemberId("testTeamMember3");
+        testTeamMember3.setUser(teacherUser);
+        testTeamMember3.setTeam(testTeam3);
+
+        teacherUser.setStarterTeam(testTeam3.getTeamId());
+
+        teamRepository.save(testTeam3);
+        teamMemberRepository.save(testTeamMember3);
+
+
+        TeamEntity testTeam4 = new TeamEntity();
+        testTeam4.setTeamName("TestTeam4");
+        testTeam4.setTeamId("testTeam4");
+        testTeam4.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        testTeam4.setAuthorId(userEntity2.getUserId());
+
+        TeamMemberEntity testTeamMember4 = new TeamMemberEntity();
+        testTeamMember4.setTeamMemberId("testTeamMember3");
+        testTeamMember4.setUser(userEntity2);
+        testTeamMember4.setTeam(testTeam4);
+
+        userEntity2.setStarterTeam(testTeam4.getTeamId());
+
+        teamRepository.save(testTeam4);
+        teamMemberRepository.save(testTeamMember4);
+
+
+        TeamEntity testTeam5 = new TeamEntity();
+        testTeam5.setTeamName("TestTeam5");
+        testTeam5.setTeamId("testTeam5");
+        testTeam5.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        testTeam5.setAuthorId(userEntity1.getUserId());
+
+        TeamMemberEntity testTeamMember5 = new TeamMemberEntity();
+        testTeamMember5.setTeamMemberId("testTeamMember3");
+        testTeamMember5.setUser(userEntity1);
+        testTeamMember5.setTeam(testTeam5);
+
+        userEntity1.setStarterTeam(testTeam5.getTeamId());
+
+        teamRepository.save(testTeam5);
+        teamMemberRepository.save(testTeamMember5);
+
+
 
         userRepository.save(teacherUser);
         userRepository.save(userEntity);
