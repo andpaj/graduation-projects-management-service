@@ -6,6 +6,7 @@ public class GroupDto {
 
     private long id;
     private String groupId;
+    private String groupStatus;
     private String groupClass;
     private String groupName;
     private List<GroupDto> subGroups;
@@ -26,6 +27,14 @@ public class GroupDto {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
+    }
+
+    public String getGroupStatus() {
+        return groupStatus;
+    }
+
+    public void setGroupStatus(String groupStatus) {
+        this.groupStatus = groupStatus;
     }
 
     public String getGroupClass() {

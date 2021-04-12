@@ -138,6 +138,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
         teamMemberRepository.delete(teamMemberEntity);
 
+        if (teamEntity.getTeamMembers().size() == 1){
+            teamEntity.setStatus(TeamEnum.STATUS_NOT_ACTIVE.getTeamEnum());
+            teamRepository.save(teamEntity);
+            return;
+        }
+
         for (TeamMemberEntity teamMember: teamEntity.getTeamMembers()){
             if (teamMember.getStatus() == TeamMemberEnum.STATUS_WAITING.getTeamMemberEnum()){
                 active = false;
