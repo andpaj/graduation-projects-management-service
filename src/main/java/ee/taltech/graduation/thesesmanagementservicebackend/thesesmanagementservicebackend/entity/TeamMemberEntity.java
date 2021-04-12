@@ -30,7 +30,7 @@ public class TeamMemberEntity {
 
     @PreRemove
     public void removeTeamMember() {
-       team.getTeamMembers().remove(this);
+       this.setTeam(null);
 
     }
 
