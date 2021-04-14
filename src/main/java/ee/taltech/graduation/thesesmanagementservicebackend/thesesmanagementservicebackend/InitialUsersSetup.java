@@ -127,6 +127,12 @@ public class InitialUsersSetup {
             userGroupRoleEntity.setRole(roleStudent);
             userGroupRoleRepository.save(userGroupRoleEntity);
 
+        UserGroupRoleEntity userGroupRoleEntity1 = new UserGroupRoleEntity();
+        userGroupRoleEntity1.setUser(teacherUser);
+        userGroupRoleEntity1.setGroupEntity(userGroup);
+        userGroupRoleEntity1.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity1);
+
 //        userEntity1.setGroupEntity(userGroup);
 //        userEntity2.setGroupEntity(userGroup);
 //        userGroup.getUsers().add(teacherUser);
