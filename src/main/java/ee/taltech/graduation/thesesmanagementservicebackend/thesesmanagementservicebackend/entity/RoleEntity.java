@@ -23,6 +23,9 @@ public class RoleEntity {
     @ManyToMany(mappedBy = "roles")
     private List<UserEntity> users;
 
+    @OneToMany(mappedBy = "role")
+    private List<UserGroupRoleEntity> userGroupRole;
+
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(cascade = CascadeType.PERSIST)

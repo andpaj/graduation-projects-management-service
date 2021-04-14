@@ -41,19 +41,33 @@ public class GroupController {
 
     }
 
-//    @GetMapping(path = "/groupOnlyWithSupervisors/{groupId}")
-//    public GroupRestWithSubGroups getGroupOnlyWithSupervisors(@PathVariable String groupId){
-//
-//        ModelMapper modelMapper = new ModelMapper();
-//
-//        GroupDto groupDto = groupService.getGroupOnlyWithSupervisors(groupId);
-//
-//        GroupRestWithSubGroups returnValue = modelMapper.map(groupDto, GroupRestWithSubGroups.class);
-//
-//        return returnValue;
-//
-//
-//    }
+    @GetMapping(path = "/groupOnlyWithSupervisors/{groupId}")
+    public GroupRestWithSubGroups getGroupOnlyWithSupervisors(@PathVariable String groupId){
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        GroupDto groupDto = groupService.getGroupOnlyWithSupervisors(groupId);
+
+        GroupRestWithSubGroups returnValue = modelMapper.map(groupDto, GroupRestWithSubGroups.class);
+
+        return returnValue;
+
+
+    }
+
+    @GetMapping(path = "/groupOnlyWithStudents/{groupId}")
+    public GroupRestWithSubGroups getGroupOnlyWithStudents(@PathVariable String groupId){
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        GroupDto groupDto = groupService.getGroupOnlyWithStudents(groupId);
+
+        GroupRestWithSubGroups returnValue = modelMapper.map(groupDto, GroupRestWithSubGroups.class);
+
+        return returnValue;
+
+
+    }
 
 
 

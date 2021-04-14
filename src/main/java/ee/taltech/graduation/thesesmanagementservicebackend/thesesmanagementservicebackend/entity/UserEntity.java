@@ -38,9 +38,6 @@ public class UserEntity {
     @Column
     private String confirmedProject;
 
-//    @Column(nullable = false)
-//    private String status;
-
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private Set<ProjectEntity> projects = new HashSet<>();
@@ -54,8 +51,6 @@ public class UserEntity {
     @JoinTable(name = "user_group",
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "group_id") })
-//    @ManyToOne()
-//    @JoinColumn(name = "groupId")
     private List<GroupEntity> groupEntities;
 
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -73,6 +68,9 @@ public class UserEntity {
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "role_id") })
     private List<RoleEntity> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserGroupRoleEntity> userGroupRole;
 
 
 
@@ -191,5 +189,13 @@ public class UserEntity {
 
     public void setConfirmedProject(String confirmedProject) {
         this.confirmedProject = confirmedProject;
+    }
+
+    public List<UserGroupRoleEntity> getUserGroupRole() {
+        return userGroupRole;
+    }
+
+    public void setUserGroupRole(List<UserGroupRoleEntity> userGroupRole) {
+        this.userGroupRole = userGroupRole;
     }
 }

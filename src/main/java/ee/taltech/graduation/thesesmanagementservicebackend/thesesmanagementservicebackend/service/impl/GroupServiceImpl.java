@@ -2,6 +2,7 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserGroupRoleEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
@@ -41,27 +42,63 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
-//    @Override
-//    public GroupDto getGroupOnlyWithSupervisors(String groupId) {
-//        ModelMapper modelMapper = new ModelMapper();
-//        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
-//        if (groupEntity == null) throw
-//                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
-//
-//        GroupDto groupDto = modelMapper.map(groupEntity, GroupDto.class);
-//        List<UserDto> supervisorsList = new ArrayList<>();
-//
-//        for (UserDto userDto: groupDto.getUsers()){
-//            if (userDto.getRoles().contains(Roles.ROLE_TEACHER)){
-//                supervisorsList.add(userDto);
-//            }
-//        }
-//
-//
-//
-//
-//
-//    }
+    @Override
+    public GroupDto getGroupOnlyWithStudents(String groupId) {
+        ModelMapper modelMapper = new ModelMapper();
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+        if (groupEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+
+        List<UserEntity> supervisors = new ArrayList<>();
+
+        for (UserGroupRoleEntity userGroupRoleEntity: groupEntity.getUserGroupRole()){
+            if (userGroupRoleEntity.getRole().getName().equals(Roles.ROLE_STUDENT.name())){
+                supervisors.add(userGroupRoleEntity.getUser());
+            }
+        }
+
+        GroupDto groupDto = modelMapper.map(groupEntity, GroupDto.class);
+
+        List<UserDto> supervisorsDto = new ArrayList<>();
+        for (UserEntity userEntity: supervisors){
+            UserDto userDto = modelMapper.map(userEntity, UserDto.class);
+            supervisorsDto.add(userDto);
+        }
+
+        groupDto.setUsers(supervisorsDto);
+
+        return groupDto;
+
+    }
+
+    @Override
+    public GroupDto getGroupOnlyWithSupervisors(String groupId) {
+        ModelMapper modelMapper = new ModelMapper();
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+        if (groupEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+
+        List<UserEntity> supervisors = new ArrayList<>();
+
+        for (UserGroupRoleEntity userGroupRoleEntity: groupEntity.getUserGroupRole()){
+            if (userGroupRoleEntity.getRole().getName().equals(Roles.ROLE_TEACHER.name())){
+                supervisors.add(userGroupRoleEntity.getUser());
+            }
+        }
+
+        GroupDto groupDto = modelMapper.map(groupEntity, GroupDto.class);
+
+        List<UserDto> supervisorsDto = new ArrayList<>();
+        for (UserEntity userEntity: supervisors){
+            UserDto userDto = modelMapper.map(userEntity, UserDto.class);
+            supervisorsDto.add(userDto);
+        }
+
+        groupDto.setUsers(supervisorsDto);
+
+        return groupDto;
+
+    }
 
     @Override
     public List<GroupDto> getAllGroups() {

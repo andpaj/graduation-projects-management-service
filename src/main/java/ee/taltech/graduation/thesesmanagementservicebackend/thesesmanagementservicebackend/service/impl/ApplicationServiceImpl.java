@@ -206,6 +206,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         supervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
 
+        //Remove all other teams of team members
+
+
+
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
         teamRepository.save(teamEntity);
         projectRepository.save(projectEntity);

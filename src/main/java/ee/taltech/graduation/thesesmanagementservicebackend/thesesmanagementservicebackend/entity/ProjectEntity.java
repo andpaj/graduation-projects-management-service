@@ -18,7 +18,7 @@ public class ProjectEntity {
     private String projectId;
 
     @Column(nullable = false)
-    private String status;  // change for enum
+    private String status;
 
     @Column(nullable = false)
     private Date creatingTime;
@@ -27,7 +27,7 @@ public class ProjectEntity {
     private Date acceptingTime;
 
     @Column(nullable = false)
-    private String language; // change String for Enum
+    private String language;
 
     @Column(nullable = false)
     private String title;
