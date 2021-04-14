@@ -42,6 +42,9 @@ public class GroupEntity {
     //@OneToMany(mappedBy = "groupEntity",fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<UserEntity> users = new ArrayList<>();
 
+    @OneToMany(mappedBy = "groupEntity")
+    private List<UserGroupRoleEntity> userGroupRole;
+
 
     public GroupEntity() {
     }
@@ -119,5 +122,13 @@ public class GroupEntity {
 
     public void setUsers(List<UserEntity> users) {
         this.users = users;
+    }
+
+    public List<UserGroupRoleEntity> getUserGroupRole() {
+        return userGroupRole;
+    }
+
+    public void setUserGroupRole(List<UserGroupRoleEntity> userGroupRole) {
+        this.userGroupRole = userGroupRole;
     }
 }

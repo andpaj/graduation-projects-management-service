@@ -19,6 +19,9 @@ import java.util.*;
 public class InitialUsersSetup {
 
     @Autowired
+    UserGroupRoleRepository userGroupRoleRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
@@ -117,6 +120,13 @@ public class InitialUsersSetup {
             List<GroupEntity> groups = new ArrayList<>(List.of(userGroup, userGroup2));
             teacherUser.setGroupEntities(groups);
             userEntity.setGroupEntities(groups);
+
+            UserGroupRoleEntity userGroupRoleEntity = new UserGroupRoleEntity();
+            userGroupRoleEntity.setUser(studentUser);
+            userGroupRoleEntity.setGroupEntity(userGroup);
+            userGroupRoleEntity.setRole(roleStudent);
+            userGroupRoleRepository.save(userGroupRoleEntity);
+
 //        userEntity1.setGroupEntity(userGroup);
 //        userEntity2.setGroupEntity(userGroup);
 //        userGroup.getUsers().add(teacherUser);
