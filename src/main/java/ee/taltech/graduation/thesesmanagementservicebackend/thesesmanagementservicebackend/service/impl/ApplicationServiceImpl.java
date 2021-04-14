@@ -207,7 +207,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 
         //Remove all other teams of team members
-
+        for (TeamMemberEntity teamMemberEntity: userEntity.getTeamMembers()){
+            if (teamMemberEntity.getTeam().getTeamId() != teamEntity.getTeamId()) {
+                teamRepository.delete(teamMemberEntity.getTeam());
+            }
+        }
 
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
