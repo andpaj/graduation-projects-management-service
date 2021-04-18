@@ -1,11 +1,13 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.ProjectEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.TagEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.ProjectRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TagRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
@@ -36,6 +38,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     Utils utils;
+
+    @Autowired
+    GroupRepository groupRepository;
 
 
     @Override
@@ -91,7 +96,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectDto createProject(String userId, ProjectDto projectDto) {
+    public ProjectDto createProject(String userId, String groupId, ProjectDto projectDto) {
+
+        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+        if (groupEntity == null) throw
+                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
 
         projectDto.setProjectId(utils.generateProjectId(30));
         projectDto.setStatus(ProjectEnum.STATUS_AVAILABLE.getProjectEnum());
@@ -99,6 +108,7 @@ public class ProjectServiceImpl implements ProjectService {
         ModelMapper modelMapper = new ModelMapper();
 
         ProjectEntity projectEntity = projectDtoToEntity(projectDto);
+        projectEntity.setGroupId(groupId);
 
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw

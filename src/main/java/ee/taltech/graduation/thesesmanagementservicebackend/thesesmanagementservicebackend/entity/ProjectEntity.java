@@ -39,9 +39,10 @@ public class ProjectEntity {
     private int studentAmount;
 
     @Column(nullable = false)
-    private String degree; // change for enum
+    private String degree;
 
-    //add department
+    @Column()
+    private String groupId;
 
     @ManyToOne()
     @JoinColumn(name="userId")
@@ -186,5 +187,13 @@ public class ProjectEntity {
 
     public void setApplications(List<ApplicationEntity> applications) {
         this.applications = applications;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }

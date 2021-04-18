@@ -95,15 +95,15 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PostMapping(path = "/create/{userId}")
-    public ProjectRest createProject(@PathVariable String userId, @RequestBody ProjectDetailsRequestModel projectDetails) {
+    @PostMapping(path = "/create")
+    public ProjectRest createProject(@RequestParam String userId, @RequestParam String groupId, @RequestBody ProjectDetailsRequestModel projectDetails) {
 
         ModelMapper modelMapper = new ModelMapper();
 
         //ThesisDto thesisDto = thesisRequestToDto.convert(thesisDetails);
         ProjectDto projectDto = modelMapper.map(projectDetails, ProjectDto.class);
 
-        ProjectDto createdThesis = projectService.createProject(userId, projectDto);
+        ProjectDto createdThesis = projectService.createProject(userId, groupId, projectDto);
 
         ProjectRest projectRest = modelMapper.map(createdThesis, ProjectRest.class);
 

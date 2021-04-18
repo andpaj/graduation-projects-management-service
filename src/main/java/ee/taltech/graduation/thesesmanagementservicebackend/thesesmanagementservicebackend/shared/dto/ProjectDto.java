@@ -16,6 +16,7 @@ public class ProjectDto {
     private String description;
     private int studentAmount;
     private String degree; // change for enum
+    private String groupId;
     private UserDto user;
     private Set<TagDto> tags;
     private TeamDto team;
@@ -131,5 +132,13 @@ public class ProjectDto {
 
     public void setApplications(List<ApplicationDto> applications) {
         this.applications = applications;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }

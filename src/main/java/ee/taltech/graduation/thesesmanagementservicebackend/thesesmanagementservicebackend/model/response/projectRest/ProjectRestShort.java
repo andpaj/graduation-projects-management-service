@@ -6,6 +6,7 @@ public class ProjectRestShort {
     private String userId;
     private String status;
     private String title;
+    private String groupId;
 
     public String getProjectId() {
         return projectId;
@@ -37,5 +38,13 @@ public class ProjectRestShort {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }

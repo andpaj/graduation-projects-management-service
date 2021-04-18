@@ -18,6 +18,7 @@ public class ProjectRest {
     private String description;
     private String degree;
     private int studentAmount;
+    private String groupId;
     private TeamRest team;
     private List<TagRest> tags;
     private List<ApplicationRestWithoutProject> applications;
@@ -116,5 +117,13 @@ public class ProjectRest {
 
     public void setTeam(TeamRest team) {
         this.team = team;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }
