@@ -41,6 +41,8 @@ public class UserController {
     }
 
 
+
+
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
@@ -56,6 +58,40 @@ public class UserController {
         }
 
         return allUsers;
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @GetMapping(path = "/getSupervisors")
+    public List<UserWithProjectsRest> getSupervisors(){
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserWithProjectsRest> allSupervisors = new ArrayList<>();
+        List<UserDto> supervisorsDto = userService.getSupervisors();
+
+        for (UserDto userDto : supervisorsDto){
+            UserWithProjectsRest userRest = modelMapper.map(userDto, UserWithProjectsRest.class);
+            allSupervisors.add(userRest);
+        }
+
+        return allSupervisors;
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @GetMapping(path = "/getStudents")
+    public List<UserWithProjectsRest> getStudents(){
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserWithProjectsRest> allStudents = new ArrayList<>();
+        List<UserDto> studentsDto = userService.getStudents();
+
+        for (UserDto userDto : studentsDto){
+            UserWithProjectsRest userRest = modelMapper.map(userDto, UserWithProjectsRest.class);
+            allStudents.add(userRest);
+        }
+
+        return allStudents;
     }
 
 

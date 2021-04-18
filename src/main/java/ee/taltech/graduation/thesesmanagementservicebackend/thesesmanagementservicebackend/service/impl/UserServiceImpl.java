@@ -11,6 +11,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +110,56 @@ public class UserServiceImpl implements UserService {
         return usersTest;
 
 
+    }
+
+    @Override
+    public List<UserDto> getSupervisors() {
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserDto> supervisorsDto = new ArrayList<>();
+        List<UserEntity> allUsers = userRepository.findAll();
+
+        List<UserEntity> supervisorsEntity = new ArrayList<>();
+
+        for (UserEntity userEntity: allUsers){
+            for (RoleEntity roleEntity: userEntity.getRoles()){
+                if (roleEntity.getName() == Roles.ROLE_TEACHER.name()){
+                    supervisorsEntity.add(userEntity);
+                }
+            }
+        }
+
+        for (UserEntity userEntity: supervisorsEntity){
+
+            UserDto userDto = modelMapper.map(userEntity, UserDto.class);
+            supervisorsDto.add(userDto);
+        }
+
+        return supervisorsDto;
+    }
+
+    @Override
+    public List<UserDto> getStudents() {
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserDto> studentsDto = new ArrayList<>();
+        List<UserEntity> allUsers = userRepository.findAll();
+
+        List<UserEntity> studentsEntity = new ArrayList<>();
+
+        for (UserEntity userEntity: allUsers){
+            for (RoleEntity roleEntity: userEntity.getRoles()){
+                if (roleEntity.getName() == Roles.ROLE_STUDENT.name()){
+                    studentsEntity.add(userEntity);
+                }
+            }
+        }
+
+        for (UserEntity userEntity: studentsEntity){
+
+            UserDto userDto = modelMapper.map(userEntity, UserDto.class);
+            studentsDto.add(userDto);
+        }
+
+        return studentsDto;
     }
 
     @Override

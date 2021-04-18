@@ -58,7 +58,6 @@ public class UserEntity {
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<TeamMemberEntity> teamMembers = new ArrayList<>();
 
-
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(
             cascade = {
@@ -72,8 +71,6 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     private List<UserGroupRoleEntity> userGroupRole;
 
-
-
     @PreRemove
     public void removeUser() {
        for (GroupEntity groupEntity: groupEntities) {
@@ -85,7 +82,6 @@ public class UserEntity {
        }
 
     }
-
 
     public long getId() {
         return id;

@@ -8,7 +8,7 @@ public interface ProjectService {
 
 
     ProjectDto getProjectByProjectId(String projectId);
-    ProjectDto createProject(String userId, ProjectDto projectDto);
+    ProjectDto createProject(String userId, String groupId, ProjectDto projectDto);
     ProjectDto updateProject(String projectId, ProjectDto projectDto);
     List<ProjectDto> getAllProjects();
     void deleteProjects(String projectId);
