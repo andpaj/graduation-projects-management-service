@@ -5,6 +5,9 @@ stages:
 build ProjectManagementServiceBackEnd:
   image: maven:maven:3.6.3-jdk-11
   stage: build
+  only:
+      refs:
+        - master
   script: "mvn install -B"
   artifacts:
     paths:
