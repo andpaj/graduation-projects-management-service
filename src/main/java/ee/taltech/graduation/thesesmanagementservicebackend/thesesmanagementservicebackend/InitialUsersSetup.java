@@ -415,6 +415,12 @@ public class InitialUsersSetup {
         student1.setRoles(List.of(roleStudent));
         userRepository.save(student1);
 
+        UserGroupRoleEntity userGroupRoleEntity20 = new UserGroupRoleEntity();
+        userGroupRoleEntity20.setUser(student1);
+        userGroupRoleEntity20.setGroupEntity(userGroup);
+        userGroupRoleEntity20.setRole(roleStudent);
+        userGroupRoleRepository.save(userGroupRoleEntity20);
+
         UserEntity student2 = new UserEntity();
         student2.setFirstName("Karl");
         student2.setLastName("test");
@@ -426,6 +432,12 @@ public class InitialUsersSetup {
         student2.setRoles(List.of(roleStudent));
         userRepository.save(student2);
 
+        UserGroupRoleEntity userGroupRoleEntity21 = new UserGroupRoleEntity();
+        userGroupRoleEntity21.setUser(student2);
+        userGroupRoleEntity21.setGroupEntity(userGroup);
+        userGroupRoleEntity21.setRole(roleStudent);
+        userGroupRoleRepository.save(userGroupRoleEntity21);
+
         UserEntity student3 = new UserEntity();
         student3.setFirstName("Toomas");
         student3.setLastName("test");
@@ -436,6 +448,12 @@ public class InitialUsersSetup {
         student3.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         student3.setRoles(List.of(roleStudent));
         userRepository.save(student3);
+
+        UserGroupRoleEntity userGroupRoleEntity22 = new UserGroupRoleEntity();
+        userGroupRoleEntity22.setUser(student3);
+        userGroupRoleEntity22.setGroupEntity(userGroup);
+        userGroupRoleEntity22.setRole(roleStudent);
+        userGroupRoleRepository.save(userGroupRoleEntity22);
 
 
 
