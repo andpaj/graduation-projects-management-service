@@ -2,9 +2,11 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.*;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.ProjectEnum;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.UserEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -78,6 +80,7 @@ public class InitialUsersSetup {
         studentUser.setLastName("Kartašov");
         studentUser.setEmail("student@test.com");
         studentUser.setUserId("testStudent");
+        studentUser.setGraduationLevel(UserEnum.GRADUATION_LEVEL_BACHELOR.getUserEnum());
         studentUser.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         studentUser.setRoles(List.of(roleStudent));
 
@@ -96,6 +99,7 @@ public class InitialUsersSetup {
         userEntity.setFirstName("Ago");
         userEntity.setLastName("Luberg");
         userEntity.setEmail("testAgo@test.com");
+        userEntity.setGraduationLevel(UserEnum.GRADUATION_LEVEL_MASTER.getUserEnum());
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         userEntity.setRoles(List.of(roleTeacher, roleStudent));
 
@@ -120,6 +124,10 @@ public class InitialUsersSetup {
             List<GroupEntity> groups = new ArrayList<>(List.of(userGroup, userGroup2));
             teacherUser.setGroupEntities(groups);
             userEntity.setGroupEntities(groups);
+            studentUser.setGroupEntities(groups);
+            userEntity1.setGroupEntities(groups);
+            userEntity2.setGroupEntities(groups);
+
 
             UserGroupRoleEntity userGroupRoleEntity = new UserGroupRoleEntity();
             userGroupRoleEntity.setUser(studentUser);
@@ -236,11 +244,11 @@ public class InitialUsersSetup {
         ProjectEntity project = new ProjectEntity();
         project.setAcceptingTime(new Date());
         project.setCreatingTime(new Date());
-        project.setDegree("Bachelor");
+        project.setDegree(ProjectEnum.DEGREE_BACHELOR.getProjectEnum());
         project.setDescription("some description to describe current project");
         project.setLanguage("Estonian");
         project.setProjectId("project1");
-        project.setStatus("Available");
+        project.setStatus(ProjectEnum.STATUS_AVAILABLE.getProjectEnum());
         project.setStudentAmount(2);
         project.setTitle("Graduation projects management service");
         project.setUser(userRepository.findByUserId("testTeacher"));
@@ -249,11 +257,11 @@ public class InitialUsersSetup {
         ProjectEntity project2 = new ProjectEntity();
         project2.setAcceptingTime(new Date());
         project2.setCreatingTime(new Date());
-        project2.setDegree("Master");
+        project2.setDegree(ProjectEnum.DEGREE_MASTER.getProjectEnum());
         project2.setDescription("some description to describe current project");
         project2.setLanguage("English");
         project2.setProjectId("project2");
-        project2.setStatus("Available");
+        project2.setStatus(ProjectEnum.STATUS_AVAILABLE.getProjectEnum());
         project2.setStudentAmount(2);
         project2.setTitle("ToDo list on React");
         project2.setUser(userRepository.findByUserId("testTeacher"));
@@ -262,11 +270,11 @@ public class InitialUsersSetup {
         ProjectEntity project3 = new ProjectEntity();
         project3.setAcceptingTime(new Date());
         project3.setCreatingTime(new Date());
-        project3.setDegree("Bachelor");
+        project3.setDegree(ProjectEnum.DEGREE_BACHELOR.getProjectEnum());
         project3.setDescription("some description to describe current project");
         project3.setLanguage("English");
         project3.setProjectId("project3");
-        project3.setStatus("Available");
+        project3.setStatus(ProjectEnum.STATUS_AVAILABLE.getProjectEnum());
         project3.setStudentAmount(2);
         project3.setTitle("TalTech Bot for Students");
         project3.setUser(userRepository.findByUserId("testTeacher"));
