@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
 
         for (UserEntity userEntity: allUsers){
             for (RoleEntity roleEntity: userEntity.getRoles()){
-                if (roleEntity.getName() == Roles.ROLE_TEACHER.name()){
+                if (roleEntity.getName().equals(Roles.ROLE_TEACHER.name())){
                     supervisorsEntity.add(userEntity);
                 }
             }
@@ -147,7 +147,7 @@ public class UserServiceImpl implements UserService {
 
         for (UserEntity userEntity: allUsers){
             for (RoleEntity roleEntity: userEntity.getRoles()){
-                if (roleEntity.getName() == Roles.ROLE_STUDENT.name()){
+                if (roleEntity.getName().equals(Roles.ROLE_STUDENT.name())){
                     studentsEntity.add(userEntity);
                 }
             }
