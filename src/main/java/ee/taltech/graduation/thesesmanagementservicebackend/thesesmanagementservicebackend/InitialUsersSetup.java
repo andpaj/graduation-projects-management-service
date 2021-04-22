@@ -129,6 +129,7 @@ public class InitialUsersSetup {
             userEntity2.setGroupEntities(groups);
 
 
+
             UserGroupRoleEntity userGroupRoleEntity = new UserGroupRoleEntity();
             userGroupRoleEntity.setUser(studentUser);
             userGroupRoleEntity.setGroupEntity(userGroup);
@@ -141,12 +142,176 @@ public class InitialUsersSetup {
         userGroupRoleEntity1.setRole(roleTeacher);
         userGroupRoleRepository.save(userGroupRoleEntity1);
 
-//        userEntity1.setGroupEntity(userGroup);
-//        userEntity2.setGroupEntity(userGroup);
-//        userGroup.getUsers().add(teacherUser);
-//        userGroup.getUsers().add(userEntity);
-//        userGroup.getUsers().add(userEntity1);
-//        userGroup.getUsers().add(userEntity2);
+
+        //Real teachers from document
+        UserEntity einar = new UserEntity();
+        einar.setFirstName("Einar");
+        einar.setLastName("Meister");
+        einar.setEmail("einar@test.com");
+        einar.setGroupEntities(groups);
+        einar.setUserId("einarTeacher");
+        einar.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        einar.setRoles(List.of(roleTeacher));
+        userRepository.save(einar);
+
+        UserEntity alex = new UserEntity();
+        alex.setFirstName("Alex");
+        alex.setLastName("Norta");
+        alex.setEmail("alex@test.com");
+        alex.setGroupEntities(groups);
+        alex.setUserId("alexTeacher");
+        alex.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        alex.setRoles(List.of(roleTeacher));
+        userRepository.save(alex);
+
+        UserEntity hellis = new UserEntity();
+        hellis.setFirstName("Hellis");
+        hellis.setLastName("Tamm");
+        hellis.setGroupEntities(groups);
+        hellis.setEmail("hellis@test.com");
+        hellis.setUserId("hellisTeacher");
+        hellis.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        hellis.setRoles(List.of(roleTeacher));
+        userRepository.save(hellis);
+
+
+        UserEntity silvio = new UserEntity();
+        silvio.setFirstName("Silvio");
+        silvio.setLastName("Capobianco");
+        silvio.setEmail("silvio@test.com");
+        silvio.setGroupEntities(groups);
+        silvio.setUserId("silvioTeacher");
+        silvio.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        silvio.setRoles(List.of(roleTeacher));
+        userRepository.save(silvio);
+
+        UserEntity niccolo = new UserEntity();
+        niccolo.setFirstName("Niccolò");
+        niccolo.setLastName("Veltri");
+        niccolo.setGroupEntities(groups);
+        niccolo.setEmail("niccolo@test.com");
+        niccolo.setUserId("niccoloTeacher");
+        niccolo.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        niccolo.setRoles(List.of(roleTeacher));
+        userRepository.save(niccolo);
+
+        UserEntity sadok = new UserEntity();
+        sadok.setFirstName("Sadok");
+        sadok.setLastName("BEN YAHIA");
+        sadok.setGroupEntities(groups);
+        sadok.setEmail("sadok@test.com");
+        sadok.setUserId("sadokTeacher");
+        sadok.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        sadok.setRoles(List.of(roleTeacher));
+        userRepository.save(sadok);
+
+        UserEntity juri = new UserEntity();
+        juri.setFirstName("Jüri");
+        juri.setLastName("Vain");
+        juri.setEmail("juri@test.com");
+        juri.setGroupEntities(groups);
+        juri.setUserId("juriTeacher");
+        juri.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        juri.setRoles(List.of(roleTeacher));
+        userRepository.save(juri);
+
+        UserEntity sven = new UserEntity();
+        sven.setFirstName("Sven");
+        sven.setLastName("Nõmm");
+        sven.setEmail("sven@test.com");
+        sven.setGroupEntities(groups);
+        sven.setUserId("svenTeacher");
+        sven.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        sven.setRoles(List.of(roleTeacher));
+        userRepository.save(sven);
+
+        UserEntity erki = new UserEntity();
+        erki.setFirstName("Erki");
+        erki.setLastName("Eessaar");
+        erki.setGroupEntities(groups);
+        erki.setEmail("erki@test.com");
+        erki.setUserId("erkiTeacher");
+        erki.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        erki.setRoles(List.of(roleTeacher));
+        userRepository.save(erki);
+
+        UserEntity arvo = new UserEntity();
+        arvo.setFirstName("Arvo");
+        arvo.setLastName("Kaldmäe");
+        arvo.setGroupEntities(groups);
+        arvo.setEmail("arvo@test.com");
+        arvo.setUserId("arvoTeacher");
+        arvo.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        arvo.setRoles(List.of(roleTeacher));
+        userRepository.save(arvo);
+
+        UserEntity pawel = new UserEntity();
+        pawel.setFirstName("Pawel");
+        pawel.setLastName("Sobocinski");
+        pawel.setEmail("pawel@test.com");
+        pawel.setGroupEntities(groups);
+        pawel.setUserId("pawelTeacher");
+        pawel.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        pawel.setRoles(List.of(roleTeacher));
+        userRepository.save(pawel);
+
+        UserEntity maksym = new UserEntity();
+        maksym.setFirstName("Maksym");
+        maksym.setLastName("Bortin");
+        maksym.setEmail("maksym@test.com");
+        maksym.setGroupEntities(groups);
+        maksym.setUserId("maksymTeacher");
+        maksym.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        maksym.setRoles(List.of(roleTeacher));
+        userRepository.save(maksym);
+
+        UserEntity martin = new UserEntity();
+        martin.setFirstName("Martin");
+        martin.setLastName("Rebane");
+        martin.setEmail("martin@test.com");
+        martin.setGroupEntities(groups);
+        martin.setUserId("martinTeacher");
+        martin.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        martin.setRoles(List.of(roleTeacher));
+        userRepository.save(martin);
+
+        UserEntity belikov = new UserEntity();
+        belikov.setFirstName("Juri");
+        belikov.setLastName("Belikov");
+        belikov.setEmail("belikov@test.com");
+        belikov.setGroupEntities(groups);
+        belikov.setUserId("belikovTeacher");
+        belikov.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        belikov.setRoles(List.of(roleTeacher));
+        userRepository.save(belikov);
+
+        UserEntity niels = new UserEntity();
+        niels.setFirstName("Niels");
+        niels.setLastName("Voorneveld");
+        niels.setEmail("niels@test.com");
+        niels.setUserId("nielsTeacher");
+        niels.setGroupEntities(groups);
+        niels.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        niels.setRoles(List.of(roleTeacher));
+        userRepository.save(niels);
+
+        UserEntity edward = new UserEntity();
+        edward.setFirstName("Edward");
+        edward.setLastName("Morehouse");
+        edward.setEmail("edward@test.com");
+        edward.setGroupEntities(groups);
+        edward.setUserId("edwardTeacher");
+        edward.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        edward.setRoles(List.of(roleTeacher));
+        userRepository.save(edward);
+
+
+        ///////////////////////////////////////////
+
+
+
+
+
 
 
         TeamEntity testTeam1 = new TeamEntity();
