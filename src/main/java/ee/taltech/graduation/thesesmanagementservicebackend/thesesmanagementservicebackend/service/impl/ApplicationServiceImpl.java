@@ -290,8 +290,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         applicationEntityList.add(applicationEntity);
 
         projectEntity.setApplications(applicationEntityList);
-
-
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
 
 
