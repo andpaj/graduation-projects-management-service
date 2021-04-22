@@ -476,7 +476,56 @@ public class InitialUsersSetup {
 
         teamRepository.save(testTeam1);
         teamMemberRepository.save(testTeamMember1);
+        /////
+        TeamEntity testTeamJacob = new TeamEntity();
+        testTeamJacob.setTeamName("TestTeamJacob");
+        testTeamJacob.setTeamId("testTeamJacob");
+        testTeamJacob.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        testTeamJacob.setAuthorId(student1.getUserId());
 
+        TeamMemberEntity testTeamMemberJacob = new TeamMemberEntity();
+        testTeamMemberJacob.setTeamMemberId("testTeamMemberJacob");
+        testTeamMemberJacob.setUser(student1);
+        testTeamMemberJacob.setTeam(testTeamJacob);
+
+        student1.setStarterTeam(testTeamJacob.getTeamId());
+        teamRepository.save(testTeamJacob);
+        teamMemberRepository.save(testTeamMemberJacob);
+        /////
+
+        /////
+        TeamEntity testTeamToomas = new TeamEntity();
+        testTeamToomas.setTeamName("TestTeamToomas");
+        testTeamToomas.setTeamId("testTeamToomas");
+        testTeamToomas.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        testTeamToomas.setAuthorId(student3.getUserId());
+
+        TeamMemberEntity testTeamMemberToomas = new TeamMemberEntity();
+        testTeamMemberToomas.setTeamMemberId("testTeamMemberToomas");
+        testTeamMemberToomas.setUser(student3);
+        testTeamMemberToomas.setTeam(testTeamToomas);
+
+        student3.setStarterTeam(testTeamToomas.getTeamId());
+        teamRepository.save(testTeamToomas);
+        teamMemberRepository.save(testTeamMemberToomas);
+        /////
+
+        /////
+        TeamEntity testTeamKarl = new TeamEntity();
+        testTeamKarl.setTeamName("TestTeamKarl");
+        testTeamKarl.setTeamId("testTeamKarl");
+        testTeamKarl.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+        testTeamKarl.setAuthorId(student2.getUserId());
+
+        TeamMemberEntity testTeamMemberKarl = new TeamMemberEntity();
+        testTeamMemberKarl.setTeamMemberId("testTeamMemberKarl");
+        testTeamMemberKarl.setUser(student2);
+        testTeamMemberKarl.setTeam(testTeamKarl);
+
+        student2.setStarterTeam(testTeamKarl.getTeamId());
+        teamRepository.save(testTeamKarl);
+        teamMemberRepository.save(testTeamMemberKarl);
+        /////
 
 
         TeamEntity testTeam2 = new TeamEntity();
