@@ -101,7 +101,7 @@ public class InitialUsersSetup {
         userEntity.setEmail("testAgo@test.com");
         userEntity.setGraduationLevel(UserEnum.GRADUATION_LEVEL_MASTER.getUserEnum());
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
-        userEntity.setRoles(List.of(roleTeacher, roleStudent));
+        userEntity.setRoles(List.of(roleTeacher));
 
         UserEntity userEntity1 = new UserEntity();
         userEntity1.setUserId("testMarko");
@@ -154,6 +154,12 @@ public class InitialUsersSetup {
         einar.setRoles(List.of(roleTeacher));
         userRepository.save(einar);
 
+        UserGroupRoleEntity userGroupRoleEntity3 = new UserGroupRoleEntity();
+        userGroupRoleEntity3.setUser(einar);
+        userGroupRoleEntity3.setGroupEntity(userGroup);
+        userGroupRoleEntity3.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity3);
+
         UserEntity alex = new UserEntity();
         alex.setFirstName("Alex");
         alex.setLastName("Norta");
@@ -164,6 +170,12 @@ public class InitialUsersSetup {
         alex.setRoles(List.of(roleTeacher));
         userRepository.save(alex);
 
+        UserGroupRoleEntity userGroupRoleEntity4 = new UserGroupRoleEntity();
+        userGroupRoleEntity4.setUser(alex);
+        userGroupRoleEntity4.setGroupEntity(userGroup);
+        userGroupRoleEntity4.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity4);
+
         UserEntity hellis = new UserEntity();
         hellis.setFirstName("Hellis");
         hellis.setLastName("Tamm");
@@ -173,6 +185,12 @@ public class InitialUsersSetup {
         hellis.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         hellis.setRoles(List.of(roleTeacher));
         userRepository.save(hellis);
+
+        UserGroupRoleEntity userGroupRoleEntity5 = new UserGroupRoleEntity();
+        userGroupRoleEntity5.setUser(hellis);
+        userGroupRoleEntity5.setGroupEntity(userGroup);
+        userGroupRoleEntity5.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity5);
 
 
         UserEntity silvio = new UserEntity();
@@ -185,6 +203,12 @@ public class InitialUsersSetup {
         silvio.setRoles(List.of(roleTeacher));
         userRepository.save(silvio);
 
+        UserGroupRoleEntity userGroupRoleEntity6 = new UserGroupRoleEntity();
+        userGroupRoleEntity6.setUser(silvio);
+        userGroupRoleEntity6.setGroupEntity(userGroup);
+        userGroupRoleEntity6.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity6);
+
         UserEntity niccolo = new UserEntity();
         niccolo.setFirstName("Niccolò");
         niccolo.setLastName("Veltri");
@@ -194,6 +218,12 @@ public class InitialUsersSetup {
         niccolo.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         niccolo.setRoles(List.of(roleTeacher));
         userRepository.save(niccolo);
+
+        UserGroupRoleEntity userGroupRoleEntity7 = new UserGroupRoleEntity();
+        userGroupRoleEntity7.setUser(niccolo);
+        userGroupRoleEntity7.setGroupEntity(userGroup);
+        userGroupRoleEntity7.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity7);
 
         UserEntity sadok = new UserEntity();
         sadok.setFirstName("Sadok");
@@ -205,6 +235,12 @@ public class InitialUsersSetup {
         sadok.setRoles(List.of(roleTeacher));
         userRepository.save(sadok);
 
+        UserGroupRoleEntity userGroupRoleEntity8 = new UserGroupRoleEntity();
+        userGroupRoleEntity8.setUser(sadok);
+        userGroupRoleEntity8.setGroupEntity(userGroup);
+        userGroupRoleEntity8.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity8);
+
         UserEntity juri = new UserEntity();
         juri.setFirstName("Jüri");
         juri.setLastName("Vain");
@@ -214,6 +250,12 @@ public class InitialUsersSetup {
         juri.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         juri.setRoles(List.of(roleTeacher));
         userRepository.save(juri);
+
+        UserGroupRoleEntity userGroupRoleEntity9 = new UserGroupRoleEntity();
+        userGroupRoleEntity9.setUser(juri);
+        userGroupRoleEntity9.setGroupEntity(userGroup);
+        userGroupRoleEntity9.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity9);
 
         UserEntity sven = new UserEntity();
         sven.setFirstName("Sven");
@@ -225,6 +267,12 @@ public class InitialUsersSetup {
         sven.setRoles(List.of(roleTeacher));
         userRepository.save(sven);
 
+        UserGroupRoleEntity userGroupRoleEntity10 = new UserGroupRoleEntity();
+        userGroupRoleEntity10.setUser(sven);
+        userGroupRoleEntity10.setGroupEntity(userGroup);
+        userGroupRoleEntity10.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity10);
+
         UserEntity erki = new UserEntity();
         erki.setFirstName("Erki");
         erki.setLastName("Eessaar");
@@ -234,6 +282,12 @@ public class InitialUsersSetup {
         erki.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         erki.setRoles(List.of(roleTeacher));
         userRepository.save(erki);
+
+        UserGroupRoleEntity userGroupRoleEntity11 = new UserGroupRoleEntity();
+        userGroupRoleEntity11.setUser(erki);
+        userGroupRoleEntity11.setGroupEntity(userGroup);
+        userGroupRoleEntity11.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity11);
 
         UserEntity arvo = new UserEntity();
         arvo.setFirstName("Arvo");
@@ -245,6 +299,12 @@ public class InitialUsersSetup {
         arvo.setRoles(List.of(roleTeacher));
         userRepository.save(arvo);
 
+        UserGroupRoleEntity userGroupRoleEntity12 = new UserGroupRoleEntity();
+        userGroupRoleEntity12.setUser(arvo);
+        userGroupRoleEntity12.setGroupEntity(userGroup);
+        userGroupRoleEntity12.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity12);
+
         UserEntity pawel = new UserEntity();
         pawel.setFirstName("Pawel");
         pawel.setLastName("Sobocinski");
@@ -254,6 +314,12 @@ public class InitialUsersSetup {
         pawel.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         pawel.setRoles(List.of(roleTeacher));
         userRepository.save(pawel);
+
+        UserGroupRoleEntity userGroupRoleEntity13= new UserGroupRoleEntity();
+        userGroupRoleEntity13.setUser(pawel);
+        userGroupRoleEntity13.setGroupEntity(userGroup);
+        userGroupRoleEntity13.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity13);
 
         UserEntity maksym = new UserEntity();
         maksym.setFirstName("Maksym");
@@ -265,6 +331,12 @@ public class InitialUsersSetup {
         maksym.setRoles(List.of(roleTeacher));
         userRepository.save(maksym);
 
+        UserGroupRoleEntity userGroupRoleEntity14= new UserGroupRoleEntity();
+        userGroupRoleEntity14.setUser(maksym);
+        userGroupRoleEntity14.setGroupEntity(userGroup);
+        userGroupRoleEntity14.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity14);
+
         UserEntity martin = new UserEntity();
         martin.setFirstName("Martin");
         martin.setLastName("Rebane");
@@ -274,6 +346,12 @@ public class InitialUsersSetup {
         martin.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         martin.setRoles(List.of(roleTeacher));
         userRepository.save(martin);
+
+        UserGroupRoleEntity userGroupRoleEntity15 = new UserGroupRoleEntity();
+        userGroupRoleEntity15.setUser(martin);
+        userGroupRoleEntity15.setGroupEntity(userGroup);
+        userGroupRoleEntity15.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity15);
 
         UserEntity belikov = new UserEntity();
         belikov.setFirstName("Juri");
@@ -285,6 +363,12 @@ public class InitialUsersSetup {
         belikov.setRoles(List.of(roleTeacher));
         userRepository.save(belikov);
 
+        UserGroupRoleEntity userGroupRoleEntity16 = new UserGroupRoleEntity();
+        userGroupRoleEntity16.setUser(belikov);
+        userGroupRoleEntity16.setGroupEntity(userGroup);
+        userGroupRoleEntity16.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity16);
+
         UserEntity niels = new UserEntity();
         niels.setFirstName("Niels");
         niels.setLastName("Voorneveld");
@@ -294,6 +378,12 @@ public class InitialUsersSetup {
         niels.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
         niels.setRoles(List.of(roleTeacher));
         userRepository.save(niels);
+
+        UserGroupRoleEntity userGroupRoleEntity17 = new UserGroupRoleEntity();
+        userGroupRoleEntity17.setUser(niels);
+        userGroupRoleEntity17.setGroupEntity(userGroup);
+        userGroupRoleEntity17.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity17);
 
         UserEntity edward = new UserEntity();
         edward.setFirstName("Edward");
@@ -305,8 +395,47 @@ public class InitialUsersSetup {
         edward.setRoles(List.of(roleTeacher));
         userRepository.save(edward);
 
+        UserGroupRoleEntity userGroupRoleEntity18 = new UserGroupRoleEntity();
+        userGroupRoleEntity18.setUser(edward);
+        userGroupRoleEntity18.setGroupEntity(userGroup);
+        userGroupRoleEntity18.setRole(roleTeacher);
+        userGroupRoleRepository.save(userGroupRoleEntity18);
+
+
 
         ///////////////////////////////////////////
+        UserEntity student1 = new UserEntity();
+        student1.setFirstName("Jacob");
+        student1.setLastName("test");
+        student1.setEmail("jacob@test.com");
+        student1.setUserId("student1");
+        student1.setGroupEntities(groups);
+        student1.setGraduationLevel(UserEnum.GRADUATION_LEVEL_BACHELOR.getUserEnum());
+        student1.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        student1.setRoles(List.of(roleStudent));
+        userRepository.save(student1);
+
+        UserEntity student2 = new UserEntity();
+        student2.setFirstName("Karl");
+        student2.setLastName("test");
+        student2.setEmail("karl@test.com");
+        student2.setUserId("student2");
+        student2.setGroupEntities(groups);
+        student2.setGraduationLevel(UserEnum.GRADUATION_LEVEL_BACHELOR.getUserEnum());
+        student2.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        student2.setRoles(List.of(roleStudent));
+        userRepository.save(student2);
+
+        UserEntity student3 = new UserEntity();
+        student3.setFirstName("Toomas");
+        student3.setLastName("test");
+        student3.setEmail("toomas@test.com");
+        student3.setUserId("student3");
+        student3.setGraduationLevel(UserEnum.GRADUATION_LEVEL_BACHELOR.getUserEnum());
+        student3.setGroupEntities(groups);
+        student3.setEncryptedPassword(bCryptPasswordEncoder.encode("test"));
+        student3.setRoles(List.of(roleStudent));
+        userRepository.save(student3);
 
 
 

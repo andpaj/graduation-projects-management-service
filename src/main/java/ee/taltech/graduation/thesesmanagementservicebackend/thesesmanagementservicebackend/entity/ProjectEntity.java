@@ -29,7 +29,7 @@ public class ProjectEntity {
     @Column(nullable = false)
     private String language;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 500)
     private String title;
 
     @Column(nullable = false, columnDefinition="TEXT")
