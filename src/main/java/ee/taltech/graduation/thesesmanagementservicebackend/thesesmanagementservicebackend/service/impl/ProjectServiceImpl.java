@@ -96,7 +96,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectDto> getProjectByGroupId(String groupId) {
+    public List<ProjectDto> getProjectsByGroupId(String groupId) {
         ModelMapper modelMapper = new ModelMapper();
 
         List<ProjectEntity> allProjects = projectRepository.findAll();

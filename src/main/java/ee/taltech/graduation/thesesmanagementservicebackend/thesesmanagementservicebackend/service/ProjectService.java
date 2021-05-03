@@ -14,5 +14,5 @@ public interface ProjectService {
     void deleteProjects(String projectId);
 
     List<ProjectDto> getProjectsByUserId(String userId);
-    List<ProjectDto> getProjectByGroupId(String groupId);
+    List<ProjectDto> getProjectsByGroupId(String groupId);
 }

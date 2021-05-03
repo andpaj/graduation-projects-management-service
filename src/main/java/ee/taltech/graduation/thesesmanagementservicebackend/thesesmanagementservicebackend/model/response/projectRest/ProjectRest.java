@@ -4,6 +4,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.groupRest.GroupRestWithoutUsers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.tagRest.TagRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest.TeamRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserRest;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,7 @@ public class ProjectRest {
     private String groupId;
     private TeamRest team;
     private List<TagRest> tags;
+    private UserRest user;
     private List<ApplicationRestWithoutProject> applications;
     private List<GroupRestWithoutUsers> groupEntities;
 
@@ -135,5 +137,13 @@ public class ProjectRest {
 
     public void setGroupEntities(List<GroupRestWithoutUsers> groupEntities) {
         this.groupEntities = groupEntities;
+    }
+
+    public UserRest getUser() {
+        return user;
+    }
+
+    public void setUser(UserRest user) {
+        this.user = user;
     }
 }

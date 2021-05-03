@@ -100,7 +100,7 @@ public class ProjectController {
 
         List<ProjectRest> returnValue = new ArrayList<>();
 
-        List<ProjectDto> projectDtoList = projectService.getProjectByGroupId(groupId);
+        List<ProjectDto> projectDtoList = projectService.getProjectsByGroupId(groupId);
 
         for (ProjectDto projectDto : projectDtoList) {
 

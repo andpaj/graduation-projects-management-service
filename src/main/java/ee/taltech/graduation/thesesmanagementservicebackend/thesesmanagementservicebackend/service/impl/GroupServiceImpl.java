@@ -71,8 +71,6 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
-    //по груп айди выдать все проекты с этим груп айди
-
 
     @Override
     public GroupDto getGroupOnlyWithSupervisors(String groupId) {
