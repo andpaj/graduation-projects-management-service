@@ -1,6 +1,7 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest;
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.applicationRest.ApplicationRestWithoutProject;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.groupRest.GroupRestWithoutUsers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.tagRest.TagRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest.TeamRest;
 
@@ -22,6 +23,7 @@ public class ProjectRest {
     private TeamRest team;
     private List<TagRest> tags;
     private List<ApplicationRestWithoutProject> applications;
+    private List<GroupRestWithoutUsers> groupEntities;
 
     public String getProjectId() {
         return projectId;
@@ -125,5 +127,13 @@ public class ProjectRest {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
+    }
+
+    public List<GroupRestWithoutUsers> getGroupEntities() {
+        return groupEntities;
+    }
+
+    public void setGroupEntities(List<GroupRestWithoutUsers> groupEntities) {
+        this.groupEntities = groupEntities;
     }
 }

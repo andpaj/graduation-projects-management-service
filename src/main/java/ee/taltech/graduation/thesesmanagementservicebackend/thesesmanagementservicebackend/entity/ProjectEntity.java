@@ -41,12 +41,22 @@ public class ProjectEntity {
     @Column(nullable = false)
     private String degree;
 
-    @Column()
-    private String groupId;
 
     @ManyToOne()
     @JoinColumn(name="userId")
     private UserEntity user;
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE,
+
+            })
+    @JoinTable(name = "projects_groups",
+            joinColumns = { @JoinColumn(name = "project_id") },
+            inverseJoinColumns = { @JoinColumn(name = "group_id") })
+    private List<GroupEntity> groupEntities = new ArrayList<>();
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(
@@ -189,11 +199,11 @@ public class ProjectEntity {
         this.applications = applications;
     }
 
-    public String getGroupId() {
-        return groupId;
+    public List<GroupEntity> getGroupEntities() {
+        return groupEntities;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setGroupEntities(List<GroupEntity> groupEntities) {
+        this.groupEntities = groupEntities;
     }
 }

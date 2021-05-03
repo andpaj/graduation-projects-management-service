@@ -90,20 +90,44 @@ public class ProjectController {
 
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @GetMapping(path = "/projectsByGroupId/{groupId}")
+    public List<ProjectRest> getProjectsByGroupId(@PathVariable String groupId){
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<ProjectRest> returnValue = new ArrayList<>();
+
+        List<ProjectDto> projectDtoList = projectService.getProjectByGroupId(groupId);
+
+        for (ProjectDto projectDto : projectDtoList) {
+
+            ProjectRest projectRest = modelMapper.map(projectDto, ProjectRest.class);
+            returnValue.add(projectRest);
+
+        }
+
+        return returnValue;
+
+
+    }
+
 
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @PostMapping(path = "/create")
-    public ProjectRest createProject(@RequestParam String userId, @RequestParam String groupId, @RequestBody ProjectDetailsRequestModel projectDetails) {
+    public ProjectRest createProject(@RequestParam String userId, @RequestBody ProjectDetailsRequestModel projectDetails) {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        //ThesisDto thesisDto = thesisRequestToDto.convert(thesisDetails);
+        List<String> groupsId = projectDetails.getGroups();
         ProjectDto projectDto = modelMapper.map(projectDetails, ProjectDto.class);
 
-        ProjectDto createdThesis = projectService.createProject(userId, groupId, projectDto);
+        ProjectDto createdThesis = projectService.createProject(userId, groupsId, projectDto);
 
         ProjectRest projectRest = modelMapper.map(createdThesis, ProjectRest.class);
 

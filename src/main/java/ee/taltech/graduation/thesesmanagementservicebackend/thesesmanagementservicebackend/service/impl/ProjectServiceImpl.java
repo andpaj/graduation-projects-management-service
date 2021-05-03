@@ -96,11 +96,43 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectDto createProject(String userId, String groupId, ProjectDto projectDto) {
+    public List<ProjectDto> getProjectByGroupId(String groupId) {
+        ModelMapper modelMapper = new ModelMapper();
 
-        GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
-        if (groupEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+        List<ProjectEntity> allProjects = projectRepository.findAll();
+        List<ProjectEntity> sortedProjects = new ArrayList<>();
+        List<ProjectDto> sortedProjectsDto = new ArrayList<>();
+
+        for (ProjectEntity projectEntity: allProjects){
+            for (GroupEntity groupEntity: projectEntity.getGroupEntities()){
+                if (groupEntity.getGroupId().equals(groupId)){
+                    sortedProjects.add(projectEntity);
+                }
+            }
+        }
+
+        for (ProjectEntity project: sortedProjects){
+            ProjectDto projectDto = modelMapper.map(project, ProjectDto.class);
+            sortedProjectsDto.add(projectDto);
+        }
+
+
+        return sortedProjectsDto;
+
+    }
+
+    @Override
+    public ProjectDto createProject(String userId, List<String> groupsId, ProjectDto projectDto) {
+
+        List<GroupEntity> projectGroups = new ArrayList<>();
+
+        for (String groupId: groupsId){
+            GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+            if (groupEntity == null) throw
+                    new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+            projectGroups.add(groupEntity);
+        }
+
 
         projectDto.setProjectId(utils.generateProjectId(30));
         projectDto.setStatus(ProjectEnum.STATUS_AVAILABLE.getProjectEnum());
@@ -108,7 +140,8 @@ public class ProjectServiceImpl implements ProjectService {
         ModelMapper modelMapper = new ModelMapper();
 
         ProjectEntity projectEntity = projectDtoToEntity(projectDto);
-        projectEntity.setGroupId(groupId);
+        projectEntity.setGroupEntities(projectGroups);
+
 
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw

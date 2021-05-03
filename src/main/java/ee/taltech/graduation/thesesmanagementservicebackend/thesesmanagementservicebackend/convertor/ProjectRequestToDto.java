@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
+@Deprecated
 @Component
 public class ProjectRequestToDto implements Converter<ProjectDetailsRequestModel, ProjectDto>
 {

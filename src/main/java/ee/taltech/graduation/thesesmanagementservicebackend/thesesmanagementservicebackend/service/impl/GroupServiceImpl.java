@@ -71,8 +71,12 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
+    //по груп айди выдать все проекты с этим груп айди
+
+
     @Override
     public GroupDto getGroupOnlyWithSupervisors(String groupId) {
+
         ModelMapper modelMapper = new ModelMapper();
         GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
         if (groupEntity == null) throw

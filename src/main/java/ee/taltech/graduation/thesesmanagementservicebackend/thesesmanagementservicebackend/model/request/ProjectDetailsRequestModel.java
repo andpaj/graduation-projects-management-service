@@ -11,6 +11,7 @@ public class ProjectDetailsRequestModel {
     private int studentAmount;
     private String degree;
     private Set<TagRequestModel> tags;
+    private List<String> groups;
 
     public String getLanguage() {
         return language;
@@ -58,5 +59,13 @@ public class ProjectDetailsRequestModel {
 
     public void setTags(Set<TagRequestModel> tags) {
         this.tags = tags;
+    }
+
+    public List<String> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<String> groups) {
+        this.groups = groups;
     }
 }
