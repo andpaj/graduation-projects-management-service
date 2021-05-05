@@ -216,6 +216,8 @@ public class ProjectServiceImpl implements ProjectService {
                     projectEntity.getTags().add(tagEntity);
                 }
             }
+        } else {
+            projectEntity.setTags(new HashSet<>());
         }
 
         ProjectEntity updatedProject = projectRepository.save(projectEntity);
