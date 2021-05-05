@@ -191,6 +191,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectDto updateProject(String projectId, ProjectDto projectDto) {
+        ModelMapper modelMapper = new ModelMapper();
 
         ProjectEntity projectEntity = projectRepository.findByProjectId(projectId);
         if (projectEntity == null) throw
@@ -202,9 +203,23 @@ public class ProjectServiceImpl implements ProjectService {
         projectEntity.setStudentAmount(projectDto.getStudentAmount());
         projectEntity.setDegree(projectDto.getDegree());
 
+        if (projectDto.getTags() != null && !projectDto.getTags().isEmpty()) {
+            projectEntity.setTags(new HashSet<>());
+            for (TagDto tagDto: projectDto.getTags()){
+                if (tagRepository.findByTagName(tagDto.getTagName()) == null) {
+                    tagDto.setTagId(utils.generateTagId(30));
+                    TagEntity tagEntity = modelMapper.map(tagDto, TagEntity.class);
+                    projectEntity.getTags().add(tagEntity);
+                } else {
+
+                    TagEntity tagEntity = tagRepository.findByTagName(tagDto.getTagName());
+                    projectEntity.getTags().add(tagEntity);
+                }
+            }
+        }
+
         ProjectEntity updatedProject = projectRepository.save(projectEntity);
 
-        ModelMapper modelMapper = new ModelMapper();
         ProjectDto returnValue = modelMapper.map(updatedProject, ProjectDto.class);
 
         return  returnValue;

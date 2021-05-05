@@ -147,7 +147,10 @@ public class ProjectController {
 
         ModelMapper modelMapper = new ModelMapper();
 
-        List<String> groupsId = projectDetails.getGroups();
+        List<String> groupsId = new ArrayList<>();
+        if (projectDetails.getGroups() != null){
+            groupsId = projectDetails.getGroups();
+        }
 
         List<String> coSupervisors = new ArrayList<>();
 
@@ -163,10 +166,7 @@ public class ProjectController {
 
         return projectRest;
 
-
     }
-
-
 
 
     @ApiImplicitParams({
