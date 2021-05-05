@@ -16,11 +16,12 @@ public class ProjectDto {
     private String description;
     private int studentAmount;
     private String degree; // change for enum
-    private String groupId;
     private UserDto user;
     private Set<TagDto> tags;
     private TeamDto team;
     private List<ApplicationDto> applications;
+    private List<GroupDto> groupEntities;
+    private List<UserDto> coSupervisors;
 
     public long getId() {
         return id;
@@ -134,11 +135,19 @@ public class ProjectDto {
         this.applications = applications;
     }
 
-    public String getGroupId() {
-        return groupId;
+    public List<GroupDto> getGroupEntities() {
+        return groupEntities;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setGroupEntities(List<GroupDto> groupEntities) {
+        this.groupEntities = groupEntities;
+    }
+
+    public List<UserDto> getCoSupervisors() {
+        return coSupervisors;
+    }
+
+    public void setCoSupervisors(List<UserDto> coSupervisors) {
+        this.coSupervisors = coSupervisors;
     }
 }

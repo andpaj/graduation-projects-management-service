@@ -6,7 +6,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "groups")
@@ -41,6 +43,15 @@ public class GroupEntity {
             mappedBy = "groupEntities")
     //@OneToMany(mappedBy = "groupEntity",fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<UserEntity> users = new ArrayList<>();
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "groupEntities")
+    private List<ProjectEntity> projects = new ArrayList<>();
 
     @OneToMany(mappedBy = "groupEntity")
     private List<UserGroupRoleEntity> userGroupRole;
@@ -130,5 +141,13 @@ public class GroupEntity {
 
     public void setUserGroupRole(List<UserGroupRoleEntity> userGroupRole) {
         this.userGroupRole = userGroupRole;
+    }
+
+    public List<ProjectEntity> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<ProjectEntity> projects) {
+        this.projects = projects;
     }
 }

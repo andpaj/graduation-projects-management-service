@@ -14,6 +14,7 @@ public class UserDto {
     private String graduationLevel;
     private String confirmedProject;
     private List<ProjectDto> projects;
+    private List<ProjectDto> coSupervisorProjects;
     private List<GroupDto> groupEntities;
     private List<String> roles;
     private List<TeamMemberDto> teamMembers;
@@ -128,5 +129,13 @@ public class UserDto {
 
     public void setConfirmedProject(String confirmedProject) {
         this.confirmedProject = confirmedProject;
+    }
+
+    public List<ProjectDto> getCoSupervisorProjects() {
+        return coSupervisorProjects;
+    }
+
+    public void setCoSupervisorProjects(List<ProjectDto> coSupervisorProjects) {
+        this.coSupervisorProjects = coSupervisorProjects;
     }
 }

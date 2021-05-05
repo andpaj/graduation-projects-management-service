@@ -71,8 +71,10 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
+
     @Override
     public GroupDto getGroupOnlyWithSupervisors(String groupId) {
+
         ModelMapper modelMapper = new ModelMapper();
         GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
         if (groupEntity == null) throw

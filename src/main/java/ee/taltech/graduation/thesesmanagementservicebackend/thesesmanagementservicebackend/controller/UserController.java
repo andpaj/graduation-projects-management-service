@@ -41,8 +41,6 @@ public class UserController {
     }
 
 
-
-
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })

@@ -14,6 +14,7 @@ public class UserWithProjectsRest {
         private String starterTeam;
         private String confirmedProject;
         private List<ProjectRest> projects;
+        private List<ProjectRest> coSupervisorProjects;
 
         public String getUserId() {
             return userId;
@@ -77,6 +78,14 @@ public class UserWithProjectsRest {
 
         public void setConfirmedProject(String confirmedProject) {
             this.confirmedProject = confirmedProject;
+        }
+
+        public List<ProjectRest> getCoSupervisorProjects() {
+            return coSupervisorProjects;
+        }
+
+        public void setCoSupervisorProjects(List<ProjectRest> coSupervisorProjects) {
+            this.coSupervisorProjects = coSupervisorProjects;
         }
 }
 

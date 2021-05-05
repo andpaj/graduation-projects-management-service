@@ -12,6 +12,7 @@ public class GroupDto {
     private List<GroupDto> subGroups;
     private GroupDto parentGroup;
     private List<UserDto> users;
+    private List<ProjectDto> projects;
 
     public long getId() {
         return id;
@@ -75,5 +76,13 @@ public class GroupDto {
 
     public void setUsers(List<UserDto> users) {
         this.users = users;
+    }
+
+    public List<ProjectDto> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<ProjectDto> projects) {
+        this.projects = projects;
     }
 }

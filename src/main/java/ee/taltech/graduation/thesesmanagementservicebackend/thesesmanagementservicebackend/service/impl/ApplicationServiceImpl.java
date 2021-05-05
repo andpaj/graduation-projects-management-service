@@ -205,10 +205,21 @@ public class ApplicationServiceImpl implements ApplicationService {
         supervisorTeamMember.setUser(projectEntity.getUser());
         supervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
+        //Add co supervisors as a team members to the team
+        for (UserEntity coSupervisor: projectEntity.getCoSupervisors()){
+            TeamMemberEntity coSupervisorTeamMember = new TeamMemberEntity();
+            coSupervisorTeamMember.setTeamMemberId(utils.generateTeamMemberId(30));
+            coSupervisorTeamMember.setTeam(teamEntity);
+            coSupervisorTeamMember.setRole(TeamMemberEnum.ROLE_COSUPERVISOR.getTeamMemberEnum());
+            coSupervisorTeamMember.setUser(coSupervisor);
+            coSupervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
+            teamMemberRepository.save(coSupervisorTeamMember);
+        }
+
 
         //Remove all other teams of team members
         for (TeamMemberEntity teamMemberEntity: userEntity.getTeamMembers()){
-            if (teamMemberEntity.getTeam().getTeamId() != teamEntity.getTeamId()) {
+            if (!teamMemberEntity.getTeam().getTeamId().equals(teamEntity.getTeamId())) {
                 teamRepository.delete(teamMemberEntity.getTeam());
             }
         }

@@ -73,4 +73,12 @@ public class RoleEntity {
     public void setAuthorities(List<AuthorityEntity> authorities) {
         this.authorities = authorities;
     }
+
+    public List<UserGroupRoleEntity> getUserGroupRole() {
+        return userGroupRole;
+    }
+
+    public void setUserGroupRole(List<UserGroupRoleEntity> userGroupRole) {
+        this.userGroupRole = userGroupRole;
+    }
 }
