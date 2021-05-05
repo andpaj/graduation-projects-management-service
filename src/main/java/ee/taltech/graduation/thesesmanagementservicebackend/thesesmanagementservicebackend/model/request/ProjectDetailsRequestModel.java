@@ -12,6 +12,7 @@ public class ProjectDetailsRequestModel {
     private String degree;
     private Set<TagRequestModel> tags;
     private List<String> groups;
+    private List<String> coSupervisors;
 
     public String getLanguage() {
         return language;
@@ -67,5 +68,13 @@ public class ProjectDetailsRequestModel {
 
     public void setGroups(List<String> groups) {
         this.groups = groups;
+    }
+
+    public List<String> getCoSupervisors() {
+        return coSupervisors;
+    }
+
+    public void setCoSupervisors(List<String> coSupervisors) {
+        this.coSupervisors = coSupervisors;
     }
 }

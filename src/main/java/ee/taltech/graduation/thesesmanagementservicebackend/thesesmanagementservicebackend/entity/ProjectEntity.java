@@ -46,6 +46,16 @@ public class ProjectEntity {
     @JoinColumn(name="userId")
     private UserEntity user;
 
+    //test deleting and updating
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE,
+
+            })
+    private List<UserEntity> coSupervisors = new ArrayList<>();
+
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(
             cascade = {
@@ -205,5 +215,13 @@ public class ProjectEntity {
 
     public void setGroupEntities(List<GroupEntity> groupEntities) {
         this.groupEntities = groupEntities;
+    }
+
+    public List<UserEntity> getCoSupervisors() {
+        return coSupervisors;
+    }
+
+    public void setCoSupervisors(List<UserEntity> coSupervisors) {
+        this.coSupervisors = coSupervisors;
     }
 }

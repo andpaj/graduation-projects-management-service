@@ -125,9 +125,16 @@ public class ProjectController {
         ModelMapper modelMapper = new ModelMapper();
 
         List<String> groupsId = projectDetails.getGroups();
+
+        List<String> coSupervisors = new ArrayList<>();
+
+        if (projectDetails.getCoSupervisors() != null){
+            coSupervisors = projectDetails.getCoSupervisors();
+        }
+
         ProjectDto projectDto = modelMapper.map(projectDetails, ProjectDto.class);
 
-        ProjectDto createdThesis = projectService.createProject(userId, groupsId, projectDto);
+        ProjectDto createdThesis = projectService.createProject(userId, groupsId, coSupervisors, projectDto);
 
         ProjectRest projectRest = modelMapper.map(createdThesis, ProjectRest.class);
 

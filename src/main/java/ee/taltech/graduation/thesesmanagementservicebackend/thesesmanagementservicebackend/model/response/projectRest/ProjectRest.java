@@ -1,10 +1,12 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.projectRest;
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.UserEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.applicationRest.ApplicationRestWithoutProject;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.groupRest.GroupRestWithoutUsers;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.tagRest.TagRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamRest.TeamRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserRest;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserTeamMemberRest;
 
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,7 @@ public class ProjectRest {
     private UserRest user;
     private List<ApplicationRestWithoutProject> applications;
     private List<GroupRestWithoutUsers> groupEntities;
+    private List<UserTeamMemberRest> coSupervisors;
 
     public String getProjectId() {
         return projectId;
@@ -145,5 +148,13 @@ public class ProjectRest {
 
     public void setUser(UserRest user) {
         this.user = user;
+    }
+
+    public List<UserTeamMemberRest> getCoSupervisors() {
+        return coSupervisors;
+    }
+
+    public void setCoSupervisors(List<UserTeamMemberRest> coSupervisors) {
+        this.coSupervisors = coSupervisors;
     }
 }

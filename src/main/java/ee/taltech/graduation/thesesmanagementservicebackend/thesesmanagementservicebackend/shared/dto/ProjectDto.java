@@ -21,6 +21,7 @@ public class ProjectDto {
     private TeamDto team;
     private List<ApplicationDto> applications;
     private List<GroupDto> groupEntities;
+    private List<UserDto> coSupervisors;
 
     public long getId() {
         return id;
@@ -140,5 +141,13 @@ public class ProjectDto {
 
     public void setGroupEntities(List<GroupDto> groupEntities) {
         this.groupEntities = groupEntities;
+    }
+
+    public List<UserDto> getCoSupervisors() {
+        return coSupervisors;
+    }
+
+    public void setCoSupervisors(List<UserDto> coSupervisors) {
+        this.coSupervisors = coSupervisors;
     }
 }

@@ -20,9 +20,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -122,15 +120,28 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectDto createProject(String userId, List<String> groupsId, ProjectDto projectDto) {
+    public ProjectDto createProject(String userId,
+                                    List<String> groupsId,
+                                    List<String> coSupervisors,
+                                    ProjectDto projectDto) {
 
         List<GroupEntity> projectGroups = new ArrayList<>();
+        List<UserEntity> coSupervisorsEntities = new ArrayList<>();
 
         for (String groupId: groupsId){
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
             if (groupEntity == null) throw
                     new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
             projectGroups.add(groupEntity);
+        }
+
+        if (!coSupervisors.isEmpty()) {
+            for (String supervisor : coSupervisors) {
+                UserEntity userEntity = userRepository.findByUserId(supervisor);
+                if (userEntity == null) throw
+                        new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
+                coSupervisorsEntities.add(userEntity);
+            }
         }
 
 
@@ -141,6 +152,7 @@ public class ProjectServiceImpl implements ProjectService {
 
         ProjectEntity projectEntity = projectDtoToEntity(projectDto);
         projectEntity.setGroupEntities(projectGroups);
+        projectEntity.setCoSupervisors(coSupervisorsEntities);
 
 
         UserEntity userEntity = userRepository.findByUserId(userId);
@@ -149,9 +161,8 @@ public class ProjectServiceImpl implements ProjectService {
 
         userEntity.getProjects().add(projectEntity);
         projectEntity.setUser(userEntity);
+
         userRepository.save(userEntity);
-
-
 
         ProjectDto returnValue = modelMapper.map(projectEntity, ProjectDto.class);
         return returnValue;

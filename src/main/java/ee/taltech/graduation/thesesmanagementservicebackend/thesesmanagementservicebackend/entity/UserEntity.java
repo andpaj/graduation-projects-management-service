@@ -42,6 +42,15 @@ public class UserEntity {
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private Set<ProjectEntity> projects = new HashSet<>();
 
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "coSupervisors")
+    private List<ProjectEntity> coSupervisorProjects = new ArrayList<>();
+
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(
@@ -193,5 +202,13 @@ public class UserEntity {
 
     public void setUserGroupRole(List<UserGroupRoleEntity> userGroupRole) {
         this.userGroupRole = userGroupRole;
+    }
+
+    public List<ProjectEntity> getCoSupervisorProjects() {
+        return coSupervisorProjects;
+    }
+
+    public void setCoSupervisorProjects(List<ProjectEntity> coSupervisorProjects) {
+        this.coSupervisorProjects = coSupervisorProjects;
     }
 }
