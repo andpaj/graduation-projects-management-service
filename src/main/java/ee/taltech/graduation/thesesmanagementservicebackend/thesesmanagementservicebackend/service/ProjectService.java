@@ -12,7 +12,7 @@ public interface ProjectService {
     ProjectDto updateProject(String projectId, ProjectDto projectDto);
     List<ProjectDto> getAllProjects();
     void deleteProjects(String projectId);
-
     List<ProjectDto> getProjectsByUserId(String userId);
     List<ProjectDto> getProjectsByGroupId(String groupId);
+    List<ProjectDto> getCoSupervisingProjects(String userId);
 }

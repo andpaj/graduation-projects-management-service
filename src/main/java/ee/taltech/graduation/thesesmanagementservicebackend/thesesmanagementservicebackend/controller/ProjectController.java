@@ -90,6 +90,29 @@ public class ProjectController {
 
     }
 
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @GetMapping(path = "/coSupervisingProjects/{userId}")
+    public List<ProjectRest> getCoSupervisingProjects(@PathVariable String userId){
+        ModelMapper modelMapper = new ModelMapper();
+
+        List<ProjectRest> returnValue = new ArrayList<>();
+
+        List<ProjectDto> projectDtoList = projectService.getCoSupervisingProjects(userId);
+
+        for (ProjectDto projectDto : projectDtoList) {
+
+            ProjectRest projectRest = modelMapper.map(projectDto, ProjectRest.class);
+            returnValue.add(projectRest);
+
+        }
+
+        return returnValue;
+
+    }
+
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
