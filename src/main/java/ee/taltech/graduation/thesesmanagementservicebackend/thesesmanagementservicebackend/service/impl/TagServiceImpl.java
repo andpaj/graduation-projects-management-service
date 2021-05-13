@@ -53,6 +53,15 @@ public class TagServiceImpl implements TagService {
     @Override
     public TagDto createTag(TagDto tagDto) {
         ModelMapper modelMapper = new ModelMapper();
+
+        List<TagEntity> allTags = tagRepository.findAll();
+
+        for (TagEntity tag: allTags){
+            if (tag.getTagName().equals(tagDto.getTagName())){
+                throw new ServiceException(ErrorMessages.TAG_WITH_THAT_NAME_IS_ALREADY_CREATED.getErrorMessage());
+            }
+        }
+
         tagDto.setTagId(utils.generateTagId(30));
         TagEntity tagEntity = modelMapper.map(tagDto, TagEntity.class);
         TagEntity savedEntity = tagRepository.save(tagEntity);

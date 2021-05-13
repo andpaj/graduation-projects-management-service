@@ -177,8 +177,8 @@ public class UserServiceImpl implements UserService {
         userEntity.setUserId(utils.generateUserId(30));
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
 
-        //change for loop
 
+        //adding groups to user
         for (String groupId : groups) {
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
             if (groupEntity == null) throw
@@ -190,6 +190,7 @@ public class UserServiceImpl implements UserService {
 
         userEntity.setGroupEntities(groupEntityList);
 
+        //create team for solo applications
         TeamEntity teamEntity = new TeamEntity();
         teamEntity.setTeamId(utils.generateTeamId(30));
         teamEntity.setTeamName(TeamEnum.STARTER_TEAM_NAME.getTeamEnum());

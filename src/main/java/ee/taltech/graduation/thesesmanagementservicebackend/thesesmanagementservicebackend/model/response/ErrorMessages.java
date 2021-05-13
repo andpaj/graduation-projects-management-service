@@ -20,7 +20,8 @@ public enum ErrorMessages {
     APPLICATION_CANT_BE_SEND("Application cant be send because all team members must accept team membership"),
     PROJECT_IS_NOT_AVAILABLE("This project is not available"),
     MEMBER_ALREADY_ACCEPTED("This team member is already accepted"),
-    APPLICATION_IS_ALREADY_SENT("Application to this project has already sent");
+    APPLICATION_IS_ALREADY_SENT("Application to this project has already sent"),
+    TAG_WITH_THAT_NAME_IS_ALREADY_CREATED("Tag with such name has already created");
 
 
     private String errorMessage;
