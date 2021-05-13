@@ -1,14 +1,20 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
 public class ProjectDetailsRequestModel {
 
+    @NotNull(message = "language cannot be null")
     private String language;
+    @NotNull(message = "title cannot be null")
     private String title;
+    @NotNull(message = "description cannot be null")
     private String description;
+    @NotNull(message = "student amount cannot be null")
     private int studentAmount;
+    @NotNull(message = "degree cannot be null")
     private String degree;
     private Set<TagRequestModel> tags;
     private List<String> groups;

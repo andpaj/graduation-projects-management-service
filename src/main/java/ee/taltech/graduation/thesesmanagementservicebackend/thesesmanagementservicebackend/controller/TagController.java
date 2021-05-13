@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +59,7 @@ public class TagController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path = "/create")
-    public TagRest createTag(@RequestBody TagRequestModel tagRequestModel){
+    public TagRest createTag(@Valid @RequestBody TagRequestModel tagRequestModel){
         ModelMapper modelMapper = new ModelMapper();
         TagDto tagDto = modelMapper.map(tagRequestModel, TagDto.class);
         TagDto savedTag = tagService.createTag(tagDto);

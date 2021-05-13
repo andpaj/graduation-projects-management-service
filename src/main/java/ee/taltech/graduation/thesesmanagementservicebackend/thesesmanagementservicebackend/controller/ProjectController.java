@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,7 +147,7 @@ public class ProjectController {
     })
     @PreAuthorize("hasAnyRole('ADMIN', 'TEACHER')")
     @PostMapping(path = "/create")
-    public ProjectRest createProject(@RequestParam String userId, @RequestBody ProjectDetailsRequestModel projectDetails) {
+    public ProjectRest createProject(@Valid @RequestParam String userId, @RequestBody ProjectDetailsRequestModel projectDetails) {
 
         ModelMapper modelMapper = new ModelMapper();
 

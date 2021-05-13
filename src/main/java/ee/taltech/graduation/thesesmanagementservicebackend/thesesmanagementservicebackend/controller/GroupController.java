@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,7 +97,7 @@ public class GroupController {
     })
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path = "/create")
-    public GroupRest createGroup(@RequestBody GroupDetailsRequest groupDetailsRequest){
+    public GroupRest createGroup(@Valid @RequestBody GroupDetailsRequest groupDetailsRequest){
 
         ModelMapper modelMapper = new ModelMapper();
         String parentGroupId = groupDetailsRequest.getParentTest();

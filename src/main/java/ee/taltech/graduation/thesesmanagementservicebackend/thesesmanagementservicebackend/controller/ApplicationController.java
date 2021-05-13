@@ -12,6 +12,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,8 @@ public class ApplicationController {
     })
     @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
     @PostMapping(path = "/create")
-    public ApplicationRest createApplication(@RequestParam String projectId,
+    public ApplicationRest createApplication(@Valid
+                                                @RequestParam String projectId,
                                               @RequestParam String teamId,
                                               @RequestBody ApplicationDetailsRequestModel applicationDetails){
 

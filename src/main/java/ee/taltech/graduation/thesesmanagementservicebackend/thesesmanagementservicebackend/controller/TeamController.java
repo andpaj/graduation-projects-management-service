@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class TeamController {
     })
     @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
     @PostMapping(path = "/create/{userId}")
-    public TeamRest createTeam(@PathVariable String userId, @RequestBody TeamDetailsRequestModel teamDetails){
+    public TeamRest createTeam(@Valid @PathVariable String userId, @RequestBody TeamDetailsRequestModel teamDetails){
         ModelMapper modelMapper = new ModelMapper();
 
         List<String> members = teamDetails.getUsers();
