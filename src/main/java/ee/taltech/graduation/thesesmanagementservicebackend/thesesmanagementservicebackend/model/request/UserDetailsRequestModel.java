@@ -1,15 +1,23 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request;
 
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class UserDetailsRequestModel {
-
+    @NotNull(message = "First name cannot be null")
     private String firstName;
+    @NotNull(message = "Last cannot be null")
     private String lastName;
+    @NotNull(message = "Email cannot be null")
+    @Email
     private String email;
+    @NotNull(message = "Password cannot be null")
     private String password;
+    @NotNull(message = "Graduation level cannot be null")
     private String graduationLevel;
+    @NotNull(message = "Groups cannot be null")
     private List<String> groups;
 
 
