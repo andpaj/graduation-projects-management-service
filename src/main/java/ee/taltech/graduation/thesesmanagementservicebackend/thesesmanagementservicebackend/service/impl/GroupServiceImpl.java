@@ -13,6 +13,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -120,7 +121,6 @@ public class GroupServiceImpl implements GroupService {
 
     }
 
-
     @Override
     public GroupDto createGroup(GroupDto groupDto, String parentGroupId) {
         ModelMapper modelMapper = new ModelMapper();
@@ -143,7 +143,6 @@ public class GroupServiceImpl implements GroupService {
         return returnValue;
 
     }
-
 
     @Override
     public void deleteGroup(String groupId) {

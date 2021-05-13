@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -142,6 +144,7 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasAnyRole('ADMIN', 'TEACHER')")
     @PostMapping(path = "/create")
     public ProjectRest createProject(@RequestParam String userId, @RequestBody ProjectDetailsRequestModel projectDetails) {
 
@@ -172,6 +175,7 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping(path = "/update/{projectId}")
     public ProjectRest updateProject(@PathVariable String projectId, @RequestBody ProjectDetailsRequestModel projectDetails){
 
@@ -187,9 +191,11 @@ public class ProjectController {
 
     }
 
+
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path = "/delete/{projectId}")
     public String deleteProject(@PathVariable String projectId){
 

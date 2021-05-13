@@ -12,6 +12,7 @@ public enum ErrorMessages {
     NO_RECORD_FOUND_TEAM("Team with provided id is not found"),
     NO_RECORD_FOUND_TAG("Tag with provided id is not found"),
     NO_RECORD_FOUND_TEAM_MEMBER("Team member with provided id is not found"),
+    TEAM_MEMBER_ALREADY_IN_TEAM("This user is already in the team"),
     APPLICATION_ACCEPTED_DECLINED_BY_SUPERVISOR("This application is already accepted or declined by supervisor"),
     APPLICATION_CANT_DECLINED_BY_STUDENT("This application cant be decline by student"),
     APPLICATION_CANT_CONFIRMED_BY_STUDENT("This application cant be confirmed by student"),

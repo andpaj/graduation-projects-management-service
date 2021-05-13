@@ -18,6 +18,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.ProjectEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -227,6 +228,7 @@ public class ProjectServiceImpl implements ProjectService {
         return  returnValue;
 
     }
+
 
     @Override
     public void deleteProjects(String projectId) {

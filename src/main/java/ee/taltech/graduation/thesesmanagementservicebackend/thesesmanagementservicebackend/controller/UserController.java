@@ -9,6 +9,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -113,7 +114,7 @@ public class UserController {
 
     }
 
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
     public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
         ModelMapper modelMapper = new ModelMapper();
@@ -130,6 +131,7 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN') or #userId == principal.userId")
     @PutMapping(path = "/{userId}")
     public UserRest updateUser(@PathVariable String userId, @RequestBody UserDetailsRequestModel userDetails){
 
@@ -150,6 +152,7 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path = "/{userId}")
     public String deleteUser(@PathVariable String userId){
 
@@ -157,11 +160,5 @@ public class UserController {
 
         return userId;
     }
-
-
-
-
-
-
 
 }

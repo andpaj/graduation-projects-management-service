@@ -9,6 +9,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TagDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -49,7 +50,6 @@ public class TagServiceImpl implements TagService {
 
 
     }
-
     @Override
     public TagDto createTag(TagDto tagDto) {
         ModelMapper modelMapper = new ModelMapper();
@@ -61,7 +61,6 @@ public class TagServiceImpl implements TagService {
         return savedDto;
 
     }
-
     @Override
     public void deleteTag(String tagId) {
 
