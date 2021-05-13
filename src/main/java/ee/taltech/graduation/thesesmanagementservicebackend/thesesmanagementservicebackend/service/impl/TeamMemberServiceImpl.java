@@ -18,6 +18,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeamMemberServiceImpl implements TeamMemberService {
 
@@ -61,6 +63,14 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         if (teamEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_TEAM.getErrorMessage());
 
+
+        for (TeamMemberEntity teamMemberEntity: teamEntity.getTeamMembers()){
+            if (teamMemberEntity.getUser().getUserId().equals(userId)){
+                throw new ServiceException(ErrorMessages.TEAM_MEMBER_ALREADY_IN_TEAM.getErrorMessage());
+            }
+        }
+
+
         TeamMemberEntity newMember = new TeamMemberEntity();
         newMember.setTeamMemberId(utils.generateTeamMemberId(30));
         newMember.setStatus(TeamMemberEnum.STATUS_WAITING.getTeamMemberEnum());
@@ -76,6 +86,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
     }
 
+    //with right id
     @Override
     public TeamMemberDto acceptMembership(String userId, String teamMemberId) {
 
