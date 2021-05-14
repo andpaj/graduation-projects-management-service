@@ -23,7 +23,8 @@ public class RoleEntity {
     @ManyToMany(mappedBy = "roles")
     private List<UserEntity> users;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role",
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<UserGroupRoleEntity> userGroupRole;
 
 

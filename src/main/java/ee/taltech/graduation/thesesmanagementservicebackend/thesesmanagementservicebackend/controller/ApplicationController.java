@@ -8,8 +8,11 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +20,18 @@ import java.util.List;
 @RequestMapping("/application")
 public class ApplicationController {
 
-    @Autowired
+    final
     ApplicationService applicationService;
+
+    public ApplicationController(ApplicationService applicationService) {
+        this.applicationService = applicationService;
+    }
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/{applicationId}")
-    private ApplicationRest getApplicationById(@PathVariable String applicationId){
+    public ApplicationRest getApplicationById(@PathVariable String applicationId){
 
         ModelMapper modelMapper = new ModelMapper();
         ApplicationDto applicationDto = applicationService.getApplicationByApplicationId(applicationId);
@@ -39,8 +46,10 @@ public class ApplicationController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
     @PostMapping(path = "/create")
-    private ApplicationRest createApplication(@RequestParam String projectId,
+    public ApplicationRest createApplication(@Valid
+                                                @RequestParam String projectId,
                                               @RequestParam String teamId,
                                               @RequestBody ApplicationDetailsRequestModel applicationDetails){
 
@@ -58,7 +67,7 @@ public class ApplicationController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/getAllByUserId/{userId}")
-    private List<ApplicationRest> getAllApplicationsByUserId(@PathVariable String userId){
+    public List<ApplicationRest> getAllApplicationsByUserId(@PathVariable String userId){
         ModelMapper modelMapper = new ModelMapper();
         List<ApplicationRest> applicationRestList = new ArrayList<>();
         List<ApplicationDto> applicationDtoList = applicationService.getAllApplicationsByUserId(userId);
@@ -76,7 +85,7 @@ public class ApplicationController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/getAllBySupervisorId/{supervisorId}")
-    private List<ApplicationRest> getAllApplicationsBySupervisorId(@PathVariable String supervisorId){
+    public List<ApplicationRest> getAllApplicationsBySupervisorId(@PathVariable String supervisorId){
 
         ModelMapper modelMapper = new ModelMapper();
         List<ApplicationRest> applicationRestList = new ArrayList<>();
@@ -94,8 +103,9 @@ public class ApplicationController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN') or #supervisorId == principal.userId")
     @PostMapping(path = "/acceptBySupervisor")
-    private ApplicationRest acceptApplicationFromSupervisorSide(@RequestParam String supervisorId,
+    public ApplicationRest acceptApplicationFromSupervisorSide(@RequestParam String supervisorId,
                                                                 @RequestParam String applicationId){
 
         ModelMapper modelMapper = new ModelMapper();
@@ -109,11 +119,13 @@ public class ApplicationController {
 
     }
 
+
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN') or #supervisorId == principal.userId")
     @PostMapping(path = "/declineBySupervisor")
-    private ApplicationRest declineApplicationFromSupervisorSide(@RequestParam String supervisorId,
+    public ApplicationRest declineApplicationFromSupervisorSide(@RequestParam String supervisorId,
                                                                 @RequestParam String applicationId){
 
         ModelMapper modelMapper = new ModelMapper();
@@ -130,8 +142,9 @@ public class ApplicationController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN') or #studentId == principal.userId")
     @PostMapping(path = "/acceptByStudent")
-    private ApplicationRest acceptApplicationFromStudentSide(@RequestParam String studentId,
+    public ApplicationRest acceptApplicationFromStudentSide(@RequestParam String studentId,
                                                                 @RequestParam String applicationId){
 
         ModelMapper modelMapper = new ModelMapper();
@@ -148,8 +161,9 @@ public class ApplicationController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN') or #studentId == principal.userId")
     @PostMapping(path = "/declineByStudent")
-    private ApplicationRest declineApplicationFromStudentSide(@RequestParam String studentId,
+    public ApplicationRest declineApplicationFromStudentSide(@RequestParam String studentId,
                                                              @RequestParam String applicationId){
 
         ModelMapper modelMapper = new ModelMapper();
@@ -166,21 +180,13 @@ public class ApplicationController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
     @DeleteMapping(path = "/delete/{applicationId}")
-    private String deleteApplication(@PathVariable String applicationId){
+    public String deleteApplication(@PathVariable String applicationId){
 
         applicationService.deleteApplication(applicationId);
-
         return applicationId;
 
-
-
     }
-
-
-
-
-
-
 
 }

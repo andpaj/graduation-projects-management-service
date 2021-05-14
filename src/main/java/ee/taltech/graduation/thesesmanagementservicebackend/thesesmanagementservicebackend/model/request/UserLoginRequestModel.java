@@ -1,8 +1,11 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request;
 
-public class UserLoginRequestModel {
+import javax.validation.constraints.NotNull;
 
+public class UserLoginRequestModel {
+    @NotNull(message = "Email cannot be null")
     private String email;
+    @NotNull(message = "Password cannot be null")
     private String password;
 
     public String getEmail() {

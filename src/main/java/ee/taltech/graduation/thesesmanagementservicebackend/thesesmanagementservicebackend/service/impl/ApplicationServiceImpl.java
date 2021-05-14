@@ -13,6 +13,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamMemberEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -98,10 +99,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         return applicationDtoList;
 
-
-
     }
-
     @Override
     public ApplicationDto acceptApplicationFromSupervisorSide(String supervisorId, String applicationId) {
 
@@ -162,7 +160,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         return applicationDto;
     }
-
     @Override
     public ApplicationDto acceptApplicationFromStudentSide(String studentId, String applicationId) {
 
@@ -191,6 +188,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         ProjectEntity projectEntity = applicationEntity.getProject();
         projectEntity.setTeam(teamEntity);
         projectEntity.setStatus(ProjectEnum.STATUS_NOT_AVAILABLE.getProjectEnum());
+        projectEntity.setAcceptingTime(new Date());
 
         //Set confirmed project id to all team members
         for (TeamMemberEntity teamMember: teamEntity.getTeamMembers()){
@@ -262,7 +260,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 
     }
-
     @Override
     public ApplicationDto createApplication(String projectId, String teamId, ApplicationDto applicationDto) {
 

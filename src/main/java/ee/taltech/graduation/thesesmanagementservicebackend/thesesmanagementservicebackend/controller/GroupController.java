@@ -13,8 +13,10 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,10 +68,7 @@ public class GroupController {
 
         return returnValue;
 
-
     }
-
-
 
     @GetMapping(path = "/getAllGroups")
     public List<GroupRestWithoutUsers> getAllGroups(){
@@ -96,8 +95,9 @@ public class GroupController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path = "/create")
-    public GroupRest createGroup(@RequestBody GroupDetailsRequest groupDetailsRequest){
+    public GroupRest createGroup(@Valid @RequestBody GroupDetailsRequest groupDetailsRequest){
 
         ModelMapper modelMapper = new ModelMapper();
         String parentGroupId = groupDetailsRequest.getParentTest();
@@ -116,6 +116,7 @@ public class GroupController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping(path = "/delete/{groupId}")
     public String deleteGroup(@PathVariable String groupId){
 

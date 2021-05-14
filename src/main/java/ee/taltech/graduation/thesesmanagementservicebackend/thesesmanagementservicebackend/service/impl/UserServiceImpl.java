@@ -13,8 +13,10 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.UserEnum;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -176,8 +178,8 @@ public class UserServiceImpl implements UserService {
         userEntity.setUserId(utils.generateUserId(30));
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
 
-        //change for loop
 
+        //adding groups to user
         for (String groupId : groups) {
             GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
             if (groupEntity == null) throw
@@ -189,6 +191,7 @@ public class UserServiceImpl implements UserService {
 
         userEntity.setGroupEntities(groupEntityList);
 
+        //create team for solo applications
         TeamEntity teamEntity = new TeamEntity();
         teamEntity.setTeamId(utils.generateTeamId(30));
         teamEntity.setTeamName(TeamEnum.STARTER_TEAM_NAME.getTeamEnum());

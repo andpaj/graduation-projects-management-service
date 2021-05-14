@@ -10,8 +10,10 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class TeamController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/{teamId}")
-    private TeamRest getTeamById(@PathVariable String teamId){
+    public TeamRest getTeamById(@PathVariable String teamId){
 
         ModelMapper modelMapper = new ModelMapper();
 
@@ -41,8 +43,9 @@ public class TeamController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
     @PostMapping(path = "/create/{userId}")
-    private TeamRest createTeam(@PathVariable String userId, @RequestBody TeamDetailsRequestModel teamDetails){
+    public TeamRest createTeam(@Valid @PathVariable String userId, @RequestBody TeamDetailsRequestModel teamDetails){
         ModelMapper modelMapper = new ModelMapper();
 
         List<String> members = teamDetails.getUsers();
@@ -59,7 +62,7 @@ public class TeamController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/teamsByUserId/{userId}")
-    private List<TeamRestWithoutMembers> getTeamsByUserId(@PathVariable String userId){
+    public List<TeamRestWithoutMembers> getTeamsByUserId(@PathVariable String userId){
         ModelMapper modelMapper = new ModelMapper();
 
         List<TeamDto> teams = teamService.getTeamsByUserId(userId);
@@ -80,7 +83,7 @@ public class TeamController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @PostMapping(path = "/finishTeamProject/{teamId}")
-    private TeamRest finishTeamProject(@PathVariable String teamId){
+    public TeamRest finishTeamProject(@PathVariable String teamId){
         ModelMapper modelMapper = new ModelMapper();
 
         TeamDto teamDto = teamService.finishTeamProject(teamId);
@@ -91,9 +94,12 @@ public class TeamController {
 
     }
 
-
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
     @DeleteMapping(path = "/delete/{teamId}")
-    private String deleteTeam(@PathVariable String teamId){
+    public String deleteTeam(@PathVariable String teamId){
 
         teamService.deleteTeam(teamId);
 

@@ -53,7 +53,8 @@ public class GroupEntity {
             mappedBy = "groupEntities")
     private List<ProjectEntity> projects = new ArrayList<>();
 
-    @OneToMany(mappedBy = "groupEntity")
+    @OneToMany(mappedBy = "groupEntity",
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<UserGroupRoleEntity> userGroupRole;
 
 

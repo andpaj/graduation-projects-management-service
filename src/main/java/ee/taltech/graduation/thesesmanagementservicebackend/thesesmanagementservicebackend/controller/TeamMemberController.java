@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,7 +22,7 @@ public class TeamMemberController {
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
     @GetMapping(path = "/{teamMemberId}")
-    private TeamMemberWithTeam getTeamMemberById(@PathVariable String teamMemberId){
+    public TeamMemberWithTeam getTeamMemberById(@PathVariable String teamMemberId){
 
         ModelMapper modelMapper = new ModelMapper();
         TeamMemberDto teamMemberDto = teamMemberService.getTeamMemberById(teamMemberId);
@@ -35,8 +36,9 @@ public class TeamMemberController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
     @PostMapping(path = "/addTeamMember")
-    private TeamMemberWithTeam addMemberToTeam(@RequestParam String userId, @RequestParam String teamId){
+    public TeamMemberWithTeam addMemberToTeam(@RequestParam String userId, @RequestParam String teamId){
 
         TeamMemberDto savedTeamMember = teamMemberService.addMemberToTeam(userId, teamId);
         ModelMapper modelMapper = new ModelMapper();
@@ -49,8 +51,9 @@ public class TeamMemberController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN')or #userId == principal.userId")
     @PostMapping(path = "/accept")
-    private TeamMemberWithTeam acceptTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
+    public TeamMemberWithTeam acceptTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
 
         TeamMemberDto teamMemberDto = teamMemberService.acceptMembership(userId, teamMemberId);
 
@@ -63,8 +66,9 @@ public class TeamMemberController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
+    @PreAuthorize("hasRole('ADMIN')or #userId == principal.userId")
     @PostMapping(path = "/decline")
-    private String declineTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
+    public String declineTeamMembership(@RequestParam String userId, @RequestParam String teamMemberId){
 
         teamMemberService.declineMembership(userId, teamMemberId);
 
