@@ -91,9 +91,20 @@ public class ProjectEntity {
     }
 
     @PreRemove
-    public void removeProjectWithoutTags() {
+    public void removeProject() {
         for (TagEntity tag: tags){
             tag.getProjects().remove(this);
+        }
+
+        for (GroupEntity groupEntity: groupEntities){
+            groupEntity.getProjects().remove(this);
+        }
+
+        for (UserEntity userEntity: coSupervisors){
+            userEntity.getCoSupervisorProjects().remove(this);
+        }
+        if (team != null) {
+            team.setProject(null);
         }
     }
 

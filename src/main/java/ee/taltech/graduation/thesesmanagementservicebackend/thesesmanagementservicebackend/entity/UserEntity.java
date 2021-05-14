@@ -77,7 +77,8 @@ public class UserEntity {
             inverseJoinColumns = { @JoinColumn(name = "role_id") })
     private List<RoleEntity> roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",
+            cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<UserGroupRoleEntity> userGroupRole;
 
     @PreRemove
@@ -89,6 +90,7 @@ public class UserEntity {
        for (RoleEntity roleEntity: roles){
            roleEntity.getUsers().remove(this);
        }
+
 
     }
 

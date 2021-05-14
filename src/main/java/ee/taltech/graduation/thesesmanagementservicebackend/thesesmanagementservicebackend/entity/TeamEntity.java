@@ -43,6 +43,13 @@ public class TeamEntity {
             cascade = { CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.REMOVE})
     private List<ApplicationEntity> applications = new ArrayList<>();
 
+    @PreRemove
+    public void removeTeam() {
+        if (project != null){
+            project.setTeam(null);
+        }
+    }
+
 
     public long getId() {
         return id;
