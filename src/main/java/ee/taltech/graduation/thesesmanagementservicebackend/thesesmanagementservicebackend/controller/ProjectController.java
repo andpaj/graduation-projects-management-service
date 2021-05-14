@@ -176,9 +176,11 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping(path = "/update/{projectId}")
-    public ProjectRest updateProject(@PathVariable String projectId, @RequestBody ProjectDetailsRequestModel projectDetails){
+    @PreAuthorize("hasRole('ADMIN') or #userId == principal.userId")
+    @PutMapping(path = "/update")
+    public ProjectRest updateProject(@RequestParam String projectId,
+                                     @RequestParam String userId,
+                                     @RequestBody ProjectDetailsRequestModel projectDetails){
 
         ModelMapper modelMapper = new ModelMapper();
 
@@ -196,9 +198,9 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping(path = "/delete/{projectId}")
-    public String deleteProject(@PathVariable String projectId){
+    @PreAuthorize("hasRole('ADMIN') or #userId = principal.userId")
+    @DeleteMapping(path = "/delete")
+    public String deleteProject(@RequestParam String projectId, @RequestParam String userId){
 
         projectService.deleteProjects(projectId);
         return projectId;
