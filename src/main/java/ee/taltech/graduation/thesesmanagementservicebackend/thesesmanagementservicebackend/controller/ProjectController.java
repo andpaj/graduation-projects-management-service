@@ -198,7 +198,7 @@ public class ProjectController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PreAuthorize("hasRole('ADMIN') or #userId = principal.userId")
+    @PreAuthorize("hasRole('ADMIN') or #userId == principal.userId")
     @DeleteMapping(path = "/delete")
     public String deleteProject(@RequestParam String projectId, @RequestParam String userId){
 
