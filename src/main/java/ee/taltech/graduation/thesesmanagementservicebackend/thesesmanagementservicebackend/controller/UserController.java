@@ -115,7 +115,7 @@ public class UserController {
 
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
     public UserRest createUser(@Valid @RequestBody UserDetailsRequestModel userDetails) {
         ModelMapper modelMapper = new ModelMapper();

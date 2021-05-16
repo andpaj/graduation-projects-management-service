@@ -43,6 +43,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .csrf().disable().authorizeRequests()
                 .antMatchers(SecurityConstants.H2_CONSOLE)//remove in production
                 .permitAll()
+                .antMatchers(HttpMethod.POST, "/users/**")
+                .permitAll()
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
                 .permitAll()
                 .antMatchers(HttpMethod.GET, "/group/**" )
