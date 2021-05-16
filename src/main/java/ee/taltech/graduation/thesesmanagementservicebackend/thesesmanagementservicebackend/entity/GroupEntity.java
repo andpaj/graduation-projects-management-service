@@ -63,8 +63,11 @@ public class GroupEntity {
 
     @PreRemove
     public void removeGroup() {
-        for (UserEntity user: users){
-            user.getGroupEntities().remove(this);
+
+        if (!users.isEmpty()) {
+            for (UserEntity user : users) {
+                user.getGroupEntities().remove(this);
+            }
         }
 
         if (parentGroup != null) {
