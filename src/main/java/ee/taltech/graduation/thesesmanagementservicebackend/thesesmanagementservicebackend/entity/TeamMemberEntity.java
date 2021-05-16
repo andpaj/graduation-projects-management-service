@@ -31,11 +31,7 @@ public class TeamMemberEntity {
     @PreRemove
     public void removeTeamMember() {
        this.setTeam(null);
-
-
-
     }
-
 
     public long getId() {
         return id;

@@ -97,9 +97,9 @@ public class TeamController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
-    @DeleteMapping(path = "/delete/{teamId}")
-    public String deleteTeam(@PathVariable String teamId){
+    @PreAuthorize("hasRole('ADMIN') or #userId == principal.userId")
+    @DeleteMapping(path = "/delete")
+    public String deleteTeam(@RequestParam String teamId, @RequestParam String userId){
 
         teamService.deleteTeam(teamId);
 
