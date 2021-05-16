@@ -30,8 +30,10 @@ public class TeamMemberEntity {
 
     @PreRemove
     public void removeTeamMember() {
-       this.setTeam(null);
-       this.setUser(null);
+        team.getTeamMembers().remove(this);
+        this.setTeam(null);
+        user.getTeamMembers().remove(this);
+        this.setUser(null);
     }
 
     public long getId() {

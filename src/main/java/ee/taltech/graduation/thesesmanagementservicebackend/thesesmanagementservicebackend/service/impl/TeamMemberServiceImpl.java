@@ -164,6 +164,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         if (active){
             teamEntity.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
         }
+
         teamRepository.save(teamEntity);
 
 
