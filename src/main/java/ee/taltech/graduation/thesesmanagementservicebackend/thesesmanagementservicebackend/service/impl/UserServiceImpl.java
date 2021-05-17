@@ -1,5 +1,6 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl;
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller.UserController;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
@@ -15,6 +16,8 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.UserEnum;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.User;
@@ -31,7 +34,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
-
 
     @Autowired
     GroupRepository groupRepository;
@@ -53,8 +55,9 @@ public class UserServiceImpl implements UserService {
     public UserDto getUserByUserId(String userId)  {
 
         UserEntity userEntity = userRepository.findByUserId(userId);
-        if (userEntity == null) throw
-                new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
+        if (userEntity == null) {
+            throw new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
+        }
         ModelMapper modelMapper = new ModelMapper();
         UserDto returnValue = modelMapper.map(userEntity, UserDto.class);
 

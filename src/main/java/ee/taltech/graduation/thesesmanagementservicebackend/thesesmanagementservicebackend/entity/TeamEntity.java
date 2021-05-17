@@ -48,9 +48,6 @@ public class TeamEntity {
         if (project != null){
             project.setTeam(null);
         }
-
-
-
     }
 
 

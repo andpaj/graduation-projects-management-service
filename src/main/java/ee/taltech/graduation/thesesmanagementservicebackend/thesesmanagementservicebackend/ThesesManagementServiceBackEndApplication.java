@@ -3,6 +3,8 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AppProperties;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +15,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 public class ThesesManagementServiceBackEndApplication {
 
+	private static final Logger logger = LogManager.getLogger(ThesesManagementServiceBackEndApplication.class);
+
 	public static void main(String[] args) {
 		SpringApplication.run(ThesesManagementServiceBackEndApplication.class, args);
+
+		logger.debug("Debugging log");
+		logger.info("Info log");
+		logger.warn("Hey, This is a warning!");
+		logger.error("Oops! We have an Error. OK");
+		logger.fatal("Damn! Fatal error. Please fix me.");
 	}
+
 
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder(){
@@ -36,6 +47,8 @@ public class ThesesManagementServiceBackEndApplication {
 	public CommandLineRunner initStarterPack(GroupRepository groupRepository) {
 		return (args) -> {
 //-----------------------------------------------> Group setting - SCHOOLS
+
+
 			GroupEntity school2 = new GroupEntity();
 			school2.setGroupClass("School");
 			school2.setGroupName("School of Science");
