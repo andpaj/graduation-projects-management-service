@@ -147,7 +147,7 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 
         TeamEntity teamEntity = teamMemberEntity.getTeam();
 
-        teamMemberRepository.delete(teamMemberEntity);
+        teamEntity.getTeamMembers().remove(teamMemberEntity);
 
         if (teamEntity.getTeamMembers().size() == 1){
             teamEntity.setStatus(TeamEnum.STATUS_NOT_ACTIVE.getTeamEnum());
@@ -164,7 +164,9 @@ public class TeamMemberServiceImpl implements TeamMemberService {
         if (active){
             teamEntity.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
         }
+
         teamRepository.save(teamEntity);
+        teamMemberRepository.delete(teamMemberEntity);
 
 
     }

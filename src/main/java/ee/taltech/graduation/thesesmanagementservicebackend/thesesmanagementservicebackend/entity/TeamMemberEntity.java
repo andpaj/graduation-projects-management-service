@@ -28,11 +28,6 @@ public class TeamMemberEntity {
     @JoinColumn(name="userId")
     private UserEntity user;
 
-    @PreRemove
-    public void removeTeamMember() {
-       this.setTeam(null);
-       this.setUser(null);
-    }
 
     public long getId() {
         return id;

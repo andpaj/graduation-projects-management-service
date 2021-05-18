@@ -1,6 +1,8 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller;
 
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.ThesesManagementServiceBackEndApplication;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.UserDetailsInit;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.request.UserDetailsRequestModel;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserRest;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.userRest.UserWithProjectsRest;
@@ -8,7 +10,10 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.UserDto;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +31,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
@@ -117,16 +121,32 @@ public class UserController {
 
     //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping()
-    public UserRest createUser(@Valid @RequestBody UserDetailsRequestModel userDetails) {
+    public UserRest createUser(@Valid @RequestBody UserDetailsInit userDetails) {
         ModelMapper modelMapper = new ModelMapper();
         UserDto userDto = modelMapper.map(userDetails, UserDto.class);
         List<String> groups = userDetails.getGroups();
+        List<String> roles = userDetails.getRoles();
 
-        UserDto createdUser = userService.createUser(userDto, groups);
+        UserDto createdUser = userService.createUser(userDto, groups, roles);
         UserRest returnValue = modelMapper.map(createdUser, UserRest.class);
+
 
         return returnValue;
     }
+
+//    @PostMapping(path = "/initUser")
+//    public UserRest createUserMethodForInitUsers(@Valid @RequestBody UserDetailsInit userDetails) {
+//        ModelMapper modelMapper = new ModelMapper();
+//        UserDto userDto = modelMapper.map(userDetails, UserDto.class);
+//        List<String> groups = userDetails.getGroups();
+//        List<String> roles = userDetails.getRoles();
+//
+//        UserDto createdUser = userService.createUserMethodForInitUsers(userDto, groups, roles);
+//        UserRest returnValue = modelMapper.map(createdUser, UserRest.class);
+//
+//
+//        return returnValue;
+//    }
 
 
     @ApiImplicitParams({
