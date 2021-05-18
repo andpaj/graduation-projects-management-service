@@ -4,10 +4,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.ErrorMessages;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamMemberRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.TeamRepository;
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.UserRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.*;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.UserPrincipal;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.UserService;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
@@ -40,6 +37,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     Utils utils;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -167,12 +167,80 @@ public class UserServiceImpl implements UserService {
         return studentsDto;
     }
 
+//    @Override
+//    public UserDto createUserMethodForInitUsers(UserDto userDto, List<String> groups, List<String> roles) {
+//        if (userRepository.findByEmail(userDto.getEmail()) != null)
+//            throw new ServiceException(ErrorMessages.RECORD_ALREADY_EXISTS.getErrorMessage());
+//
+//        List<GroupEntity> groupEntityList = new ArrayList<>();
+//        List<RoleEntity> roleEntityList = new ArrayList<>();
+//
+//
+//        ModelMapper modelMapper = new ModelMapper();
+//        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+//
+//        userEntity.setUserId(utils.generateUserId(30));
+//        userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+//
+//
+//        //adding groups to user
+//        for (String groupId : groups) {
+//            GroupEntity groupEntity = groupRepository.findByGroupId(groupId);
+//            if (groupEntity == null) throw
+//                    new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+//            groupEntityList.add(groupEntity);
+//            groupEntity.getUsers().add(userEntity);
+//
+//        }
+//
+//
+//        for (String role: roles){
+//            RoleEntity roleEntity = roleRepository.findByName(role);
+//            if (roleEntity == null)  throw
+//                    new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+//            roleEntityList.add(roleEntity);
+//            roleEntity.getUsers().add(userEntity);
+//
+//        }
+//
+//        userEntity.setGroupEntities(groupEntityList);
+//        userEntity.setRoles(roleEntityList);
+//
+//        //create team for solo applications
+//        TeamEntity teamEntity = new TeamEntity();
+//        teamEntity.setTeamId(utils.generateTeamId(30));
+//        teamEntity.setTeamName(TeamEnum.STARTER_TEAM_NAME.getTeamEnum());
+//        teamEntity.setStatus(TeamEnum.STATUS_ACTIVE.getTeamEnum());
+//
+//        TeamMemberEntity teamMemberEntity = new TeamMemberEntity();
+//        teamMemberEntity.setTeamMemberId(utils.generateTeamMemberId(30));
+//        teamMemberEntity.setUser(userEntity);
+//        teamMemberEntity.setTeam(teamEntity);
+//
+//        List<TeamMemberEntity> members = new ArrayList<>();
+//        members.add(teamMemberEntity);
+//
+//        teamEntity.setTeamMembers(members);
+//
+//        userEntity.setStarterTeam(teamEntity.getTeamId());
+//
+//        UserEntity storedUserDetails = userRepository.save(userEntity);
+//        teamRepository.save(teamEntity);
+//        teamMemberRepository.save(teamMemberEntity);
+//
+//
+//        UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);
+//
+//        return returnValue;
+//    }
+
     @Override
-    public UserDto createUser(UserDto userDto,  List<String> groups) {
+    public UserDto createUser(UserDto userDto, List<String> groups, List<String> roles) {
         if (userRepository.findByEmail(userDto.getEmail()) != null)
             throw new ServiceException(ErrorMessages.RECORD_ALREADY_EXISTS.getErrorMessage());
 
         List<GroupEntity> groupEntityList = new ArrayList<>();
+        List<RoleEntity> roleEntityList = new ArrayList<>();
 
 
         ModelMapper modelMapper = new ModelMapper();
@@ -192,8 +260,18 @@ public class UserServiceImpl implements UserService {
 
         }
 
-        userEntity.setGroupEntities(groupEntityList);
 
+        for (String role: roles){
+            RoleEntity roleEntity = roleRepository.findByName(role);
+            if (roleEntity == null)  throw
+                    new ServiceException(ErrorMessages.NO_RECORD_FOUND_GROUP.getErrorMessage());
+            roleEntityList.add(roleEntity);
+            roleEntity.getUsers().add(userEntity);
+
+        }
+
+        userEntity.setGroupEntities(groupEntityList);
+        userEntity.setRoles(roleEntityList);
         //create team for solo applications
         TeamEntity teamEntity = new TeamEntity();
         teamEntity.setTeamId(utils.generateTeamId(30));

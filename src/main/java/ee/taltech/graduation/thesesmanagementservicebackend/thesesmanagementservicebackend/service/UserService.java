@@ -11,11 +11,13 @@ public interface UserService extends UserDetailsService {
     UserDto getUserByEmail(String email);
     List<UserDto> getUsersWithProjectList();
     List<UserDto> getUsers();
-    UserDto createUser(UserDto userDto, List<String> groups);
+    UserDto createUser(UserDto userDto, List<String> groups, List<String> roles);
     UserDto updateUser(String userId, UserDto userDto);
     void deleteUser(String userId);
     List<UserDto> getSupervisors();
     List<UserDto> getStudents();
+
+//    UserDto createUserMethodForInitUsers(UserDto userDto, List<String> groups, List<String> roles);
 //    UserDto getUser(String email);
 
 
