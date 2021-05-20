@@ -22,9 +22,6 @@ import java.util.List;
 public class ProjectController {
 
     @Autowired
-    ProjectRequestToDto projectRequestToDto;
-
-    @Autowired
     ProjectService projectService;
 
     //Get

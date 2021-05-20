@@ -19,7 +19,7 @@ public class UserDetailsInit {
         private String password;
         @NotNull(message = "Graduation level cannot be null")
         private String graduationLevel;
-        @NotNull(message = "Groups cannot be null")
+
         private List<String> groups;
         @NotNull
         private List<String> roles;
