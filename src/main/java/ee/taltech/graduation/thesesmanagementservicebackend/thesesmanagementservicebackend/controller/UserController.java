@@ -158,7 +158,7 @@ public class UserController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or #userId == principal.userId")
     @DeleteMapping(path = "/{userId}")
     public String deleteUser(@PathVariable String userId){
 
