@@ -21,7 +21,7 @@ test ProjectManagementServiceBackEnd:
           - master
   script:
     - mvn verify
-
+ 
 
 
 deploy ProjectManagementServiceBackEnd:
