@@ -50,6 +50,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     TeamRepository teamRepository;
 
+    @Autowired
+    UserGroupRoleRepository userGroupRoleRepository;
+
 
     @Override
     public UserDto getUserByUserId(String userId)  {
@@ -293,6 +296,15 @@ public class UserServiceImpl implements UserService {
         UserEntity storedUserDetails = userRepository.save(userEntity);
         teamRepository.save(teamEntity);
         teamMemberRepository.save(teamMemberEntity);
+
+        for (GroupEntity groupEntity : groupEntityList){
+            UserGroupRoleEntity userGroupRoleEntity = new UserGroupRoleEntity();
+            userGroupRoleEntity.setUser(storedUserDetails);
+            userGroupRoleEntity.setGroupEntity(groupEntity);
+            userGroupRoleEntity.setRole(roleEntityList.get(0));
+
+            userGroupRoleRepository.save(userGroupRoleEntity);
+        }
 
 
         UserDto returnValue = modelMapper.map(storedUserDetails, UserDto.class);

@@ -134,21 +134,6 @@ public class UserController {
         return returnValue;
     }
 
-//    @PostMapping(path = "/initUser")
-//    public UserRest createUserMethodForInitUsers(@Valid @RequestBody UserDetailsInit userDetails) {
-//        ModelMapper modelMapper = new ModelMapper();
-//        UserDto userDto = modelMapper.map(userDetails, UserDto.class);
-//        List<String> groups = userDetails.getGroups();
-//        List<String> roles = userDetails.getRoles();
-//
-//        UserDto createdUser = userService.createUserMethodForInitUsers(userDto, groups, roles);
-//        UserRest returnValue = modelMapper.map(createdUser, UserRest.class);
-//
-//
-//        return returnValue;
-//    }
-
-
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
