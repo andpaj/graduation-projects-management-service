@@ -9,6 +9,7 @@ public class GroupRestWithSubGroups {
     private String groupId;
     private String groupClass;
     private String groupName;
+    private GroupParent groupParent;
     private List<GroupRestWithSubGroups> subGroups;
     private List<UserWithProjectsRest> users;
 
@@ -50,5 +51,13 @@ public class GroupRestWithSubGroups {
 
     public void setUsers(List<UserWithProjectsRest> users) {
         this.users = users;
+    }
+
+    public GroupParent getGroupParent() {
+        return groupParent;
+    }
+
+    public void setGroupParent(GroupParent groupParent) {
+        this.groupParent = groupParent;
     }
 }

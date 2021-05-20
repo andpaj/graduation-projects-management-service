@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.requestSpecification;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserTests {
+public class UserTest {
 
     private final Random RANDOM = new SecureRandom();
     private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -40,7 +40,7 @@ public class UserTests {
         RestAssured.port = 9000;
     }
 
-    public String getRandomValue(int length){
+    public String getRandomStringValue(int length){
         StringBuilder returnValue = new StringBuilder(length);
 
         for (int i = 0; i < length; i++) {
@@ -54,7 +54,7 @@ public class UserTests {
     @Order(1)
     final void testCreateUser(){
 
-        String generatedString = getRandomValue(8);
+        String generatedString = getRandomStringValue(8);
 
         randomEmailValue = generatedString + "@test.com";
 
@@ -223,22 +223,21 @@ public class UserTests {
 
     }
 
-//    @Test
-//    @Order(6)
-//    public void testDeleteUser(){
-//        Response response = given()
-//                .accept(JSON)
-//                .header("Authorization", authorizationHeader)
-//                .pathParam("userId", userId)
-//                .when()
-//                .delete(CONTEXT_PATH + "/users/{userId}")
-//                .then()
-//                .statusCode(200)
-//                .extract()
-//                .response();
-//
-//    }
+    @Test
+    @Order(6)
+    public void testDeleteUser(){
+        Response response = given()
+                .accept(JSON)
+                .header("Authorization", authorizationHeader)
+                .pathParam("userId", userId)
+                .when()
+                .delete(CONTEXT_PATH + "/users/{userId}")
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
 
+    }
 
 
 }
