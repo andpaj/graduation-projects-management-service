@@ -1,8 +1,5 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response;
 
-import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
-
-import java.util.List;
 
 public class AuthorityRest {
 
@@ -25,5 +22,5 @@ public class AuthorityRest {
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }

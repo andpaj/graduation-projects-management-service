@@ -9,7 +9,6 @@ public class GroupDetailsRequest {
     private String groupClass;
     @NotNull(message = "group name cannot be null")
     private String groupName;
-    @NotNull(message = "parent group cannot be null")
     private String parentTest;
 
 
