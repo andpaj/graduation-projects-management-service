@@ -39,7 +39,7 @@ public class UserTest {
         Map<String, Object> userDetails = new HashMap<>();
         userDetails.put("firstName", "Andres");
         userDetails.put("lastName", "Pajuste");
-        userDetails.put("email", "testAndresTest1@test.com");
+        userDetails.put("email", "testAndresTest2@test.com");
         userDetails.put("password", "test");
         userDetails.put("graduationLevel", "bachelor");
         userDetails.put("groups", groups);
@@ -64,7 +64,7 @@ public class UserTest {
         assertNotNull(userId);
         assertEquals(userId.length(), 30);
         assertEquals(firstName, "Andres");
-        assertEquals(email, "testAndresTest1@test.com");
+        assertEquals(email, "testAndresTest2@test.com");
 
 
        String bodyString = response.body().asString();
@@ -96,7 +96,7 @@ public class UserTest {
         Map<String, Object> userDetails = new HashMap<>();
         userDetails.put("firstName", "Andres");
         userDetails.put("lastName", "Pajuste");
-        userDetails.put("email", "testAndresTest1@test.com");
+        userDetails.put("email", "testAndresTest2@test.com");
         userDetails.put("password", "test");
         userDetails.put("graduationLevel", "Bachelor");
         userDetails.put("groups", groups);
