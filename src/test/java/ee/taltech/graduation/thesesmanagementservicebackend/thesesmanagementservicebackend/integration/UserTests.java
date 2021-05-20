@@ -223,21 +223,21 @@ public class UserTests {
 
     }
 
-    @Test
-    @Order(6)
-    public void testDeleteUser(){
-        Response response = given()
-                .accept(JSON)
-                .header("Authorization", authorizationHeader)
-                .pathParam("userId", userId)
-                .when()
-                .delete(CONTEXT_PATH + "/users/{userId}")
-                .then()
-                .statusCode(200)
-                .extract()
-                .response();
-
-    }
+//    @Test
+//    @Order(6)
+//    public void testDeleteUser(){
+//        Response response = given()
+//                .accept(JSON)
+//                .header("Authorization", authorizationHeader)
+//                .pathParam("userId", userId)
+//                .when()
+//                .delete(CONTEXT_PATH + "/users/{userId}")
+//                .then()
+//                .statusCode(200)
+//                .extract()
+//                .response();
+//
+//    }
 
 
 
