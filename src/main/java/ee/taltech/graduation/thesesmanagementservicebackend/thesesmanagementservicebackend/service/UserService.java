@@ -17,8 +17,6 @@ public interface UserService extends UserDetailsService {
     List<UserDto> getSupervisors();
     List<UserDto> getStudents();
 
-//    UserDto createUserMethodForInitUsers(UserDto userDto, List<String> groups, List<String> roles);
-//    UserDto getUser(String email);
 
 
 
