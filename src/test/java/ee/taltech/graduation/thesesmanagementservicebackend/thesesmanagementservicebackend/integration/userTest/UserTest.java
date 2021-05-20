@@ -86,38 +86,38 @@ public class UserTest {
     }
 
 
-//    @Test
-//    final void testCreateUserFailed(){
-//    //the email already exists
-//
-//        List<String> groups = new ArrayList<>();
-//        groups.add("IVSM");
-//
-//        List<String> roles = new ArrayList<>();
-//        roles.add("ROLE_STUDENT");
-//
-//        Map<String, Object> userDetails = new HashMap<>();
-//        userDetails.put("firstName", "Andres");
-//        userDetails.put("lastName", "Pajuste");
-//        userDetails.put("email", "testAndres12@test.com");
-//        userDetails.put("password", "test");
-//        userDetails.put("graduationLevel", "Bachelor");
-//        userDetails.put("groups", groups);
-//        userDetails.put("roles", roles);
-//
-//        Response response = given().
-//                contentType("application/json").
-//                accept("application/json").
-//                body(userDetails).
-//                when().
-//                post(CONTEXT_PATH + "/users").
-//                then().
-//                statusCode(500).
-//                contentType("application/json").
-//                extract().
-//                response();
-//
-//    }
+    @Test
+    final void testCreateUserFailed(){
+    //the email already exists
+
+        List<String> groups = new ArrayList<>();
+        groups.add("IVSM");
+
+        List<String> roles = new ArrayList<>();
+        roles.add("ROLE_STUDENT");
+
+        Map<String, Object> userDetails = new HashMap<>();
+        userDetails.put("firstName", "Andres");
+        userDetails.put("lastName", "Pajuste");
+        userDetails.put("email", "testAndres12@test.com");
+        userDetails.put("password", "test");
+        userDetails.put("graduationLevel", "Bachelor");
+        userDetails.put("groups", groups);
+        userDetails.put("roles", roles);
+
+        Response response = given().
+                contentType("application/json").
+                accept("application/json").
+                body(userDetails).
+                when().
+                post(CONTEXT_PATH + "/users").
+                then().
+                statusCode(500).
+                contentType("application/json").
+                extract().
+                response();
+
+    }
 
 
 

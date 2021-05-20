@@ -16,10 +16,11 @@ build ProjectManagementServiceBackEnd:
 
 test ProjectManagementServiceBackEnd:
   stage: test
+  only:
+        refs:
+          - master
   script:
     - mvn verify
-  artifacts:
-    when: always
 
 
 
