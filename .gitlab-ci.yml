@@ -1,5 +1,6 @@
 stages:
   - build
+  - test
   - deploy
 
 build ProjectManagementServiceBackEnd:
@@ -12,6 +13,15 @@ build ProjectManagementServiceBackEnd:
   artifacts:
     paths:
       - target/*.jar
+
+test ProjectManagementServiceBackEnd:
+  stage: test
+  script:
+    - mvn verify
+  artifacts:
+    when: always
+
+
 
 deploy ProjectManagementServiceBackEnd:
   stage: deploy
