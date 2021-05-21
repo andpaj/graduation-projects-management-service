@@ -12873,3 +12873,4 @@ Caused by: javax.persistence.NonUniqueResultException: query did not return a un
 2021-05-21 23:56:27.530  INFO Andress-MBP-2.lan --- [3)-192.168.1.74] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-05-21 23:56:27.531  INFO Andress-MBP-2.lan --- [3)-192.168.1.74] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
 2021-05-21 23:56:27.533  INFO Andress-MBP-2.lan --- [3)-192.168.1.74] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2021-05-22 00:11:59.932  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m4s785ms).
