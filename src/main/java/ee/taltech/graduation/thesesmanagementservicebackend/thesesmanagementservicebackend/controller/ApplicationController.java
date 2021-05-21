@@ -180,9 +180,9 @@ public class ApplicationController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
     })
-    @PreAuthorize("hasAnyRole('ADMIN', 'STUDENT')")
-    @DeleteMapping(path = "/delete/{applicationId}")
-    public String deleteApplication(@PathVariable String applicationId){
+    @PreAuthorize("hasRole('ADMIN') or #userId == principal.userId")
+    @DeleteMapping(path = "/delete")
+    public String deleteApplication(@RequestParam String applicationId, @RequestParam String userId){
 
         applicationService.deleteApplication(applicationId);
         return applicationId;
