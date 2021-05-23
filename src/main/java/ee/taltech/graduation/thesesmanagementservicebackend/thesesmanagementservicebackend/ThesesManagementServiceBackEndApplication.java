@@ -43,7 +43,7 @@ public class ThesesManagementServiceBackEndApplication {
 		return (args) -> {
 //-----------------------------------------------> Group setting - SCHOOLS
 
-
+//
 //			GroupEntity school2 = new GroupEntity();
 //			school2.setGroupClass("School");
 //			school2.setGroupName("School of Science");
