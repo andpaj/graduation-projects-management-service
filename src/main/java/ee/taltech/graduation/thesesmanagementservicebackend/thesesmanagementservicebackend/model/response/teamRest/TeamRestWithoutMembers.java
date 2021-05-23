@@ -2,7 +2,9 @@ package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementser
 
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.applicationRest.ApplicationRestWithoutProject;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.applicationRest.ApplicationRestWithoutTeam;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.model.response.teamMemberRest.TeamMemberRest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TeamRestWithoutMembers {
@@ -12,6 +14,7 @@ public class TeamRestWithoutMembers {
     private String status;
     private String authorId;
     private List<ApplicationRestWithoutProject> applications;
+    private List<TeamMemberRest> teamMembers = new ArrayList<>();
 
     public String getTeamId() {
         return teamId;
@@ -51,5 +54,13 @@ public class TeamRestWithoutMembers {
 
     public void setApplications(List<ApplicationRestWithoutProject> applications) {
         this.applications = applications;
+    }
+
+    public List<TeamMemberRest> getTeamMembers() {
+        return teamMembers;
+    }
+
+    public void setTeamMembers(List<TeamMemberRest> teamMembers) {
+        this.teamMembers = teamMembers;
     }
 }
