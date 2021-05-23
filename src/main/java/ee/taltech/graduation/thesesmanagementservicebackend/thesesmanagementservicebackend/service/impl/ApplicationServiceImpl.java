@@ -309,7 +309,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
 
-    
+
 
     @Override
     public void deleteApplication(String applicationId) {
