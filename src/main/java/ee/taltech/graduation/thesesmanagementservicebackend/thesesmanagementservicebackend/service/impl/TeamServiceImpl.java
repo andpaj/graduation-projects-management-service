@@ -14,6 +14,7 @@ import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementserv
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.dto.TeamDto;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamEnum;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.TeamMemberEnum;
+import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,17 @@ public class TeamServiceImpl implements TeamService {
                         new ServiceException(ErrorMessages.NO_RECORD_FOUND_USER.getErrorMessage());
                 additionalMembers.add(foundUser);
             }
+        }
+
+        if (userEntity.getConfirmedProject() != null){
+            throw new ServiceException(ErrorMessages.AlREADY_HAVE_CONFIRMED_PROJECT.getErrorMessage());
+        }
+
+        for (UserEntity additionalUser: additionalMembers){
+            if (additionalUser.getConfirmedProject() != null) {
+                throw new ServiceException(ErrorMessages.AlREADY_HAVE_CONFIRMED_PROJECT.getErrorMessage());
+            }
+
         }
 
 
