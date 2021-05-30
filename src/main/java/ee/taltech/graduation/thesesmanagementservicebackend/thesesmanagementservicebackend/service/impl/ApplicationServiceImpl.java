@@ -276,6 +276,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         if (projectEntity == null) throw
                 new ServiceException(ErrorMessages.NO_RECORD_FOUND_PROJECT.getErrorMessage());
 
+        for (TeamMemberEntity teamMemberEntity: teamEntity.getTeamMembers()){
+            if (teamMemberEntity.getUser().getConfirmedProject() != null ){
+                throw new ServiceException(ErrorMessages.AlREADY_HAVE_CONFIRMED_PROJECT.getErrorMessage());
+            }
+        }
+
         for (ApplicationEntity applicationEntity: teamEntity.getApplications()){
             if (applicationEntity.getProject().getProjectId().equals(projectId)) throw
                     new ServiceException(ErrorMessages.APPLICATION_IS_ALREADY_SENT.getErrorMessage());

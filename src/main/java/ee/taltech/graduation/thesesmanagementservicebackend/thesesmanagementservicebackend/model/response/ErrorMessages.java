@@ -22,7 +22,8 @@ public enum ErrorMessages {
     MEMBER_ALREADY_ACCEPTED("This team member is already accepted"),
     APPLICATION_IS_ALREADY_SENT("Application to this project has already sent"),
     TAG_WITH_THAT_NAME_IS_ALREADY_CREATED("Tag with such name has already created"),
-    STUDENT_AMOUNT_HIGH("This project is not suitable for such amount of team members");
+    STUDENT_AMOUNT_HIGH("This project is not suitable for such amount of team members"),
+    AlREADY_HAVE_CONFIRMED_PROJECT("Application could not be created because some of team members have the confirmed project");
 
 
     private String errorMessage;

@@ -146,6 +146,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserDto> getStudentsWithoutConfirmedProjects() {
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserDto> studentsDto = new ArrayList<>();
+        List<UserEntity> allUsers = userRepository.findAll();
+
+        List<UserEntity> studentsEntity = new ArrayList<>();
+
+        for (UserEntity userEntity: allUsers){
+            for (RoleEntity roleEntity: userEntity.getRoles()){
+                if (roleEntity.getName().equals(Roles.ROLE_STUDENT.name())
+                        && userEntity.getConfirmedProject() == null){
+                    studentsEntity.add(userEntity);
+                }
+            }
+        }
+
+
+
+        for (UserEntity userEntity: studentsEntity){
+
+            UserDto userDto = modelMapper.map(userEntity, UserDto.class);
+            studentsDto.add(userDto);
+        }
+
+        return studentsDto;
+    }
+
+    @Override
     public List<UserDto> getStudents() {
         ModelMapper modelMapper = new ModelMapper();
         List<UserDto> studentsDto = new ArrayList<>();
