@@ -98,6 +98,25 @@ public class UserController {
         return allStudents;
     }
 
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
+    })
+    @GetMapping(path = "/getStudentsWithoutConfirmedProjects")
+    public List<UserWithProjectsRest> getStudentsWithoutConfirmedProjects(){
+        ModelMapper modelMapper = new ModelMapper();
+        List<UserWithProjectsRest> allStudents = new ArrayList<>();
+        List<UserDto> studentsDto = userService.getStudentsWithoutConfirmedProjects();
+
+        for (UserDto userDto : studentsDto){
+            UserWithProjectsRest userRest = modelMapper.map(userDto, UserWithProjectsRest.class);
+            allStudents.add(userRest);
+        }
+
+        return allStudents;
+    }
+
+
+
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "authorization", value = "Bearer JWT token", paramType = "header")
