@@ -204,14 +204,16 @@ public class ApplicationServiceImpl implements ApplicationService {
         supervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
 
         //Add co supervisors as a team members to the team
-        for (UserEntity coSupervisor: projectEntity.getCoSupervisors()){
-            TeamMemberEntity coSupervisorTeamMember = new TeamMemberEntity();
-            coSupervisorTeamMember.setTeamMemberId(utils.generateTeamMemberId(30));
-            coSupervisorTeamMember.setTeam(teamEntity);
-            coSupervisorTeamMember.setRole(TeamMemberEnum.ROLE_COSUPERVISOR.getTeamMemberEnum());
-            coSupervisorTeamMember.setUser(coSupervisor);
-            coSupervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
-            teamMemberRepository.save(coSupervisorTeamMember);
+        if (!projectEntity.getCoSupervisors().isEmpty()) {
+            for (UserEntity coSupervisor : projectEntity.getCoSupervisors()) {
+                TeamMemberEntity coSupervisorTeamMember = new TeamMemberEntity();
+                coSupervisorTeamMember.setTeamMemberId(utils.generateTeamMemberId(30));
+                coSupervisorTeamMember.setTeam(teamEntity);
+                coSupervisorTeamMember.setRole(TeamMemberEnum.ROLE_COSUPERVISOR.getTeamMemberEnum());
+                coSupervisorTeamMember.setUser(coSupervisor);
+                coSupervisorTeamMember.setStatus(TeamMemberEnum.STATUS_ACCEPTED.getTeamMemberEnum());
+                teamMemberRepository.save(coSupervisorTeamMember);
+            }
         }
 
 
@@ -225,8 +227,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         ApplicationEntity savedApplication = applicationRepository.save(applicationEntity);
         teamRepository.save(teamEntity);
-        projectRepository.save(projectEntity);
         teamMemberRepository.save(supervisorTeamMember);
+        projectRepository.save(projectEntity);
+
 
 
         ApplicationDto applicationDto = modelMapper.map(savedApplication, ApplicationDto.class);
@@ -285,6 +288,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         if (projectEntity.getStatus().equals(ProjectEnum.STATUS_NOT_AVAILABLE.getProjectEnum())){
             throw new ServiceException(ErrorMessages.PROJECT_IS_NOT_AVAILABLE.getErrorMessage());
         }
+
+        if (projectEntity.getStudentAmount() < teamEntity.getTeamMembers().size()){
+            throw new ServiceException(ErrorMessages.STUDENT_AMOUNT_HIGH.getErrorMessage());
+        }
+
+
         applicationDto.setApplicationId(utils.generateApplicationId(30));
         applicationDto.setStatus(ApplicationEnum.SENT.getApplicationEnum());
         applicationDto.setCreatingTime(new Date());
