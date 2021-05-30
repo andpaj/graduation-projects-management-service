@@ -1,5 +1,8 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -27,6 +30,7 @@ public class ApplicationEntity {
     private String message;
 
     @ManyToOne()
+    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name="teamId")
     private TeamEntity team;
 
