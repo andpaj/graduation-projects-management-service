@@ -60,6 +60,7 @@ public class TeamServiceImpl implements TeamService {
             }
         }
 
+
         teamDto.setTeamId(utils.generateTeamId(30));
         teamDto.setStatus(TeamEnum.STATUS_NOT_ACTIVE.getTeamEnum());
         teamDto.setAuthorId(userEntity.getUserId());
