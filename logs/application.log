@@ -16035,3 +16035,591 @@ javax.persistence.EntityNotFoundException: Unable to find ee.taltech.graduation.
 2021-05-30 16:12:54.381  INFO Andress-MBP-2.lan --- [)-192.168.1.120] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-05-30 16:12:54.381  INFO Andress-MBP-2.lan --- [)-192.168.1.120] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
 2021-05-30 16:12:54.383  INFO Andress-MBP-2.lan --- [)-192.168.1.120] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2021-05-30 17:10:53.005  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=24m1s836ms).
+2021-05-30 17:13:36.478  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m13s336ms).
+2021-05-30 17:32:11.559  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m34s253ms).
+2021-05-30 19:22:05.511  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52s933ms).
+2021-05-30 19:51:44.298  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m8s723ms).
+2021-05-30 19:56:54.222  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m9s924ms).
+2021-05-30 19:58:16.971  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52s749ms).
+2021-05-30 20:27:56.436  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m9s461ms).
+2021-05-30 20:51:47.050  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=23m20s595ms).
+2021-05-30 21:35:37.962  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=43m20s909ms).
+2021-05-30 23:36:03.406  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h25s445ms).
+2021-05-31 01:36:55.876  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h22s469ms).
+2021-05-31 01:57:00.535  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=19m34s619ms).
+2021-05-31 02:37:42.265  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m41s431ms).
+2021-05-31 02:46:14.357  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m2s53ms).
+2021-05-31 02:56:24.023  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m39s663ms).
+2021-05-31 03:05:22.714  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m58s691ms).
+2021-05-31 03:08:14.474  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m21s778ms).
+2021-05-31 03:11:32.517  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m48s46ms).
+2021-05-31 03:28:18.357  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m14s766ms).
+2021-05-31 03:42:03.869  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m15s393ms).
+2021-05-31 03:49:56.712  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m22s838ms).
+2021-05-31 04:11:21.071  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s184ms).
+2021-05-31 04:40:27.653  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m6s602ms).
+2021-05-31 04:58:54.359  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=17m56s729ms).
+2021-05-31 06:59:47.205  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h22s858ms).
+2021-05-31 09:00:41.845  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h24s617ms).
+2021-05-31 11:01:35.510  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h23s650ms).
+2021-05-31 12:45:29.209  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h43m23s694ms).
+2021-05-31 14:41:07.497  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m7s281ms).
+2021-05-31 15:06:34.864  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=24m57s44ms).
+2021-05-31 15:08:06.888  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m2s10ms).
+2021-05-31 16:04:09.700  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m24s657ms).
+2021-05-31 16:11:37.581  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m27s922ms).
+2021-05-31 16:29:14.442  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m6s761ms).
+2021-05-31 17:04:13.554  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m28s903ms).
+2021-05-31 17:11:28.405  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m44s829ms).
+2021-05-31 19:46:03.105  INFO Andress-MBP-2.lan --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-05-31 19:46:03.365  INFO Andress-MBP-2.lan --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-05-31 19:46:03.434  INFO Andress-MBP-2.lan --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-05-31 19:46:03.947  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2021-05-31 19:46:04.031  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2021-06-02 15:44:29.391  INFO Andress-MBP-2.lan --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.7.Final
+2021-06-02 15:44:29.434  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Starting ThesesManagementServiceBackEndApplication using Java 14.0.2 on Andress-MBP-2.lan with PID 81592 (/Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end/target/classes started by andres.pajuste in /Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end)
+2021-06-02 15:44:29.440  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : No active profile set, falling back to default profiles: default
+2021-06-02 15:44:30.601  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-02 15:44:30.693  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 10 JPA repository interfaces.
+2021-06-02 15:44:30.985  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@48bc2fce' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-02 15:44:30.989  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-02 15:44:31.200  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 9000 (http)
+2021-06-02 15:44:31.207  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-9000"]
+2021-06-02 15:44:31.208  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-06-02 15:44:31.208  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-06-02 15:44:31.277  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring embedded WebApplicationContext
+2021-06-02 15:44:31.278  INFO Andress-MBP-2.lan --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1781 ms
+2021-06-02 15:44:31.528  INFO Andress-MBP-2.lan --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-02 15:44:31.577  INFO Andress-MBP-2.lan --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-06-02 15:44:31.683  INFO Andress-MBP-2.lan --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-02 15:44:31.765  INFO Andress-MBP-2.lan --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2021-06-02 15:44:32.662  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2021-06-02 15:44:33.871 ERROR Andress-MBP-2.lan --- [           main] c.z.h.p.HikariPool                       : HikariPool-1 - Exception during pool initialization.
+org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:613)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:161)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:43)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:60)
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:40)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:65)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:59)
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:155)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1847)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1159)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:913)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.ThesesManagementServiceBackEndApplication.main(ThesesManagementServiceBackEndApplication.java:21)
+2021-06-02 15:44:33.874  WARN Andress-MBP-2.lan --- [           main] o.h.e.j.s.SqlExceptionHelper             : SQL Error: 0, SQLState: 28P01
+2021-06-02 15:44:33.874 ERROR Andress-MBP-2.lan --- [           main] o.h.e.j.s.SqlExceptionHelper             : FATAL: password authentication failed for user "postgres"
+2021-06-02 15:44:33.883 ERROR Andress-MBP-2.lan --- [           main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution
+2021-06-02 15:44:33.884  WARN Andress-MBP-2.lan --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution
+2021-06-02 15:44:33.891  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2021-06-02 15:44:33.912  INFO Andress-MBP-2.lan --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-06-02 15:44:33.938 ERROR Andress-MBP-2.lan --- [           main] o.s.b.SpringApplication                  : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:609)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:531)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1159)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:913)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:588)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.ThesesManagementServiceBackEndApplication.main(ThesesManagementServiceBackEndApplication.java:21)
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1847)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	... 17 more
+Caused by: org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:47)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:69)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:60)
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:40)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:65)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:59)
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:155)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:316)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:469)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1259)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	... 21 more
+Caused by: org.postgresql.util.PSQLException: FATAL: password authentication failed for user "postgres"
+	at org.postgresql.core.v3.ConnectionFactoryImpl.doAuthentication(ConnectionFactoryImpl.java:613)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:161)
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:213)
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:51)
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:225)
+	at org.postgresql.Driver.makeConnection(Driver.java:465)
+	at org.postgresql.Driver.connect(Driver.java:264)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:43)
+	... 35 more
+2021-06-02 15:44:57.113  INFO Andress-MBP-2.lan --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.7.Final
+2021-06-02 15:44:57.153  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Starting ThesesManagementServiceBackEndApplication using Java 14.0.2 on Andress-MBP-2.lan with PID 81611 (/Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end/target/classes started by andres.pajuste in /Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end)
+2021-06-02 15:44:57.157  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : No active profile set, falling back to default profiles: default
+2021-06-02 15:44:58.436  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-02 15:44:58.536  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 10 JPA repository interfaces.
+2021-06-02 15:44:58.846  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@51ba952e' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-02 15:44:58.852  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-02 15:44:59.090  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 9000 (http)
+2021-06-02 15:44:59.098  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-9000"]
+2021-06-02 15:44:59.099  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-06-02 15:44:59.099  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-06-02 15:44:59.175  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring embedded WebApplicationContext
+2021-06-02 15:44:59.175  INFO Andress-MBP-2.lan --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1969 ms
+2021-06-02 15:44:59.298  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2021-06-02 15:44:59.439  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2021-06-02 15:44:59.448  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.h.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2021-06-02 15:44:59.598  INFO Andress-MBP-2.lan --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-02 15:44:59.641  INFO Andress-MBP-2.lan --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-06-02 15:44:59.734  INFO Andress-MBP-2.lan --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-02 15:44:59.815  INFO Andress-MBP-2.lan --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-06-02 15:45:00.464  INFO Andress-MBP-2.lan --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-02 15:45:00.471  INFO Andress-MBP-2.lan --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-02 15:45:01.078  WARN Andress-MBP-2.lan --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-02 15:45:01.418  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-06-02 15:45:01.501  INFO Andress-MBP-2.lan --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-06-02 15:45:01.641  INFO Andress-MBP-2.lan --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6567de86, org.springframework.security.web.context.SecurityContextPersistenceFilter@10cf3e4f, org.springframework.security.web.header.HeaderWriterFilter@df0b348, org.springframework.web.filter.CorsFilter@5350a926, org.springframework.security.web.authentication.logout.LogoutFilter@70199db0, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthenticationFilter@77732366, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthorizationFilter@7c046af, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@242a3997, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2c914364, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c883b3f, org.springframework.security.web.session.SessionManagementFilter@72dc7f0a, org.springframework.security.web.access.ExceptionTranslationFilter@484dde7d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6d0cc47d]
+2021-06-02 15:45:01.741  INFO Andress-MBP-2.lan --- [           main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-02 15:45:01.967  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-9000"]
+2021-06-02 15:45:01.982  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 9000 (http) with context path '/services/graduation/api'
+2021-06-02 15:45:01.983  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-06-02 15:45:01.996  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-06-02 15:45:02.022  INFO Andress-MBP-2.lan --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-06-02 15:45:02.361  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Started ThesesManagementServiceBackEndApplication in 5.549 seconds (JVM running for 6.411)
+2021-06-02 15:45:02.769  INFO Andress-MBP-2.lan --- [)-192.168.1.120] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-02 15:45:02.769  INFO Andress-MBP-2.lan --- [)-192.168.1.120] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2021-06-02 15:45:02.771  INFO Andress-MBP-2.lan --- [)-192.168.1.120] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2021-06-02 15:45:10.815 ERROR Andress-MBP-2.lan --- [nio-9000-exec-1] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/services/graduation/api] threw exception [Request processing failed; nested exception is ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException: Group with provided id is not found] with root cause
+ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException: Group with provided id is not found
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl.UserServiceImpl.createUser(UserServiceImpl.java:222)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller.UserController.createUser(UserController.java:149)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller.UserController$$FastClassBySpringCGLIB$$5f3ff360.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller.UserController$$EnhancerBySpringCGLIB$$43d5120b.createUser(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthorizationFilter.doFilterInternal(AuthorizationFilter.java:35)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-06-02 15:45:11.006 ERROR Andress-MBP-2.lan --- [nio-9000-exec-2] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/services/graduation/api] threw exception [Request processing failed; nested exception is ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException: Group with provided id is not found] with root cause
+ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.exception.ServiceException: Group with provided id is not found
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.service.impl.UserServiceImpl.createUser(UserServiceImpl.java:222)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller.UserController.createUser(UserController.java:149)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller.UserController$$FastClassBySpringCGLIB$$5f3ff360.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.controller.UserController$$EnhancerBySpringCGLIB$$43d5120b.createUser(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1060)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:962)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:113)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthorizationFilter.doFilterInternal(AuthorizationFilter.java:35)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:888)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1597)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-06-02 16:54:54.134  INFO Andress-MBP-2.lan --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-02 16:54:54.236  INFO Andress-MBP-2.lan --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-02 16:54:54.343  INFO Andress-MBP-2.lan --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-06-02 16:54:54.996  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2021-06-02 16:54:55.071  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2021-06-05 15:36:28.985  INFO Andress-MBP-2.lan --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.7.Final
+2021-06-05 15:36:29.017  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Starting ThesesManagementServiceBackEndApplication using Java 14.0.2 on Andress-MBP-2.lan with PID 5979 (/Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end/target/classes started by andres.pajuste in /Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end)
+2021-06-05 15:36:29.022  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : No active profile set, falling back to default profiles: default
+2021-06-05 15:36:30.203  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-05 15:36:30.297  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 10 JPA repository interfaces.
+2021-06-05 15:36:30.577  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1e40fbb3' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-05 15:36:30.582  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-05 15:36:30.798  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 9000 (http)
+2021-06-05 15:36:30.804  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-9000"]
+2021-06-05 15:36:30.805  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-06-05 15:36:30.805  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-06-05 15:36:30.874  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring embedded WebApplicationContext
+2021-06-05 15:36:30.875  INFO Andress-MBP-2.lan --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1809 ms
+2021-06-05 15:36:30.997  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2021-06-05 15:36:31.120  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2021-06-05 15:36:31.125  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.h.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2021-06-05 15:36:31.257  INFO Andress-MBP-2.lan --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-05 15:36:31.300  INFO Andress-MBP-2.lan --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-06-05 15:36:31.392  INFO Andress-MBP-2.lan --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-05 15:36:31.482  INFO Andress-MBP-2.lan --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-06-05 15:36:32.152  INFO Andress-MBP-2.lan --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-05 15:36:32.159  INFO Andress-MBP-2.lan --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-05 15:36:32.754  WARN Andress-MBP-2.lan --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-05 15:36:33.085  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-06-05 15:36:33.167  INFO Andress-MBP-2.lan --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-06-05 15:36:33.333  INFO Andress-MBP-2.lan --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50165a6d, org.springframework.security.web.context.SecurityContextPersistenceFilter@6e5106fc, org.springframework.security.web.header.HeaderWriterFilter@4ab959e8, org.springframework.web.filter.CorsFilter@5ec921f1, org.springframework.security.web.authentication.logout.LogoutFilter@2b3e2039, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthenticationFilter@172ca6a, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthorizationFilter@174e5929, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@274b0c2a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27558dee, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7569bc9f, org.springframework.security.web.session.SessionManagementFilter@5f910283, org.springframework.security.web.access.ExceptionTranslationFilter@2bdf6c7c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2c39c520]
+2021-06-05 15:36:33.449  INFO Andress-MBP-2.lan --- [           main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-05 15:36:33.688  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-9000"]
+2021-06-05 15:36:33.715  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 9000 (http) with context path '/services/graduation/api'
+2021-06-05 15:36:33.716  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-06-05 15:36:33.733  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-06-05 15:36:33.760  INFO Andress-MBP-2.lan --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-06-05 15:36:34.106  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Started ThesesManagementServiceBackEndApplication in 5.445 seconds (JVM running for 6.668)
+2021-06-05 15:36:34.388  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-05 15:36:34.388  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2021-06-05 15:36:34.390  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2021-06-05 15:37:21.751  INFO Andress-MBP-2.lan --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-05 15:37:21.761  INFO Andress-MBP-2.lan --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-05 15:37:21.762  INFO Andress-MBP-2.lan --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-06-05 15:37:21.772  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2021-06-05 15:37:21.779  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2021-06-05 15:37:24.121  INFO Andress-MBP-2.lan --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.7.Final
+2021-06-05 15:37:24.175  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Starting ThesesManagementServiceBackEndApplication using Java 14.0.2 on Andress-MBP-2.lan with PID 5993 (/Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end/target/classes started by andres.pajuste in /Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end)
+2021-06-05 15:37:24.182  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : No active profile set, falling back to default profiles: default
+2021-06-05 15:37:25.601  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-05 15:37:25.688  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 10 JPA repository interfaces.
+2021-06-05 15:37:25.959  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2416c658' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-05 15:37:25.965  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-05 15:37:26.149  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 9000 (http)
+2021-06-05 15:37:26.156  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-9000"]
+2021-06-05 15:37:26.156  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-06-05 15:37:26.157  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-06-05 15:37:26.232  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring embedded WebApplicationContext
+2021-06-05 15:37:26.232  INFO Andress-MBP-2.lan --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2000 ms
+2021-06-05 15:37:26.354  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2021-06-05 15:37:26.463  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2021-06-05 15:37:26.468  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.h.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2021-06-05 15:37:26.601  INFO Andress-MBP-2.lan --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-05 15:37:26.639  INFO Andress-MBP-2.lan --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-06-05 15:37:26.733  INFO Andress-MBP-2.lan --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-05 15:37:26.815  INFO Andress-MBP-2.lan --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-06-05 15:37:27.464  INFO Andress-MBP-2.lan --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-05 15:37:27.470  INFO Andress-MBP-2.lan --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-05 15:37:28.057  WARN Andress-MBP-2.lan --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-05 15:37:28.361  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-06-05 15:37:28.432  INFO Andress-MBP-2.lan --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-06-05 15:37:28.572  INFO Andress-MBP-2.lan --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@470fc16c, org.springframework.security.web.context.SecurityContextPersistenceFilter@2be83e7e, org.springframework.security.web.header.HeaderWriterFilter@68cc6fa4, org.springframework.web.filter.CorsFilter@6d0cc47d, org.springframework.security.web.authentication.logout.LogoutFilter@4ab959e8, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthenticationFilter@56dae6, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthorizationFilter@57fe6f2d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@441c2d2a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38816a6c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e43c01f, org.springframework.security.web.session.SessionManagementFilter@5d729af6, org.springframework.security.web.access.ExceptionTranslationFilter@116fe252, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@365fde74]
+2021-06-05 15:37:28.672  INFO Andress-MBP-2.lan --- [           main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-05 15:37:28.885  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-9000"]
+2021-06-05 15:37:28.899  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 9000 (http) with context path '/services/graduation/api'
+2021-06-05 15:37:28.900  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-06-05 15:37:28.921  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-06-05 15:37:28.951  INFO Andress-MBP-2.lan --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-06-05 15:37:29.299  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Started ThesesManagementServiceBackEndApplication in 5.568 seconds (JVM running for 6.655)
+2021-06-05 15:37:29.462  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-05 15:37:29.462  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2021-06-05 15:37:29.464  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2021-06-05 15:38:56.473  INFO Andress-MBP-2.lan --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-05 15:38:56.481  INFO Andress-MBP-2.lan --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-05 15:38:56.482  INFO Andress-MBP-2.lan --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-06-05 15:38:56.493  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2021-06-05 15:38:56.496  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2021-06-05 15:39:02.224  INFO Andress-MBP-2.lan --- [kground-preinit] o.h.v.i.u.Version                        : HV000001: Hibernate Validator 6.1.7.Final
+2021-06-05 15:39:02.264  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Starting ThesesManagementServiceBackEndApplication using Java 14.0.2 on Andress-MBP-2.lan with PID 6041 (/Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end/target/classes started by andres.pajuste in /Users/andres.pajuste/Desktop/graduation/graduation-theses-management-service-back-end)
+2021-06-05 15:39:02.271  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : No active profile set, falling back to default profiles: default
+2021-06-05 15:39:03.598  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-06-05 15:39:03.697  INFO Andress-MBP-2.lan --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 10 JPA repository interfaces.
+2021-06-05 15:39:03.980  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1e6060f1' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-05 15:39:03.984  INFO Andress-MBP-2.lan --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-06-05 15:39:04.182  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 9000 (http)
+2021-06-05 15:39:04.190  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-9000"]
+2021-06-05 15:39:04.190  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2021-06-05 15:39:04.191  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2021-06-05 15:39:04.268  INFO Andress-MBP-2.lan --- [           main] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring embedded WebApplicationContext
+2021-06-05 15:39:04.268  INFO Andress-MBP-2.lan --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1943 ms
+2021-06-05 15:39:04.380  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2021-06-05 15:39:04.493  INFO Andress-MBP-2.lan --- [           main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2021-06-05 15:39:04.499  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.h.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2021-06-05 15:39:04.626  INFO Andress-MBP-2.lan --- [           main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-06-05 15:39:04.665  INFO Andress-MBP-2.lan --- [           main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.4.27.Final
+2021-06-05 15:39:04.755  INFO Andress-MBP-2.lan --- [           main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-06-05 15:39:04.831  INFO Andress-MBP-2.lan --- [           main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-06-05 15:39:05.457  INFO Andress-MBP-2.lan --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-06-05 15:39:05.465  INFO Andress-MBP-2.lan --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-06-05 15:39:06.064  WARN Andress-MBP-2.lan --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-06-05 15:39:06.364  INFO Andress-MBP-2.lan --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 2 endpoint(s) beneath base path '/actuator'
+2021-06-05 15:39:06.431  INFO Andress-MBP-2.lan --- [           main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-06-05 15:39:06.559  INFO Andress-MBP-2.lan --- [           main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@272cec71, org.springframework.security.web.context.SecurityContextPersistenceFilter@4b59a1c1, org.springframework.security.web.header.HeaderWriterFilter@3e8c9981, org.springframework.web.filter.CorsFilter@12e8ea81, org.springframework.security.web.authentication.logout.LogoutFilter@46f3d0f7, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthenticationFilter@6345dc06, ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.security.AuthorizationFilter@628d6320, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58ec04f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4ab959e8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22025464, org.springframework.security.web.session.SessionManagementFilter@a642c54, org.springframework.security.web.access.ExceptionTranslationFilter@2c914364, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7c070e78]
+2021-06-05 15:39:06.654  INFO Andress-MBP-2.lan --- [           main] o.s.s.c.ThreadPoolTaskExecutor           : Initializing ExecutorService 'applicationTaskExecutor'
+2021-06-05 15:39:06.861  INFO Andress-MBP-2.lan --- [           main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-9000"]
+2021-06-05 15:39:06.876  INFO Andress-MBP-2.lan --- [           main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 9000 (http) with context path '/services/graduation/api'
+2021-06-05 15:39:06.877  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-06-05 15:39:06.891  INFO Andress-MBP-2.lan --- [           main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-06-05 15:39:06.916  INFO Andress-MBP-2.lan --- [           main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-06-05 15:39:07.246  INFO Andress-MBP-2.lan --- [           main] hesesManagementServiceBackEndApplication : Started ThesesManagementServiceBackEndApplication in 5.344 seconds (JVM running for 6.287)
+2021-06-05 15:39:07.742  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.a.c.c.C.[.[.[/services/graduation/api] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-06-05 15:39:07.742  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2021-06-05 15:39:07.744  INFO Andress-MBP-2.lan --- [)-192.168.1.119] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2021-06-05 16:47:28.950  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m53s647ms).
+2021-06-05 16:48:22.833  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=53s963ms).
+2021-06-05 17:15:45.909  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=26m53s74ms).
+2021-06-05 17:41:23.473  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m7s545ms).
+2021-06-05 18:11:04.095  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m10s613ms).
+2021-06-05 20:11:29.729  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h25s634ms).
+2021-06-05 22:12:23.784  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h24s54ms).
+2021-06-06 00:13:19.288  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h25s506ms).
+2021-06-06 02:14:14.791  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h25s482ms).
+2021-06-06 04:15:10.185  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h25s383ms).
+2021-06-06 05:45:39.511  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h30m29s330ms).
+2021-06-06 06:02:53.332  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m43s823ms).
+2021-06-06 08:03:48.813  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h25s469ms).
+2021-06-06 10:04:44.478  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h25s657ms).
+2021-06-06 11:00:00.078  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=55m15s600ms).
+2021-06-06 11:45:12.737  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=44m42s641ms).
+2021-06-06 13:16:29.720  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=31m46s321ms).
+2021-06-06 13:43:05.482  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m3s986ms).
+2021-06-06 18:19:15.203  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m38s3ms).
+2021-06-06 19:34:00.492  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m44s252ms).
+2021-06-06 23:58:18.776  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=23m16s650ms).
+2021-06-07 00:27:27.305  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m8s379ms).
+2021-06-07 00:31:09.347  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m12s15ms).
+2021-06-07 01:08:47.113  WARN Andress-MBP-2.lan --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m36s928ms).
+2021-06-07 01:44:37.788  INFO Andress-MBP-2.lan --- [extShutdownHook] o.s.s.c.ThreadPoolTaskExecutor           : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-06-07 01:44:37.842  INFO Andress-MBP-2.lan --- [extShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-06-07 01:44:37.869  INFO Andress-MBP-2.lan --- [extShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-06-07 01:44:37.963  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2021-06-07 01:44:37.982  INFO Andress-MBP-2.lan --- [extShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.

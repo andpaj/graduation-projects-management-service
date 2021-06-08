@@ -84,8 +84,6 @@ public class GroupController {
             groupsList.add(group);
         }
 
-        logger.info("An INFO Message");
-
 
         return groupsList;
 
