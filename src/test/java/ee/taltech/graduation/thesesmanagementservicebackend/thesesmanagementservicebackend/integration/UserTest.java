@@ -1,7 +1,13 @@
 package ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.integration;
 
 
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.AuthorityEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.GroupEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.entity.RoleEntity;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.GroupRepository;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.repository.RoleRepository;
 import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.Utils;
+import ee.taltech.graduation.thesesmanagementservicebackend.thesesmanagementservicebackend.shared.enums.Roles;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.json.JSONArray;
@@ -9,8 +15,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.*;
+import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.security.SecureRandom;
 import java.util.*;
@@ -22,23 +30,25 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserTest {
 
-    private final Random RANDOM = new SecureRandom();
-    private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-
-    private final String CONTEXT_PATH = "/services/graduation/api";
-    private final String JSON = "application/json";
-
-    private static String authorizationHeader;
-    private static String userId;
-
-    private static String randomEmailValue = "";
-
-    @BeforeEach
-    void setUp() throws Exception {
-        RestAssured.baseURI = "http://localhost";
-        RestAssured.port = 9000;
-    }
+//    private final Random RANDOM = new SecureRandom();
+//    private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+//
+//
+//    private final String CONTEXT_PATH = "/services/graduation/api";
+//    private final String JSON = "application/json";
+//
+//    private static String authorizationHeader;
+//    private static String userId;
+//
+//    private static String randomEmailValue = "";
+//
+//
+//    @BeforeEach
+//    void setUp() throws Exception {
+//        RestAssured.baseURI = "http://localhost";
+//        RestAssured.port = 9000;
+//
+//    }
 //
 //    public String getRandomStringValue(int length){
 //        StringBuilder returnValue = new StringBuilder(length);
@@ -59,7 +69,7 @@ public class UserTest {
 //        randomEmailValue = generatedString + "@test.com";
 //
 //        List<String> groups = new ArrayList<>();
-//        groups.add("IVSM");
+//        groups.add("testName");
 //
 //        List<String> roles = new ArrayList<>();
 //        roles.add("ROLE_STUDENT");
